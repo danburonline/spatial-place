@@ -8,5 +8,17 @@
   "license": "MIT",
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "husky": ">=6",
+    "lint-staged": ">=10",
+    "prettier": "^2.4.0"
+  },
+  "lint-staged": {
+    "*": "prettier --write"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "format": "prettier --write ."
+  }
 }

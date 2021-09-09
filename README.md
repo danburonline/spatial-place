@@ -6,7 +6,7 @@ This repository contains the following directories:
 
 - **[/docs](/docs/README.md)**: Auto generated documentation files for GitHub Pages.
 - **[/thesis](/thesis/README.md):** All LaTeX files for the research paper PDF.
-- **[/.github](/.github/README.md)**: GitHub templates, configurations and workflows.
+- **[/.github](/.github)**: GitHub templates, configurations and workflows.
 - **[/readmes](/readmes/README.md)**: A directory with all included READMEs and files.
 - **[/packages](/packages/README.md)**: A directory with all services for the Mind Racing system.
   - **[/mr-client](/packages/mr-client/README.md):** A web frontend service for Mind Racing.
