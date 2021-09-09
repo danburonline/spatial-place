@@ -9,3 +9,6 @@ yarn.lock
 .husky
 .github
 .prettierignore
+*.jpg
+*.png
+*.pdf

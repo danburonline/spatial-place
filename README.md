@@ -1,5 +1,21 @@
 # Mind Racing
 
+![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/readmes/img/rough-architecture.png)
+
+Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
+
+The game's biggest challenge is that only two people can control the game figure: Person A the x-axis, Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain-cloud interface architecture.
+
+This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain-cloud interface application and the source text for the accompanying research paper.
+
+## Project Goals
+
+The main goal of my bachelor thesis is to create architectural foundations for brain-cloud interfaces and present the associated source code in a public and comprehensible way so that future engineers can make use of my findings and the source code.
+
+As the field of neurotechnology is becoming increasingly industrialised, I am personally concerned that research should nevertheless be open source and available free of charge.
+
+In addition to the main goal, my work has the goal to demonstrate the possibilities of brain-computer interfaces on the web, especially in the aspect of web accessibility.
+
 ## Directories
 
 This repository contains the following directories:
