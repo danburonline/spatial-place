@@ -125,6 +125,10 @@ dist
 
 .vuepress/dist
 
+# VS Code
+
+.vscode
+
 # Serverless directories
 
 .serverless/
