@@ -15,8 +15,7 @@
     "prettier": "^2.4.0"
   },
   "lint-staged": {
-    "*": "prettier --write",
-    "*.{js,css,md}": "prettier --write"
+    "*": "prettier --write"
   },
   "scripts": {
     "prepare": "husky install",
