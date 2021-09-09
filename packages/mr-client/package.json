@@ -1,0 +1,24 @@
+{
+  "name": "mr-client",
+  "version": "0.0.1",
+  "description": "tbc",
+  "author": "Daniel Burger <public@danielburger.online>",
+  "private": true,
+  "license": "GNU GPLv3",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "next": "11.1.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "mr-storybook": "0.0.1"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-next": "11.1.2"
+  }
+}

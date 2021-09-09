@@ -4,11 +4,9 @@
   "description": "tbc",
   "repository": "https://github.com/danburonline/mind-racing.git",
   "author": "Daniel Burger <public@danielburger.online>",
-  "license": "MIT",
   "private": true,
-  "keywords": [
-    "brain-cloud-interface",
-    "full-stack",
-    "bachelor-thesis"
+  "license": "MIT",
+  "workspaces": [
+    "packages/*"
   ]
 }
