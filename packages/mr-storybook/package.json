@@ -9,11 +9,15 @@
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
     "@storybook/react": "^6.3.8",
-    "babel-loader": "^8.2.2"
+    "@typescript-eslint/eslint-plugin": "^4.31.0",
+    "@typescript-eslint/parser": "^4.31.0",
+    "babel-loader": "^8.2.2",
+    "eslint": "^7.32.0",
+    "eslint-plugin-react": "^7.25.1"
   },
-  "dependencies": {},
   "scripts": {
     "dev": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build": "build-storybook",
+    "lint": "eslint \"stories/**.tsx\""
   }
 }
