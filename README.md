@@ -33,11 +33,9 @@ This repository contains the following directories:
 
 ## Documentation
 
-<!--- TODO Add the re-direct links -->
-
-- Project documentation/wiki: <https://github.com/danburonline/mind-racing/wiki>
-- Code documentation: <https://danburonline.github.io/mind-racing>
-- Bachelor thesis: <https://github.com/danburonline/mind-racing/blob/main/thesis/export/bachelor-thesis_export.pdf>
+- Project wiki: <https://wiki.mind.racing>
+- Code documentation: <https://docs.mind.racing>
+- Bachelor thesis: <https://thesis.mind.racing>
 
 ## Licenses
 

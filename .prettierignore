@@ -12,3 +12,9 @@ yarn.lock
 *.jpg
 *.png
 *.pdf
+LICENSE
+*.tex
+*.eps
+*.bib
+*.cls
+*.sty
