@@ -1,5 +1,5 @@
 {
-  "name": "mr-client",
+  "name": "@mind-racing/client",
   "version": "0.0.1",
   "description": "tbc",
   "author": "Daniel Burger <public@danielburger.online>",
@@ -15,7 +15,7 @@
     "next": "11.1.2",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "mr-storybook": "0.0.1"
+    "sass": "^1.39.0"
   },
   "devDependencies": {
     "eslint": "7.32.0",
