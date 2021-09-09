@@ -31,6 +31,14 @@ This repository contains the following directories:
   - **[/mr-server](/packages/mr-server/README.md):** A backend server service for Mind Racing.
   - **[/mr-database](/packages/mr-database/README.md):** A database service for Mind Racing.
 
+## Documentation
+
+<!--- TODO Add the re-direct links -->
+
+- Project documentation/wiki: <https://github.com/danburonline/mind-racing/wiki>
+- Code documentation: <https://danburonline.github.io/mind-racing>
+- Bachelor thesis: <https://github.com/danburonline/mind-racing/blob/main/thesis/export/bachelor-thesis_export.pdf>
+
 ## Licenses
 
 - **Research Paper (CC-BY-4.0):** See [/thesis/LICENSE](/thesis/LICENSE)
