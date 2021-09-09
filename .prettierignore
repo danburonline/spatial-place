@@ -1,0 +1,11 @@
+build
+dist
+coverage
+node_modules
+.next
+.DS_Store
+/.idea
+yarn.lock
+.husky
+.github
+.prettierignore
