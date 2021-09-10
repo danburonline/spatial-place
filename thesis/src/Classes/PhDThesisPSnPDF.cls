@@ -645,9 +645,9 @@ supported!}
     breaklinks=true,
     linktocpage,
     colorlinks=true,
-    linkcolor=blue,
+    linkcolor=black,
     urlcolor=blue,
-    citecolor=blue,
+    citecolor=black,
     anchorcolor=green
   }
 
@@ -793,8 +793,6 @@ wish to left align your text}
 \@ifpackageloaded{geometry}{}{\ClassWarning{PhDThesisPSnPDF}{%
   Custom margin is chosen, but geometry package is not loaded. Please load the
   `geometry' package in the preamble.}}}
-\else
-\setFancyHdr % Apply fancy header settings otherwise apply it in preamble
 \fi
 
 % **************** Clear Header Style on the Last Empty Odd pages **************
