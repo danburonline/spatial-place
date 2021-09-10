@@ -1,9 +1,5 @@
 \documentclass[a4paper,12pt,fourier,oneside,custombib]{Classes/PhDThesisPSnPDF}
-
-% Preamble: Contains packages and user-defined commands and settings
 \input{Preamble/preamble}
-
-% Thesis title and author information, reference file for biblatex
 \input{thesis-info}
 
 \pagenumbering{roman}
@@ -28,31 +24,11 @@
 \include{Chapter2/chapter2}
 \include{Chapter3/chapter3}
 
-\begin{spacing}{0.9}
-\cleardoublepage
 \bibliography{References/references} % Path to your References.bib file
 
-
-% If you would like to use BibLaTeX for your references, pass `custombib' as
-% an option in the document class. The location of 'reference.bib' should be
-% specified in the preamble.tex file in the custombib section.
-% Comment out the lines related to natbib above and uncomment the following line.
-
-%\printbibliography[heading=bibintoc, title={References}]
-
-
-\end{spacing}
-
-% ********************************** Appendices ********************************
-
 \begin{appendices} % Using appendices environment for more functunality
-
 \include{Appendix1/appendix1}
 \include{Appendix2/appendix2}
-
 \end{appendices}
-
-% *************************************** Index ********************************
-\printthesisindex % If index is present
 
 \end{document}
