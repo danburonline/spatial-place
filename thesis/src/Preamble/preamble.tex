@@ -4,10 +4,6 @@
 % Add `custommargin' in the document class options to use this section
 % Set {innerside margin / outerside margin / topmargin / bottom margin}  and
 % other page dimensions
-\ifsetCustomMargin
-  \RequirePackage[left=37mm,right=30mm,top=35mm,bottom=30mm]{geometry}
-  \setFancyHdr % To apply fancy header after geometry package is loaded
-\fi
 
 % Add spaces between paragraphs
 %\setlength{\parskip}{0.5em}
@@ -16,6 +12,15 @@
 % To remove the excess top spacing for enumeration, list and description
 %\usepackage{enumitem}
 %\setlist[enumerate,itemize,description]{topsep=0em}
+
+% ***************************** Header Formatting ******************************
+% Custom Header with Chapter Number, Page Number and Section Numbering
+
+\usepackage{fancyhdr} % Define custom header
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{\leftmark}
+\cfoot{\thepage}
 
 % *****************************************************************************
 % ******************* Fonts (like different typewriter fonts etc.)*************
@@ -189,26 +194,8 @@
 
 % Example todo: \mynote{Hey! I have a note}
 
-% Reduce chapter spacing
-\makeatletter
-\def\@makechapterhead#1{%
-  %%%%\vspace*{50\p@}% %%% removed!
-  {\parindent \z@ \raggedright \normalfont
-    \ifnum \c@secnumdepth >\m@ne
-        \huge\bfseries \@chapapp\space \thechapter
-        \par\nobreak
-        \vskip 20\p@
-    \fi
-    \interlinepenalty\@M
-    \Huge \bfseries #1\par\nobreak
-    \vskip 40\p@
-  }}
-\def\@makeschapterhead#1{%
-  %%%%%\vspace*{50\p@}% %%% removed!
-  {\parindent \z@ \raggedright
-    \normalfont
-    \interlinepenalty\@M
-    \Huge \bfseries  #1\par\nobreak
-    \vskip 40\p@
-  }}
-\makeatother
+% Fix header height
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+\titlespacing*{\chapter}{0pt}{-20pt}{40pt}

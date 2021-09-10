@@ -133,11 +133,7 @@
 
 
 % ************************* Header / Footer Styling ****************************
-\newif\ifPHD@pageStyleI\PHD@pageStyleIfalse % Set Page StyleI
-\DeclareOption{PageStyleI}{\PHD@pageStyleItrue}
 
-\newif\ifPHD@pageStyleII\PHD@pageStyleIIfalse % Set Page StyleII
-\DeclareOption{PageStyleII}{\PHD@pageStyleIItrue}
 
 % ***************************** Custom Margins  ********************************
 \newif\ifsetCustomMargin\setCustomMarginfalse % Set Custom Margin
@@ -197,7 +193,7 @@ footnotes.}
 % Column layout
 \newif\if@oneside\@onesidefalse
 \DeclareOption{oneside}{\PassOptionsToClass{\CurrentOption}{book}\@onesidetrue}%
-\DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
+% \DeclareOption{twoside}{\PassOptionsToClass{\CurrentOption}{book}}%
 
 % ****************************** Draft Option **********************************
 \newif\ifsetDraft\setDraftfalse
@@ -626,12 +622,6 @@ supported!}
       vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
   \fi
 
-  \if@twoside
-    \hypersetup{pdfpagelayout=TwoPageRight}
-  \else
-    \hypersetup{pdfpagelayout=OneColumn}
-  \fi
-
 \else
   % For PDF Online version
   \hypersetup{
@@ -724,68 +714,10 @@ wish to left align your text}
 \addtocontents{toc}{\protect\thispagestyle{empty}}
 
 
-% ***************************** Header Formatting ******************************
-% Custom Header with Chapter Number, Page Number and Section Numbering
-
-\RequirePackage{fancyhdr} % Define custom header
-
-% Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
-\fancypagestyle{PageStyleI}{
-  \renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-  \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1\ }}
-  \fancyhf{}
-  \fancyhead[RO]{\nouppercase \rightmark\hspace{0.25em} | 
-    \hspace{0.25em} \bfseries{\thepage}}
-  \fancyhead[LE]{ {\bfseries\thepage} \hspace{0.25em} | 
-    \hspace{0.25em} \nouppercase \leftmark}
-}
-
-% Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE
-\fancypagestyle{PageStyleII}{
-  \renewcommand{\chaptermark}[1]{\markboth{##1}{}}
-  \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
-  \fancyhf{}
-  \fancyhead[RO]{\bfseries\nouppercase \rightmark}
-  \fancyhead[LE]{\bfseries \nouppercase \leftmark}
-  \fancyfoot[C]{\thepage}
-}
-
-
-% Set Fancy Header Command is defined to Load FancyHdr after Geometry is defined
-\newcommand{\setFancyHdr}{
-
-\pagestyle{fancy}
-
-\ifPHD@pageStyleI
-  % Style 1: Sets Page Number at the Top and Chapter/Section Name on LE/RO
-  \pagestyle{PageStyleI}
-
-\else
-  \ifPHD@pageStyleII
-
-  % Style 2: Sets Page Number at the Bottom with Chapter/Section Name on LO/RE
-  \pagestyle{PageStyleII}
-
-  \else
-  % Default Style: Sets Page Number at the Top (LE/RO) with Chapter/Section Name
-  % on LO/RE and an empty footer
-    \renewcommand{\chaptermark}[1]{\markboth {##1}{}}
-    \renewcommand{\sectionmark}[1]{\markright{\thesection\ ##1}}
-    \fancyhf{}
-    \fancyhead[LO]{\nouppercase \rightmark}
-    \fancyhead[LE,RO]{\bfseries\thepage}
-    \fancyhead[RE]{\nouppercase \leftmark}
-  \fi
-\fi
-}
-
 \setlength{\headheight}{14.5pt}
 %\renewcommand{\headrulewidth}{0.5pt}
 %\renewcommand{\footrulewidth}{0pt}
-\fancypagestyle{plain}{
-  \fancyhead{}
-  \renewcommand{\headrulewidth}{0pt}
-}
+
 
 % If Margin has been set (default margin print/online version)
 \ifsetCustomMargin
