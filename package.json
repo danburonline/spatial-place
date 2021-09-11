@@ -12,15 +12,14 @@
   "devDependencies": {
     "husky": ">=6",
     "lint-staged": ">=10",
-    "prettier": "^2.4.0",
-    "typedoc": "^0.22.2"
-  },
-  "lint-staged": {
-    "*.packages": "prettier --write"
+    "prettier": "^2.4.0"
   },
   "scripts": {
     "prepare": "husky install",
     "format": "prettier --write \"packages\"",
     "build:docs": "yarn workspaces run build:doc"
+  },
+  "lint-staged": {
+    "*.packages": "prettier --write"
   }
 }
