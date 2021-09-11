@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
+function MindRacingClient({ Component, pageProps }): JSX.Element {
   return <Component {...pageProps} />
 }
 
-export default MyApp
+export default MindRacingClient
