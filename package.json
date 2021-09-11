@@ -20,6 +20,6 @@
     "build:docs": "yarn workspaces run build:doc"
   },
   "lint-staged": {
-    "*.packages": "prettier --write"
+    "*": "prettier --write \"packages\""
   }
 }
