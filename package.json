@@ -16,11 +16,11 @@
     "typedoc": "^0.22.2"
   },
   "lint-staged": {
-    "*": "prettier --write"
+    "*": "prettier --write \"packages\""
   },
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier --write .",
+    "format": "prettier --write \"packages\"",
     "build:docs": "yarn workspaces run build:doc"
   }
 }

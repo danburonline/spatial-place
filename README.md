@@ -1,6 +1,6 @@
 # Mind Racing
 
-![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/readmes/img/rough-architecture.png)
+![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/markdown/img/rough-architecture.png)
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
 
@@ -23,7 +23,7 @@ This repository contains the following directories:
 - **[/docs](/docs)**: Auto generated documentation files for GitHub Pages.
 - **[/thesis](/thesis):** All LaTeX files for the research paper PDF.
 - **[/.github](/.github)**: GitHub templates, configurations and workflows.
-- **[/readmes](/readmes)**: A directory with all included READMEs and files.
+- **[/markdown](/markdown)**: A directory with all other markdown files.
 - **[/packages](/packages)**: A directory with all services for the Mind Racing system.
   - **[/mr-client](/packages/mr-client):** A web frontend service for Mind Racing.
   - **[/mr-socket](/packages/mr-socket):** A socket service for Mind Racing.

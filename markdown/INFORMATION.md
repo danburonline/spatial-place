@@ -1,3 +1,3 @@
-# READMEs
+# Information
 
 Further information.
