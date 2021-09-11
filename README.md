@@ -26,7 +26,6 @@ This repository contains the following directories:
 - **[/readmes](/readmes)**: A directory with all included READMEs and files.
 - **[/packages](/packages)**: A directory with all services for the Mind Racing system.
   - **[/mr-client](/packages/mr-client):** A web frontend service for Mind Racing.
-  - **[/mr-storybook](/packages/mr-storybook):** A design system for Mind Racing.
   - **[/mr-socket](/packages/mr-socket):** A socket service for Mind Racing.
   - **[/mr-server](/packages/mr-server):** A backend server service for Mind Racing.
   - **[/mr-database](/packages/mr-database):** A database service for Mind Racing.
