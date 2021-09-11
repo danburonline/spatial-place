@@ -1,19 +1,28 @@
+% This document is based on the Cambridge open-source PhD template by Krishna Kumar.
+% URL: https://github.com/kks32/phd-thesis-template
+
+% Use the custom `PhDThesisPSnPDF` document class
+% - A4 paper size
+% - 12pt base font size
+% - Fourier as the main typeface
+% - Onesided document setup
+% - Custom bibliography setup to use BibLaTeX
 \documentclass[a4paper,12pt,fourier,oneside,custombib]{Classes/PhDThesisPSnPDF}
 
 \input{Preamble/preamble}
 \input{thesis-info}
 
-\pagenumbering{roman}
+\pagenumbering{roman} % Start with lowercase Roman numbers
 \setcounter{page}{1}
 \begin{document}
+
 \frontmatter
 \maketitle
 \include{Dedication/dedication}
 \include{Abstract/abstract}
 \tableofcontents
-
 \listoffigures
-\pagenumbering{Roman}
+\pagenumbering{Roman} % Continue with uppercase Roman numbers
 \setcounter{page}{1}
 \listoftables
 \printnomenclature
@@ -24,11 +33,10 @@
 \include{Chapter1/chapter1}
 \include{Chapter2/chapter2}
 
-%\bibliography{References/references} % Path to your References.bib file
+% Passing the `heading` argument to include the bibliography in the TOC
 \printbibliography[heading=bibintoc]
 
-\begin{appendices} % Using appendices environment for more functunality
-\include{Appendix1/appendix1}
+\begin{appendices}
+	\include{Appendix1/appendix1}
 \end{appendices}
-
 \end{document}
