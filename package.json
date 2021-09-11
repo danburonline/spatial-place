@@ -16,7 +16,7 @@
     "typedoc": "^0.22.2"
   },
   "lint-staged": {
-    "*": "prettier --write \"packages\""
+    "*.packages": "prettier --write"
   },
   "scripts": {
     "prepare": "husky install",
