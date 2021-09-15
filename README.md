@@ -34,11 +34,16 @@ This repository contains the following directories:
 
 ## Documentation
 
+<!-- TODO Add project documentation for the new topics and changes -->
+
 - Project wiki: <https://wiki.mind.racing>
+<!-- TODO Add code documentation for the new Next.js component -->
 - Code documentation: <https://docs.mind.racing>
 - Bachelor thesis: <https://thesis.mind.racing>
 
 ## Technical Topics
+
+<!-- TODO Replace with final URLs as soon as I've created them -->
 
 - Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/docs>
 - Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/docs>
