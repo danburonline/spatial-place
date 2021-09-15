@@ -18,9 +18,10 @@
     "prepare": "husky install",
     "format": "prettier --write \"packages\"",
     "lint": "yarn workspaces run lint",
+    "build:all": "yarn workspaces run build",
     "build:docs": "yarn workspaces run build:doc"
   },
   "lint-staged": {
-    "*": "prettier --write \"packages\""
+    "*": "yarn format"
   }
 }
