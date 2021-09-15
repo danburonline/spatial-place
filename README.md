@@ -1,5 +1,7 @@
 # Mind Racing
 
+<!-- TODO Replace with a screenshot of the game as soon as I have something -->
+
 ![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/markdown/img/rough-architecture.png)
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
@@ -35,6 +37,13 @@ This repository contains the following directories:
 - Project wiki: <https://wiki.mind.racing>
 - Code documentation: <https://docs.mind.racing>
 - Bachelor thesis: <https://thesis.mind.racing>
+
+## Technical Topics
+
+- Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/docs>
 
 ## Licenses
 

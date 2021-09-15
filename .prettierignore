@@ -12,3 +12,5 @@ yarn.lock
 *.png
 *.pdf
 *.gif
+*.svg
+*.ico

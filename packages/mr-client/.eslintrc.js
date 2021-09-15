@@ -12,5 +12,5 @@ module.exports = {
     JSX: true,
     context: true
   },
-  ignorePatterns: ['.eslintrc.js']
+  ignorePatterns: ['.eslintrc.js', '.next', 'node_modules']
 }
