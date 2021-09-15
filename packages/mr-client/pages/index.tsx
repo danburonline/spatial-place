@@ -12,7 +12,7 @@ export default function Home(): JSX.Element {
         <link rel='icon' href='/favicon/favicon.ico' />
       </Head>
       <main>
-        <h1>Hello World</h1>
+        <h1>Not logged in – please log in.</h1>
       </main>
     </>
   )
