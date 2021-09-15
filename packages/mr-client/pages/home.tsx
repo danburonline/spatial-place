@@ -1,7 +1,7 @@
 import Head from 'next/head'
-import Link from 'next/link'
+import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 
-export default function Home(): JSX.Element {
+export default function Home({ user }): JSX.Element {
   return (
     <>
       <Head>
@@ -13,13 +13,12 @@ export default function Home(): JSX.Element {
       </Head>
       <main>
         <h1>You&apos;re now logged in</h1>
-        <Link href='/game' passHref>
-          <a href='passHref'>Start game</a>
-        </Link>
-        <Link href='/logout' passHref>
-          <a href='passHref'>Logout</a>
-        </Link>
+        <h2>{JSON.stringify(user, null, 2)}</h2>
+        <a href='/game'>Start game</a>
+        <a href='/api/auth/logout'>Logout</a>
       </main>
     </>
   )
 }
+
+export const getServerSideProps = withPageAuthRequired()
