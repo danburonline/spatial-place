@@ -1,6 +1,6 @@
-import '../styles/globals.css'
+import { AppProps } from 'next/app'
 
-function MindRacingClient({ Component, pageProps }): JSX.Element {
+function MindRacingClient({ Component, pageProps }: AppProps): JSX.Element {
   return <Component {...pageProps} />
 }
 

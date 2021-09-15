@@ -6,10 +6,10 @@
   "private": true,
   "license": "GNU GPLv3",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "build:doc": "build-storybook -o ../../docs/mr-client",
-    "start": "next start",
+    "start:dev": "next dev",
+    "start:prod": "next start",
     "start:doc": "start-storybook -p 6006",
     "lint": "next lint"
   },
