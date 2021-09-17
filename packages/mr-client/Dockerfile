@@ -6,7 +6,7 @@ WORKDIR /usr/src/mr-client
 
 COPY ./packages/mr-client/. /usr/src/mr-client
 
-RUN yarn install
+RUN yarn install --silent
 
 ENV PORT 3000
 
