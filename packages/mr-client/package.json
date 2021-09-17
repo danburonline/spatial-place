@@ -31,6 +31,7 @@
     "@storybook/react": "^6.3.8",
     "@types/react": "^17.0.21",
     "@types/three": "^0.131.1",
+    "@typescript-eslint/eslint-plugin": "^4.31.1",
     "autoprefixer": "^10.3.4",
     "babel-loader": "^8.2.2",
     "eslint": "7.32.0",

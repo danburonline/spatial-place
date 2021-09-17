@@ -1,19 +1,17 @@
 FROM node:alpine
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/mr-client
 
-WORKDIR /usr/src/app
+WORKDIR /usr/src/mr-client
+
+COPY ./packages/mr-client/. /usr/src/mr-client
+
+RUN yarn install
 
 ENV PORT 3000
 
-COPY package.json /usr/src/app
-
-RUN npm install
-
-COPY . /usr/src/app
-
-RUN npm run build
+RUN yarn run build
 
 EXPOSE 3000
 
-CMD [ "npm", "start" ]
+CMD [ "yarn", "start" ]
