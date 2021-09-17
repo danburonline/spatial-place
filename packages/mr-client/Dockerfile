@@ -8,8 +8,7 @@ ENV PORT 3000
 
 COPY package.json /usr/src/app
 
-RUN yarn add \
-  yarn cache clean --mirror
+RUN yarn add -W
 
 COPY . /usr/src/app
 
