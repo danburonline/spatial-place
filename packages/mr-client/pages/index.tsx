@@ -13,7 +13,6 @@ export default function Home(): JSX.Element {
       </Head>
       <main>
         <h1>Not logged in – please log in.</h1>
-        <h1>VAR: {process.env.NEXT_PUBLIC_EXAMPLE}</h1>
         <Link href='/api/auth/login'>Login</Link>
       </main>
     </>

@@ -32,7 +32,6 @@ jobs:
           envkey_AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
           envkey_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-          envkey_NEXT_PUBLIC_EXAMPLE: example-deploy
           file_name: .env.production
 
       - name: Enable the necessary APIs and enable Docker auth
