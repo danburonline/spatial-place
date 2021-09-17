@@ -14,10 +14,21 @@ jobs:
   build-and-deploy:
     name: Setup, build, and deploy
     runs-on: ubuntu-latest
+
     steps:
+      - name: Make .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
+          envkey_AUTH0_BASE_URL: ${{ secrets.AUTH0_BASE_URL_STAGING }}
+          envkey_AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
+          envkey_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          directory: packages/mr-client/
+          file_name: .env
+
       - name: Checkout
         uses: actions/checkout@v2
-
       - uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
