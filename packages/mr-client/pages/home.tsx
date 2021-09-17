@@ -14,7 +14,11 @@ export default function Home({ user }): JSX.Element {
       <main>
         <h1>You&apos;re now logged in</h1>
         <h2>{JSON.stringify(user, null, 2)}</h2>
+        {/* TODO Create a button component to avoid the Link element for auth routes */}
+        {/* eslint-disable @next/next/no-html-link-for-pages */}
         <a href='/game'>Start game</a>
+        {/* TODO Create a button component to avoid the Link element for auth routes */}
+        {/* eslint-disable  @next/next/no-html-link-for-pages */}
         <a href='/api/auth/logout'>Logout</a>
       </main>
     </>
