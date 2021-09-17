@@ -8,7 +8,7 @@ ENV PORT 3000
 
 COPY package.json /usr/src/app
 
-RUN yarn add -W
+RUN yarn install
 
 COPY . /usr/src/app
 
