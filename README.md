@@ -2,7 +2,7 @@
 
 <!-- TODO Replace with a screenshot of the game as soon as I have something -->
 
-![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/markdown/img/rough-architecture.png)
+![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/wiki/img/rough-architecture.png)
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
 
@@ -22,15 +22,14 @@ In addition to the main goal, my work has the goal to demonstrate the possibilit
 
 This repository contains the following directories:
 
-- **[/docs](/docs)**: Auto generated documentation files for GitHub Pages.
+- **[/wiki](/wiki)**: All Markdown files for the project wiki.
 - **[/thesis](/thesis):** All LaTeX files for the research paper PDF.
 - **[/.github](/.github)**: GitHub templates, configurations and workflows.
-- **[/markdown](/markdown)**: A directory with all other markdown files.
 - **[/packages](/packages)**: A directory with all services for the Mind Racing system.
-  - **[/mr-client](/packages/mr-client):** A web frontend service for Mind Racing.
-  - **[/mr-socket](/packages/mr-socket):** A socket service for Mind Racing.
-  - **[/mr-server](/packages/mr-server):** A backend server service for Mind Racing.
-  - **[/mr-database](/packages/mr-database):** A database service for Mind Racing.
+  - **[/mr-client](/packages/mr-client):** A web full-stack service for Mind Racing.
+  - **[/mr-socket](/packages/mr-socket):** A socket backend service for Mind Racing.
+  - **[/mr-server](/packages/mr-server):** A backend backend service for Mind Racing.
+  - **[/mr-database](/packages/mr-database):** A database backend service for Mind Racing.
 
 ## Documentation
 
@@ -45,10 +44,10 @@ This repository contains the following directories:
 
 <!-- TODO Replace with final URLs as soon as I've created them -->
 
-- Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/docs>
-- Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/docs>
-- GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/docs>
-- Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/wiki>
+- Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/wiki>
+- GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/wiki>
+- Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/wiki>
 
 ## Licenses
 

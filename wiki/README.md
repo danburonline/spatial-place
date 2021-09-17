@@ -1,3 +1,3 @@
-# Information
+# Docs
 
 Further information.
