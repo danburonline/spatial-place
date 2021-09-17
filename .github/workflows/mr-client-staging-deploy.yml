@@ -7,13 +7,30 @@ on:
 
 env:
   CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
-  CLOUD_RUN_REGION: europe-west4
+  CLOUD_RUN_REGION: ${{ secrets.CLOUD_RUN_REGION }}
   REPO_NAME: mind-racing-client-staging
 
 jobs:
+  create-env-file:
+    name: "Create .env file"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create a new .env file
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_AUTH0_SECRET: ${{ secrets.AUTH0_SECRET }}
+          envkey_AUTH0_BASE_URL: ${{ secrets.AUTH0_BASE_URL_STAGING }}
+          envkey_AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
+          envkey_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
+          envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
+          directory: packages/mr-client/
+          file_name: .env.production
+
   build-and-deploy:
     name: Setup, build, and deploy
     runs-on: ubuntu-latest
+    needs: create-env-file
 
     steps:
       - name: Checkout
@@ -44,4 +61,3 @@ jobs:
             --region $CLOUD_RUN_REGION \
             --allow-unauthenticated \
             --quiet
-            --set-env-vars AUTH0_SECRET=${{ secrets.AUTH0_SECRET }},AUTH0_BASE_URL=${{ secrets.AUTH0_BASE_URL_STAGING }},AUTH0_ISSUER_BASE_URL=${{ secrets.AUTH0_ISSUER_BASE_URL }},AUTH0_CLIENT_ID=${{ secrets.AUTH0_CLIENT_ID }},AUTH0_CLIENT_SECRET=${{ secrets.AUTH0_CLIENT_SECRET }}
