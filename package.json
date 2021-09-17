@@ -16,7 +16,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "format": "prettier --write \"packages\"",
+    "format": "yarn workspaces run format",
     "lint": "yarn workspaces run lint",
     "build:all": "yarn workspaces run build",
     "build:docs": "yarn workspaces run build:doc"
