@@ -22,6 +22,6 @@
     "build:docs": "yarn workspaces run build:doc"
   },
   "lint-staged": {
-    "*": "yarn format"
+    "*": "prettier --write"
   }
 }

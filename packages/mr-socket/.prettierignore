@@ -1,6 +1,0 @@
-.DS_Store
-.idea
-.vscode
-.prettierignore
-yarn.lock
-node_modules
