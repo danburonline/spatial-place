@@ -8,12 +8,12 @@ ENV PORT 3000
 
 COPY package.json /usr/src/app
 
-RUN yarn install
+RUN npm install
 
 COPY . /usr/src/app
 
-RUN yarn run build
+RUN npm run build
 
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "npm", "start" ]
