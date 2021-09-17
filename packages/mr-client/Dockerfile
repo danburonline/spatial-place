@@ -12,7 +12,7 @@ RUN yarn install
 
 COPY . /usr/src/app
 
-RUN yarn build
+RUN yarn run build
 
 EXPOSE 3000
 
