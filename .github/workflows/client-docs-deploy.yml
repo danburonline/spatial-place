@@ -8,6 +8,7 @@ on:
 
 jobs:
   build-and-deploy:
+    name: Setup, build, and deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -21,6 +22,7 @@ jobs:
       - name: Install and build
         run: |-
           npm install
+          cd packages/mr-client
           npm run build:doc
 
       - name: Deploy on Google Cloud Storage
