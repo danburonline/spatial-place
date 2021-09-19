@@ -1,4 +1,5 @@
-name: "MR-CLIENT: Staging Deploy"
+# Deploy a new version of MR-Client as soon as there is a new merge into the main branch
+name: "Client – Staging Deploy"
 
 on:
   push:
@@ -32,7 +33,7 @@ jobs:
           envkey_AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
           envkey_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-          file_name: .env.production
+          file_name: .env.staging
 
       - name: Enable the necessary APIs and enable Docker auth
         run: |-
@@ -45,7 +46,7 @@ jobs:
       - name: Push image to GCR
         run: |-
           docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
-      - name: Deploy on GCR
+      - name: Deploy on Google Cloud Run
         run: |-
           gcloud components install beta --quiet
           gcloud beta run deploy $REPO_NAME --image gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA \

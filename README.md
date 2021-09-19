@@ -36,7 +36,6 @@ This repository contains the following directories:
 <!-- TODO Add project documentation for the new topics and changes -->
 
 - Project wiki: <https://wiki.mind.racing>
-<!-- TODO Add code documentation for the new Next.js component -->
 - Code documentation: <https://docs.mind.racing>
 - Bachelor thesis: <https://thesis.mind.racing>
 
@@ -48,6 +47,7 @@ This repository contains the following directories:
 - Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/wiki>
 - GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/wiki>
 - Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/wiki>
+- LaTeX and Overleaf: <https://github.com/danburonline/mind-racing/tree/main/wiki>
 
 ## Licenses
 
