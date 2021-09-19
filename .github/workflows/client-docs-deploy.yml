@@ -30,7 +30,7 @@ jobs:
           ls -la
 
       - name: Deploy on Google Cloud Storage
-        run: gsutil -m rsync -d -c -r public gs://docs.mind.racing
+        run: gsutil -m rsync -d -c -r docs/mr-client gs://docs.mind.racing
 
       # - name: Deploy on Google Cloud Storage
       #   uses: google-github-actions/upload-cloud-storage@main
