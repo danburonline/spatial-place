@@ -6,7 +6,7 @@ WORKDIR /usr/src/mr-client
 
 COPY ./packages/mr-client/. /usr/src/mr-client
 
-COPY *.env.deployment /usr/src/mr-client
+COPY *.env.production /usr/src/mr-client
 
 RUN yarn install --silent
 
