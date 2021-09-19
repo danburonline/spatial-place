@@ -33,6 +33,6 @@ jobs:
         uses: google-github-actions/upload-cloud-storage@main
         with:
           credentials: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
-          path: /docs/mr-client
+          path: docs/mr-client
           parent: false
           destination: docs.mind.racing
