@@ -33,7 +33,7 @@ jobs:
           envkey_AUTH0_ISSUER_BASE_URL: ${{ secrets.AUTH0_ISSUER_BASE_URL }}
           envkey_AUTH0_CLIENT_ID: ${{ secrets.AUTH0_CLIENT_ID }}
           envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
-          file_name: .env.staging
+          file_name: .env.deployment
 
       - name: Enable the necessary APIs and enable Docker auth
         run: |-
