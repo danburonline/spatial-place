@@ -25,6 +25,10 @@ jobs:
         with:
           cmd: workspace @mind-racing/client run build:doc
 
+      - name: Test LS
+        run: |-
+          ls -la
+
       - name: Deploy on Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@main
         with:
