@@ -1,5 +1,5 @@
 # Check formatting and lint all Yarn workspaces as soon as there is a new pull request
-name: "Client – Docs Deployment"
+name: "Services – Format and Lint"
 
 on:
   push:
