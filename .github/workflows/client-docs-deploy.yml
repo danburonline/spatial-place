@@ -11,19 +11,19 @@ jobs:
     name: Setup, build, and deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout and build
         uses: actions/checkout@v2.3.1
       - uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
           service_account_key: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
           service_account_email: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_EMAIL }}
-
-      - name: Install and build
-        run: |-
-          npm install
-          cd packages/mr-client
-          npm run build:doc
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: install --silent
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: workspace @mind-racing/client run build:doc
 
       - name: Deploy on Google Cloud Storage
         uses: google-github-actions/upload-cloud-storage@main
