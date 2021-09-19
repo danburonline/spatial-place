@@ -30,9 +30,12 @@ jobs:
           ls -la
 
       - name: Deploy on Google Cloud Storage
-        uses: google-github-actions/upload-cloud-storage@main
-        with:
-          credentials: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
-          path: docs/mr-client
-          parent: false
-          destination: docs.mind.racing
+        run: gsutil -m rsync -d -c -r public gs://docs.mind.racing
+
+      # - name: Deploy on Google Cloud Storage
+      #   uses: google-github-actions/upload-cloud-storage@main
+      #   with:
+      #     credentials: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
+      #     path: docs/mr-client
+      #     parent: false
+      #     destination: docs.mind.racing
