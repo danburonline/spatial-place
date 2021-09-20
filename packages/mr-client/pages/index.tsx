@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import Link from 'next/link'
 
 export default function Home(): JSX.Element {
   return (
@@ -13,7 +12,10 @@ export default function Home(): JSX.Element {
       </Head>
       <main>
         <h1>Not logged in – please log in.</h1>
-        <Link href='/api/auth/login'>Login</Link>
+        {/* TODO Create button component to use an anchor tag without disabling
+        ESLint rules */}
+        {/* eslint-disable @next/next/no-html-link-for-pages */}
+        <a href='/api/auth/login'>Login</a>
       </main>
     </>
   )

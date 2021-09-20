@@ -1,0 +1,6 @@
+{
+  "paths": {
+    "~/*": ["packages/*"]
+  },
+  "exclude": ["node_modules"]
+}

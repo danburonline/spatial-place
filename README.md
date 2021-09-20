@@ -2,7 +2,7 @@
 
 <!-- TODO Replace with a screenshot of the game as soon as I have something -->
 
-![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/wiki/img/rough-architecture.png)
+![Rough architecture of Mind Racing and the corresponding IDUN Technologies software stack.](/docs/img/rough-architecture.png)
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
 
@@ -22,7 +22,7 @@ In addition to the main goal, my work has the goal to demonstrate the possibilit
 
 This repository contains the following directories:
 
-- **[/wiki](/wiki)**: All Markdown files for the project wiki.
+- **[/docs](/docs)**: All Markdown files for the project documentation.
 - **[/thesis](/thesis):** All LaTeX files for the research paper PDF.
 - **[/.github](/.github)**: GitHub templates, configurations and workflows.
 - **[/packages](/packages)**: A directory with all services for the Mind Racing system.
@@ -33,9 +33,7 @@ This repository contains the following directories:
 
 ## Documentation
 
-<!-- TODO Add project documentation for the new topics and changes -->
-
-- Project wiki: <https://wiki.mind.racing>
+- Project documentation: <https://about.mind.racing>
 - Code documentation: <https://docs.mind.racing>
 - Bachelor thesis: <https://thesis.mind.racing>
 
@@ -43,11 +41,12 @@ This repository contains the following directories:
 
 <!-- TODO Replace with final URLs as soon as I've created them -->
 
-- Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/wiki>
-- Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/wiki>
-- GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/wiki>
-- Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/wiki>
-- LaTeX and Overleaf: <https://github.com/danburonline/mind-racing/tree/main/wiki>
+- Authentication and authorization with Auth0: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Domains, redirects and DNS: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- GitHub Actions and CI/CD: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Deployment and GCP: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- LaTeX and Overleaf: <https://github.com/danburonline/mind-racing/tree/main/docs>
+- Documentations: <https://github.com/danburonline/mind-racing/tree/main/docs>
 
 ## Licenses
 

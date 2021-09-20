@@ -7,7 +7,7 @@
   "author": "Daniel Burger <public@danielburger.online>",
   "scripts": {
     "build": "next build",
-    "build:doc": "build-storybook -o ../../docs/mr-client",
+    "build:doc": "build-storybook -o ../../auto-docs/mr-client",
     "start": "next start",
     "format": "prettier --write \"components/**/*.tsx\" \"pages/**/*.tsx\"",
     "start:dev": "next dev",

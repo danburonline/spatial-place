@@ -32,4 +32,4 @@ jobs:
           cmd: workspace @mind-racing/client run build:doc
 
       - name: Deploy on Google Cloud Storage
-        run: gsutil -m rsync -d -c -r docs/mr-client gs://docs.mind.racing
+        run: gsutil -m rsync -d -c -r auto-docs/mr-client gs://docs.mind.racing
