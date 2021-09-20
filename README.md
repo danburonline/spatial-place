@@ -56,6 +56,6 @@ There are several documentation artefacts for the project. Some of them are depl
 
 ## Licenses
 
-- Source Code (GNU GPLv3): [/packages/LICENSE](/packages/LICENSE)
-- Bachelor Thesis (CC-BY-4.0): [/thesis/LICENSE](/thesis/LICENSE)
+- Source Code (GNU GPLv3): [packages → LICENSE](/packages/LICENSE)
+- Bachelor Thesis (CC-BY-4.0): [thesis → LICENSE](/thesis/LICENSE)
 - Everything else (MIT): [LICENSE](LICENSE)
