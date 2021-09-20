@@ -22,7 +22,7 @@ In addition to the main goal, my work has the goal to demonstrate the possibilit
 
 This repository contains the following directories:
 
-- **[/docs](/docs)**: All Markdown files for the project documentation.
+- **[/docs](/docs)**: All Markdown files for the project wiki.
 - **[/thesis](/thesis):** All LaTeX files for the research paper PDF.
 - **[/.github](/.github)**: GitHub templates, configurations and workflows.
 - **[/packages](/packages)**: A directory with all services for the Mind Racing system.
@@ -33,9 +33,9 @@ This repository contains the following directories:
 
 ## Documentation
 
-- Project documentation: <https://about.mind.racing>
-- Code documentation: <https://docs.mind.racing>
-- Bachelor thesis: <https://thesis.mind.racing>
+- Project Wiki: <https://wiki.mind.racing>
+- Client Documentation: <https://docs.mind.racing>
+- Bachelor Thesis: <https://thesis.mind.racing>
 
 ## Technical Topics
 
