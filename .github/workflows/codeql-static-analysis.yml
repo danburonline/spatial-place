@@ -23,7 +23,7 @@ jobs:
         language: ["javascript"]
 
     steps:
-      - name: Checkout repository
+      - name: Checkout the branch
         uses: actions/checkout@v2
 
       - name: Initialize CodeQL

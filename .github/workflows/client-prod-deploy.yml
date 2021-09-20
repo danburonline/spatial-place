@@ -12,13 +12,15 @@ env:
 
 jobs:
   build-and-deploy:
-    name: Setup, build, and deploy
+    name: Build and deploy
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout the branch
         uses: actions/checkout@v2
-      - uses: google-github-actions/setup-gcloud@v0.2.0
+
+      - name: Authenticate with the GCP Service Account
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
           service_account_key: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
@@ -39,12 +41,15 @@ jobs:
           gcloud services enable containerregistry.googleapis.com
           gcloud services enable run.googleapis.com
           gcloud --quiet auth configure-docker
+
       - name: Build and tag image
         run: |-
           docker build -f packages/mr-client/Dockerfile . -t "gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA"
+
       - name: Push image to GCR
         run: |-
           docker push gcr.io/$CLOUD_RUN_PROJECT_ID/$REPO_NAME:$GITHUB_SHA
+
       - name: Deploy on Google Cloud Run
         run: |-
           gcloud components install beta --quiet

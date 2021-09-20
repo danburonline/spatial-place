@@ -8,20 +8,26 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Setup, build, and deploy
+    name: Build and deploy
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout and build
+      - name: Checkout the branch
         uses: actions/checkout@v2.3.1
-      - uses: google-github-actions/setup-gcloud@v0.2.0
+
+      - name: Authenticate with the GCP Service Account
+        uses: google-github-actions/setup-gcloud@v0.2.0
         with:
           project_id: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
           service_account_key: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_KEY }}
           service_account_email: ${{ secrets.CLOUD_RUN_SERVICE_ACCOUNT_EMAIL }}
-      - uses: borales/actions-yarn@v2.3.0
+
+      - name: Install dependencies
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install --silent
-      - uses: borales/actions-yarn@v2.3.0
+
+      - name: Build Storybook
+        uses: borales/actions-yarn@v2.3.0
         with:
           cmd: workspace @mind-racing/client run build:doc
 

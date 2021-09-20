@@ -10,11 +10,11 @@ on:
       - master
 
 jobs:
-  build-and-deploy:
-    name: Setup and install
+  format-and-lint:
+    name: Format and lint
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout the branch
         uses: actions/checkout@v2.3.1
 
       - name: Create a new .env file
@@ -27,17 +27,17 @@ jobs:
           envkey_AUTH0_CLIENT_SECRET: ${{ secrets.AUTH0_CLIENT_SECRET }}
           file_name: .env.production
 
-      - name: Install
+      - name: Install dependencies
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: install --silent
 
-      - name: Format
+      - name: Check formatting
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: format
 
-      - name: Lint
+      - name: Check linting
         uses: borales/actions-yarn@v2.3.0
         with:
           cmd: lint
