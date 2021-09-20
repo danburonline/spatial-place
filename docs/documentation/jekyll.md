@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Documentation / TypeDoc
+title: Jekyll
 description: "Just the Docs is a responsive Jekyll theme with built-in search that is easily customizable and hosted on GitHub Pages."
-permalink: /documentation/typedoc
+permalink: /documentation/jekyll
 ---
 
-## TypeDoc
+## Jekyll
 
 More information will follow.
