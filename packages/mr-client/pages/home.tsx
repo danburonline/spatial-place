@@ -1,6 +1,6 @@
+import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0'
 import Head from 'next/head'
 import Link from 'next/link'
-import { UserProfile, withPageAuthRequired } from '@auth0/nextjs-auth0'
 
 export default function Home(user: UserProfile): JSX.Element {
   return (

@@ -30,6 +30,7 @@
     "@storybook/addon-essentials": "^6.3.8",
     "@storybook/addon-links": "^6.3.8",
     "@storybook/react": "^6.3.8",
+    "@trivago/prettier-plugin-sort-imports": "^2.0.4",
     "@types/react": "^17.0.21",
     "@types/three": "^0.131.1",
     "@typescript-eslint/eslint-plugin": "^4.31.1",

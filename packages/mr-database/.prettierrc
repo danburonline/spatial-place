@@ -4,5 +4,7 @@
   "singleQuote": true,
   "trailingComma": "none",
   "arrowParens": "avoid",
-  "printWidth": 80
+  "printWidth": 80,
+  "importOrder": ["^[./]"],
+  "importOrderSeparation": true
 }

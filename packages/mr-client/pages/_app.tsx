@@ -1,5 +1,5 @@
-import { AppProps } from 'next/app'
 import { UserProvider } from '@auth0/nextjs-auth0'
+import { AppProps } from 'next/app'
 import { useRouter } from 'next/router'
 import 'tailwindcss/tailwind.css'
 
