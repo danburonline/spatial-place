@@ -7,13 +7,13 @@
 \DeclareOption{index}{\PHD@indextrue}
 
 % Font option
-\newif\ifsetFont\setFontfalse                 
+\newif\ifsetFont\setFontfalse
 
-\newif\ifPHD@times\PHD@timesfalse             
+\newif\ifPHD@times\PHD@timesfalse
 \DeclareOption{times}{
 	\ifsetFont
 	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you 
+		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\PHD@timestrue
@@ -21,11 +21,11 @@
 	\fi
 }
 
-\newif\ifPHD@fourier\PHD@fourierfalse         
+\newif\ifPHD@fourier\PHD@fourierfalse
 \DeclareOption{fourier}{
 	\ifsetFont
 	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you 
+		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\PHD@fouriertrue
@@ -33,11 +33,11 @@
 	\fi
 }
 
-\newif\ifsetCustomFont\setCustomFontfalse     
+\newif\ifsetCustomFont\setCustomFontfalse
 \DeclareOption{customfont}{
 	\ifsetFont
 	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you 
+		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\setCustomFonttrue
@@ -46,10 +46,10 @@
 }
 
 % Bibliography
-\newif\ifsetBib\setBibfalse                   
-\newif\ifsetBiBLaTeX\setBiBLaTeXfalse         
+\newif\ifsetBib\setBibfalse
+\newif\ifsetBiBLaTeX\setBiBLaTeXfalse
 
-\newif\ifPHD@biblatex\PHD@biblatexfalse       
+\newif\ifPHD@biblatex\PHD@biblatexfalse
 \DeclareOption{biblatex}{
 	\ifsetBib
 	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
@@ -60,7 +60,7 @@
 	\fi
 }
 
-\newif\ifPHD@authoryear\PHD@authoryearfalse  
+\newif\ifPHD@authoryear\PHD@authoryearfalse
 \DeclareOption{authoryear}{
 	\ifsetBib
 	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
@@ -72,7 +72,7 @@
 	\fi
 }
 
-\newif\ifPHD@numbered\PHD@numberedfalse 
+\newif\ifPHD@numbered\PHD@numberedfalse
 \DeclareOption{numbered}{
 	\ifsetBib
 	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
@@ -108,11 +108,11 @@
 
 % Custom margins
 \newif\ifsetCustomMargin\setCustomMarginfalse
-\newif\ifsetMargin\setMarginfalse 
+\newif\ifsetMargin\setMarginfalse
 \DeclareOption{custommargin}{\setCustomMargintrue}
 
 % Separate Abstract
-\newif \ifdefineAbstract\defineAbstractfalse 
+\newif \ifdefineAbstract\defineAbstractfalse
 
 \newif\ifPHD@abstract\PHD@abstractfalse
 \DeclareOption{abstract}{
@@ -131,7 +131,7 @@
 \newif\ifPHD@chapter\PHD@chapterfalse
 \DeclareOption{chapter}{
 	\PHD@chaptertrue
-	\ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only 
+	\ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only
 		selected chapters with references, if this was intentional, ignore this
 		warning. If not, please remove the option `chapter' from the document class
 	and recompile. Good luck with your writing!}
@@ -173,13 +173,13 @@
 	\setDraftClassictrue
 	\ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
 		off in your final version. This is the classic version of draft.
-		Use `draft' for enhanced mode, which adds watermark with timestamp, 
+		Use `draft' for enhanced mode, which adds watermark with timestamp,
 line numbering, and version number.}}%
 
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}
-	\setDrafttrue 
+	\setDrafttrue
 	\ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
-		off in your final version. This enhanced `draft' mode adds watermark 
+		off in your final version. This enhanced `draft' mode adds watermark
 		with timestamp, line numbering, and version number. Use `draftclassic'
 		if you prefer the \cite{} lassic draft mode. To tweak options see
 `preamble.tex'}}%
@@ -204,10 +204,10 @@ line numbering, and version number.}}%
 
 % Packages
 % Layout and Formatting
-\RequirePackage{lscape} 
+\RequirePackage{lscape}
 \RequirePackage{setspace}
 \RequirePackage{calc}
-\RequirePackage{ifthen} 
+\RequirePackage{ifthen}
 \RequirePackage{ifpdf}
 \RequirePackage{ifxetex}
 \RequirePackage[nottoc]{tocbibind}
@@ -307,7 +307,7 @@ line numbering, and version number.}}%
 	\renewenvironment{#1}%
 	{\linenomath\csname old#1\endcsname}%
 	{\csname oldend#1\endcsname\endlinenomath}%
-}% 
+}%
 
 \newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
 	\patchAmsMathEnvironmentForLineno{#1}%
@@ -376,7 +376,7 @@ line numbering, and version number.}}%
 		{\ClassWarning{PDThesisPSnPDF}{Unrecognised draft position
 			using default value of top}
 			\renewcommand\draftnodeanchor{1in+\voffset-\topmargin}}}
-	    
+
 	\AddEverypageHook{%
 		\begin{textblock*}{\paperwidth}[0.,2.5](0\paperwidth,\draftnodeanchor)
 			\DraftContent
@@ -384,10 +384,10 @@ line numbering, and version number.}}%
 	}
 }
 
-\else 
+\else
 
 \renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
-	inactive, to use SetDraftText include `draft' in the document 
+	inactive, to use SetDraftText include `draft' in the document
 class options.}}
 % Draft Version
 \renewcommand\SetDraftVersion[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
@@ -408,7 +408,7 @@ class options.}}
 % Bibliography
 \ifPHD@authoryear
 \ifPHD@biblatex
-\RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic, 
+\RequirePackage[backend=biber, style=authoryear, citestyle=alphabetic,
 sorting=nty, natbib=true]{biblatex}
 \setBiBLaTeXtrue
 \else
@@ -417,7 +417,7 @@ sorting=nty, natbib=true]{biblatex}
 \else
 \ifPHD@numbered
 \ifPHD@biblatex
-\RequirePackage[backend=biber, style=numeric-comp, 
+\RequirePackage[backend=biber, style=numeric-comp,
 citestyle=numeric, sorting=none, natbib=true]{biblatex}
 \setBiBLaTeXtrue
 \else
@@ -429,29 +429,29 @@ citestyle=numeric, sorting=none, natbib=true]{biblatex}
 	\@ifpackageloaded{natbib}{}{
 		\@ifpackageloaded{biblatex}{}{
 			\ClassWarning{PhDThesisPSnPDF}{%
-				You chose custom bibliography, but no corresponding package 
+				You chose custom bibliography, but no corresponding package
 				(biblatex/natbib) has been loaded. Please load the
 			appropriate bibliography package in the preamble.}
 		}
 	}
 }
-\else                                            
+\else
 \ifPHD@biblatex
 \RequirePackage[backend=biber, style=numeric-comp,
 citestyle=numeric, sorting=none, natbib=true]{biblatex}
 \setBiBLaTeXfalse
 \else
-\RequirePackage[numbers,compress]{natbib} 
+\RequirePackage[numbers,compress]{natbib}
 \fi % default
 \setBibfalse
-\fi 
+\fi
 \fi
 \fi
 
 \ifsetBib
 \else
 \ClassWarning{PhDThesisPSnPDF}{No bibliography style was specified.
-	Default numbered style is used. If you would like to use a 
+	Default numbered style is used. If you would like to use a
 	different style, use `authoryear' or `numbered' in the options in
 	documentclass or use `custombib` and define the natbib package or
 biblatex package with required style in the Preamble.tex file}
@@ -487,9 +487,9 @@ biblatex package with required style in the Preamble.tex file}
 \ifsetFont
 \else
 \ClassWarning{PhDThesisPSnPDF}{Using default font Latin Modern. If you
-	would like to use other pre-defined fonts use `times' (The Cambridge 
+	would like to use other pre-defined fonts use `times' (The Cambridge
 	University PhD thesis guidelines recommend using Times font)  or `fourier'
-	or load a custom font in the preamble.tex file by specifying `customfont' 
+	or load a custom font in the preamble.tex file by specifying `customfont'
 in the class options}
 \RequirePackage{lmodern}
 \fi
@@ -506,20 +506,20 @@ in the class options}
 	ItalicFont = *-italic,
 	BoldItalicFont = *-bolditalic,
 ]{xits}
-  
-\setmathfont[ 
+
+\setmathfont[
 	Extension = .otf,
 	BoldFont = *bold,
 ]{xits-math}
-  
+
 \else
 % default: pdfLaTeX
 \RequirePackage[utf8]{inputenc}
 \RequirePackage[T1]{fontenc}
-  
+
 % If building with PDFLaTeX, use microtype spacing adjustments
 \RequirePackage[final]{microtype}
-  
+
 \input{glyphtounicode}
 \pdfglyphtounicode{f_f}{FB00}
 \pdfglyphtounicode{f_i}{FB01}
@@ -612,7 +612,7 @@ vmarginratio=1:1,scale=0.75]{geometry}
 % dvips
 \RequirePackage{breakurl} % to split the url over multiple lines
 \fi
-  
+
 % Pre-defined Settings
 %  Setting PDF Meta-Data
 \ifpdf
@@ -636,7 +636,7 @@ vmarginratio=1:1,scale=0.75]{geometry}
 % Justification
 % Left aligned as per University identity guidelines
 \ifPHD@textJustify
-\message{PhDThesisPSnPDF: The University identity guidelines recommend using 
+\message{PhDThesisPSnPDF: The University identity guidelines recommend using
 	left aligned text. Please use `flushleft' in the documentclass option, if you
 wish to left align your text}
 \else
@@ -764,24 +764,24 @@ wish to left align your text}
 %  Front Matter Layout
 % Title Page
 \renewcommand{\maketitle}{
-	
+
 	% To compute the free vertical space in Title page
 	\computeTitlePageSpacing
-	
+
 	\thispagestyle{empty}
-	
+
 	\begin{singlespace}
 		\begin{center}
-			
+
 			% University Crest Long if college crest is defined
 			\ifPHD@collegeshield%
 			{\usebox{\PHD@crest}}
 			\vspace{.15\PHD@titlepagespacing}
 			\fi
-			
+
 			% Title
 			{\usebox{\PHD@Title}} % subtitle is defined
-			
+
 			% Crest
 			\ifPHD@collegeshield%
 			\vspace{.15\PHD@titlepagespacing}
@@ -792,34 +792,34 @@ wish to left align your text}
 			{\usebox{\PHD@crest}}
 			\vspace{.15\PHD@titlepagespacing}
 			\fi
-			
+
 			% Author
 			{\usebox{\PHD@author}}
 			\vspace*{1em}
-			
+
 			% Supervisor
 			\ifPHD@supervisor%
 			{\usebox{\PHD@supervisor}}
 			\vspace*{0.5em}
 			\fi
-			
+
 			% Advisor
 			\ifPHD@advisor%
 			{\usebox{\PHD@advisor}}
 			\vspace*{0.5em}
 			\fi
-			
+
 			% Department and University
 			{\usebox{\PHD@dept}}
 			\vspace{.2\PHD@titlepagespacing}
-			
+
 			% Submission Text
 			{\usebox{\PHD@submission}}
-			
+
 			% College and degree date
 			\vfill
 			{\usebox{\PHD@collegedate}}
-			    
+
 		\end{center}
 	\end{singlespace}
 }
@@ -878,10 +878,10 @@ wish to left align your text}
 					}% matches Abbreviations        > Z
 					}% matches Greek Symbols        > G
 					}% matches Roman Symbols        > A
-					
+
 					% To add nomenclature in the header
 					\renewcommand{\nompreamble}{\markboth{\nomname}{\nomname}}
-					
+
 					% Add nomenclature to contents and print out nomenclature
 					\newcommand{\printnomencl}[1][]{
 						\ifthenelse{\equal {#1}{}}
@@ -889,7 +889,7 @@ wish to left align your text}
 						{\printnomenclature[#1]}
 						%\addcontentsline{toc}{chapter}{\nomname}
 					}
-					
+
 					% Create the index
 					\ifPHD@index
 					\RequirePackage{makeidx}
@@ -901,7 +901,7 @@ wish to left align your text}
 					\else
 					\newcommand{\printthesisindex}{}
 					\fi
-					
+
 					% The chapter mode allows user to only print particular chapters with references
 					% All other options are disabled by default
 					% To include only specific chapters without TOC, LOF, Title and Front Matter
@@ -918,7 +918,7 @@ wish to left align your text}
 					\else
 					\defineChapterfalse
 					\fi
-					
+
 					% The abstract environment puts a large, bold, centered "Abstract" label at
 					% the top of the page. Defines both abstract and separate abstract environment
 					% To include only the Title and the abstract pages for submission to BoGS
@@ -936,7 +936,7 @@ wish to left align your text}
 					\else
 					\defineAbstractfalse
 					\fi
-					
+
 					\newenvironment{abstract} {
 						\ifPHD@abstract
 						% Separate abstract as per Student Registry guidelines
@@ -954,7 +954,7 @@ wish to left align your text}
 						\thispagestyle{empty}
 						\fi
 					}
-					
+
 					% Boxes below are used to space different contents on the title page
 					% Based on https://github.com/cambridge/thesis
 					\newcommand{\computeTitlePageSpacing}{
@@ -971,13 +971,13 @@ wish to left align your text}
 								} % subtitle is defined
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% University Crest Box
 						\newsavebox{\PHD@crest}
 						\begin{lrbox}{\PHD@crest}
 							{\@crest \par}
 						\end{lrbox}
-						
+
 						\newsavebox{\PHD@collegecrest}
 						\begin{lrbox}{\PHD@collegecrest}
 							\ifPHD@collegeshield%
@@ -986,16 +986,16 @@ wish to left align your text}
 							% College shield is undefined
 							\fi
 						\end{lrbox}
-						
+
 						% Author Box
 						\newsavebox{\PHD@author}
 						\begin{lrbox}{\PHD@author}
 							\begin{minipage}[c]{\textwidth}
 								\centering \Large \bfseries{\@author}
-								\vspace{0.5em}   
+								\vspace{0.5em}
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% Supervisor Box
 						\newsavebox{\PHD@supervisor}
 						\begin{lrbox}{\PHD@supervisor}
@@ -1013,7 +1013,7 @@ wish to left align your text}
 								} % supervisor is defined
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% Advisor Box
 						\newsavebox{\PHD@advisor}
 						\begin{lrbox}{\PHD@advisor}
@@ -1031,7 +1031,7 @@ wish to left align your text}
 								} % advisor is defined
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% Department Box
 						\newsavebox{\PHD@dept}
 						\begin{lrbox}{\PHD@dept}
@@ -1040,7 +1040,7 @@ wish to left align your text}
 								{\large \@university \par}
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% Submission Box
 						\newsavebox{\PHD@submission}
 						\begin{lrbox}{\PHD@submission}
@@ -1051,7 +1051,7 @@ wish to left align your text}
 								\end{center}
 							\end{minipage}
 						\end{lrbox}
-						
+
 						% College and Date Box
 						\newsavebox{\PHD@collegedate}
 						\begin{lrbox}{\PHD@collegedate}
@@ -1073,7 +1073,7 @@ wish to left align your text}
 								} % college is defined
 							\end{minipage}
 						\end{lrbox}
-						
+
 						%  Now to compute the free vertical space
 						\newlength{\PHD@titlepagespacing}
 						\setlength{\PHD@titlepagespacing}{ \textheight %

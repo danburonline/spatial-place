@@ -2,7 +2,7 @@
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
 
-The game's biggest challenge is that only two people can control the game figure: Person A the x-axis, Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain/cloud interface (B/CI) architecture.
+The game's biggest challenge is that only two people can control the game figure: Person A the x-axis and Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain/cloud interface (B/CI) architecture.
 
 This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain/cloud interface application and the source text for the accompanying bachelor thesis.
 
@@ -27,7 +27,19 @@ This repository contains the following directories:
   - **[mr-socket](/packages/mr-socket):** A socket backend service for Mind Racing.
   - **[mr-database](/packages/mr-database):** A database backend service for Mind Racing.
 
+## Commands
+
+The following Yarn commands are available in the root directory for the entire monorepo. Be sure to have [Yarn installed globally](https://yarnpkg.com/getting-started/install). I'm utilising the concept of [Yarn workspaces](https://yarnpkg.com/features/workspaces) to enable faster and lighter installation by preventing package duplication across Workspaces.
+
+- Run `yarn` to install dependencies.
+- Run `yarn lint` to lint all packages.
+- Run `yarn format` to format all packages.
+- Run `yarn build:all` to build all packages.
+- Run `yarn build:docs` to build all documentations.
+
 ## Environments
+
+There are two environments for the entire monorepo. The first one is the production environment; it's the default environment whenever a release is created. The second one is the staging environment; it's the default environment whenever a branch is pushed into the `main` branch. See the contents of the `./github/workflows` directory for more information.
 
 - Production: <https://mind.racing>
 - Staging: <https://staging.mind.racing>
