@@ -2,13 +2,13 @@
 
 Mind Racing is a web-based 3D racing game that can only be controlled by thoughts. You have to run on a finite track with a game figure in the shortest possible time. Randomly placed obstacles on the way to the goal slow down the game figure in case of a collision.
 
-The game's biggest challenge is that only two people can control the game figure: Person A the x-axis, Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain-cloud interface architecture.
+The game's biggest challenge is that only two people can control the game figure: Person A the x-axis, Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain/cloud interface (B/CI) architecture.
 
-This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain-cloud interface application and the source text for the accompanying research thesis.
+This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain/cloud interface application and the source text for the accompanying research thesis.
 
 ## Project Goals
 
-The main goal of my bachelor thesis is to create architectural foundations for brain-cloud interfaces and present the associated source code in a public and comprehensible way so that future engineers can make use of my findings and the source code.
+The main goal of my bachelor thesis is to create architectural foundations for brain/cloud interfaces and present the associated source code in a public and comprehensible way so that future engineers can make use of my findings and the source code.
 
 As the field of neurotechnology is becoming increasingly industrialised, I am personally concerned that research should nevertheless be open source and available free of charge.
 
@@ -38,12 +38,10 @@ There are several documentation artefacts for the project. Some of them are depl
 
 ### Services Overview
 
-<!-- TODO Replace with final URLs as soon as I've created them -->
-
-- MR-Client documentation: <https://docs.mind.racing>
-- MR-Server documentation: _tbc_
-- MR-Socket documentation: _tbc_
-- MR-Database documentation: _tbc_
+- MR-Client documentation: <https://mind.racing/docs>
+- MR-Server documentation: <https://server.mind.racing/docs>
+- MR-Socket documentation: <https://socket.mind.racing/docs>
+- MR-Database documentation: <https://database.mind.racing/docs>
 
 ### Wiki Overview
 
@@ -56,6 +54,6 @@ There are several documentation artefacts for the project. Some of them are depl
 
 ## Licenses
 
-- Source Code (GNU GPLv3): [Packages → LICENSE](/packages/LICENSE)
-- Bachelor Thesis (CC-BY-4.0): [Thesis → LICENSE](/thesis/LICENSE)
+- Source Code (GNU GPLv3): [LICENSE](/packages/LICENSE)
+- Bachelor Thesis (CC-BY-4.0): [LICENSE](/thesis/LICENSE)
 - Everything else (MIT): [LICENSE](LICENSE)
