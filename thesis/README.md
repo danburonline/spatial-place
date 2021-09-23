@@ -1,3 +1,3 @@
-# Research Paper
+# Bachelor Thesis
 
-All LaTeX files for the research paper.
+All LaTeX files for the bachelor thesis.

@@ -4,7 +4,7 @@ Mind Racing is a web-based 3D racing game that can only be controlled by thought
 
 The game's biggest challenge is that only two people can control the game figure: Person A the x-axis, Person B the y-axis. Accordingly, one must interact with another's brain via the internet to reach the goal. This is an optimal demonstration of the Internet of Humans (IoH) and the underlying brain/cloud interface (B/CI) architecture.
 
-This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain/cloud interface application and the source text for the accompanying research thesis.
+This repository is part of my bachelor thesis and contains all files for the final project submission. Next to the 3D racing game, you can also find the entire source code for the brain/cloud interface application and the source text for the accompanying bachelor thesis.
 
 ## Project Goals
 
