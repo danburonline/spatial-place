@@ -1,5 +1,5 @@
 # Deploy a new version of MR-Client as soon as there is a new merge into the main branch
-name: "MR-CLIENT: Staging Deploy"
+name: "Client: Staging Deploy"
 
 on:
   push:
