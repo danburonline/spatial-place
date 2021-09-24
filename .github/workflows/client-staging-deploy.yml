@@ -1,10 +1,12 @@
 # Deploy a new version of MR-Client as soon as there is a new merge into the main branch
-name: "Client – Staging Deploy"
+name: "MR-CLIENT: Staging Deploy"
 
 on:
   push:
     branches:
-      - main
+    - main
+    paths:
+    - 'packages/mr-client/**'
 
 env:
   CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_ID }}

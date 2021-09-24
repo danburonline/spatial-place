@@ -1,19 +1,19 @@
-# Deploy a new version of MR-Client as soon as there is a new published release
-name: "Client – Production Deploy"
+# Build and deploy all services as soon as there is a new published release
+name: "Production Deploy"
 
 on:
   release:
     types: [published]
 
-env:
-  CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
-  CLOUD_RUN_REGION: ${{ secrets.CLOUD_RUN_REGION }}
-  REPO_NAME: mind-racing-client-prod
-
 jobs:
-  build-and-deploy:
+  mr-client-build-and-deploy:
     name: Build and deploy
     runs-on: ubuntu-latest
+
+    env:
+      CLOUD_RUN_PROJECT_ID: ${{ secrets.CLOUD_RUN_PROJECT_ID }}
+      CLOUD_RUN_REGION: ${{ secrets.CLOUD_RUN_REGION }}
+      REPO_NAME: mind-racing-client-prod
 
     steps:
       - name: Checkout the branch
@@ -59,3 +59,8 @@ jobs:
             --region $CLOUD_RUN_REGION \
             --allow-unauthenticated \
             --quiet
+
+  # Adding other deployment jobs for the other services
+  # mr-server-build-and-deploy:
+  # mr-socket-build-and-deploy:
+  # mr-database-build-and-deploy:

@@ -1,5 +1,5 @@
 # Analyze the repository as soon as there is a new merge into the main branch (+ CRON job)
-name: "CodeQL – Static Analysis"
+name: "Static Analysis"
 
 on:
   push:

@@ -22,7 +22,7 @@
   "typedocOptions": {
     "entryPoints": ["./src"],
     "entryPointStrategy": "expand",
-    "out": "../../auto-docs/mr-server",
+    "out": "./docs",
     "exclude": ["**/*.spec.ts"]
   }
 }

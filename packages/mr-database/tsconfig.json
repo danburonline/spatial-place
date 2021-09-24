@@ -22,7 +22,7 @@
   "typedocOptions": {
     "entryPoints": ["./src"],
     "entryPointStrategy": "expand",
-    "out": "../../auto-docs/mr-database",
+    "out": "./docs",
     "exclude": ["**/*.spec.ts"]
   }
 }

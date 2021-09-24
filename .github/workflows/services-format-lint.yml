@@ -1,10 +1,7 @@
 # Check formatting and lint all Yarn workspaces as soon as there is a new pull request
-name: "Services – Format and Lint"
+name: "Format and Lint"
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - master

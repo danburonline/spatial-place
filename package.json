@@ -12,6 +12,7 @@
   "devDependencies": {
     "husky": ">=6",
     "lint-staged": ">=10",
+    "pre-commit": "^1.2.2",
     "prettier": "^2.4.0"
   },
   "scripts": {
@@ -21,6 +22,9 @@
     "build:all": "yarn workspaces run build",
     "build:docs": "yarn workspaces run build:doc"
   },
+  "pre-commit": [
+    "lint"
+  ],
   "lint-staged": {
     "*": "prettier --write"
   }
