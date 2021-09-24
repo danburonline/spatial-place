@@ -1,9 +1,9 @@
-title: "Mind Racing Wiki"
+title: "Mind Racing"
 remote_theme: pmarsceill/just-the-docs
 color_scheme: "light"
 search_enabled: true
 aux_links:
-  "Mind Racing on GitHub":
+  "GitHub":
     - "//github.com/danburonline/mind-racing"
 aux_links_new_tab: true
 gh_edit_link: true
