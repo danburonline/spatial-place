@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Domains
+title: 3D Game
 description: "Official wiki for the Mind Racing repository."
-permalink: /domains
+permalink: /game
 ---
 
-## Domains
+## 3D Game
 
 More information will follow.
