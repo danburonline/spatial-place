@@ -1,3 +1,12 @@
 module.exports = {
-  reactStrictMode: true
+  reactStrictMode: true,
+  async redirects() {
+    return [
+      {
+        source: '/docs',
+        destination: '/docs/index.html',
+        permanent: true
+      }
+    ]
+  }
 }
