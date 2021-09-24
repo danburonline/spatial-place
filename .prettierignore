@@ -18,3 +18,4 @@ yarn.lock
 *.svg
 *.ico
 .env.*
+.husky/pre-commit

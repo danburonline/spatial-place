@@ -8,12 +8,9 @@ permalink: /
 
 ## Mind Racing Wiki
 
-{: .fs-9 }
-
 This is the official wiki for the Mind Racing repository. Mind Racing is a mind-controlled multiplayer 3D racing game to demonstrate the possibilities of the Internet of Humans and the underlying brain/cloud interface architecture as part of my bachelor thesis.
-{: .fs-6 .fw-300 }
 
-[Getting started](#getting-started){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/danburonline/mind-racing){: .btn .fs-5 .mb-4 .mb-md-0 }
+[About this wiki](#about-this-wiki){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 .mr-2 } [View it on GitHub](https://github.com/danburonline/mind-racing){: .btn .fs-5 .mb-4 .mb-md-0 }
 
 ---
 
