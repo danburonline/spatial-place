@@ -1,4 +1,4 @@
-# Build and deploy all services as soon as there is a new published release
+# Build and deploy all services as soon as there is a newly published release
 name: "Production Deploy"
 
 on:

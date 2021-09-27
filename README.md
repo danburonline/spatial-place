@@ -50,19 +50,20 @@ There are several documentation artefacts for the project. Some of them are depl
 
 ### Services Overview
 
-- MR-Client documentation: <https://mind.racing/docs>
-- MR-Server documentation: <https://server.mind.racing/docs>
-- MR-Socket documentation: <https://socket.mind.racing/docs>
-- MR-Database documentation: <https://database.mind.racing/docs>
+- [x] MR-Client documentation: <https://mind.racing/docs>
+- [ ] MR-Server documentation: <https://server.mind.racing/docs>
+- [ ] MR-Socket documentation: <https://socket.mind.racing/docs>
+- [ ] MR-Database documentation: <https://database.mind.racing/docs>
 
 ### Wiki Overview
 
-- [Documentation](https://wiki.mind.racing/documentation)
-- [Authentication](https://wiki.mind.racing/authentication)
-- [Deployment](https://wiki.mind.racing/deployment)
-- [Automation](https://wiki.mind.racing/automation)
-- [Domains](https://wiki.mind.racing/domains)
-- [LaTeX](https://wiki.mind.racing/latex)
+- [x] [Documentation](https://wiki.mind.racing/documentation)
+- [x] [Authentication](https://wiki.mind.racing/authentication)
+- [x] [Deployment](https://wiki.mind.racing/deployment)
+- [x] [Automation](https://wiki.mind.racing/automation)
+- [x] [3D Game](https://wiki.mind.racing/game)
+- [x] [Domains](https://wiki.mind.racing/domains)
+- [x] [LaTeX](https://wiki.mind.racing/latex)
 
 ## Licenses
 
