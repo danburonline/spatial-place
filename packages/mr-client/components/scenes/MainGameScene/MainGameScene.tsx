@@ -1,14 +1,18 @@
 import { Loader, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
+import { Suspense } from 'react'
+
+import Labyrinth from '../../models/Labyrinth'
+import Lighting from './components/Lighting'
 
 export default function GameScene(): JSX.Element {
   return (
     <>
       <Canvas>
-        <mesh>
-          <boxGeometry args={[1, 1, 1]} />
-          <meshBasicMaterial color={'blue'} />
-        </mesh>
+        <Suspense fallback={null}>
+          <Labyrinth />
+        </Suspense>
+        <Lighting />
         <OrbitControls />
       </Canvas>
       <Loader />

@@ -13,7 +13,7 @@
   "nodes": [
     {
       "mesh": 0,
-      "name": "labyrith_walls"
+      "name": "labyrinth_walls"
     }
   ],
   "materials": [
@@ -31,7 +31,7 @@
   ],
   "meshes": [
     {
-      "name": "labyrith_walls",
+      "name": "labyrinth_walls",
       "primitives": [
         {
           "attributes": {
