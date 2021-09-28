@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^1.5.0",
+    "@react-three/cannon": "^3.1.2",
     "@react-three/drei": "^7.8.0",
     "@react-three/fiber": "^7.0.6",
     "next": "11.1.2",

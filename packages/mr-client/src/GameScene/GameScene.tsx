@@ -1,7 +1,9 @@
-import { Loader, OrbitControls } from '@react-three/drei'
+import { Physics } from '@react-three/cannon'
+import { Loader, PointerLockControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
+import Floor from '../Floor/Floor'
 import Labyrinth from '../Labyrinth/Labyrinth'
 import Lighting from '../Lighting/Lighting'
 import Player from '../Player/Player'
@@ -9,13 +11,16 @@ import Player from '../Player/Player'
 export default function GameScene(): JSX.Element {
   return (
     <>
-      <Canvas>
+      <Canvas camera={{ position: [0, 1, 2] }}>
+        <Physics>
+          <Floor />
+        </Physics>
         <Suspense fallback={null}>
           <Labyrinth />
         </Suspense>
         <Player />
         <Lighting />
-        <OrbitControls />
+        <PointerLockControls />
       </Canvas>
       <Loader />
     </>
