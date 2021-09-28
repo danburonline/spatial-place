@@ -1,10 +1,10 @@
 import { useGLTF } from '@react-three/drei'
-import * as THREE from 'three'
+import { Mesh } from 'three'
 import { GLTF } from 'three/examples/jsm/loaders/GLTFLoader'
 
 type LabyrinthGLTF = GLTF & {
   nodes: {
-    labyrinth_walls: THREE.Mesh
+    labyrinth_walls: Mesh
   }
 }
 
