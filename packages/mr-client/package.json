@@ -11,7 +11,7 @@
     "start": "next start",
     "format": "prettier --write \"components/**/*.tsx\" \"pages/**/*.tsx\"",
     "start:dev": "next dev",
-    "start:doc": "start-storybook -p 6006",
+    "start:doc": "start-storybook -s ./public -p 6006",
     "lint": "next lint"
   },
   "dependencies": {
