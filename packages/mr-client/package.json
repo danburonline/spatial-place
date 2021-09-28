@@ -9,7 +9,7 @@
     "build": "next build",
     "build:doc": "build-storybook -o public/docs",
     "start": "next start",
-    "format": "prettier --write \"components/**/*.tsx\" \"pages/**/*.tsx\"",
+    "format": "prettier --write \"src/**/*.tsx\" \"pages/**/*.tsx\"",
     "start:dev": "next dev",
     "start:doc": "start-storybook -s ./public -p 6006",
     "lint": "next lint"

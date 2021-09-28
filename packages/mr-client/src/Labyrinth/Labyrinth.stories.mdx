@@ -1,19 +1,22 @@
 import { Loader, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Meta, Story, Preview, Props } from '@storybook/addon-docs'
-import Lighting from '../../scenes/MainGameScene/components/Lighting'
-import Player from './Player'
+import { Suspense } from 'react'
+import Lighting from '../Lighting/Lighting'
+import Labyrinth from './Labyrinth'
 
-<Meta title='Essentials/Player' />
+<Meta title='Labyrinth' />
 
-# Player
+# Labyrinth
 
-This is the primitive MVP version of the Player.
+This is the basic labyrinth component with a basic lighting setup.
 
 <Preview>
-  <Story name='Player'>
+  <Story name='Labyrinth'>
     <Canvas style={{ height: '100vh', backgroundColor: 'black' }}>
-      <Player />
+      <Suspense fallback={null}>
+        <Labyrinth />
+      </Suspense>
       <Lighting />
       <Loader />
       <OrbitControls />
@@ -23,4 +26,4 @@ This is the primitive MVP version of the Player.
 
 ## Props
 
-<Props of={Player} />
+<Props of={Labyrinth} />

@@ -2,12 +2,9 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
 
-const MainGameScene = dynamic(
-  () => import('../components/scenes/MainGameScene/MainGameScene'),
-  {
-    ssr: false
-  }
-)
+const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
+  ssr: false
+})
 
 export default function Home(): JSX.Element {
   return (
@@ -20,7 +17,7 @@ export default function Home(): JSX.Element {
         />
       </Head>
       <main className='h-screen bg-black'>
-        <MainGameScene />
+        <GameScene />
       </main>
     </>
   )

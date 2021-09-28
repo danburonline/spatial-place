@@ -2,9 +2,9 @@ import { Loader, OrbitControls } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
-import Labyrinth from '../../models/Labyrinth/Labyrinth'
-import Player from '../../models/Player/Player'
-import Lighting from './components/Lighting'
+import Labyrinth from '../Labyrinth/Labyrinth'
+import Lighting from '../Lighting/Lighting'
+import Player from '../Player/Player'
 
 export default function GameScene(): JSX.Element {
   return (
