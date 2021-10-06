@@ -8,9 +8,7 @@ export default function Player(): JSX.Element {
     args: 0.5,
     mass: 1,
     type: 'Dynamic',
-    sleepSpeedLimit: 2.5,
-    sleepTimeLimit: 0,
-    allowSleep: true
+    position: [0, 0.25, 0]
   }))
 
   const moveFieldByKey = key => keys[key]
@@ -65,16 +63,17 @@ export default function Player(): JSX.Element {
   useFrame(() => {
     frontVector.set(0, 0, Number(backward) - Number(forward))
     sideVector.set(Number(left) - Number(right), 0, 0)
-    camera.lookAt(ref.current.position)
     direction
       .subVectors(frontVector, sideVector)
       .normalize()
       .multiplyScalar(SPEED)
     api.velocity.set(direction.x, velocity.current[1], direction.z)
+
+    ref.current.getWorldPosition(camera.position).y += 10
   })
 
   return (
-    <mesh ref={ref} position={[0, 0.5, 0]} castShadow receiveShadow>
+    <mesh ref={ref} position={[0, 0.25, 0]} castShadow receiveShadow>
       <sphereGeometry attach='geometry' args={[0.5, 32, 200]} />
       <meshStandardMaterial color='lightgreen' />
     </mesh>
