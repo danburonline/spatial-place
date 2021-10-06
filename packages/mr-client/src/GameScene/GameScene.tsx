@@ -1,5 +1,5 @@
 import { Physics } from '@react-three/cannon'
-import { Loader } from '@react-three/drei'
+import { Loader, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
@@ -11,7 +11,7 @@ import Player from '../Player/Player'
 export default function GameScene(): JSX.Element {
   return (
     <>
-      <Canvas camera={{ position: [0, 20, 0] }}>
+      <Canvas frameloop='demand' camera={{ position: [0, 20, 0] }}>
         <Suspense fallback={null}>
           <Physics>
             <Floor />
@@ -22,6 +22,7 @@ export default function GameScene(): JSX.Element {
         <Lighting />
       </Canvas>
       <Loader />
+      <Stats />
     </>
   )
 }

@@ -8,14 +8,14 @@ export default function Player(): JSX.Element {
     args: 0.5,
     mass: 1,
     type: 'Dynamic',
-    position: [0, 0.25, 0]
+    position: [0, 0.5, 0]
   }))
 
   const moveFieldByKey = key => keys[key]
   const direction = new Vector3()
   const frontVector = new Vector3()
   const sideVector = new Vector3()
-  const SPEED = 3
+  const SPEED = 5
   const keys = {
     KeyW: 'forward',
     KeyS: 'backward',
