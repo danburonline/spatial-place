@@ -5,7 +5,7 @@ export default function Floor(): JSX.Element {
 
   return (
     <mesh receiveShadow ref={ref}>
-      <planeBufferGeometry args={[100, 100, 100, 100]} />
+      <planeBufferGeometry args={[1000, 1000, 100, 100]} />
       <meshStandardMaterial color='grey' />
     </mesh>
   )
