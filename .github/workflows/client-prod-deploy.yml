@@ -61,6 +61,6 @@ jobs:
             --quiet
 
   # Adding other deployment jobs for the other services
-  # mr-server-build-and-deploy:
+  # mr-core-build-and-deploy:
   # mr-socket-build-and-deploy:
-  # mr-database-build-and-deploy:
+  # mr-translator-build-and-deploy:
