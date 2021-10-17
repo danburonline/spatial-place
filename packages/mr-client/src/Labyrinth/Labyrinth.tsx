@@ -8,11 +8,17 @@ type LabyrinthGLTF = GLTF & {
   }
 }
 
-export default function Labyrinth(): JSX.Element {
+export type LabyrinthProps = {
+  color?: string
+}
+
+export default function Labyrinth({
+  color = 'white'
+}: LabyrinthProps): JSX.Element {
   const { nodes } = useGLTF('/models/labyrinth-compressed.glb') as LabyrinthGLTF
   return (
     <mesh castShadow receiveShadow geometry={nodes.labyrinth_walls.geometry}>
-      <meshStandardMaterial color='white' />
+      <meshStandardMaterial color={color} />
     </mesh>
   )
 }

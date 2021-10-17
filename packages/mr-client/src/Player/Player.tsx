@@ -3,7 +3,13 @@ import { useThree, useFrame } from '@react-three/fiber'
 import { useState, useRef, useEffect } from 'react'
 import { Vector3 } from 'three'
 
-export default function Player(): JSX.Element {
+export type PlayerProps = {
+  color?: string
+}
+
+export default function Player({
+  color = 'lightgreen'
+}: PlayerProps): JSX.Element {
   const [ref, api] = useSphere(() => ({
     args: 0.5,
     mass: 1,
@@ -75,7 +81,7 @@ export default function Player(): JSX.Element {
   return (
     <mesh ref={ref} position={[0, 0.25, 0]} castShadow receiveShadow>
       <sphereGeometry attach='geometry' args={[0.5, 32, 200]} />
-      <meshStandardMaterial color='lightgreen' />
+      <meshStandardMaterial color={color} />
     </mesh>
   )
 }
