@@ -7,6 +7,7 @@ export type ColliderProps = {
   scale: [x: number, y: number, z: number]
   rotation: Triplet
   color?: string
+  onCollide?: () => void
 }
 
 export default function Collider({
@@ -14,12 +15,14 @@ export default function Collider({
   position,
   scale,
   rotation,
-  color
+  color,
+  onCollide
 }: ColliderProps): JSX.Element {
   const [ref] = useBox(() => ({
     position: position,
     rotation: rotation,
-    args: size
+    args: size,
+    onCollide: onCollide
   }))
 
   return (
