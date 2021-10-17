@@ -17,7 +17,7 @@ export default function GameScene(): JSX.Element {
         <Suspense fallback={null}>
           <Physics
             gravity={[0, -20, 0]}
-            size={50}
+            size={30}
             broadphase={'SAP'}
             iterations={10}
           >

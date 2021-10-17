@@ -13,6 +13,27 @@ import Labyrinth from './Labyrinth'
 
 This is the basic labyrinth component. Drag and drop to navigate and have a look at it. The associated physics for the labyrinth are detached from the visual 3D part.
 
+## Colliders
+
+The labyrinth is composed of a number of colliders. The colliders are used to detect collisions between the player and the labyrinth. There is a TypeScript file called `labyrinthColliderArray.ts` that defines the array of colliders. This array is mapped inside the `Colliders.tsx` sub-component.
+
+```jsx
+export default function Colliders(): JSX.Element {
+  const labyrinthColliders = labyrinthColliderArray.map(labyrinthCollider => (
+    <Collider
+      key={labyrinthCollider.id}
+      size={labyrinthCollider.size}
+      position={labyrinthCollider.position}
+      scale={labyrinthCollider.scale}
+      rotation={labyrinthCollider.rotation}
+      color={labyrinthCollider.color}
+    ></Collider>
+  ))
+
+  return <>{labyrinthColliders}</>
+}
+```
+
 <Preview>
   <Story name='Labyrinth'>
     <Canvas

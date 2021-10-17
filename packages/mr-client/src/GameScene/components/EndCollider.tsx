@@ -9,6 +9,7 @@ export default function EndCollider(): JSX.Element {
       scale={[1, 1, 1]}
       rotation={[0, 0, 0]}
       color={'#0f0'}
+      // TODO Create the finish screen functionality
       onCollide={() => console.log('EndCollider collision')}
     ></Collider>
   )
