@@ -5,9 +5,9 @@ import { Suspense } from 'react'
 
 import Floor from '../Floor/Floor'
 import Labyrinth from '../Labyrinth/Labyrinth'
+import LabyrinthColliders from '../Labyrinth/components/Colliders'
 import Lighting from '../Lighting/Lighting'
 import Player from '../Player/Player'
-import Colliders from './components/Colliders'
 
 export default function GameScene(): JSX.Element {
   return (
@@ -22,10 +22,10 @@ export default function GameScene(): JSX.Element {
             broadphase={'SAP'}
             iterations={10}
           >
-            <Floor />
-            <Labyrinth />
             <Player />
-            <Colliders />
+            <Labyrinth />
+            <LabyrinthColliders />
+            <Floor />
           </Physics>
         </Suspense>
         <Lighting />

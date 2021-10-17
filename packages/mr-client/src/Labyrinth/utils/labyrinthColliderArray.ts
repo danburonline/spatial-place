@@ -2,13 +2,13 @@ import { MathUtils } from 'three'
 
 import type { ColliderProps } from '../../Collider/Collider'
 
-type GameSceneColliders = [
+type LabyrinthColliderArray = [
   ColliderProps & {
     id: number
   }
 ]
 
-const gameSceneColliders: GameSceneColliders = [
+const labyrinthColliderArray: LabyrinthColliderArray = [
   {
     id: 1,
     size: [0.1, 3, 12.076],
@@ -19,4 +19,4 @@ const gameSceneColliders: GameSceneColliders = [
   }
 ]
 
-export default gameSceneColliders
+export default labyrinthColliderArray
