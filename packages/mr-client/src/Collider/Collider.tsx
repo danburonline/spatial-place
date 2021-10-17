@@ -9,21 +9,22 @@ export type ColliderProps = {
   color?: string
 }
 
-export default function Collider(props: ColliderProps): JSX.Element {
+export default function Collider({
+  size,
+  position,
+  scale,
+  rotation,
+  color
+}: ColliderProps): JSX.Element {
   const [ref] = useBox(() => ({
-    position: props.position,
-    rotation: props.rotation,
-    args: props.size
+    position: position,
+    rotation: rotation,
+    args: size
   }))
 
   return (
-    <Box
-      ref={ref}
-      args={props.size}
-      position={props.position}
-      scale={props.scale}
-    >
-      <meshBasicMaterial color={props.color} wireframe={true} visible={false} />
+    <Box ref={ref} args={size} position={position} scale={scale}>
+      <meshBasicMaterial color={color} wireframe={true} visible={false} />
     </Box>
   )
 }
