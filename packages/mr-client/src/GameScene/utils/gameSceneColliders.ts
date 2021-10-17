@@ -8,7 +8,7 @@ type GameSceneColliders = [
   }
 ]
 
-export const gameSceneColliders: GameSceneColliders = [
+const gameSceneColliders: GameSceneColliders = [
   {
     id: 1,
     size: [0.1, 3, 12.076],
@@ -18,3 +18,5 @@ export const gameSceneColliders: GameSceneColliders = [
     color: '#fff'
   }
 ]
+
+export default gameSceneColliders
