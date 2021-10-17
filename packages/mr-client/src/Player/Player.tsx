@@ -17,11 +17,11 @@ export default function Player({
     position: [0, 0.5, 0]
   }))
 
-  const moveFieldByKey = key => keys[key]
+  const moveFieldByKey = (key: string | number) => keys[key]
+  const SPEED = 5
   const direction = new Vector3()
   const frontVector = new Vector3()
   const sideVector = new Vector3()
-  const SPEED = 5
   const keys = {
     KeyW: 'forward',
     KeyS: 'backward',
@@ -38,13 +38,19 @@ export default function Player({
     })
 
     useEffect(() => {
-      const handleKeyDown = event => {
-        setMovement(m => ({ ...m, [moveFieldByKey(event.code)]: true }))
+      const handleKeyDown = (event: { code: string | number }) => {
+        setMovement(movements => ({
+          ...movements,
+          [moveFieldByKey(event.code)]: true
+        }))
         api.applyForce([0.5, 0.5, 0.5], [0, 0, 0])
       }
 
-      const handleKeyUp = e => {
-        setMovement(m => ({ ...m, [moveFieldByKey(e.code)]: false }))
+      const handleKeyUp = (event: { code: string | number }) => {
+        setMovement(movements => ({
+          ...movements,
+          [moveFieldByKey(event.code)]: false
+        }))
       }
 
       document.addEventListener('keydown', handleKeyDown)
@@ -74,7 +80,6 @@ export default function Player({
       .normalize()
       .multiplyScalar(SPEED)
     api.velocity.set(direction.x, velocity.current[1], direction.z)
-
     ref.current.getWorldPosition(camera.position).y += 10
   })
 
