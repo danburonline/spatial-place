@@ -8,6 +8,7 @@ import Labyrinth from '../Labyrinth/Labyrinth'
 import LabyrinthColliders from '../Labyrinth/components/Colliders'
 import Lighting from '../Lighting/Lighting'
 import Player from '../Player/Player'
+import EndCollider from './components/EndCollider'
 
 export default function GameScene(): JSX.Element {
   return (
@@ -15,16 +16,15 @@ export default function GameScene(): JSX.Element {
       <Canvas frameloop='demand' camera={{ position: [0, 20, 0] }}>
         <Suspense fallback={null}>
           <Physics
-            allowSleep={true}
             gravity={[0, -20, 0]}
-            tolerance={0.0001}
-            size={115}
+            size={50}
             broadphase={'SAP'}
             iterations={10}
           >
             <Player />
             <Labyrinth />
             <LabyrinthColliders />
+            <EndCollider />
             <Floor />
           </Physics>
         </Suspense>
