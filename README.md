@@ -22,10 +22,10 @@ This repository contains the following directories:
 - **[thesis](/thesis):** All LaTeX files for the research thesis PDF.
 - **[github](/.github)**: GitHub templates, configurations and workflows.
 - **[packages](/packages)**: A directory with all services for the Mind Racing system.
-  - **[mr-client](/packages/mr-client):** A web full-stack service for Mind Racing.
-  - **[mr-server](/packages/mr-server):** A backend backend service for Mind Racing.
-  - **[mr-socket](/packages/mr-socket):** A socket backend service for Mind Racing.
-  - **[mr-database](/packages/mr-database):** A database backend service for Mind Racing.
+  - **[mr-core](/packages/mr-core):** The core service for connecting to the brain.
+  - **[mr-client](/packages/mr-client):** A web full-stack service for the frontend and game.
+  - **[mr-socket](/packages/mr-socket):** A socket backend service for providing websocket streams.
+  - **[mr-translator](/packages/mr-translator):** A backend backend service for translating brain signals.
 
 ## Commands
 
@@ -50,10 +50,10 @@ There are several documentation artefacts for the project. Some of them are depl
 
 ### Services Overview
 
-- [x] MR-Client documentation: <https://mind.racing/docs>
-- [ ] MR-Server documentation: <https://server.mind.racing/docs>
+- [ ] MR-Translator documentation: <https://translator.mind.racing/docs>
 - [ ] MR-Socket documentation: <https://socket.mind.racing/docs>
-- [ ] MR-Database documentation: <https://database.mind.racing/docs>
+- [ ] MR-Core documentation: <https://core.mind.racing/docs>
+- [x] MR-Client documentation: <https://mind.racing/docs>
 
 ### Wiki Overview
 
