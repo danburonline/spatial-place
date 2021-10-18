@@ -5,6 +5,7 @@ import { useState } from 'react'
 
 import CountdownTimer from '../src/Timers/CountdownTimer'
 import CountupTimer from '../src/Timers/CountupTimer'
+import useStore from '../src/store/useStore'
 
 const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
   ssr: false
@@ -12,11 +13,15 @@ const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
 
 export default function Home(): JSX.Element {
   const [gameIsRunning, setGameIsRunning] = useState(false)
+  const { gameState, setGameStartState } = useStore()
 
   const countdownTimerOnCompleteHandler = () => {
     console.log('countdownTimerOnCompleteHandler run')
+    setGameStartState()
     setGameIsRunning(true)
   }
+
+  console.log('game state', gameState)
 
   return (
     <>
