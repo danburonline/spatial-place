@@ -23,15 +23,7 @@ export default function CountdownTimer({
   return (
     <>
       {showCountDown ? (
-        <div
-          style={{
-            width: '100vw',
-            height: '100vh',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}
-        >
+        <div className='absolute flex items-center justify-center w-screen h-screen text-5xl bg-main'>
           <Countdown
             date={Date.now() + time}
             renderer={renderer}
