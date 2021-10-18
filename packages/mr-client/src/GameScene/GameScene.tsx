@@ -1,5 +1,5 @@
 import { Physics } from '@react-three/cannon'
-import { Loader } from '@react-three/drei'
+import { Loader, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
@@ -31,6 +31,7 @@ export default function GameScene(): JSX.Element {
         <Lighting />
       </Canvas>
       <Loader />
+      <Stats />
     </>
   )
 }
