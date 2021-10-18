@@ -8,6 +8,10 @@ const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
   ssr: false
 })
 
+const countdownTimerOnCompleteHandler = () => {
+  console.log('countdownTimerOnCompleteHandler run')
+}
+
 export default function Home(): JSX.Element {
   return (
     <>
@@ -19,7 +23,10 @@ export default function Home(): JSX.Element {
         />
       </Head>
       <main className='h-screen text-white bg-black'>
-        <CountdownTimer />
+        <CountdownTimer
+          time={5000}
+          onComplete={countdownTimerOnCompleteHandler}
+        />
         <GameScene />
       </main>
     </>

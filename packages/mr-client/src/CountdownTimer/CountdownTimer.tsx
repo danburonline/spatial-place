@@ -1,8 +1,15 @@
 import { useState } from 'react'
 import Countdown from 'react-countdown'
 
-// TODO Pass the countdown time and functions as props
-export default function CountdownTimer(): JSX.Element {
+type CountdownTimerProps = {
+  time?: number
+  onComplete?: () => void
+}
+
+export default function CountdownTimer({
+  time = 3000,
+  onComplete = () => console.log('Countdown timer completed')
+}: CountdownTimerProps): JSX.Element {
   const [showCountDown, setShowCountDown] = useState(true)
 
   const renderer = ({ seconds, completed }) => {
@@ -26,11 +33,11 @@ export default function CountdownTimer(): JSX.Element {
           }}
         >
           <Countdown
-            date={Date.now() + 5000}
+            date={Date.now() + time}
             renderer={renderer}
             onStart={() => console.log('Start the countdown timer')}
             onComplete={() => {
-              console.log('Start the game countdown')
+              onComplete()
               setShowCountDown(false)
             }}
           />
