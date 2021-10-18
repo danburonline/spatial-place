@@ -1,6 +1,9 @@
 import Collider from '../../Collider/Collider'
+import useStore from '../../store/useStore'
 
 export default function EndCollider(): JSX.Element {
+  const { setGameEndState } = useStore()
+
   return (
     <Collider
       key={Math.random()}
@@ -10,7 +13,10 @@ export default function EndCollider(): JSX.Element {
       rotation={[0, 0, 0]}
       color={'#0f0'}
       // TODO Create the finish screen functionality
-      onCollide={() => console.log('EndCollider collision')}
+      onCollide={() => {
+        console.log('EndCollider collision')
+        setGameEndState()
+      }}
     ></Collider>
   )
 }
