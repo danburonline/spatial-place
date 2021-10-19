@@ -2,7 +2,7 @@ import Collider from '../../Collider/Collider'
 import useStore from '../../store/useStore'
 
 export default function EndCollider(): JSX.Element {
-  const { setGameEndState } = useStore()
+  const { setGameFinishedState } = useStore()
 
   return (
     <Collider
@@ -12,10 +12,8 @@ export default function EndCollider(): JSX.Element {
       scale={[1, 1, 1]}
       rotation={[0, 0, 0]}
       color={'#0f0'}
-      // TODO Create the finish screen functionality
       onCollide={() => {
-        console.log('EndCollider collision')
-        setGameEndState()
+        setGameFinishedState()
       }}
     ></Collider>
   )

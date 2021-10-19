@@ -4,20 +4,20 @@ import create from 'zustand'
 export enum GameStateEnum {
   PAUSED = 'PAUSED',
   RUNNING = 'RUNNING',
-  STOPPED = 'STOPPED'
+  FINISHED = 'FINISHED'
 }
 
 interface GameState {
   gameState: GameStateEnum
   setGameStartState: () => void
-  setGameEndState: () => void
+  setGameFinishedState: () => void
   setGamePauseState: () => void
 }
 
 const useStore = create<GameState>(set => ({
   gameState: GameStateEnum.PAUSED,
   setGameStartState: () => set({ gameState: GameStateEnum.RUNNING }),
-  setGameEndState: () => set({ gameState: GameStateEnum.STOPPED }),
+  setGameFinishedState: () => set({ gameState: GameStateEnum.FINISHED }),
   setGamePauseState: () => set({ gameState: GameStateEnum.PAUSED })
 }))
 

@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 import CountdownTimer from '../src/Timers/CountdownTimer'
 import CountupTimer from '../src/Timers/CountupTimer'
-import useStore from '../src/store/useStore'
+import useStore, { GameStateEnum } from '../src/store/useStore'
 
 const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
   ssr: false
@@ -20,8 +20,6 @@ export default function Home(): JSX.Element {
     setGameStartState()
     setGameIsRunning(true)
   }
-
-  console.log('game state', gameState)
 
   return (
     <>
@@ -41,6 +39,8 @@ export default function Home(): JSX.Element {
             onComplete={countdownTimerOnCompleteHandler}
           />
         )}
+        {/* TODO Create a game end screen component */}
+        {gameState === GameStateEnum.FINISHED ? <h1>FINISHED GAME</h1> : null}
         <GameScene />
       </main>
     </>
