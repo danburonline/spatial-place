@@ -1,16 +1,17 @@
 import { useEffect } from 'react'
 import { useTimer } from 'use-timer'
 
-import useState from '../store/useStore'
+import useStore from '../store/useStore'
 
 export default function CountupTimer(): JSX.Element {
-  const { gameState } = useState()
+  const { gameState, setFinalNeededTime } = useStore()
   const { time, start, pause } = useTimer()
 
   useEffect(() => {
     pause()
-    // TODO Set final time into global store
-  }, [gameState, pause])
+    setFinalNeededTime(time)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [gameState])
 
   useEffect(() => {
     start()

@@ -8,7 +8,7 @@ type CountdownTimerProps = {
 
 export default function CountdownTimer({
   time = 3000,
-  onComplete = () => console.log('Countdown timer completed')
+  onComplete
 }: CountdownTimerProps): JSX.Element {
   const [showCountDown, setShowCountDown] = useState(true)
 
@@ -27,7 +27,6 @@ export default function CountdownTimer({
           <Countdown
             date={Date.now() + time}
             renderer={renderer}
-            onStart={() => console.log('Start the countdown timer')}
             onComplete={() => {
               onComplete()
               setShowCountDown(false)

@@ -17,7 +17,6 @@ export default function Home(): JSX.Element {
   const { gameState, setGameStartState } = useStore()
 
   const countdownTimerOnCompleteHandler = () => {
-    console.log('countdownTimerOnCompleteHandler run')
     setGameStartState()
     setGameIsRunning(true)
   }
