@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useState } from 'react'
 
+import RestartButton from '../src/Buttons/RestartButton'
 import EndScreen from '../src/EndScreen/EndScreen'
 import CountdownTimer from '../src/Timers/CountdownTimer'
 import CountupTimer from '../src/Timers/CountupTimer'
@@ -40,6 +41,11 @@ export default function Home(): JSX.Element {
           />
         )}
         {gameState === GameStateEnum.FINISHED ? <EndScreen /> : null}
+        {gameState === GameStateEnum.RUNNING ? (
+          <div className='absolute z-10 top-4 left-4'>
+            <RestartButton />
+          </div>
+        ) : null}
         <GameScene />
       </main>
     </>
