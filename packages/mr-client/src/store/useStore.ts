@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-import { STATEMENT_OR_BLOCK_KEYS } from '@babel/types'
 import create from 'zustand'
 
 export enum GameStateEnum {
@@ -18,7 +17,7 @@ interface GameState {
 }
 
 const useStore = create<GameState>(set => ({
-  gameState: GameStateEnum.PAUSED,
+  gameState: GameStateEnum.RUNNING,
   neededTime: 0,
   setGameStartState: () => set({ gameState: GameStateEnum.RUNNING }),
   setGameFinishedState: () => set({ gameState: GameStateEnum.FINISHED }),

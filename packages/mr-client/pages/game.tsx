@@ -30,7 +30,7 @@ export default function Home(): JSX.Element {
           content='A proof of concept frontend for the Mind Racing BCI application.'
         />
       </Head>
-      <main className='h-screen text-white bg-black'>
+      <main className='h-screen text-white bg-main'>
         {gameIsRunning ? (
           <CountupTimer />
         ) : (
