@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic'
 import Head from 'next/head'
 import { useState } from 'react'
 
+import EndScreen from '../src/EndScreen/EndScreen'
 import CountdownTimer from '../src/Timers/CountdownTimer'
 import CountupTimer from '../src/Timers/CountupTimer'
 import useStore, { GameStateEnum } from '../src/store/useStore'
@@ -39,8 +40,7 @@ export default function Home(): JSX.Element {
             onComplete={countdownTimerOnCompleteHandler}
           />
         )}
-        {/* TODO Create a game end screen component */}
-        {gameState === GameStateEnum.FINISHED ? <h1>FINISHED GAME</h1> : null}
+        {gameState === GameStateEnum.FINISHED ? <EndScreen /> : null}
         <GameScene />
       </main>
     </>
