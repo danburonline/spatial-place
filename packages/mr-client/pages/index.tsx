@@ -65,7 +65,7 @@ export default function Home(): JSX.Element {
                 </a>
               </Link>
             </h2>
-            <div className='mt-12'>
+            <div className='mt-8'>
               <Link href='/api/auth/login'>
                 <a className='px-4 py-2 mx-2 text-black bg-white rounded-full'>
                   Login

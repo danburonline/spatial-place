@@ -1,6 +1,6 @@
 import Image from 'next/image'
 
-import arrowIcon from '../../public/svg/direction-control-button.svg'
+import arrowIcon from './../../public/svg/direction-control-button.svg'
 
 export type RestartButtonProps = {
   moveForwards?: () => void
