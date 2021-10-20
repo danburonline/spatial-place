@@ -1,5 +1,4 @@
 import { Physics } from '@react-three/cannon'
-import { Loader } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Suspense } from 'react'
 
@@ -12,25 +11,22 @@ import EndCollider from './components/EndCollider'
 
 export default function GameScene(): JSX.Element {
   return (
-    <>
-      <Canvas frameloop='demand' camera={{ position: [0, 20, 0] }}>
-        <Suspense fallback={null}>
-          <Physics
-            gravity={[0, -20, 0]}
-            size={30}
-            broadphase={'SAP'}
-            iterations={10}
-          >
-            <Player />
-            <Labyrinth />
-            <LabyrinthColliders />
-            <EndCollider />
-            <Floor />
-          </Physics>
-        </Suspense>
-        <Lighting />
-      </Canvas>
-      <Loader />
-    </>
+    <Canvas frameloop='demand' camera={{ position: [0, 20, 0] }}>
+      <Suspense fallback={null}>
+        <Physics
+          gravity={[0, -20, 0]}
+          size={30}
+          broadphase={'SAP'}
+          iterations={10}
+        >
+          <Player />
+          <Labyrinth />
+          <LabyrinthColliders />
+          <EndCollider />
+          <Floor />
+        </Physics>
+      </Suspense>
+      <Lighting />
+    </Canvas>
   )
 }

@@ -38,6 +38,7 @@ export default function Player({
     })
 
     useEffect(() => {
+      // TODO Handle button press down
       const handleKeyDown = (event: { code: string | number }) => {
         setMovement(movements => ({
           ...movements,
@@ -46,6 +47,7 @@ export default function Player({
         api.applyForce([0.5, 0.5, 0.5], [0, 0, 0])
       }
 
+      // TODO Handle button press up
       const handleKeyUp = (event: { code: string | number }) => {
         setMovement(movements => ({
           ...movements,
