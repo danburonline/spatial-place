@@ -1,12 +1,12 @@
 import { PublicApi } from '@react-three/cannon'
 import { useEffect, useState } from 'react'
 
-const moveFieldByKey = (key: string | number) => keys[key]
+const moveFieldByKey = (key: string) => keys[key]
 const keys = {
-  KeyW: 'forward',
-  KeyS: 'backward',
-  KeyA: 'left',
-  KeyD: 'right'
+  forward: 'forward',
+  backward: 'backward',
+  left: 'left',
+  right: 'right'
 }
 
 export type Movement = {
@@ -25,28 +25,26 @@ const usePlayerControls = (api: PublicApi): Movement => {
   })
 
   useEffect(() => {
-    // TODO Handle button press down
-    const handleKeyDown = (event: { code: string | number }) => {
+    const handleKeyDown = (event: MouseEvent & { target: Element }) => {
       setMovement(movements => ({
         ...movements,
-        [moveFieldByKey(event.code)]: true
+        [moveFieldByKey(event.target.getAttribute('data-element'))]: true
       }))
       api.applyForce([0.5, 0.5, 0.5], [0, 0, 0])
     }
 
-    // TODO Handle button press up
-    const handleKeyUp = (event: { code: string | number }) => {
+    const handleKeyUp = (event: MouseEvent & { target: Element }) => {
       setMovement(movements => ({
         ...movements,
-        [moveFieldByKey(event.code)]: false
+        [moveFieldByKey(event.target.getAttribute('data-element'))]: false
       }))
     }
 
-    document.addEventListener('keydown', handleKeyDown)
-    document.addEventListener('keyup', handleKeyUp)
+    document.addEventListener('mousedown', handleKeyDown)
+    document.addEventListener('mouseup', handleKeyUp)
     return () => {
-      document.removeEventListener('keydown', handleKeyDown)
-      document.removeEventListener('keyup', handleKeyUp)
+      document.removeEventListener('mousedown', handleKeyDown)
+      document.removeEventListener('mouseup', handleKeyUp)
     }
   }, [api])
 

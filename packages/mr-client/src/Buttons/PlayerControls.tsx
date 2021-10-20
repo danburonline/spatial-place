@@ -10,10 +10,10 @@ export type RestartButtonProps = {
 }
 
 export default function RestartButton({
-  moveForwards = () => console.log('move forwards'),
-  moveRight = () => console.log('move right'),
-  moveLeft = () => console.log('move left'),
-  moveDownwards = () => console.log('move downwards')
+  moveForwards,
+  moveRight,
+  moveLeft,
+  moveDownwards
 }: RestartButtonProps): JSX.Element {
   return (
     <div className='absolute flex items-center justify-center w-screen h-screen'>
@@ -23,6 +23,7 @@ export default function RestartButton({
             className='transition-opacity opacity-50 cursor-pointer hover:opacity-100'
             src={arrowIcon}
             alt={'Move forwards button'}
+            data-element='forward'
           />
         </div>
 
@@ -34,6 +35,7 @@ export default function RestartButton({
             className='transition-opacity opacity-50 cursor-pointer hover:opacity-100'
             src={arrowIcon}
             alt={'Move right button'}
+            data-element='right'
           />
         </div>
 
@@ -45,6 +47,7 @@ export default function RestartButton({
             className='transition-opacity opacity-50 cursor-pointer hover:opacity-100'
             src={arrowIcon}
             alt={'Move downwards button'}
+            data-element='backward'
           />
         </div>
 
@@ -56,6 +59,7 @@ export default function RestartButton({
             className='transition-opacity opacity-50 cursor-pointer hover:opacity-100'
             src={arrowIcon}
             alt={'Move left button'}
+            data-element='left'
           />
         </div>
       </div>
