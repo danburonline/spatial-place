@@ -2,12 +2,13 @@
 import create from 'zustand'
 
 export enum GameStateEnum {
+  PREPARE = 'PREPARE',
   PAUSED = 'PAUSED',
   RUNNING = 'RUNNING',
   FINISHED = 'FINISHED'
 }
 
-interface GameState {
+export type GameState = {
   gameState: GameStateEnum
   neededTime: number
   setGameStartState: () => void
@@ -17,7 +18,7 @@ interface GameState {
 }
 
 const useStore = create<GameState>(set => ({
-  gameState: GameStateEnum.RUNNING,
+  gameState: GameStateEnum.PREPARE,
   neededTime: 0,
   setGameStartState: () => set({ gameState: GameStateEnum.RUNNING }),
   setGameFinishedState: () => set({ gameState: GameStateEnum.FINISHED }),

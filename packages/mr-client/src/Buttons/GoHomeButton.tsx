@@ -1,6 +1,6 @@
 import { useRouter } from 'next/router'
 
-export default function RestartButton(): JSX.Element {
+export default function GoHomeButton(): JSX.Element {
   const router = useRouter()
 
   return (

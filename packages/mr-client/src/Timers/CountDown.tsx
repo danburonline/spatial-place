@@ -1,39 +1,34 @@
 import { useState } from 'react'
 import Countdown from 'react-countdown'
 
-type CountdownTimerProps = {
-  time?: number
-  onComplete?: () => void
-}
+import useStore from '../store/useStore'
 
-export default function CountdownTimer({
-  time = 3000,
-  onComplete
-}: CountdownTimerProps): JSX.Element {
+export default function CountDown(): JSX.Element {
+  const TIME = 5000
   const [showCountDown, setShowCountDown] = useState(true)
+  const { setGameStartState } = useStore()
 
   const renderer = ({ seconds, completed }) => {
     if (completed) {
       return null
-    } else {
-      return <span>{seconds}</span>
     }
+    return <span>{seconds}</span>
   }
 
   return (
     <>
-      {showCountDown ? (
+      {showCountDown && (
         <div className='absolute z-30 flex items-center justify-center w-screen h-screen text-5xl bg-main'>
           <Countdown
-            date={Date.now() + time}
+            date={Date.now() + TIME}
             renderer={renderer}
             onComplete={() => {
-              onComplete()
+              setGameStartState()
               setShowCountDown(false)
             }}
           />
         </div>
-      ) : null}
+      )}
     </>
   )
 }

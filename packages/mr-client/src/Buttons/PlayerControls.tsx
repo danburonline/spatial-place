@@ -2,19 +2,19 @@ import Image from 'next/image'
 
 import arrowIcon from './../../public/svg/direction-control-button.svg'
 
-export type RestartButtonProps = {
+export type PlayerControlsProps = {
   moveForwards?: () => void
   moveRight?: () => void
   moveLeft?: () => void
   moveDownwards?: () => void
 }
 
-export default function RestartButton({
+export default function PlayerControls({
   moveForwards,
   moveRight,
   moveLeft,
   moveDownwards
-}: RestartButtonProps): JSX.Element {
+}: PlayerControlsProps): JSX.Element {
   return (
     <div className='absolute flex items-center justify-center w-screen h-screen'>
       <div className='z-20 grid grid-cols-3 grid-rows-3 gap-3'>

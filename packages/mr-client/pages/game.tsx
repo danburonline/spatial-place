@@ -1,30 +1,21 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
-import { useState } from 'react'
-import useSound from 'use-sound'
 
+import Audio from '../src/Audio/Audio'
 import PlayerControls from '../src/Buttons/PlayerControls'
 import RestartButton from '../src/Buttons/RestartButton'
 import EndScreen from '../src/EndScreen/EndScreen'
-import CountdownTimer from '../src/Timers/CountdownTimer'
-import CountupTimer from '../src/Timers/CountupTimer'
+import CountDown from '../src/Timers/CountDown'
+import StopWatch from '../src/Timers/StopWatch'
 import useStore, { GameStateEnum } from '../src/store/useStore'
 
 const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
   ssr: false
 })
 
-export default function Home(): JSX.Element {
-  const [gameIsRunning, setGameIsRunning] = useState(false)
-  const { gameState, setGameStartState } = useStore()
-  const [play, { stop }] = useSound('music/game-music.mp3')
-
-  const countdownTimerOnCompleteHandler = () => {
-    setGameStartState()
-    setGameIsRunning(true)
-    play()
-  }
+export default function Game(): JSX.Element {
+  const { gameState } = useStore()
 
   return (
     <>
@@ -36,26 +27,18 @@ export default function Home(): JSX.Element {
         />
       </Head>
       <main className='h-screen text-white bg-main'>
-        {gameIsRunning ? (
-          <CountupTimer />
-        ) : (
-          <CountdownTimer
-            time={5000}
-            onComplete={countdownTimerOnCompleteHandler}
-          />
-        )}
-        {gameState === GameStateEnum.FINISHED && (
+        {gameState === GameStateEnum.PREPARE && <CountDown />}
+
+        {gameState === GameStateEnum.RUNNING && (
           <>
-            {stop()}
-            <EndScreen />
+            <StopWatch />
+            <RestartButton />
           </>
         )}
-        {gameState === GameStateEnum.RUNNING && (
-          <div className='absolute z-10 top-4 left-4'>
-            <RestartButton />
-          </div>
-        )}
+
+        {gameState === GameStateEnum.FINISHED && <EndScreen />}
         <PlayerControls />
+        <Audio />
         <GameScene />
       </main>
     </>

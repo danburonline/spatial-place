@@ -2,7 +2,7 @@ import { UserProvider } from '@auth0/nextjs-auth0'
 import { AppProps } from 'next/app'
 import 'tailwindcss/tailwind.css'
 
-function MindRacingClient({ Component, pageProps }: AppProps): JSX.Element {
+function MindRacingApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <UserProvider>
       <Component {...pageProps} />
@@ -10,4 +10,4 @@ function MindRacingClient({ Component, pageProps }: AppProps): JSX.Element {
   )
 }
 
-export default MindRacingClient
+export default MindRacingApp

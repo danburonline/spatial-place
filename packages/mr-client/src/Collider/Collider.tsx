@@ -2,10 +2,10 @@ import { Triplet, useBox } from '@react-three/cannon'
 import { Box } from '@react-three/drei'
 
 export type ColliderProps = {
-  size?: [height: number, width: number, depth: number]
   position: [x: number, y: number, z: number]
   scale: [x: number, y: number, z: number]
   rotation: Triplet
+  size?: [height: number, width: number, depth: number]
   color?: string
   onCollide?: () => void
 }
