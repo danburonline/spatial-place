@@ -8,7 +8,7 @@ export type PlayerProps = {
 }
 
 export default function Player({
-  color = 'lightgreen'
+  color = '#34e5d3'
 }: PlayerProps): JSX.Element {
   const [ref, api] = useSphere(() => ({
     args: 0.5,

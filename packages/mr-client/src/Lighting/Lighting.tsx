@@ -17,7 +17,7 @@ export default function Lighting(): JSX.Element {
       {lights.map(light => (
         <pointLight
           castShadow
-          intensity={0.5}
+          intensity={0.75}
           key={Math.random()}
           position={[light.x, light.y, light.z]}
         />
