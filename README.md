@@ -12,7 +12,7 @@ The main goal of my bachelor thesis is to create architectural foundations for b
 
 As the field of neurotechnology is becoming increasingly industrialised, I am personally concerned that research should nevertheless be open source and available free of charge.
 
-In addition to the main goal, my work has the goal to demonstrate the possibilities of brain-computer interfaces on the web, especially in the aspect of web accessibility.
+In addition to the main goal, my work has the goal to demonstrate the possibilities of brain-machine interfaces on the web, especially in the aspect of web accessibility.
 
 ## Directories
 

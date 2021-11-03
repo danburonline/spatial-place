@@ -23,7 +23,7 @@ export default function Game(): JSX.Element {
         <title>Game – Mind Racing</title>
         <meta
           name='description'
-          content='A proof of concept frontend for the Mind Racing BCI application.'
+          content='A proof of concept frontend for the Mind Racing brain-machine application.'
         />
       </Head>
       <main className='h-screen text-white bg-main'>

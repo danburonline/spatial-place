@@ -19,7 +19,7 @@ export default function Home(): JSX.Element {
         <title>Mind Racing</title>
         <meta
           name='description'
-          content='A proof of concept frontend for the Mind Racing BCI application.'
+          content='A proof of concept frontend for the Mind Racing brain-machine application.'
         />
       </Head>
       <main className='flex flex-col items-center justify-center h-screen text-center'>
@@ -33,7 +33,7 @@ export default function Home(): JSX.Element {
                   IDUN Guardian
                 </a>
               </Link>{' '}
-              brain-computer interface. Click the connect button below to go to
+              brain-machine interface. Click the connect button below to go to
               the setup process. Otherwise, you&apos;re good to play the game.
             </h2>
             <div className='mt-8'>
