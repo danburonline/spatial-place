@@ -18,7 +18,7 @@ export type GameState = {
 }
 
 const useStore = create<GameState>(set => ({
-  gameState: GameStateEnum.PREPARE,
+  gameState: GameStateEnum.PREPARE, // Default game state is `PREPARE`
   neededTime: 0,
   setGameStartState: () => set({ gameState: GameStateEnum.RUNNING }),
   setGameFinishedState: () => set({ gameState: GameStateEnum.FINISHED }),

@@ -7,10 +7,12 @@ import usePlayerControls from './hooks/usePlayerControls'
 
 export type PlayerProps = {
   color?: string
+  speed?: number
 }
 
 export default function Player({
-  color = '#34e5d3'
+  color = '#34e5d3',
+  speed = 5
 }: PlayerProps): JSX.Element {
   const [ref, api] = useSphere(() => ({
     args: 0.5,
@@ -19,7 +21,6 @@ export default function Player({
     position: [0, 0.5, 0]
   }))
 
-  const SPEED = 5
   const direction = new Vector3()
   const frontVector = new Vector3()
   const sideVector = new Vector3()
@@ -38,7 +39,7 @@ export default function Player({
     direction
       .subVectors(frontVector, sideVector)
       .normalize()
-      .multiplyScalar(SPEED)
+      .multiplyScalar(speed)
     api.velocity.set(direction.x, velocity.current[1], direction.z)
     ref.current.getWorldPosition(camera.position).y += 10
   })

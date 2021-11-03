@@ -12,7 +12,7 @@ export default function EndScreen(): JSX.Element {
       <h2>
         It took you <span className='font-bold'>{neededTime} seconds</span>
       </h2>
-      <div className='mt-12'>
+      <div className='mt-8'>
         <RestartButton />
         <GoHomeButton />
       </div>

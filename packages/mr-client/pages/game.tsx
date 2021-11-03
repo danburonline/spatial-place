@@ -1,6 +1,5 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
 import Audio from '../src/Audio/Audio'
 import PlayerControls from '../src/Buttons/PlayerControls'
@@ -18,30 +17,21 @@ export default function Game(): JSX.Element {
   const { gameState } = useStore()
 
   return (
-    <>
-      <Head>
-        <title>Game – Mind Racing</title>
-        <meta
-          name='description'
-          content='A proof of concept frontend for the Mind Racing brain-machine application.'
-        />
-      </Head>
-      <main className='h-screen text-white bg-main'>
-        {gameState === GameStateEnum.PREPARE && <CountDown />}
+    <main className='h-screen text-white bg-main'>
+      {gameState === GameStateEnum.PREPARE && <CountDown />}
 
-        {gameState === GameStateEnum.RUNNING && (
-          <>
-            <StopWatch />
-            <RestartButton />
-          </>
-        )}
+      {gameState === GameStateEnum.RUNNING && (
+        <>
+          <StopWatch />
+          <RestartButton />
+        </>
+      )}
 
-        {gameState === GameStateEnum.FINISHED && <EndScreen />}
-        <PlayerControls />
-        <Audio />
-        <GameScene />
-      </main>
-    </>
+      {gameState === GameStateEnum.FINISHED && <EndScreen />}
+      <PlayerControls />
+      <Audio />
+      <GameScene />
+    </main>
   )
 }
 
