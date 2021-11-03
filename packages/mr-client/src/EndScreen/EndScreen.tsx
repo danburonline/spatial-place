@@ -6,10 +6,12 @@ export default function EndScreen(): JSX.Element {
   const { neededTime } = useState()
 
   return (
-    <div className='absolute z-30 flex flex-col items-center justify-center w-screen h-screen text-center bg-main'>
-      <p className='text-5xl font-bold'>Congrats, game finished</p>
+    <div className='absolute z-30 flex flex-col items-center justify-center w-screen h-screen text-center text-black bg-main'>
+      <h1 className='text-3xl font-bold '>Congrats, game finished</h1>
       <br />
-      <p className='text-xl'>It took you {neededTime} seconds</p>
+      <h2>
+        It took you <span className='font-bold'>{neededTime} seconds</span>
+      </h2>
       <div className='mt-12'>
         <RestartButton />
         <GoHomeButton />
