@@ -2,8 +2,8 @@ import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import dynamic from 'next/dynamic'
 
 import Audio from '../src/Audio/Audio'
+import CancelButton from '../src/Buttons/CancelButton'
 import PlayerControls from '../src/Buttons/PlayerControls'
-import RestartButton from '../src/Buttons/RestartButton'
 import EndScreen from '../src/EndScreen/EndScreen'
 import CountDown from '../src/Timers/CountDown'
 import StopWatch from '../src/Timers/StopWatch'
@@ -23,7 +23,7 @@ export default function Game(): JSX.Element {
       {gameState === GameStateEnum.RUNNING && (
         <>
           <StopWatch />
-          <RestartButton />
+          <CancelButton />
         </>
       )}
 
