@@ -1,6 +1,6 @@
 # Bachelor Thesis
 
-This directory contains all the LaTeX files to create a PDF for my bachelor thesis. I use Overleaf to edit the `.tex` files and collaborate with my supervisors and my proofreaders.
+This directory contains all the LaTeX files to create a PDF for my bachelor thesis. I use Overleaf to edit the `.tex` files and collaborate with my supervisors and proofreaders.
 
 ## Technologies
 
