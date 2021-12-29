@@ -14,7 +14,7 @@
 \usepackage{subcaption}
 
 % For professional looking tables
-\usepackage{booktabs} 
+\usepackage{booktabs}
 \usepackage{multirow}
 
 % Module for SI units
@@ -27,7 +27,7 @@
 % Fix default LaTeX header height
 \usepackage{titlesec}
 \titleformat{\chapter}[display]
-{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}   
+{\normalfont\huge\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\Huge}
 \titlespacing*{\chapter}{0pt}{-20pt}{40pt}
 
 % Make the digital version of the PDF clickable
@@ -36,12 +36,12 @@
 % Add `custombib` in the document class option to use this section
 % Overrides the Bibtex configuration of the original template
 \ifuseCustomBib
-\RequirePackage[
-	backend=biber,
-	style=apa,
-	sorting=nty,
-	natbib=true,
-	url=true,
-doi=true]{biblatex}
-\bibliography{References/references}
+	\RequirePackage[
+		backend=biber,
+		style=apa,
+		sorting=nty,
+		natbib=true,
+		url=true,
+		doi=true]{biblatex}
+	\bibliography{References/references}
 \fi
