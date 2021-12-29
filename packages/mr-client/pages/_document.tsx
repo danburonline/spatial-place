@@ -17,7 +17,7 @@ class CustomDocument extends Document {
 
   render(): JSX.Element {
     return (
-      <Html lang='en'>
+      <Html lang='en' style={{ backgroundColor: '#2EC4B6' }}>
         <Head>
           <link
             rel='apple-touch-icon'

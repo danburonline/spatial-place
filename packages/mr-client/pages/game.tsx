@@ -1,25 +1,37 @@
 import { withPageAuthRequired } from '@auth0/nextjs-auth0'
 import dynamic from 'next/dynamic'
-import Head from 'next/head'
 
-const GameScene = dynamic(() => import('../components/scenes/GameScene'), {
+import Audio from '../src/Audio/Audio'
+import CancelButton from '../src/Buttons/CancelButton'
+import PlayerControls from '../src/Buttons/PlayerControls'
+import EndScreen from '../src/EndScreen/EndScreen'
+import CountDown from '../src/Timers/CountDown'
+import StopWatch from '../src/Timers/StopWatch'
+import useStore, { GameStateEnum } from '../src/store/useStore'
+
+const GameScene = dynamic(() => import('../src/GameScene/GameScene'), {
   ssr: false
 })
 
-export default function Home(): JSX.Element {
+export default function Game(): JSX.Element {
+  const { gameState } = useStore()
+
   return (
-    <>
-      <Head>
-        <title>Game – Mind Racing</title>
-        <meta
-          name='description'
-          content='A proof of concept frontend for the Mind Racing BCI application.'
-        />
-      </Head>
-      <main className='h-screen bg-black'>
-        <GameScene />
-      </main>
-    </>
+    <main className='h-screen text-white bg-main'>
+      {gameState === GameStateEnum.PREPARE && <CountDown />}
+
+      {gameState === GameStateEnum.RUNNING && (
+        <>
+          <StopWatch />
+          <CancelButton />
+        </>
+      )}
+
+      {gameState === GameStateEnum.FINISHED && <EndScreen />}
+      <PlayerControls />
+      <Audio />
+      <GameScene />
+    </main>
   )
 }
 

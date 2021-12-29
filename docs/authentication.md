@@ -25,15 +25,13 @@ This automatically creates three endpoints that Auth0 utilises:
 - `/api/auth/login` Login route to redirect the user to the Auth0 universal login screen.
 - `/api/auth/me` Fetch user profile information.
 
-Afterwards, I'm able to use the `<UserProvider>` from the `@auth0/nextjs-auth0` module to guard certain routes, pages and components. Since I don't want anything related to authentication on the homepage, I exclude the provider from the homepage inside the custom `_app.tsx` file:
+Afterwards, I'm able to use the `<UserProvider>` from the `@auth0/nextjs-auth0` module to guard certain routes, pages and components:
 
 ```typescript
 function MindRacingClient({ Component, pageProps }: AppProps): JSX.Element {
   const router = useRouter();
 
-  return router.pathname === "/" ? (
-    <Component {...pageProps} />
-  ) : (
+  return  (
     <UserProvider>
       <Component {...pageProps} />
     </UserProvider>
@@ -46,6 +44,16 @@ Guarding a page or even a component works by exporting the `getServerSideProps` 
 ```typescript
 // ... some component.tsx
 export const getServerSideProps = withPageAuthRequired();
+```
+
+If you want to access user information or block certain parts or components to render, you can use the `useUser` hook from the `@auth0/nextjs-auth0` module:
+
+```typescript
+const { user, isLoading, error } = useUser()
+
+if (isLoading) return <div>Loading...</div>
+if (error) return <div>{error.message}</div>
+if (user) return <div>{user.name}</div>
 ```
 
 In order to make everything work, I need to include certain environment variables in a `.env*` file. Here are the variables required to make the Auth0 SDK work:
@@ -74,4 +82,4 @@ https://staging.mind.racing
 https://mind.racing
 ```
 
-Last but not least, I'm able to customise the universal login screen via the Auth0 branding dashboard. I currently only changed the logo and the colours inside. It's possible to create a fully customisable universal login screen, but I'm not sure if it's worth the effort yet.
+Last but not least, I'm able to customise the universal login screen via the Auth0 branding dashboard. I currently only changed the logo and the colours inside. It's possible to create a fully customisable universal login screen, but I'm not sure if it's worth the effort for this project.
