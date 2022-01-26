@@ -2,8 +2,7 @@
 '''
 Code for classifying HEOG based on one second of UNFILTERED and CONVERTED data
 UNFILTERED: This means that no filtering has been done on the data, if filtering has been done
-            then it is allowable if the data has not been highpassed with a frequency higher than 1 Hz and
-            lowpassed with a frequency lower than 50 Hz.
+            then it is allowable if the data has not been highpassed with a frequency higher than 1 Hz and lowpassed with a frequency lower than 50 Hz.
 CONVERTED: This means that the data has been converted from the original bits scale to micro Volts
 '''
 
