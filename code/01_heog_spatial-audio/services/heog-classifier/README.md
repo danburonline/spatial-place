@@ -1,5 +1,7 @@
 # HEOG Classifier
 
+This repository contains the HEOG classifier service. It's part of the microservice backend for the HEOG demo-application.
+
 ## Prerequisites
 
 - Pipenv `v2022.1.8+`
