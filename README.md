@@ -4,6 +4,10 @@ Spatial Place is my bachelor thesis, in which I am researching the web-based app
 
 > More information coming soon.
 
+## Whiteboard
+
+You can find the whiteboard in Figma via this [URL](https://www.figma.com/file/bYgmQkS6tlizeVgHK3YWT1/whiteboard?node-id=0%3A1).
+
 ## Licenses
 
 - Bachelor Thesis (CC-BY-4.0): [LICENSE](/thesis/LICENSE)
