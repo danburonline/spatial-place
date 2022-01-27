@@ -30,7 +30,7 @@ def predict_HEOGEpoch(
         fs = 250, sampling rate
 
     output:
-        predictionHEOG: 1 for HEOG, 0 for nothing detected
+        predictionHEOG: 1 for HEOG left, 2 for HEOG right, 0 for nothing detected
     '''
 
     predictionHEOG = 0
@@ -143,6 +143,42 @@ def ranges(x, eeg_bands):
         range: frequency range
         fs = 250, sampling rate
 
+    output:
+        low: High frequency value
+        high: Low frequency value
+    '''
+    data_inter_x = list(eeg_bands.items())
+    nump_bands = np.array(data_inter_x)
+    range_i = nump_bands[x, 1]
+    low = range_i[0]
+    high = range_i[1]
+    return low, high
+
+
+def calculateFreqBandPow(fftPowSpectrum, range, fs):
+    '''
+    Calculating frequency band power
+    input:
+        fftPowSpectrum: FFT power spectrum for calculating band power
+        range: frequency range
+        fs = 250, sampling rate
+    output:
+        averagePower: average band power
+    '''
+    freqPeriod = (fs) / len(fftPowSpectrum)
+    totalPower = fftPowSpectrum[round(
+        range[0] * 1 / freqPeriod):round((range[1]) * 1 / freqPeriod)]
+    averagePower = sum(totalPower) / len(totalPower)
+    return averagePower
+
+
+def ranges(x, eeg_bands):
+    '''
+    Extracting all ranges from dictionary
+    input:
+        fftPowSpectrum: FFT power spectrum for calculating band power
+        range: frequency range
+        fs = 250, sampling rate
     output:
         low: High frequency value
         high: Low frequency value
