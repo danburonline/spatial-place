@@ -5,12 +5,7 @@ import { Vector3 } from 'three'
 
 import usePlayerControls from '../hooks/usePlayerControls'
 
-export type PlayerProps = {
-  color?: string
-  speed?: number
-}
-
-export default function Player({ speed = 3 }: PlayerProps): JSX.Element {
+export default function Player() {
   const [ref, api] = useSphere(() => ({
     args: [0.5],
     mass: 1,
@@ -18,7 +13,7 @@ export default function Player({ speed = 3 }: PlayerProps): JSX.Element {
     position: [0, 0.5, 0]
   }))
 
-  const direction = new Vector3()
+  const directionVector = new Vector3()
   const frontVector = new Vector3()
   const sideVector = new Vector3()
 
@@ -27,7 +22,10 @@ export default function Player({ speed = 3 }: PlayerProps): JSX.Element {
   const velocity = useRef([0, 0, 0])
 
   useEffect(
-    () => api.velocity.subscribe(v => (velocity.current = v)),
+    () =>
+      api.velocity.subscribe(
+        subscribedVelocity => (velocity.current = subscribedVelocity)
+      ),
     [api.velocity]
   )
   useFrame(() => {
@@ -35,12 +33,12 @@ export default function Player({ speed = 3 }: PlayerProps): JSX.Element {
     camera.position.copy(ref.current.position)
     frontVector.set(0, 0, Number(backward) - Number(forward))
     sideVector.set(Number(left) - Number(right), 0, 0)
-    direction
+    directionVector
       .subVectors(frontVector, sideVector)
       .normalize()
-      .multiplyScalar(speed)
+      .multiplyScalar(3)
       .applyEuler(camera.rotation)
-    api.velocity.set(direction.x, velocity.current[1], direction.z)
+    api.velocity.set(directionVector.x, velocity.current[1], directionVector.z)
   })
 
   return <mesh ref={ref} />
