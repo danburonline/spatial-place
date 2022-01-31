@@ -3,6 +3,10 @@
   "private": true,
   "description": "3D frontend for the HEOG Classifier",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/danburonline/spatial-place.git"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,7 +15,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
-    "@react-three/cannon": "^4.6.1",
+    "@react-three/cannon": "1.1.1",
     "@react-three/drei": "^8.8.0",
     "@react-three/fiber": "^7.0.26",
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",

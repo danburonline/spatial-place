@@ -5,12 +5,16 @@ import { Vector3 } from 'three'
 
 import usePlayerControls from '../hooks/usePlayerControls'
 
-export default function Player({ PlayerSpeed = 3 }) {
+export default function Player({
+  PlayerSpeed = 3.5,
+  PlayerPhysicsBodyHeight = 1.25,
+  PlayerPhysicsBodyRadius = 0.5
+}) {
   const [ref, api] = useSphere(() => ({
-    args: [0.5],
+    args: 0.5,
     mass: 1,
     type: 'Dynamic',
-    position: [0, 1.75, 0]
+    position: [0, PlayerPhysicsBodyRadius, 0]
   }))
 
   const directionVector = new Vector3()
@@ -29,7 +33,9 @@ export default function Player({ PlayerSpeed = 3 }) {
     [api.velocity]
   )
   useFrame(() => {
-    ref.current && camera.position.copy(ref.current.position)
+    // console.log(ref.current && ref.current.position)
+    ref.current &&
+      (camera.position.copy(ref.current.position).y += PlayerPhysicsBodyHeight)
     frontVector.set(0, 0, Number(backward) - Number(forward))
     sideVector.set(Number(left) - Number(right), 0, 0)
     directionVector

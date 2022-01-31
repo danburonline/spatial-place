@@ -9,8 +9,8 @@ export default function Scene() {
   return (
     <Canvas>
       <Physics gravity={[0, -20, 0]}>
-        <Player />
         <Ground />
+        <Player />
       </Physics>
 
       <PointerLockControls />

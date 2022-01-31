@@ -1,4 +1,4 @@
-import { PublicApi } from '@react-three/cannon'
+import { WorkerApi } from '@react-three/cannon'
 import { useEffect, useState } from 'react'
 
 type EventKey = {
@@ -17,7 +17,7 @@ const eventKey: EventKey = {
   KeyD: 'right'
 }
 
-const usePlayerControls = (api: PublicApi): Movement => {
+export default function usePlayerControls(api: WorkerApi): Movement {
   const [movement, setMovement] = useState({
     forward: false,
     backward: false,
@@ -51,5 +51,3 @@ const usePlayerControls = (api: PublicApi): Movement => {
 
   return movement
 }
-
-export default usePlayerControls
