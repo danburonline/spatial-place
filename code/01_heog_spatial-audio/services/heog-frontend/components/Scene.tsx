@@ -13,7 +13,7 @@ export default function Scene() {
         <Player />
       </Physics>
 
-      <PointerLockControls />
+      <PointerLockControls selector='#pointerLockButton' />
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <Sky
