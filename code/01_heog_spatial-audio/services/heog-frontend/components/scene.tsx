@@ -2,8 +2,8 @@ import { Physics } from '@react-three/cannon'
 import { PointerLockControls, Sky } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
-import Ground from '../components/Ground'
-import Player from '../components/Player'
+import Ground from './Ground'
+import Player from './Player'
 
 export default function Scene() {
   return (
