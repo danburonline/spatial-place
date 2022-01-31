@@ -1,26 +1,23 @@
 import { PublicApi } from '@react-three/cannon'
 import { useEffect, useState } from 'react'
 
-type keysType = {
+type EventKey = {
   [key: string]: string
 }
 
-const moveFieldByKey = (key: string) => keys[key]
-const keys: keysType = {
+export type Movement = {
+  [key: string]: boolean
+}
+
+const moveFieldByKey = (key: string) => eventKey[key]
+const eventKey: EventKey = {
   forward: 'forward',
   backward: 'backward',
   left: 'left',
   right: 'right'
 }
 
-export type Movement = {
-  forward: boolean
-  backward: boolean
-  left: boolean
-  right: boolean
-}
-
-const usePlayerControls = (api: PublicApi): Movement => {
+export default function usePlayerControls(api: PublicApi): Movement {
   const [movement, setMovement] = useState({
     forward: false,
     backward: false,
@@ -54,5 +51,3 @@ const usePlayerControls = (api: PublicApi): Movement => {
 
   return movement
 }
-
-export default usePlayerControls
