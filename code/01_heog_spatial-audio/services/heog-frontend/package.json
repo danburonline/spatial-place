@@ -11,6 +11,7 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@react-three/cannon": "^4.6.1",
     "@react-three/drei": "^8.8.0",
     "@react-three/fiber": "^7.0.26",
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
@@ -23,6 +24,7 @@
   "devDependencies": {
     "@types/node": "17.0.12",
     "@types/react": "17.0.38",
+    "@types/three": "^0.137.0",
     "autoprefixer": "^10.4.2",
     "eslint": "8.7.0",
     "eslint-config-next": "12.0.8",

@@ -2,7 +2,7 @@ import { Loader } from '@react-three/drei'
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 
-const Scene = dynamic(() => import('../components/scene'))
+const Scene = dynamic(() => import('../components/Scene'))
 
 const IndexPage: NextPage = () => {
   return (
