@@ -5,19 +5,19 @@ type EventKey = {
   [key: string]: string
 }
 
-export type Movement = {
+type Movement = {
   [key: string]: boolean
 }
 
-const moveFieldByKey = (key: string) => eventKey[key]
+const moveFieldByKey = (key: string | number) => eventKey[key]
 const eventKey: EventKey = {
-  forward: 'forward',
-  backward: 'backward',
-  left: 'left',
-  right: 'right'
+  KeyW: 'forward',
+  KeyS: 'backward',
+  KeyA: 'left',
+  KeyD: 'right'
 }
 
-export default function usePlayerControls(api: PublicApi): Movement {
+const usePlayerControls = (api: PublicApi): Movement => {
   const [movement, setMovement] = useState({
     forward: false,
     backward: false,
@@ -26,28 +26,30 @@ export default function usePlayerControls(api: PublicApi): Movement {
   })
 
   useEffect(() => {
-    const handleKeyDown = (event: MouseEvent & { target: Element }) => {
+    const handleKeyDown = (event: { code: string | number }) => {
       setMovement(movements => ({
         ...movements,
-        [moveFieldByKey(event.target.getAttribute('data-element'))]: true
+        [moveFieldByKey(event.code)]: true
       }))
       api.applyForce([0.5, 0.5, 0.5], [0, 0, 0])
     }
 
-    const handleKeyUp = (event: MouseEvent & { target: Element }) => {
+    const handleKeyUp = (event: { code: string | number }) => {
       setMovement(movements => ({
         ...movements,
-        [moveFieldByKey(event.target.getAttribute('data-element'))]: false
+        [moveFieldByKey(event.code)]: false
       }))
     }
 
-    document.addEventListener('mousedown', handleKeyDown)
-    document.addEventListener('mouseup', handleKeyUp)
+    document.addEventListener('keydown', handleKeyDown)
+    document.addEventListener('keyup', handleKeyUp)
     return () => {
-      document.removeEventListener('mousedown', handleKeyDown)
-      document.removeEventListener('mouseup', handleKeyUp)
+      document.removeEventListener('keydown', handleKeyDown)
+      document.removeEventListener('keyup', handleKeyUp)
     }
   }, [api])
 
   return movement
 }
+
+export default usePlayerControls

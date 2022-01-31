@@ -29,7 +29,7 @@ export default function Player({ PlayerSpeed = 3 }) {
     [api.velocity]
   )
   useFrame(() => {
-    camera.position.copy(ref.current.position)
+    ref.current && camera.position.copy(ref.current.position)
     frontVector.set(0, 0, Number(backward) - Number(forward))
     sideVector.set(Number(left) - Number(right), 0, 0)
     directionVector
