@@ -5,7 +5,7 @@ export default function Ground() {
 
   return (
     <mesh ref={ref}>
-      <planeBufferGeometry args={[100, 100, 100, 100]} />
+      <planeGeometry args={[100, 100, 100, 100]} />
       <meshBasicMaterial color='grey' wireframe />
     </mesh>
   )
