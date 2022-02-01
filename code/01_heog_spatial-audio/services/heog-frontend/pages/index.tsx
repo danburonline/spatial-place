@@ -1,17 +1,18 @@
-import { Loader } from '@react-three/drei'
 import type { NextPage } from 'next'
-import dynamic from 'next/dynamic'
-
-import PointerLock from '../components/PointerLock'
-
-const Scene = dynamic(() => import('../components/Scene'))
+import { useRouter } from 'next/router'
 
 const IndexPage: NextPage = () => {
+  const router = useRouter()
+
   return (
-    <main className='w-screen h-screen'>
-      <Scene />
-      <Loader />
-      <PointerLock />
+    <main className='flex content-center justify-center w-screen h-screen'>
+      <button
+        name='startGame'
+        className='px-4 py-2 m-auto text-white bg-gray-800 rounded hover:bg-gray-700'
+        onClick={() => router.push('/demo')}
+      >
+        Start demo
+      </button>
     </main>
   )
 }

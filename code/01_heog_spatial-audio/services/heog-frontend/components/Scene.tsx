@@ -1,5 +1,5 @@
 import { Physics } from '@react-three/cannon'
-import { PointerLockControls, Sky } from '@react-three/drei'
+import { PointerLockControls, Sky, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 
 import Ground from './Ground'
@@ -8,6 +8,7 @@ import Player from './Player'
 export default function Scene() {
   return (
     <Canvas>
+      <Stats />
       <Physics gravity={[0, -20, 0]}>
         <Ground />
         <Player />
