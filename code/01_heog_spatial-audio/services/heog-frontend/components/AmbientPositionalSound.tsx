@@ -36,6 +36,14 @@ export default function AmbientPositionalSound(
 
   const [hoverItem, setHoverItem] = useState<Key>(0)
 
+  function handleItemHover(id) {
+    setHoverItem(id)
+  }
+
+  function handleItemExit(e) {
+    setHoverItem(0)
+  }
+
   const PositionalSoundObject = props.soundObjects.map(
     (
       soundObject: {
@@ -56,8 +64,9 @@ export default function AmbientPositionalSound(
     ) => {
       return (
         <mesh
-          onPointerOver={e => setHoverItem(soundObject.id)}
-          onPointerOut={e => setHoverItem(0)}
+          onPointerEnter={e => handleItemHover(soundObject.id)}
+          onPointerLeave={e => handleItemExit(e)}
+          //onPointerOver={(e) => console.log('over', e)}
           key={soundObject.id}
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
@@ -74,6 +83,7 @@ export default function AmbientPositionalSound(
             rolloffFactor={soundObject.rolloffFactor}
             url={soundObject.filePath}
             key={soundObject.id}
+            id={soundObject.id}
             coneOuterGain={soundObject.coneOuterGain}
             innerAngle={soundObject.innerAngle}
             outerAngle={soundObject.outerAngle}

@@ -7,7 +7,6 @@ export default function PositionalAudio() {
       x: 2.5,
       y: 1,
       z: 0,
-      position: [0, 0, 0],
       filePath: '/audio/person-1-talking.mp3',
       name: 'Cao',
       rotation: 0,
@@ -22,7 +21,6 @@ export default function PositionalAudio() {
       x: -2.5,
       y: 1,
       z: 0,
-      position: [0, 0, 0],
       filePath: '/audio/person-2-talking.mp3',
       name: 'Katja',
       rotation: 0,
@@ -37,7 +35,6 @@ export default function PositionalAudio() {
       x: 0,
       y: 1,
       z: 2.5,
-      position: [0, 0, 0],
       filePath: '/audio/person-3-talking.mp3',
       name: 'Mark',
       rotation: 0,
@@ -52,7 +49,6 @@ export default function PositionalAudio() {
       x: 0,
       y: 1,
       z: -2.5,
-      position: [0, 0, 0],
       filePath: '/audio/person-4-talking.mp3',
       name: 'Sam',
       rotation: 0,
@@ -67,7 +63,6 @@ export default function PositionalAudio() {
       x: 2.5,
       y: 1,
       z: -2.5,
-      position: [0, 0, 0],
       filePath: '/audio/person-5-talking.mp3',
       name: 'Elias',
       rotation: 0,
@@ -78,5 +73,6 @@ export default function PositionalAudio() {
       volume: 1
     }
   ]
+
   return <AmbientPositionalSound soundObjects={peopleSoundObjects} />
 }

@@ -12,6 +12,7 @@ type SoundObjectProps = {
   coneOuterGain: number
   innerAngle: number
   outerAngle: number
+  id: any
 }
 
 export default function SoundObject(props: SoundObjectProps): JSX.Element {
@@ -19,35 +20,46 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
   const { camera } = useThree()
   const [listener] = useState(() => new AudioListener())
   const buffer = useLoader(AudioLoader, props.url)
+  const [isInit, setInit] = useState(false)
 
   useEffect(() => {
-    sound.current?.setBuffer(buffer)
-    sound.current?.setRefDistance(1)
-    sound.current?.setRolloffFactor(props.rolloffFactor)
-    const helper = new PositionalAudioHelper(sound.current as PositionalAudio)
-    sound.current?.add(helper)
-    if (props.innerAngle !== 0) {
-      sound.current?.setDirectionalCone(
-        props.innerAngle,
-        props.outerAngle,
-        props.coneOuterGain
-      )
+    if (!isInit) {
+      sound.current?.setBuffer(buffer)
+      sound.current?.setRefDistance(1)
+      sound.current?.setRolloffFactor(props.rolloffFactor)
+      const helper = new PositionalAudioHelper(sound.current as PositionalAudio)
+      sound.current?.add(helper)
+      if (props.innerAngle !== 0) {
+        sound.current?.setDirectionalCone(
+          props.innerAngle,
+          props.outerAngle,
+          props.coneOuterGain
+        )
+      }
+      sound.current?.setLoop(true)
+      camera.add(listener)
+      console.log('SoundObject[' + props.id + '] Initializing...')
+      setInit(true)
     }
-    sound.current?.setLoop(true)
     sound.current?.setVolume(props.volume)
-
-    camera.add(listener)
   }, [
+    isInit,
+    sound,
+    props.volume,
+    props.rolloffFactor,
+    props.innerAngle,
+    props.id,
+    props.outerAngle,
+    props.coneOuterGain,
     buffer,
     camera,
-    listener,
-    props.coneOuterGain,
-    props.innerAngle,
-    props.outerAngle,
-    props.rolloffFactor,
-    props.volume,
-    sound
+    listener
   ])
+  useEffect(() => {
+    console.log(
+      'SoundObject[' + props.id + '] Volume adjusted to:' + props.volume
+    )
+  }, [props.volume, props.url, props.id])
 
   useEffect(() => {
     sound.current?.play()
