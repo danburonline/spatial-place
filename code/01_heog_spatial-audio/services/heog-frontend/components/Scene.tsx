@@ -8,7 +8,11 @@ import PositionalAudio from './PositionalAudio'
 
 export default function Scene() {
   return (
-    <Canvas>
+    <Canvas
+      camera={{
+        fov: 75
+      }}
+    >
       <Stats />
       <Physics gravity={[0, -20, 0]}>
         <Ground />

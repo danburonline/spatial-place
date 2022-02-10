@@ -11,7 +11,7 @@ const IndexPage: NextPage = () => {
         className='px-4 py-2 m-auto text-white bg-gray-800 rounded hover:bg-gray-700'
         onClick={() => router.push('/demo')}
       >
-        FPV Demo
+        Pointerlock Demo
       </button>
     </main>
   )

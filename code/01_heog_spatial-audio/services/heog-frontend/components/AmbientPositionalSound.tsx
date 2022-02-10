@@ -1,4 +1,4 @@
-import { Key, Suspense, createRef, useMemo } from 'react'
+import { Key, Suspense, createRef, useMemo, useState } from 'react'
 import type { PositionalAudio } from 'three'
 
 import SoundObject from './SoundObject'
@@ -34,10 +34,13 @@ export default function AmbientPositionalSound(
     [props.soundObjects.length]
   )
 
+  const [hoverItem, setHoverItem] = useState<Key>(0)
+
   const PositionalSoundObject = props.soundObjects.map(
     (
       soundObject: {
-        id: Key | undefined
+        id: Key
+        name: string
         x: number
         y: number
         z: number
@@ -53,12 +56,16 @@ export default function AmbientPositionalSound(
     ) => {
       return (
         <mesh
+          onPointerOver={e => setHoverItem(soundObject.id)}
+          onPointerOut={e => setHoverItem(0)}
           key={soundObject.id}
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
         >
-          <sphereGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial color='red' wireframe={true} />
+          <sphereGeometry args={[0.25, 10, 10]} />
+          <meshStandardMaterial
+            color={hoverItem === soundObject.id ? 'green' : 'red'}
+          />
           <SoundObject
             refs={audioRefs[index as number]}
             volume={soundObject.volume}

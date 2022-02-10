@@ -1,12 +1,10 @@
-import { useState } from 'react'
-
 import AmbientPositionalSound from './AmbientPositionalSound'
 
 export default function PositionalAudio() {
   const peopleSoundObjects = [
     {
       id: 1,
-      x: 5,
+      x: 2.5,
       y: 1,
       z: 0,
       position: [0, 0, 0],
@@ -21,7 +19,7 @@ export default function PositionalAudio() {
     },
     {
       id: 2,
-      x: -5,
+      x: -2.5,
       y: 1,
       z: 0,
       position: [0, 0, 0],
@@ -38,7 +36,7 @@ export default function PositionalAudio() {
       id: 3,
       x: 0,
       y: 1,
-      z: 5,
+      z: 2.5,
       position: [0, 0, 0],
       filePath: '/audio/person-3-talking.mp3',
       name: 'Mark',
@@ -53,7 +51,7 @@ export default function PositionalAudio() {
       id: 4,
       x: 0,
       y: 1,
-      z: -5,
+      z: -2.5,
       position: [0, 0, 0],
       filePath: '/audio/person-4-talking.mp3',
       name: 'Sam',
@@ -66,12 +64,12 @@ export default function PositionalAudio() {
     },
     {
       id: 5,
-      x: 5,
+      x: 2.5,
       y: 1,
-      z: -5,
+      z: -2.5,
       position: [0, 0, 0],
       filePath: '/audio/person-5-talking.mp3',
-      name: 'Sam',
+      name: 'Elias',
       rotation: 0,
       coneOuterGain: 0,
       innerAngle: 0,
