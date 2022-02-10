@@ -1,4 +1,3 @@
-// @ts-nocheck
 import { useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import type { RefObject } from 'react'
@@ -21,35 +20,35 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
   const buffer = useLoader(AudioLoader, props.url)
 
   useEffect(() => {
-    sound.current.setBuffer(buffer)
-    sound.current.setRefDistance(1)
-    sound.current.setRolloffFactor(props.rolloffFactor)
+    sound.current?.setBuffer(buffer)
+    sound.current?.setRefDistance(1)
+    sound.current?.setRolloffFactor(props.rolloffFactor)
     if (props.innerAngle !== 0) {
-      sound.current.setDirectionalCone(
+      sound.current?.setDirectionalCone(
         props.innerAngle,
         props.outerAngle,
         props.coneOuterGain
       )
     }
-    sound.current.setLoop(true)
-    sound.current.setVolume(props.volume)
+    sound.current?.setLoop(true)
+    sound.current?.setVolume(props.volume)
+
     camera.add(listener)
-    return () => camera.remove(listener)
   }, [
     buffer,
     camera,
     listener,
-    sound,
-    props.volume,
-    props.rolloffFactor,
     props.coneOuterGain,
     props.innerAngle,
-    props.outerAngle
+    props.outerAngle,
+    props.rolloffFactor,
+    props.volume,
+    sound
   ])
 
   useEffect(() => {
-    sound.current.play()
-  }, [props.state, sound])
+    sound.current?.play()
+  }, [sound])
 
   return <positionalAudio ref={sound} args={[listener]} />
 }
