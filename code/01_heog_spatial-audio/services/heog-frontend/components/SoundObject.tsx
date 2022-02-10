@@ -10,7 +10,6 @@ type SoundObjectProps = {
   volume: number
   rolloffFactor: number
   coneOuterGain: number
-  state: boolean
   innerAngle: number
   outerAngle: number
 }
@@ -48,16 +47,9 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
     props.outerAngle
   ])
 
-  if (props.state) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      sound.current.play()
-    }, [props.state, sound])
-  } else {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    useEffect(() => {
-      sound.current.pause()
-    }, [props.state, sound])
-  }
+  useEffect(() => {
+    sound.current.play()
+  }, [props.state, sound])
+
   return <positionalAudio ref={sound} args={[listener]} />
 }

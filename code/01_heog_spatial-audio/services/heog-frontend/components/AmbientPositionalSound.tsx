@@ -21,7 +21,6 @@ export type SoundObject = {
 
 export type AmbientPositionalSoundProps = {
   soundObjects: SoundObject[]
-  state: boolean
 }
 
 export default function AmbientPositionalSound(
@@ -58,6 +57,8 @@ export default function AmbientPositionalSound(
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
         >
+          <sphereGeometry args={[1, 1, 1]} />
+          <meshStandardMaterial color='red' wireframe={true} />
           <SoundObject
             refs={audioRefs[index as number]}
             volume={soundObject.volume}
@@ -67,7 +68,6 @@ export default function AmbientPositionalSound(
             coneOuterGain={soundObject.coneOuterGain}
             innerAngle={soundObject.innerAngle}
             outerAngle={soundObject.outerAngle}
-            state={props.state}
           />
         </mesh>
       )

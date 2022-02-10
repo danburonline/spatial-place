@@ -3,44 +3,82 @@ import { useState } from 'react'
 import AmbientPositionalSound from './AmbientPositionalSound'
 
 export default function PositionalAudio() {
-  const [audioState, setAudioState] = useState(false)
-
   const peopleSoundObjects = [
     {
       id: 1,
       x: 5,
-      y: 0.3,
-      z: 15,
+      y: 1,
+      z: 0,
       position: [0, 0, 0],
       filePath: '/audio/person-1-talking.mp3',
-      name: 'Person 1',
+      name: 'Cao',
       rotation: 0,
       coneOuterGain: 0,
       innerAngle: 0,
       outerAngle: 0,
       rolloffFactor: 1,
-      volume: 0.6
+      volume: 1
     },
     {
       id: 2,
-      x: 2.5,
-      y: 0.4,
-      z: -5.5,
+      x: -5,
+      y: 1,
+      z: 0,
       position: [0, 0, 0],
-      filePath: '/audio/person-1-talking.mp3',
-      name: 'Person 2',
+      filePath: '/audio/person-2-talking.mp3',
+      name: 'Katja',
       rotation: 0,
       coneOuterGain: 0,
       innerAngle: 0,
       outerAngle: 0,
       rolloffFactor: 1,
-      volume: 0.6
+      volume: 1
+    },
+    {
+      id: 3,
+      x: 0,
+      y: 1,
+      z: 5,
+      position: [0, 0, 0],
+      filePath: '/audio/person-3-talking.mp3',
+      name: 'Mark',
+      rotation: 0,
+      coneOuterGain: 0,
+      innerAngle: 0,
+      outerAngle: 0,
+      rolloffFactor: 1,
+      volume: 1
+    },
+    {
+      id: 4,
+      x: 0,
+      y: 1,
+      z: -5,
+      position: [0, 0, 0],
+      filePath: '/audio/person-4-talking.mp3',
+      name: 'Sam',
+      rotation: 0,
+      coneOuterGain: 0,
+      innerAngle: 0,
+      outerAngle: 0,
+      rolloffFactor: 1,
+      volume: 1
+    },
+    {
+      id: 5,
+      x: 5,
+      y: 1,
+      z: -5,
+      position: [0, 0, 0],
+      filePath: '/audio/person-5-talking.mp3',
+      name: 'Sam',
+      rotation: 0,
+      coneOuterGain: 0,
+      innerAngle: 0,
+      outerAngle: 0,
+      rolloffFactor: 1,
+      volume: 1
     }
   ]
-  return (
-    <AmbientPositionalSound
-      state={audioState}
-      soundObjects={peopleSoundObjects}
-    />
-  )
+  return <AmbientPositionalSound soundObjects={peopleSoundObjects} />
 }

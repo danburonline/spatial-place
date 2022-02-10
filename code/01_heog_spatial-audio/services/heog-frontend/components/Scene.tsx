@@ -4,6 +4,7 @@ import { Canvas } from '@react-three/fiber'
 
 import Ground from './Ground'
 import Player from './Player'
+import PositionalAudio from './PositionalAudio'
 
 export default function Scene() {
   return (
@@ -22,6 +23,7 @@ export default function Scene() {
         inclination={0}
         azimuth={0.25}
       />
+      <PositionalAudio />
     </Canvas>
   )
 }
