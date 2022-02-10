@@ -68,7 +68,9 @@ export default function AmbientPositionalSound(
           />
           <SoundObject
             refs={audioRefs[index as number]}
-            volume={soundObject.volume}
+            volume={
+              hoverItem === 0 ? 1 : hoverItem === soundObject.id ? 2.5 : 0.125
+            }
             rolloffFactor={soundObject.rolloffFactor}
             url={soundObject.filePath}
             key={soundObject.id}
