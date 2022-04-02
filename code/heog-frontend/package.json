@@ -19,7 +19,7 @@
     "@react-three/drei": "^8.8.0",
     "@react-three/fiber": "^7.0.26",
     "@trivago/prettier-plugin-sort-imports": "^3.1.1",
-    "next": "12.0.9",
+    "next": "12.1.0",
     "react": "17.0.2",
     "react-audio-player": "^0.17.0",
     "react-dom": "17.0.2",
