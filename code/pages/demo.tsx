@@ -1,4 +1,3 @@
-import { A11yUserPreferences } from '@react-three/a11y'
 import { Loader } from '@react-three/drei'
 import dynamic from 'next/dynamic'
 
@@ -10,9 +9,7 @@ const Scene = dynamic(() => import('../components/Scene'))
 export default function DemoPage() {
   return (
     <main className='w-screen h-screen'>
-      <A11yUserPreferences>
-        <Scene />
-      </A11yUserPreferences>
+      <Scene />
       <Loader />
       <PointerLock />
       <StereoAudio />

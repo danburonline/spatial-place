@@ -1,4 +1,3 @@
-import { A11yAnnouncer } from '@react-three/a11y'
 import { Physics } from '@react-three/cannon'
 import { PointerLockControls, Sky, Stats } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
@@ -31,7 +30,6 @@ export default function Scene() {
         />
         <PositionalAudio />
       </Canvas>
-      <A11yAnnouncer />
     </>
   )
 }
