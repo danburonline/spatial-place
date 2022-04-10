@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import { useRouter } from 'next/router'
 
-const IndexPage: NextPage = () => {
+const Home: NextPage = () => {
   const router = useRouter()
 
   return (
@@ -17,4 +17,4 @@ const IndexPage: NextPage = () => {
   )
 }
 
-export default IndexPage
+export default Home
