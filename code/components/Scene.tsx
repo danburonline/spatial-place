@@ -5,7 +5,6 @@ import { Canvas } from '@react-three/fiber'
 import Ground from './Ground'
 import Player from './Player'
 import PositionalAudio from './PositionalAudio'
-import TestIntersection from './TestIntersection'
 
 export default function Scene() {
   return (
@@ -20,7 +19,6 @@ export default function Scene() {
           <Ground />
           <Player />
         </Physics>
-        <TestIntersection />
         <PointerLockControls selector='#pointerLockButton' />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />

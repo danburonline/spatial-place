@@ -1,3 +1,4 @@
+import { useIntersect } from '@react-three/drei'
 import { useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import type { RefObject } from 'react'
@@ -14,12 +15,15 @@ type SoundObjectProps = {
   id: any
 }
 
-export default function SoundObject(props: SoundObjectProps): JSX.Element {
+export default function SoundObject(props: SoundObjectProps) {
   const sound = props.refs
   const { camera } = useThree()
   const [listener] = useState(() => new AudioListener())
   const buffer = useLoader(AudioLoader, props.url)
   const [isInit, setInit] = useState(false)
+  const ref = useIntersect(visible => {
+    console.log(`${props.id} is visible: ${visible}`)
+  })
 
   useEffect(() => {
     if (!isInit) {
@@ -56,5 +60,9 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
     sound.current?.play()
   }, [sound])
 
-  return <positionalAudio ref={sound} args={[listener]} />
+  return (
+    <mesh ref={ref}>
+      <positionalAudio ref={sound} args={[listener]} />
+    </mesh>
+  )
 }

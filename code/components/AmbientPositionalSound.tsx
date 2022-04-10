@@ -24,7 +24,7 @@ export type AmbientPositionalSoundProps = {
 
 export default function AmbientPositionalSound(
   props: AmbientPositionalSoundProps
-): JSX.Element {
+) {
   const audioRefs = useMemo(
     () =>
       Array(props.soundObjects.length)
