@@ -57,7 +57,7 @@ export default function AmbientPositionalSound(
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
         >
-          <sphereGeometry args={[0.25, 10, 10]} />
+          <sphereGeometry args={[0.25, 30, 30]} />
           <meshStandardMaterial
             color={hoverItem === soundObject.id ? 'green' : 'red'}
           />

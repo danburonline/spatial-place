@@ -11,7 +11,7 @@ export default function Scene() {
     <>
       <Canvas
         camera={{
-          fov: 75
+          fov: 85
         }}
       >
         <Stats />
