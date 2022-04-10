@@ -1,4 +1,3 @@
-import { useIntersect } from '@react-three/drei'
 import { useLoader, useThree } from '@react-three/fiber'
 import { useEffect, useState } from 'react'
 import type { RefObject } from 'react'
