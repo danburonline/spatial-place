@@ -3,7 +3,6 @@ import { useState } from 'react'
 
 export default function PointerLock(): JSX.Element {
   const [pointerLocked, setPointerLocked] = useState(false)
-  const visibility = pointerLocked ? 'hidden' : 'visible'
 
   useEffect(() => {
     document.addEventListener('pointerlockchange', () => {
@@ -13,7 +12,6 @@ export default function PointerLock(): JSX.Element {
 
   return (
     <div
-      style={{ visibility: visibility }}
       id={'pointerLockButton'}
       className={
         'absolute h-5 w-5 bg-gray-800 z-30 select-none cursor-crosshair transform -translate-x-1/2 -translate-y-1/2 rounded-full inset-1/2'
