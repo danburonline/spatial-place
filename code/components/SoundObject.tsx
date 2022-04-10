@@ -21,9 +21,6 @@ export default function SoundObject(props: SoundObjectProps) {
   const [listener] = useState(() => new AudioListener())
   const buffer = useLoader(AudioLoader, props.url)
   const [isInit, setInit] = useState(false)
-  const ref = useIntersect(visible => {
-    console.log(`${props.id} is visible: ${visible}`)
-  })
 
   useEffect(() => {
     if (!isInit) {
@@ -60,9 +57,5 @@ export default function SoundObject(props: SoundObjectProps) {
     sound.current?.play()
   }, [sound])
 
-  return (
-    <mesh ref={ref}>
-      <positionalAudio ref={sound} args={[listener]} />
-    </mesh>
-  )
+  return <positionalAudio ref={sound} args={[listener]} />
 }

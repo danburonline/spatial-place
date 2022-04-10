@@ -1,3 +1,4 @@
+import { useIntersect } from '@react-three/drei'
 import { Key, Suspense, createRef, useMemo, useState } from 'react'
 import type { PositionalAudio } from 'three'
 
@@ -33,7 +34,30 @@ export default function AmbientPositionalSound(
     [props.soundObjects.length]
   )
 
+  const PositionalSoundObjects = props.soundObjects.map(
+    (soundObject: SoundObject, index: string | number) => {
+      return (
+        <PositionalSoundObject
+          soundObject={soundObject}
+          audioRefs={audioRefs}
+          index={index}
+          key={soundObject.id}
+        />
+      )
+    }
+  )
+  return <Suspense fallback={null}>{PositionalSoundObjects}</Suspense>
+}
+
+function PositionalSoundObject(props: {
+  soundObject: SoundObject
+  audioRefs: any
+  index: string | number
+}) {
   const [hoverItem, setHoverItem] = useState<Key>(0)
+  const ref = useIntersect(visible => {
+    console.log(`${props.soundObject.id} is visible: ${visible}`)
+  })
 
   function handleItemHover(id: string | number | ((prevState: Key) => Key)) {
     setHoverItem(id)
@@ -43,42 +67,39 @@ export default function AmbientPositionalSound(
     setHoverItem(0)
   }
 
-  const PositionalSoundObject = props.soundObjects.map(
-    (soundObject: SoundObject, index: string | number) => {
-      return (
-        <mesh
-          onPointerEnter={_ => {
-            handleItemHover(soundObject.id)
-          }}
-          onPointerLeave={_ => {
-            handleItemExit()
-          }}
-          key={soundObject.id}
-          position={[soundObject.x, soundObject.y, soundObject.z]}
-          rotation={[0, soundObject.rotation, 0]}
-        >
-          <sphereGeometry args={[0.5, 30, 30]} />
-          <meshStandardMaterial
-            color={hoverItem === soundObject.id ? 'green' : 'red'}
-          />
-          <SoundObject
-            refs={audioRefs[index as number]}
-            volume={
-              // If the soundObject is the one being hovered over, set the volume to 2.5 ...
-              // ... all the other soundObjects will have a volume of 0.125
-              hoverItem === 0 ? 1 : hoverItem === soundObject.id ? 2.5 : 0.125
-            }
-            rolloffFactor={soundObject.rolloffFactor}
-            url={soundObject.filePath}
-            key={soundObject.id}
-            id={soundObject.id}
-            coneOuterGain={soundObject.coneOuterGain}
-            innerAngle={soundObject.innerAngle}
-            outerAngle={soundObject.outerAngle}
-          />
-        </mesh>
-      )
-    }
+  return (
+    <mesh
+      ref={ref}
+      onPointerEnter={_ => {
+        handleItemHover(props.soundObject.id)
+      }}
+      onPointerLeave={_ => {
+        handleItemExit()
+      }}
+      key={props.soundObject.id}
+      position={[props.soundObject.x, props.soundObject.y, props.soundObject.z]}
+      rotation={[0, props.soundObject.rotation, 0]}
+    >
+      <sphereGeometry args={[0.5, 30, 30]} />
+      <meshStandardMaterial
+        color={hoverItem === props.soundObject.id ? 'green' : 'red'}
+      />
+      s
+      <SoundObject
+        refs={props.audioRefs[props.index as number]}
+        volume={
+          // If the soundObject is the one being hovered over, set the volume to 2.5 ...
+          // ... all the other soundObjects will have a volume of 0.125
+          hoverItem === 0 ? 1 : hoverItem === props.soundObject.id ? 2.5 : 0.125
+        }
+        rolloffFactor={props.soundObject.rolloffFactor}
+        url={props.soundObject.filePath}
+        key={props.soundObject.id}
+        id={props.soundObject.id}
+        coneOuterGain={props.soundObject.coneOuterGain}
+        innerAngle={props.soundObject.innerAngle}
+        outerAngle={props.soundObject.outerAngle}
+      />
+    </mesh>
   )
-  return <Suspense fallback={null}>{PositionalSoundObject}</Suspense>
 }
