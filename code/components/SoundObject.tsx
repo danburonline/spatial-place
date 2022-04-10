@@ -38,7 +38,6 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
       }
       sound.current?.setLoop(true)
       camera.add(listener)
-      console.log('SoundObject[' + props.id + '] Initializing...')
       setInit(true)
     }
     sound.current?.setVolume(props.volume)
@@ -55,11 +54,6 @@ export default function SoundObject(props: SoundObjectProps): JSX.Element {
     camera,
     listener
   ])
-  useEffect(() => {
-    console.log(
-      'SoundObject[' + props.id + '] Volume adjusted to:' + props.volume
-    )
-  }, [props.volume, props.url, props.id])
 
   useEffect(() => {
     sound.current?.play()

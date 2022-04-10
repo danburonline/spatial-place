@@ -1,3 +1,5 @@
+import { A11y } from '@react-three/a11y'
+
 import AmbientPositionalSound from './AmbientPositionalSound'
 
 export default function PositionalAudio() {

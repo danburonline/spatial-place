@@ -1,12 +1,4 @@
 {
-  "cSpell.words": [
-    "btype",
-    "filtfilt",
-    "ftype",
-    "HEOG",
-    "iirfilter",
-    "Thres",
-    "WASD"
-  ],
+  "cSpell.words": ["WASD"],
   "scss.lint.unknownAtRules": "ignore"
 }

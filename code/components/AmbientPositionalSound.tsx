@@ -1,14 +1,14 @@
+import { A11y } from '@react-three/a11y'
 import { Key, Suspense, createRef, useMemo, useState } from 'react'
 import type { PositionalAudio } from 'three'
 
 import SoundObject from './SoundObject'
 
 export type SoundObject = {
-  id: number
+  id: Key
   x: number
   y: number
   z: number
-  position: number[]
   filePath: string
   name: string
   rotation: number
@@ -36,59 +36,49 @@ export default function AmbientPositionalSound(
 
   const [hoverItem, setHoverItem] = useState<Key>(0)
 
-  function handleItemHover(id) {
+  function handleItemHover(id: string | number | ((prevState: Key) => Key)) {
     setHoverItem(id)
   }
 
-  function handleItemExit(e) {
+  function handleItemExit() {
     setHoverItem(0)
   }
 
   const PositionalSoundObject = props.soundObjects.map(
-    (
-      soundObject: {
-        id: Key
-        name: string
-        x: number
-        y: number
-        z: number
-        rotation: number
-        volume: number
-        rolloffFactor: number
-        filePath: string
-        coneOuterGain: number
-        innerAngle: number
-        outerAngle: number
-      },
-      index: string | number
-    ) => {
+    (soundObject: SoundObject, index: string | number) => {
       return (
-        <mesh
-          onPointerEnter={e => handleItemHover(soundObject.id)}
-          onPointerLeave={e => handleItemExit(e)}
-          //onPointerOver={(e) => console.log('over', e)}
+        <A11y
+          focusCall={() => console.log(`in focus ${soundObject.id}`)}
+          role='button'
+          description='Positional audio element'
           key={soundObject.id}
-          position={[soundObject.x, soundObject.y, soundObject.z]}
-          rotation={[0, soundObject.rotation, 0]}
         >
-          <sphereGeometry args={[0.25, 10, 10]} />
-          <meshStandardMaterial
-            color={hoverItem === soundObject.id ? 'green' : 'red'}
-          />
-          <SoundObject
-            refs={audioRefs[index as number]}
-            volume={
-              hoverItem === 0 ? 1 : hoverItem === soundObject.id ? 2.5 : 0.125
-            }
-            rolloffFactor={soundObject.rolloffFactor}
-            url={soundObject.filePath}
+          <mesh
+            onPointerEnter={_ => handleItemHover(soundObject.id)}
+            onPointerLeave={handleItemExit}
             key={soundObject.id}
-            id={soundObject.id}
-            coneOuterGain={soundObject.coneOuterGain}
-            innerAngle={soundObject.innerAngle}
-            outerAngle={soundObject.outerAngle}
-          />
-        </mesh>
+            position={[soundObject.x, soundObject.y, soundObject.z]}
+            rotation={[0, soundObject.rotation, 0]}
+          >
+            <sphereGeometry args={[0.25, 10, 10]} />
+            <meshStandardMaterial
+              color={hoverItem === soundObject.id ? 'green' : 'red'}
+            />
+            <SoundObject
+              refs={audioRefs[index as number]}
+              volume={
+                hoverItem === 0 ? 1 : hoverItem === soundObject.id ? 2.5 : 0.125
+              }
+              rolloffFactor={soundObject.rolloffFactor}
+              url={soundObject.filePath}
+              key={soundObject.id}
+              id={soundObject.id}
+              coneOuterGain={soundObject.coneOuterGain}
+              innerAngle={soundObject.innerAngle}
+              outerAngle={soundObject.outerAngle}
+            />
+          </mesh>
+        </A11y>
       )
     }
   )
