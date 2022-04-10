@@ -1,3 +1,3 @@
-# HEOG Demo
+# VR Frontend Demo
 
 More information coming soon.
