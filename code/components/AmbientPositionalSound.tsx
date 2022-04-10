@@ -47,8 +47,12 @@ export default function AmbientPositionalSound(
     (soundObject: SoundObject, index: string | number) => {
       return (
         <mesh
-          onPointerEnter={_ => handleItemHover(soundObject.id)}
-          onPointerLeave={handleItemExit}
+          onPointerEnter={_ => {
+            handleItemHover(soundObject.id)
+          }}
+          onPointerLeave={_ => {
+            handleItemExit()
+          }}
           key={soundObject.id}
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
