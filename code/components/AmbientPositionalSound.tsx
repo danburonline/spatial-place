@@ -67,7 +67,9 @@ function PositionalSoundObject(props: {
   setHoverItem: Dispatch<SetStateAction<Key>>
   hoverItem: string | number
 }) {
+  // TODO Combine this with three cameras somehow to get their relative positions to the player
   const ref = useIntersect(visible => {
+    // Get a overview of the visible sound objects
     console.log(`${props.soundObject.id} is visible: ${visible}`)
   })
 
@@ -81,13 +83,13 @@ function PositionalSoundObject(props: {
 
   return (
     <mesh
-      ref={ref}
       onPointerEnter={_ => {
         handleItemHover(props.soundObject.id)
       }}
       onPointerLeave={_ => {
         handleItemExit()
       }}
+      ref={ref}
       key={props.soundObject.id}
       position={[props.soundObject.x, props.soundObject.y, props.soundObject.z]}
       rotation={[0, props.soundObject.rotation, 0]}
@@ -96,7 +98,6 @@ function PositionalSoundObject(props: {
       <meshStandardMaterial
         color={props.hoverItem === props.soundObject.id ? 'green' : 'red'}
       />
-      s
       <SoundObject
         refs={props.audioRefs[props.index as number]}
         volume={
