@@ -1,5 +1,13 @@
 import { useIntersect } from '@react-three/drei'
-import { Key, Suspense, createRef, useMemo, useState } from 'react'
+import {
+  Dispatch,
+  Key,
+  SetStateAction,
+  Suspense,
+  createRef,
+  useMemo,
+  useState
+} from 'react'
 import type { PositionalAudio } from 'three'
 
 import SoundObject from './SoundObject'
@@ -26,6 +34,7 @@ export type AmbientPositionalSoundProps = {
 export default function AmbientPositionalSound(
   props: AmbientPositionalSoundProps
 ) {
+  const [hoverItem, setHoverItem] = useState<Key>(0)
   const audioRefs = useMemo(
     () =>
       Array(props.soundObjects.length)
@@ -42,6 +51,8 @@ export default function AmbientPositionalSound(
           audioRefs={audioRefs}
           index={index}
           key={soundObject.id}
+          setHoverItem={setHoverItem}
+          hoverItem={hoverItem}
         />
       )
     }
@@ -53,18 +64,19 @@ function PositionalSoundObject(props: {
   soundObject: SoundObject
   audioRefs: any
   index: string | number
+  setHoverItem: Dispatch<SetStateAction<Key>>
+  hoverItem: string | number
 }) {
-  const [hoverItem, setHoverItem] = useState<Key>(0)
   const ref = useIntersect(visible => {
     console.log(`${props.soundObject.id} is visible: ${visible}`)
   })
 
   function handleItemHover(id: string | number | ((prevState: Key) => Key)) {
-    setHoverItem(id)
+    props.setHoverItem(id)
   }
 
   function handleItemExit() {
-    setHoverItem(0)
+    props.setHoverItem(0)
   }
 
   return (
@@ -82,7 +94,7 @@ function PositionalSoundObject(props: {
     >
       <sphereGeometry args={[0.5, 30, 30]} />
       <meshStandardMaterial
-        color={hoverItem === props.soundObject.id ? 'green' : 'red'}
+        color={props.hoverItem === props.soundObject.id ? 'green' : 'red'}
       />
       s
       <SoundObject
@@ -90,7 +102,11 @@ function PositionalSoundObject(props: {
         volume={
           // If the soundObject is the one being hovered over, set the volume to 2.5 ...
           // ... all the other soundObjects will have a volume of 0.125
-          hoverItem === 0 ? 1 : hoverItem === props.soundObject.id ? 2.5 : 0.125
+          props.hoverItem === 0
+            ? 1
+            : props.hoverItem === props.soundObject.id
+            ? 2.5
+            : 0.125
         }
         rolloffFactor={props.soundObject.rolloffFactor}
         url={props.soundObject.filePath}
