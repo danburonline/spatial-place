@@ -57,13 +57,15 @@ export default function AmbientPositionalSound(
           position={[soundObject.x, soundObject.y, soundObject.z]}
           rotation={[0, soundObject.rotation, 0]}
         >
-          <sphereGeometry args={[0.25, 30, 30]} />
+          <sphereGeometry args={[0.5, 30, 30]} />
           <meshStandardMaterial
             color={hoverItem === soundObject.id ? 'green' : 'red'}
           />
           <SoundObject
             refs={audioRefs[index as number]}
             volume={
+              // If the soundObject is the one being hovered over, set the volume to 2.5 ...
+              // ... all the other soundObjects will have a volume of 0.125
               hoverItem === 0 ? 1 : hoverItem === soundObject.id ? 2.5 : 0.125
             }
             rolloffFactor={soundObject.rolloffFactor}
