@@ -6,7 +6,7 @@ export default function Ground() {
   return (
     <mesh ref={ref}>
       <planeGeometry args={[100, 100, 100, 100]} />
-      <meshBasicMaterial color='grey' wireframe />
+      <meshBasicMaterial wireframe />
     </mesh>
   )
 }
