@@ -37,6 +37,9 @@ export default function PositionalSoundObject(props: {
       key={props.soundObject.id}
       position={[props.soundObject.x, props.soundObject.y, props.soundObject.z]}
       rotation={[0, props.soundObject.rotation, 0]}
+      scale={
+        props.hoverItem === props.soundObject.id ? [1.5, 1.5, 1.5] : [1, 1, 1]
+      }
     >
       <sphereGeometry args={[0.5, 30, 30]} />
       <meshStandardMaterial
