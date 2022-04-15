@@ -1,5 +1,6 @@
 import { useIntersect } from '@react-three/drei'
 import { Dispatch, Key, SetStateAction } from 'react'
+import * as THREE from 'three'
 
 import { SoundObjectType } from './AmbientPositionalSound'
 import SoundObject from './SoundObject'
@@ -14,7 +15,9 @@ export default function PositionalSoundObject(props: {
   // TODO Combine this with cameras to get their relative player positions
   const ref = useIntersect(visible => {
     // Get a overview of the visible sound objects
-    console.log(`${props.soundObject.id} is visible: ${visible}`)
+    // console.log(`${props.soundObject.id} is visible: ${visible}`)
+    // TODO This is the vector that I need to use to calculate the relative position of the sound object
+    // console.log(ref.current.position)
   })
 
   function handleItemHover(id: string | number | ((prevState: Key) => Key)) {

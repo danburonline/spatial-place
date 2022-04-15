@@ -24,6 +24,7 @@ export default function Player({
   const { forward, backward, left, right } = usePlayerControls(api)
   const { camera } = useThree()
   const velocity = useRef([0, 0, 0])
+  const vector = new Vector3()
 
   useEffect(
     () =>
@@ -33,6 +34,15 @@ export default function Player({
     [api.velocity]
   )
   useFrame(() => {
+    // TODO Use this to detect if spheres are on the relative left, centre or right side of the player
+    // console.log(vector.project(camera))
+
+    // vector.project(camera)
+    // vector.x = ((vector.x + 1) * window.innerWidth) / 2
+    // vector.y = (-(vector.y - 1) * window.innerHeight) / 2
+    // vector.z = 0
+    // console.log(vector)
+
     ref.current &&
       (ref.current.getWorldPosition(camera.position).y +=
         PlayerPhysicsBodyHeight)
