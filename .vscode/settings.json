@@ -1,4 +1,11 @@
 {
-  "cSpell.words": ["HEOG", "Poimandres", "WASD"],
+  "cSpell.words": [
+    "electrocorticography",
+    "HEOG",
+    "invasively",
+    "Neurosity",
+    "Poimandres",
+    "WASD"
+  ],
   "scss.lint.unknownAtRules": "ignore"
 }

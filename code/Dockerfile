@@ -6,12 +6,12 @@ WORKDIR /usr/src/heog-frontend
 
 COPY . /usr/src/heog-frontend
 
-RUN yarn install --silent
+RUN pnpm install
 
 ENV PORT 3000
 
-RUN yarn run build
+RUN pnpm run build
 
 EXPOSE 3000
 
-CMD [ "yarn", "start" ]
+CMD [ "pnpm", "start" ]
