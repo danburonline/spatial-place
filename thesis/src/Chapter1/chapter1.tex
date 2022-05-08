@@ -4,29 +4,19 @@
 \section{Background}
 \label{chapter1-background}
 
-There has been a long-standing interest in developing neural interfaces, systems that sense electrical impulses from the nervous system and use them to intercommunicate with the human brain. Successful research into the development of technologies that enable neural interfaces has been going on for decades (* citation needed). Progress has accelerated significantly in the past few years, especially since the advent of modern processing capabilities such as in deep learning with convolutional neural networks (CNN) or generative adversarial networks (GAN) (* citation needed). In particular, a related discipline called brain-computer interfacing (BCI), a field focused on the direct interaction between brains and computers, has accumulated much momentum since the popularity of companies like Neuralink and Kernel.
+There has been a long-standing interest in developing neural interfaces, systems that sense electrical impulses from the nervous system and use them to intercommunicate with the human brain. Successful research into the development of technologies that enable neural interfaces has been going on for decades \citep{vidal_real-time_1977}. Progress has accelerated significantly in the past few years, especially since the advent of modern processing capabilities such as in deep learning with convolutional neural networks (CNN) or generative adversarial networks (GAN) \citep{gonfalonieri_deep_2019}. In particular, a related discipline called brain-computer interfacing (BCI), a field focused on the direct interaction between brains and computers, has accumulated much momentum since the popularity of companies like Neuralink and Kernel.
 
-One aspect of neural interfaces is hardware tailored to the human body. Whether it is an invasive sensor, such as in electrocorticography (ECoG), a method which uses electrodes placed on the surface of the brain, or a non-invasively placed sensor on the body, such as in electroencephalography (EEG). Both methods measure electrical activities produced by neurons; however, with decreasing spatial precision, the farther the electrode is placed from the brain, the more body structures (e.g. bones) are between firing neurons and the measuring sensor. The other aspect is software that reads and interprets data of these hardware sensors. Both aspects present their own set of challenges and complexities. Nonetheless, complete and applicable neural interfaces work in practice and have been used for many years in patients with neurological disorders (* citation needed). There are also consumer and non-clinical neural interfaces available, such as the Neurosity and OpenBCI products, which aim to democratise the use of EEG sensors by offering low-cost hardware and simple-to-use software.
+One aspect of neural interfaces is hardware tailored to the human body. Whether it is an invasive sensor, such as in electrocorticography (ECoG), a method which uses electrodes placed on the surface of the brain, or a non-invasively placed sensor on the body, such as in electroencephalography (EEG). Both methods measure electrical activities produced by neurons; however, with decreasing spatial precision, the farther the electrode is placed from the brain, the more body structures (e.g. bones) are between firing neurons and the measuring sensor. The other aspect is software that reads and interprets data of these hardware sensors. Both aspects present their own set of challenges and complexities. Nonetheless, complete and applicable neural interfaces work in practice and have been used for many years in patients with neurological disorders \citep{braingate_publications_nodate}. There are also consumer and non-clinical neural interfaces available, such as the Neurosity and OpenBCI products, which aim to democratise the use of EEG sensors by offering low-cost hardware and simple-to-use software.
 
 This thesis will focus on the software aspect of non-invasive neural interfaces and the challenges and complexities that arise in the given context of modern software engineering for production-ready end-user facing brain-computer interface applications.
 
 \nomenclature[cnn]{CNN}{Convolutional neural networks}
 \nomenclature[gan]{GAN}{Generative adversarial networks}
-\nomenclature[bci]{BMI}{Brain-machine interface}
+\nomenclature[bci]{BCI}{Brain-computer interface}
 \nomenclature[ecog]{ECoG}{Electrocorticography}
 \nomenclature[eeg]{EEG}{Electroencephalography}
 
-% Hintergrund und Projektidee darlegen, außerdem klarstellen, warum die Auseinandersetzung mit der Projekt Thematik wichtig, innovativ und relevant ist.
-
 % Kreative Darstellung der kreativen Idee und Zieldefinition. Wichtig ist hier, dass zwar eine klare Zielvorstellung (Umfang, Pflichtenheft mit Teilzielen, welche Qualität soll erreicht werden) vorhanden ist, aber der genaue Weg noch nicht exakt feststeht. Möglicher Umfang: 10 Prozent der Gesamtlänge.
-
-% Goal: Show why your topic is important and attract the reader to your paper. Start with a broad statement and then make it more specific.
-% - Understanding X is one of the primary objectives of…
-% - Decades of research have focused on the question…
-% - The theory that…. is central to…
-% - It is widely assumed that…
-% - There has been a long-standing interest in…
-% - There is general consensus that X is a serious problem…
 
 \section{Project motivation}
 \label{chapter1-project-motivation}
