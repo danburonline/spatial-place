@@ -10,7 +10,7 @@ Both the Guardian SDK and API are used in my project. Because the source code is
 
 ## Other Artefacts
 
-You can find the whiteboard in Figma via this [URL](https://www.figma.com/file/bYgmQkS6tlizeVgHK3YWT1/whiteboard?node-id=0%3A1). It includes ideas, old drafts, and notes from the project. There is also a Figma file where I have drawn the wireframes for the project, ideated on concepts and other things. It is available under this [URL](https://www.figma.com/file/ilbGE5j3KZB1TUZwYX7FJm/ideation?node-id=103%3A2).
+You can find the whiteboard in Figma via this [URL](https://www.figma.com/file/bYgmQkS6tlizeVgHK3YWT1/whiteboard?node-id=0%3A1). It includes ideas, old drafts, and notes from the project. There is also a Figma file where I have drawn the wireframes for the project, ideated on concepts and other things. It is available under this [URL](https://www.figma.com/file/ilbGE5j3KZB1TUZwYX7FJm/ideation?node-id=103%3A2). All figures that I created on my own can be found under this [URL](https://www.figma.com/file/lSKhgYwDk9KIQbGooflm4X/figures?node-id=0%3A1).
 
 ## Licenses
 
