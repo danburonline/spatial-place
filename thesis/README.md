@@ -4,7 +4,7 @@ This directory contains all the LaTeX files to create a PDF for my bachelor thes
 
 ## Technologies
 
-- **Editor:** Overleaf with a GitHub Sync
+- **Editor:** Overleaf and LaTeX Workshop for VSCode
 - **Reference manager:** Zotero
 - **Bibliography:** BibLaTeX
 
