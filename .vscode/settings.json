@@ -8,6 +8,7 @@
     "nanorobotics",
     "Neurosity",
     "Poimandres",
+    "Stegman",
     "WASD"
   ],
   "scss.lint.unknownAtRules": "ignore"
