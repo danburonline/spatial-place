@@ -44,42 +44,24 @@ Regardless, many intelligent people — research labs or even entire companies �
 
 Whether it is a bidirectional and invasive neural interface with the potential to be implanted on a large scale, as e.g. Neuralink is aiming to do, or a unidirectional and non-invasive interface in various form factors that are also aimed at the mass market, such as in a pair of glasses or a pair of headphones, the data collected from the brain would always need to be processed, contextualised, and classified to produce an intelligible output — be it in real-time or deferred processing. The research question of the present article is on determining what technical components such a software system would require to be production-ready and suitable for a mass-market product. The emphasis is on a holistic view of such a system, which means that the entire technology stack is taken into account in answering the research question.
 
-Furthermore, most current neural interface software systems in production, for example, for an interface implanted in a living patient, are typically run in a local environment, i.e. the software system and its components are typically located on a physically nearby computer, usually connected by a cable, to reduce latency and avoid complexities introduced by a wireless protocol. There is already interesting research on wireless mobile brain-computer interfaces (mBCI) by \citeauthor{minguillon_mobile_2017} \citeyearpar{minguillon_mobile_2017} or possible implications of human brain/cloud interfaces (B/CI) by \citeauthor{martins_human_2019} \citeyearpar{martins_human_2019}, which analyses bringing future large-scale neural software systems into the cloud.
+Furthermore, most current neural interface software systems in production, for example, for an interface implanted in a living patient, are typically run in a local environment, i.e. the software system and its components are typically located on a physically nearby computer, usually connected by a cable, to reduce latency and avoid complexities introduced by a wireless protocol. There is already interesting research on wireless mobile brain-computer interfaces (mBCI) by \citeauthor{minguillon_mobile_2017} \citeyearpar{minguillon_mobile_2017} or possible implications of human brain/cloud interfaces (B/CI) by \citeauthor{martins_human_2019} \citeyearpar{martins_human_2019} or by \citeauthor{angelica_cognitive_2021} \citeyearpar{angelica_cognitive_2021}, which analyse bringing future large-scale brain-computer interface software systems into the cloud.
 
 \nomenclature[mbci]{mBCI}{Mobile brain-computer interface}
 \nomenclature[bc-i]{B/CI}{Brain/cloud interface}
 
-% Goal 1: State your research question
-% - The goal of the present article is to…
-% - The research question of the present article is…
-% Goal 2: State your hypotheses/ predictions
-% - We hypothesize that…
-% - We predict that…
-% - Two hypotheses are conceivable…
-% - Our primary hypothesis is that…
-% - Drawing on theory X, we hypothesize that…
-% Goal 3: Give a rough outline of your research
-% - We tested whether patients with a diagnosed major depression would report less depressive
-% feelings after treatment X compared to a placebo treatment.
-% - To test this hypothesis, we ….
-% - To answer this question, we …
-% - For this purpose, we conducted three studies. First,… Second,… Third,…
-% - To shed more light on this, we used a combination of computer simulations and empirical
-% studies. First, we used computer simulations to determine what behaviour would arise if theory
-% 3
-% X is true and what behaviour would arise if theory Y was true. Next, we tested these two
-% predictions in three empirical studies.
-% - The present article consists of three sections. In section 1, … In section 2,… In section 3
-
 \section{Goals}
 \label{chapter1-goals}
 
-% o Does your introduction go from broad (topic) to specific (your research)?
-% o Did you make clear why your topic is important?
-% o Did you describe just enough research so that readers can understand how your
-% research is the next logical step?
-% o Did you make clear how your research is novel?
-% o Did you make clear what is speculation, and what are established facts?
-% o Did you add citations for everything you present as facts?
-% o Did you use common scientific jargon?
-% o Did you explain the jargon you use?
+Previous research on brain/cloud interfaces has tended to focus on speculations based on hypothetical scenarios in the future, usually based on the premise of other developed technologies such as neural nanorobotics, vital advances in 5G, or the presence of supercomputers in the cloud, e.g. for the augmentation of the human brain, or a communication network for brain-to-brain interfacing (BTBI), and are thus rather distant from today's pertinence. To distinguish the research presented in this article, we coin the term neural/cloud interface (N/CI), which refers to a software interface that connects a neural interface device to the cloud and then to other neural interfaces, software applications, cloud systems, or physical devices.
+
+The primary hypothesis is that a neural/cloud interface is feasible with modern software technologies, requiring only theoretical groundwork based on empirical engineering in a deployable and producible system. This article looks at the process and lessons learned from developing a N/CI in the industry for an actual mainstream-capable neural interface device for a brain-computer interface end-user application to shed more light on this.
+
+The overall goal of this paper is to give the reader an overview of the definition of a N/CI, its components, and the lessons learned in building a reproducible production-ready and mainstream-ready end-user application of a non-invasive, unidirectional application example, with the end-user application example open-sourced as part of the article.
+
+In addition to the overall goal, the thesis aims to illustrate a powerful demonstration of the possibilities of brain-computer interfaces on the world wide web (WWW) for virtual reality (VR) or augmented reality (AR) applications running in a browser environment in order to exemplify how easily accessible future 3D applications will be when combined with a brain-computer interface.
+
+\nomenclature[nci]{N/CI}{Neural/Cloud Interface}
+\nomenclature[btbi]{BTBI}{Brain-to-brain interfaces}
+\nomenclature[www]{WWW}{World Wide Web}
+\nomenclature[vr]{VR}{Virtual Reality}
+\nomenclature[ar]{AR}{Augmented Reality}
