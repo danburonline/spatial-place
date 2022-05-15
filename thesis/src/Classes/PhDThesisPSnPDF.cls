@@ -865,7 +865,6 @@ wish to left align your text}
 \RequirePackage[intoc]{nomencl}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
-	\ifthenelse{\equal{#1}{A}}{\item[\textbf{Roman Symbols}]}{%
 			\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Acronyms / Abbreviations}]}{%
 				\ifthenelse{\equal{#1}{R}}{\item[\textbf{Superscripts}]}{%
 					\ifthenelse{\equal{#1}{S}}{\item[\textbf{Subscripts}]}{%
@@ -875,7 +874,6 @@ wish to left align your text}
 					}% matches Subscripts           > S
 					}% matches Superscripts         > R
 					}% matches Greek Symbols        > G
-					}% matches Roman Symbols        > A
 
 					% To add nomenclature in the header
 					\renewcommand{\nompreamble}{\markboth{\nomname}{\nomname}}
