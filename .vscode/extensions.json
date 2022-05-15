@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "steoates.autoimport",
+    "aaron-bond.better-comments",
+    "streetsidesoftware.code-spell-checker",
+    "usernamehw.errorlens",
+    "heybourn.headwind",
+    "Orta.vscode-jest",
+    "fnando.linter",
+    "syler.sass-indented",
+    "mrmlnc.vscode-scss",
+    "bradlc.vscode-tailwindcss",
+    "shardulm94.trailing-spaces",
+    "James-Yu.latex-workshop"
+  ]
+}
