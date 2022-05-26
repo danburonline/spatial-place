@@ -1,25 +1,24 @@
 {
-  "name": "vr-frontend-demo",
+  "name": "frontend-demo",
+  "version": "0.1.0",
   "private": true,
   "description": "3D frontend for the HEOG Classifier",
-  "version": "0.1.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/danburonline/spatial-place.git"
   },
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "dev": "next dev",
+    "format": "prettier --write .",
     "lint": "next lint --fix",
-    "format": "prettier --write ."
+    "start": "next start"
   },
   "dependencies": {
     "@heroicons/react": "1.0.6",
     "@react-three/cannon": "4.6.1",
     "@react-three/drei": "8.8.0",
     "@react-three/fiber": "7.0.26",
-    "@trivago/prettier-plugin-sort-imports": "3.1.1",
     "next": "12.1.0",
     "react": "17.0.2",
     "react-audio-player": "0.17.0",
@@ -37,7 +36,6 @@
     "eslint-config-prettier": "8.5.0",
     "eslint-plugin-prettier": "4.0.0",
     "eslint-plugin-simple-import-sort": "7.0.0",
-    "pnpm": "6.32.9",
     "postcss": "8.4.5",
     "prettier": "2.5.1",
     "tailwindcss": "3.0.18",

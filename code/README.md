@@ -1,3 +1,3 @@
-# VR Frontend Demo
+# Frontend Demo
 
 More information coming soon.
