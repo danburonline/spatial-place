@@ -1,7 +1,7 @@
 import { Loader } from '@react-three/drei'
 import dynamic from 'next/dynamic'
 
-import PointerLockIndicator from '../components/PointerLock'
+import PointerLockIndicator from '../components/PointerLockIndicator'
 import SectionsOverlay from '../components/SectionsOverlay'
 import StereoAudio from '../components/StereoAudio'
 
