@@ -11,7 +11,7 @@ class CustomDocument extends Document {
         <meta name="robots" content="index, nofollow" />
         <meta
           name="description"
-          content="This is the HEOG classifier demonstration project for the HEOG Spatial Audio demo at IDUN Technologies and my personal bachelor thesis project."
+          content="This is the HEOG classifier demonstration project for the HEOG positional audio demo at IDUN Technologies and my personal bachelor thesis project."
         />
         <body>
           <Main />
