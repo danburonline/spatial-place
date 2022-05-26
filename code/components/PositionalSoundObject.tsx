@@ -42,13 +42,23 @@ export default function PositionalSoundObject(props: {
     >
       <sphereGeometry args={[0.5, 30, 30]} />
       <meshStandardMaterial
-        color={props.hoverItem === props.soundObject.id ? 'green' : 'red'}
+        color={
+          // If the soundObject is the one being hovered over, set the color to green
+          // All the other soundObjects will have a color of red
+          // By default, the soundObjects will be red
+          props.hoverItem === 0
+            ? 'orange'
+            : props.hoverItem === props.soundObject.id
+            ? 'green'
+            : 'red'
+        }
       />
       <SoundObject
         refs={props.audioRefs[props.index as number]}
         volume={
           // If the soundObject is the one being hovered over, set the volume to 2.5
-          // all the other soundObjects will have a volume of 0.125
+          // All the other soundObjects will have a volume of 0.125
+          // By default, the soundObjects will have a volume of 1
           props.hoverItem === 0
             ? 1
             : props.hoverItem === props.soundObject.id

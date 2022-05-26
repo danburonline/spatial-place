@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
-export default function PointerLock(): JSX.Element {
-  const [pointerLocked, setPointerLocked] = useState(false)
+export default function PointerLockIndicator(): JSX.Element {
+  const [_, setPointerLocked] = useState(false)
 
   useEffect(() => {
     document.addEventListener('pointerlockchange', () => {
