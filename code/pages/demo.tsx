@@ -9,7 +9,7 @@ const Scene = dynamic(() => import('../components/Scene'))
 
 export default function DemoPage() {
   return (
-    <main className='w-screen h-screen'>
+    <main className="w-screen h-screen">
       <SectionsOverlay />
       <Scene />
       <Loader />

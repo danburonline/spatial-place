@@ -1,6 +1,6 @@
 import { useLoader, useThree } from '@react-three/fiber'
-import { useEffect, useState } from 'react'
 import type { RefObject } from 'react'
+import { useEffect, useState } from 'react'
 import { AudioListener, AudioLoader, PositionalAudio } from 'three'
 
 type SoundObjectProps = {
@@ -27,11 +27,7 @@ export default function SoundObject(props: SoundObjectProps) {
       sound.current?.setRefDistance(1)
       sound.current?.setRolloffFactor(props.rolloffFactor)
       if (props.innerAngle !== 0) {
-        sound.current?.setDirectionalCone(
-          props.innerAngle,
-          props.outerAngle,
-          props.coneOuterGain
-        )
+        sound.current?.setDirectionalCone(props.innerAngle, props.outerAngle, props.coneOuterGain)
       }
       sound.current?.setLoop(true)
       camera.add(listener)

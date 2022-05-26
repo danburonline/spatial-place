@@ -27,7 +27,7 @@ export default function usePlayerControls(api: WorkerApi): Movement {
 
   useEffect(() => {
     const handleKeyDown = (event: { code: string | number }) => {
-      setMovement(movements => ({
+      setMovement((movements) => ({
         ...movements,
         [moveFieldByKey(event.code)]: true
       }))
@@ -35,7 +35,7 @@ export default function usePlayerControls(api: WorkerApi): Movement {
     }
 
     const handleKeyUp = (event: { code: string | number }) => {
-      setMovement(movements => ({
+      setMovement((movements) => ({
         ...movements,
         [moveFieldByKey(event.code)]: false
       }))

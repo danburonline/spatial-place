@@ -24,13 +24,10 @@ export default function Player({
   const { forward, backward, left, right } = usePlayerControls(api)
   const { camera } = useThree()
   const velocity = useRef([0, 0, 0])
-  const vector = new Vector3()
+  // const vector = new Vector3()
 
   useEffect(
-    () =>
-      api.velocity.subscribe(
-        subscribedVelocity => (velocity.current = subscribedVelocity)
-      ),
+    () => api.velocity.subscribe((subscribedVelocity) => (velocity.current = subscribedVelocity)),
     [api.velocity]
   )
   useFrame(() => {
@@ -43,9 +40,7 @@ export default function Player({
     // vector.z = 0
     // console.log(vector)
 
-    ref.current &&
-      (ref.current.getWorldPosition(camera.position).y +=
-        PlayerPhysicsBodyHeight)
+    ref.current && (ref.current.getWorldPosition(camera.position).y += PlayerPhysicsBodyHeight)
     frontVector.set(0, 0, Number(backward) - Number(forward))
     sideVector.set(Number(left) - Number(right), 0, 0)
     directionVector

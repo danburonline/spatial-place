@@ -19,15 +19,10 @@ export default function Scene() {
           <Ground />
           <Player />
         </Physics>
-        <PointerLockControls selector='#pointerLockButton' />
+        <PointerLockControls selector="#pointerLockButton" />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Sky
-          distance={450000}
-          sunPosition={[0, 1, 0]}
-          inclination={0}
-          azimuth={0.25}
-        />
+        <Sky distance={450000} sunPosition={[0, 1, 0]} inclination={0} azimuth={0.25} />
         <PositionalAudio />
       </Canvas>
     </>

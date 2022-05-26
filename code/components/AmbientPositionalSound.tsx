@@ -1,4 +1,4 @@
-import { Key, Suspense, createRef, useMemo, useState } from 'react'
+import { createRef, Key, Suspense, useMemo, useState } from 'react'
 import type { PositionalAudio } from 'three'
 
 import PositionalSoundObject from './PositionalSoundObject'
@@ -22,9 +22,7 @@ export type AmbientPositionalSoundProps = {
   soundObjects: SoundObjectType[]
 }
 
-export default function AmbientPositionalSound(
-  props: AmbientPositionalSoundProps
-) {
+export default function AmbientPositionalSound(props: AmbientPositionalSoundProps) {
   const [hoverItem, setHoverItem] = useState<Key>(0)
   const audioRefs = useMemo(
     () =>

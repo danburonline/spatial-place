@@ -6,7 +6,7 @@ export default function PointerLockIndicator(): JSX.Element {
 
   useEffect(() => {
     document.addEventListener('pointerlockchange', () => {
-      setPointerLocked(prevState => !prevState)
+      setPointerLocked((prevState) => !prevState)
     })
   }, [])
 
@@ -17,7 +17,7 @@ export default function PointerLockIndicator(): JSX.Element {
         'absolute h-5 w-5 bg-gray-800 select-none cursor-pointer transform -translate-x-1/2 -translate-y-1/2 rounded-full inset-1/2 text-white flex items-center justify-center z-50 hover:bg-gray-700'
       }
     >
-      <PlusIcon className='w-3 h-3' />
+      <PlusIcon className="w-3 h-3" />
     </div>
   )
 }
