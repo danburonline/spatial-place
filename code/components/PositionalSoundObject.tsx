@@ -1,6 +1,5 @@
 import { useIntersect } from '@react-three/drei'
 import { Dispatch, Key, SetStateAction } from 'react'
-import * as THREE from 'three'
 
 import { SoundObjectType } from './AmbientPositionalSound'
 import SoundObject from './SoundObject'
@@ -40,9 +39,6 @@ export default function PositionalSoundObject(props: {
       key={props.soundObject.id}
       position={[props.soundObject.x, props.soundObject.y, props.soundObject.z]}
       rotation={[0, props.soundObject.rotation, 0]}
-      scale={
-        props.hoverItem === props.soundObject.id ? [1.5, 1.5, 1.5] : [1, 1, 1]
-      }
     >
       <sphereGeometry args={[0.5, 30, 30]} />
       <meshStandardMaterial
@@ -51,8 +47,8 @@ export default function PositionalSoundObject(props: {
       <SoundObject
         refs={props.audioRefs[props.index as number]}
         volume={
-          // If the soundObject is the one being hovered over, set the volume to 2.5 ...
-          // ... all the other soundObjects will have a volume of 0.125
+          // If the soundObject is the one being hovered over, set the volume to 2.5
+          // all the other soundObjects will have a volume of 0.125
           props.hoverItem === 0
             ? 1
             : props.hoverItem === props.soundObject.id
