@@ -1,8 +1,8 @@
 {
   "name": "frontend-demo",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
-  "description": "3D frontend for the HEOG Classifier",
+  "description": "3D frontend for the HEOG classifier",
   "repository": {
     "type": "git",
     "url": "https://github.com/danburonline/spatial-place.git"
