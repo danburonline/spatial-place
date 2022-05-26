@@ -5,8 +5,5 @@
   "jsxSingleQuote": true,
   "trailingComma": "none",
   "arrowParens": "avoid",
-  "printWidth": 80,
-  "importOrder": ["^@core/(.*)$", "^@server/(.*)$", "^@ui/(.*)$", "^[./]"],
-  "importOrderSeparation": true,
-  "importOrderSortSpecifiers": true
+  "printWidth": 80
 }
