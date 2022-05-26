@@ -14,5 +14,5 @@ You can find the whiteboard in Figma via this [URL](https://www.figma.com/file/b
 
 ## Licenses
 
+- Demo Frontend (MIT): [LICENSE](/code/LICENSE)
 - Bachelor Thesis (CC-BY-4.0): [LICENSE](/thesis/LICENSE)
-- Demo WebXR Frontend (MIT): [LICENSE](/code/LICENSE)

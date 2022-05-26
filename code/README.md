@@ -1,6 +1,6 @@
-# Frontend Demo
+# Demo Frontend
 
-This is the directory for the frontend demo demonstrating the use of the eye movement classifier in a 3D environment utilising [positional audio](https://wiki.mumble.info/wiki/Positional-Audio) for the [cocktail party effect](https://en.wikipedia.org/wiki/Cocktail_party_effect).
+This is the directory for the demo frontend demonstrating the use of the eye movement classifier in a 3D environment utilising [positional audio](https://wiki.mumble.info/wiki/Positional-Audio) for the [cocktail party effect](https://en.wikipedia.org/wiki/Cocktail_party_effect).
 
 ## Prerequisites
 
