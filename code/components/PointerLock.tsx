@@ -1,3 +1,4 @@
+import { PlusIcon } from '@heroicons/react/solid'
 import { useEffect, useState } from 'react'
 
 export default function PointerLockIndicator(): JSX.Element {
@@ -13,8 +14,10 @@ export default function PointerLockIndicator(): JSX.Element {
     <div
       id={'pointerLockButton'}
       className={
-        'absolute h-5 w-5 bg-gray-800 z-30 select-none cursor-crosshair transform -translate-x-1/2 -translate-y-1/2 rounded-full inset-1/2'
+        'absolute h-5 w-5 bg-gray-800 select-none cursor-pointer transform -translate-x-1/2 -translate-y-1/2 rounded-full inset-1/2 text-white flex items-center justify-center z-50 hover:bg-gray-700'
       }
-    />
+    >
+      <PlusIcon className='w-3 h-3' />
+    </div>
   )
 }
