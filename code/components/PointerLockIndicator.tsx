@@ -12,7 +12,7 @@ export default function PointerLockIndicator(): JSX.Element {
 
   return (
     <div
-      id={'pointerLockButton'}
+      id="pointerLockButton"
       className={
         'absolute h-5 w-5 bg-gray-800 select-none cursor-pointer transform -translate-x-1/2 -translate-y-1/2 rounded-full inset-1/2 text-white flex items-center justify-center z-50 hover:bg-gray-700'
       }
