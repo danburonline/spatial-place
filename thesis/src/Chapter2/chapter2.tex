@@ -6,14 +6,14 @@ This chapter describes the context of the research question and the findings fro
 \section{Limitations of BCIs}
 \label{chapter2-limitations-of-bcis}
 
-The capabilities of BCIs are not without limitations. In addition to the physical limitations, mainly in material science for the hardware aspects of BCIs, the author attempts to address a broader issue related to neuroscience that directly correlates to the software aspects.
+The capabilities of BCIs are not without limitations. In addition to the physical limitations, mainly in material science for the hardware aspects of BCIs, the author attempts to address a broader issue related to neuropsychology that directly correlates to the software aspects.
 
-\subsection{AI-hard problem}
-\label{chapter2-ai-hard-problem}
+\subsection{Decoding brain data}
+\label{chapter2-decoding-brain-data}
 
 As outlined in the previous chapter, a holistic view of BCI must take into account the aspect of decoding measured neural data and making it intelligible to computer software. It is important to emphasise that the task of decoding neural data is different from decoding thoughts, which is a critical factor for software. Moreover, decoding neural data and extracting the thoughts behind it so that the software can understand them are disciplines on their own. For example, getting computers to recognise letters written on a photograph is a very different problem from reading the written words in the sentences (i.e. computer vision and natural language processing).
 
-Another part is understanding the sentences and their meaning, as in natural language understanding (NLU). NLU is considered an AI-hard problem, which means that the difficulty of these computational problems is equivalent to solving the central problem of artificial general intelligence (AGI) \citep{demasi_theoretical_2010}, assuming that general human-level intelligence is computational.
+Another part is understanding the sentences and their meaning, as in natural language understanding (NLU). NLU is considered an AI-hard problem, which means that the difficulty of these computational problems is equivalent to solving the central problem of artificial general intelligence (AGI) \citep{demasi_theoretical_2010}, assuming that general human-level intelligence is computational. Understanding less structured data, such as EEG data, is more complicated than understanding structured and human-generated syntax such as written language because it contains more hidden features than a paragraph of text. As a result, the author assumes that understanding brain data might be considered an AI-hard problem.
 
 \subsection{Levels of abstraction}
 \label{chapter2-levels-of-abstraction}
@@ -25,10 +25,19 @@ Another part is understanding the sentences and their meaning, as in natural lan
   \label{fig:visual-thinking}
 \end{figure}
 
-Imagine a red house in the middle of a forest. Depending on the individual thought process, one can imagine the house with temporary visual imagery in mind, as in visual thinking, or one can imagine it more verbally, such as conceptually comprehending each word sequentially of what a red house is and that it is located in a forest \citep{amit_asymmetrical_2017}. Additionally, it should also be addressed that different types of thoughts exist at different levels of abstraction and complexity. One can assume that the visual image of a red house in the forest is more abstract and far-fetched than, say, the movement of one's own left arm which has a clear physical counterpart. It gets even more complicated when one imagines concepts that are inconceivable to visualise, such as the idea of a company. A company is only an abstract, collectively agreed upon concept without a physical counterpart and is, therefore, even less straightforward and more complex to conceptually imagine than the other mentioned examples of the red house.
+Imagine a red house in the middle of a forest. Depending on the individual thought process, one can imagine the house with temporary visual imagery in mind, as in visual thinking, or one can imagine it more verbally, such as conceptually comprehending each word sequentially of what a red house is and that it is located in a forest \citep{amit_asymmetrical_2017}. Additionally, it should also be addressed that different types of thoughts exist at different levels of abstraction and complexity. One can assume that the visual image of a red house in the forest is more abstract and far-fetched than, say, the movement of one's own left arm which has a clear physical counterpart. It gets even more complicated when one imagines concepts that are inconceivable to visualise, such as the idea of a company. A company is only an abstract, collectively agreed upon concept without a physical counterpart and is, therefore, even less straightforward and more complex to decode the meaning of measured brain activity than the other mentioned examples of the red house.
 
 \subsection{Technical limitations}
 \label{chapter2-technical-limitations}
+
+Functional tasks of the brain are localised meaning that these signals are generated by local brain areas that can be identified, such as the motor cortex which has been identified to be in charge of muscle movements. Studying the brain areas responsible for activating individual muscle strands can yield a comparable response of muscle stimulation in the brain and thus be measured as output for software to move e.g. a prosthesis. But as mentioned earlier the higher the level of abstraction of the thoughts are, the less locally visible in areas the brain is. Identifying e.g. the thought about a red house in a forest in verbal thinking, can be classified in three technical problem statements:
+
+\begin{itemize}
+  \item One entry in the list
+  \item Another entry in the list
+\end{itemize}
+
+We would need a way more precise way of identifying the brain areas responsible for the activation of individual thoughts, but today's sensors are not able to scan every neuron and every
 
 % TODO Add example from the paper of the CPU
 
