@@ -1,6 +1,6 @@
 # Spatial Place
 
-Spatial Place is the title of my bachelor thesis project, in which I research the production-grade and deployable applicability of brain-machine interface technology via the cloud to extend human-computer interaction for web-based virtual reality applications.
+Spatial Place is the title of my bachelor thesis project, in which I research the production-grade and deployable applicability of brain-computer interface technology via the cloud to extend human-computer interaction for web-based virtual reality applications.
 
 ## Background
 
