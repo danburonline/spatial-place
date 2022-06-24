@@ -3,6 +3,8 @@ import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import { Vector3 } from 'three'
 
+// TODO OpenAI hide and seek colors
+
 import usePlayerControls from '../hooks/usePlayerControls'
 
 export default function Player({
