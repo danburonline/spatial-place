@@ -47,10 +47,10 @@ export default function PositionalSoundObject(props: {
           // All the other soundObjects will have a color of red
           // By default, the soundObjects will be red
           props.hoverItem === 0
-            ? 'orange'
+            ? '#d7a419'
             : props.hoverItem === props.soundObject.id
-            ? 'green'
-            : 'red'
+            ? '#57bddd'
+            : '#fc443f'
         }
       />
       <SoundObject
