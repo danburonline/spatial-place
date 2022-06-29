@@ -867,11 +867,9 @@ wish to left align your text}
 \renewcommand{\nomgroup}[1]{%
 			\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Acronyms / Abbreviations}]}{%
 				\ifthenelse{\equal{#1}{R}}{\item[\textbf{Superscripts}]}{%
-					\ifthenelse{\equal{#1}{S}}{\item[\textbf{Subscripts}]}{%
 						\ifthenelse{\equal{#1}{X}}{\item[\textbf{Other Symbols}]}
 						{}
 					}% matches mathematical symbols > X
-					}% matches Subscripts           > S
 					}% matches Superscripts         > R
 					}% matches Greek Symbols        > G
 
