@@ -13,7 +13,7 @@ The possibilities of BCIs are not without limitations. In addition to the hardwa
 
 As outlined in the previous chapter, a holistic view of BCI must take into account the aspect of decoding measured neural data and making it intelligible to computer software. It is important to emphasise that the task of decoding neural data is different from decoding thoughts, which is a critical factor for software. Moreover, decoding neural data and extracting the thoughts behind it so that the software can understand them are disciplines on their own. For example, getting computers to recognise letters written on a photograph is a very different problem from reading the written words in the sentences (i.e. computer vision and natural language processing).
 
-Another part is understanding the sentences and their meaning, as in natural language understanding (NLU). NLU is considered an AI-hard problem, which means that the difficulty of these computational problems is equivalent to solving the central problem of artificial general intelligence\footnote{Based on the assumption that general human-level intelligence is computable} (AGI) \citep{demasi_theoretical_2010}. Understanding less structured data, such as EEG data, is more complicated than understanding structured and human-generated syntax such as written language because it contains more hidden features than a paragraph of text. As a result, the author assumes that understanding brain data might be considered an AI-hard problem.
+Another part is understanding the sentences and their meaning, as in natural language understanding (NLU). NLU is considered an AI-hard problem, which means that the difficulty of these computational problems is equivalent to solving the central problem of artificial general intelligence\footnote{Based on the assumption that general human-level intelligence is computable.} (AGI) \citep{demasi_theoretical_2010}. Understanding less structured data, such as EEG data, is more complicated than understanding structured and human-generated syntax such as written language because it contains more hidden features than a paragraph of text. As a result, the author assumes that understanding brain data might be considered an AI-hard problem.
 
 \subsection{Abstract thoughts}
 \label{chapter2-abstract-thoughts}
@@ -52,7 +52,7 @@ As pointed out in the previous section, points 2 and 3 depend on advances in dat
 
 Based on Kernel's claim, a recent publication from 2022 also claims that even data sets with several hundred people are too tiny to consistently offer insights about the brain \citep{marek_reproducible_2022}. As a result, most published neuroscience studies with dozens or even hundreds of people could all be incorrect. In such research, variations in brain structure and activity have been linked to variances in cognitive capacity, mental health, and other behavioural features. Numerous studies, for example, have revealed brain structure or activity patterns that may help distinguish persons with depression from those who are not. Neuromarkers of behavioural features is frequently sought in studies. The recent publication from \citeauthor{marek_reproducible_2022} claims that most of these so-called neuro markers would not work when the collected data set is more extensive, which prose a general problem for the field of neuroscience.
 
-This is both fascinating and a significant constraint for BCIs, because understanding the brain is essential to making sense of the measured and classified data for interfacing with it. Therefore a large amount of brain data collected in reproducible experiments is a must for production-ready and mainstream-ready BCIs. UK Biobank's collection of brain scans is one of the first efforts to solve this problem \citep{noauthor_imaging_nodate}, but it is still far from what we might need. Marek himself claims that we might even need millions of data sets to start understanding the brain \citep{callaway_can_2022}.
+This is both fascinating and a significant constraint for BCIs, because understanding the brain is essential to making sense of the measured and classified data for interfacing with it. Therefore a large amount of brain data collected in reproducible experiments is a must for production-ready and mainstream-ready BCIs. UK Biobank's collection of brain scans is one of the first efforts to solve this problem \citep{noauthor_imaging_nodate}, but it is still far from what we might need. Marek himself claims that we might even need millions of data sets to start understanding the brain \citep{callaway_can_2022}. This is where customer-oriented BCIs could come into play, because the adoption rate of a device capable to be used in everyday life is higher than that of experimental subjects, making it more likely to generate larger and longitudinal data sets. We will further discuss this in a later chapter.
 
 \section{BCI landscape}
 \label{chapter2-research-landscape}
@@ -62,33 +62,37 @@ In this chapter we will discuss the current state of the art in non-invasive and
 \subsection{Real-world BCI applications}
 \label{chapter2-real-world-bci-applications}
 
-As mentioned in \autoref{chapter1-background}, there are already consumer-oriented BCI products available to buy off the shelf. The most popular one might be the products from OpenBCI. OpenBCI doesn't offer a specific use-case rather a general-purpose hardware and software stack to build on top of it. The device can be used for research that needs to utilise EEG or to build BCI applications. There are various examples of research being conducted or neurofeedback games made with the software from OpenBCI \citep{openbci_openbci_nodate}. Taking this information into account we see that the user of the OpenBCI products is the person responsible to build the BCI application or incorporate it into their research rather than having a polished and end-user facing application from OpenBCI themselves.
+As mentioned in \autoref{chapter1-background}, consumer-oriented BCI products are already commercially available. Based on Google Trends\footnote{Google Trends: https://trends.google.com} the products from OpenBCI are most likely the most popular. OpenBCI does not provide a specific use case, but rather a hardware and software stack that is universally applicable. It can be used in research where EEG is to be used or in the development of BCI applications. Several research or neurofeedback apps have been created using OpenBCI's products \citep{openbci_openbci_nodate}. Taking this information into consideration, we can see that the OpenBCI customer is responsible for developing their own BCI application or incorporating it into their research, rather than having a sophisticated and end-user application from OpenBCI.
 
-Another example is the recently from Snapchat-acquired startup NextMind \citep{heater_snap_2022}. Next to a simple GUI application to control the hardware as OpenBCI is doing as well, they also didn't offer an end-user facing application for their BCI, rather offering a SDK for the Unity real-time engine to incorporate their technology to enabling brain-controlled actions for video games. An important difference compared to OpenBCI is that they offered built-in classification of the brain-waves captured by the hardware, in their case the classification of active visual focus on virtual objects based on steady-state visual evoked potentials (SSVEP). NextMind didn't offer access to the raw EEG data captured by the sensors since their business model presumably resided in the unique selling proposition of their active visual focus classifier. Nonetheless, the product of NextMind is still less specific for a certain use case since the applicability is due to the developers creating games.
-
-A very closed and specific BCI is e.g. the EEG headband from Muse.
-
+Another example is NextMind, which was recently acquired by Snapchat \citep{heater_snap_2022}. They do not have an end-user application for their BCI\footnote{NextMind and OpenBCI have both a graphical user interface (GUI) application for the control and quality check of their hardware, but neither is intended for end-users.}, but they do offer an SDK for the Unity real-time engine to use their technology for brain-controlled actions in video games. One significant difference between NextMind and OpenBCI is that NextMind includes built-in classification of brain waves captured by hardware, in this case classification of active visual focus on virtual objects based on steady state visual evoked potentials (SSVEP). Because their business model was presumably based on the unique selling point of their active visual focus classifier, NextMind did not provide access to the raw EEG data collected by the sensors. Nonetheless, NextMind's product is less focused on a specific use case, as its applicability is limited to game developers.
 
 \begin{figure}[!htb]
   \minipage{0.32\textwidth}
   \includegraphics[width=\linewidth]{openbci.jpeg}
-  \caption{OpenBCI's Ultracortex \\ device \citep{be_superhvman_conor_2017}}\label{fig:openbci}
+  \caption{OpenBCI's Ultracortex \\ device \citep{be_superhvman_conor_2017}}
+  \label{fig:openbci}
   \endminipage\hfill
   \minipage{0.32\textwidth}
   \includegraphics[width=\linewidth]{nextmind.jpeg}
-  \caption{NextMind's BCI \\ device \citep{louise_neurotechnology_2019}}\label{fig:nextmind}
+  \caption{NextMind's BCI \\ device \citep{louise_neurotechnology_2019}}
+  \label{fig:nextmind}
   \endminipage\hfill
   \minipage{0.32\textwidth}%
   \includegraphics[width=\linewidth]{muse.jpeg}
-  \caption{Muse's meditation \\ headband \citep{muse_muse_nodate}}\label{fig:muse}
+  \caption{Muse's meditation \\ headband \citep{muse_muse_nodate}}
+  \label{fig:muse}
   \endminipage
 \end{figure}
 
+A rather closed and specific BCI is, for example, the EEG headband by Muse. Its purpose is to measure meditation and sleep. They also offer an end-user app to help people better understand their meditation and sleep and how to improve them. The Muse headband is not unidirectional BCI per se, as there is also biofeedback based on neural signals, but the important difference between Muse and e.g. OpenBCI is that they abstract away the neurotechnology. Users don't need to know anything about neuroscience, neurotechnology or the interpretation and classification of brain data to get useful functionality for their use case. They also do not need to understand the software system's underlying architecture. The only thing they need to know is how to pair the device with their smartphone via Bluetooth.
+
+Aside from full-stack BCI solutions, where a company provides a complete BCI solution including hardware and software, there are also companies that focus solely on the software aspect of neural data. Neuromore, a company based in Florida and Germany that provides a software platform for everything related to neural signal processing and BCI, is one example. The company is hardware agnostic, which means you can plug any hardware or sensor into your computer and connect it to the Neuromore Studio software. Neuromore Studio is free and open-source software that runs locally on a variety of platforms, including Windows and macOS. It provides a variety of drag-and-drop interfaces for creating and managing signal processing pipelines, even including machine learning classifiers. For example, you can transform EEG data to extract band power and create triggers based on band power selection, and generate conditional outputs for a game to e.g. move a character.
+
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\linewidth]{neurotech-landscape.png}
-  \caption{Neurotechnology landscape overview \citep{neurotech_analytics_limited_global_nodate}.}
-  \label{fig:neuro-tech-landscape}
+  \includegraphics[width=\linewidth]{neuromore.png}
+  \caption{Screenshot of the Neuromore Studio software \citep{rashid_bilateral_2018}.}
+  \label{fig:neuromore}
 \end{figure}
 
 % Current state of EEG-based games and applications for the normal user (steady state invoked etc.) (talk with Michel and do own research)
@@ -167,4 +171,5 @@ A very closed and specific BCI is e.g. the EEG headband from Muse.
 \nomenclature[agi]{AGI}{Artificial general intelligence}
 \nomenclature[fmri]{fMRI}{Functional magnetic resonance imaging}
 \nomenclature[tdfnirs]{TD-fNIRS}{Time-domain functional near-infrared spectroscopy}
+\nomenclature[gui]{GUI}{Graphical user interface}
 \nomenclature[ssvep]{SSVEP}{steady-state visual evoked potential}

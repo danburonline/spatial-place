@@ -866,6 +866,26 @@ wish to left align your text}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
 			\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Acronyms / Abbreviations}]}{%
+				\ifthenelse{\equal{#1}{R}}{\item[\textbf{Superscripts}]}{%
+					\ifthenelse{\equal{#1}{S}}{\item[\textbf{Subscripts}]}{%
+						\ifthenelse{\equal{#1}{X}}{\item[\textbf{Other Symbols}]}
+						{}
+					}% matches mathematical symbols > X
+					}% matches Subscripts           > S
+					}% matches Superscripts         > R
+					}% matches Greek Symbols        > G
+
+					% To add nomenclature in the header
+					\renewcommand{\nompreamble}{\markboth{\nomname}{\nomname}}
+
+					% Add nomenclature to contents and print out nomenclature
+					\newcommand{\printnomencl}[1][]{
+						\ifthenelse{\equal {#1}{}}
+						{\printnomenclature}
+						{\printnomenclature[#1]}
+						%\addcontentsline{toc}{chapter}{\nomname}
+					}
+
 					% Create the index
 					\ifPHD@index
 					\RequirePackage{makeidx}

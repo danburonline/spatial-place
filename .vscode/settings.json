@@ -7,11 +7,13 @@
     "HEOG",
     "invasively",
     "nanorobotics",
+    "Neuromore",
     "Neurosity",
     "NIRS",
     "Poimandres",
     "SSVEP",
     "Stegman",
+    "Ultracortex",
     "WASD"
   ],
   "scss.lint.unknownAtRules": "ignore"
