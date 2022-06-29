@@ -101,7 +101,7 @@ Despite the fact that this paper focuses on consumer-oriented BCIs, the applicat
 
 However, both NeuroSky and Emotiv provide a research version as well as a consumer or enterprise version of their software and hardware, aiming for general-purpose applicability across customer segments and use cases.
 
-Other considerations include whether the applications are rather steady state evoked such as based on a frequency of noise laid on top of virtual objects to detect which object the person is looking at (e.g. as NextMind is doing), or whether they track the totality of mental states without evoking neural signals with external stimuli, such as in tracking sleep or concentration levels, both of which arise primarily evoked from inside the mind. This distinction can be made as passive, active or reactive BCI, as \citeauthor{alimardani_passive_2020} coined in their work on passive BCIs \citep{alimardani_passive_2020}. However, we do not want to include this dimension because it would introduce unnecessary and additional complexities that are more related to the application layer of BCI software. A broad overview of the software components of a BCI are shown on \autoref{fig:bci-components}.
+Other considerations include whether the applications are rather steady state evoked such as based on a frequency of noise laid on top of virtual objects to detect which object the person is looking at (e.g. as NextMind is doing), or whether they track the totality of mental states without evoking neural signals with external stimuli, such as in tracking sleep or concentration levels, both of which arise primarily evoked from inside the mind. This distinction can be made as passive, active or reactive BCI, as \citeauthor{alimardani_passive_2020} coined in their work on passive BCIs \citep{alimardani_passive_2020}. However, we do not want to include this dimension because it would introduce unnecessary and additional complexities that are more related to the application layer of BCI software.
 
 \begin{figure}[!ht]
   \centering
@@ -109,6 +109,8 @@ Other considerations include whether the applications are rather steady state ev
   \caption{Architectural overview of BCI components including a bidirectionality due to neurofeedback in form of e.g. playing a sound in a certain frequency to enable SSVEP (own representation, 2022).}
   \label{fig:bci-components}
 \end{figure}
+
+As shown on \autoref{fig:bci-components} there are two main components of a BCI: the hardware and the software. Next to the hardware, there is also the physical part of it, e.g. the brain and a physical interaction counterpart in form of e.g. a robot arm\footnote{Some people call this a brain-machine interface rather than a brain-computer interface because you interface with a machine rather than a computer.}. The software is the part that is responsible for the actual processing of the data, e.g. extracting the relevant information from the raw data and turning it into a meaningful output that the application layer can use. The application layer interacts then with a physical or digital counterpart to e.g. move a player in a game or turn start playing sound on the computer via its speakers.
 
 \subsection{Unobtrusive hardware and software}
 \label{chapter2-unobtrusive-hardware-and-software}
