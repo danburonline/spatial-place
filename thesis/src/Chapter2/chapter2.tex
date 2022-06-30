@@ -95,7 +95,7 @@ Aside from full-stack BCI solutions, where a company provides a complete BCI sol
   \label{fig:neuromore}
 \end{figure}
 
-The author attempts to differentiate the offerings of the consumer-oriented BCIs mentioned: They either provide the hardware (with software that at least connects to the device) but are then more broadly applicable to use cases not defined by the company behind the BCI, such as OpenBCI, or they are application-specific in terms of both the software and the hardware, such as the Muse headband\footnote{Outside of Muse, some third-party developers have reverse engineered the Bluetooth features to access the raw EEG data and turn it into a general-purpose BCI device.}.
+The author attempts to differentiate the offerings of the consumer-oriented BCIs mentioned: They either provide the hardware (with software that at least connects to the device) but are then more broadly applicable to use cases not defined by the company behind the BCI, such as OpenBCI, or they are application-specific in terms of both the software and the hardware, such as the Muse headband\footnote{Third-party developers have reverse engineered the Bluetooth features to access Muse's raw EEG data and turn it into a general-purpose device.}.
 
 Despite the fact that this paper focuses on consumer-oriented BCIs, the applications of various BCI offerings can still be distinguished based on whether they are more consumer-oriented or research-oriented, such as the distinction between e.g. NeuroSky\footnote{NeuroSky website: https://neurosky.com} for hobbyists and Emotiv's\footnote{Emotiv website: https://emotiv.com} EEG systems, which are more research-oriented.
 
@@ -115,39 +115,31 @@ As shown on \autoref{fig:bci-components} there are two main components of a BCI:
 \subsection{Unobtrusive hardware and software}
 \label{chapter2-unobtrusive-hardware-and-software}
 
-Another more important and specially technical aspect is the unobtrusiveness of hardware and software.
+Another essential aspect of BCI the unobtrusiveness of hardware and software. Unobtrusiveness in hardware means that it's either not visible at all because it's e.g. implanted sensors under the skull or because it is in a form factor that is socially established already, such as e.g. in a pair of glasses or earphones. On \autoref{fig:unobstrusive-hardware} you can see the prototype of the in-ear EEG hardware from IDUN Technologies that measures the brain activity of a person inside the ear canal. Next to it on \autoref{fig:obstrusive-hardware} is the Neurosity device that measures the brain activity on top of the head, which doesn't resemble a socially established form factor. What's described as socially established and accepted really depends on society and the context, because one could e.g. say that a Neurosity device under a hat is more accepted while talking to a friend compared to having a pair of earphones on you. Nonetheless, if e.g. in-ear EEG technology goes more into the direction of discreetness such as hearing aids then it is more unobtrusive and socially accepted.
 
 \begin{figure}[!htb]
-  \minipage{0.49\textwidth}
-  \includegraphics[width=\linewidth]{obtrusive.jpg}
-  \caption{Neurosity Notion hardware, \\ obtrusive BCI (own representation, 2022).}
-  \label{fig:opobstrusive-hardware}
-  \endminipage\hfill
   \minipage{0.49\textwidth}
   \includegraphics[width=\linewidth]{unobtrusive.jpg}
   \caption{IDUN Guardian hardware, \\ unobtrusive BCI (own representation, 2022).}
   \label{fig:unobstrusive-hardware}
   \endminipage\hfill
+  \minipage{0.49\textwidth}
+  \includegraphics[width=\linewidth]{obtrusive.jpg}
+  \caption{Neurosity Notion hardware, \\ obtrusive BCI (own representation, 2022).}
+  \label{fig:obstrusive-hardware}
+  \endminipage\hfill
 \end{figure}
 
-% mobile and not mobile systems
+Adding brain sensing sensors to a form factor e.g. in wearables that are established is a possibility for BCI hardware to go to the masses, but introducing a completely new wearable form factor like e.g. Neurosity tries to do, can be looked at very critical for mass adoption. One also has to consider the implications different form factors bring with them e.g. the ability to move the device and therefore creating motion artefacts in the signals or the location of the sensors based on the form factor. The ear canal is e.g. optimal for the hearing-related part of the brain but not so optimal for the visual cortex which is on the back on the head. But this is a topic that is not covered in this thesis.
 
-% wireless and not wireless systems
+Next to that comes the mobility. If a device might be unobtrusive in the form factor itself but needs cables to be connected to the computer, then the mass adoption usually seems harder. An example of this comes from another industry: VR. The most sold and mass-market VR headset to date is the Meta Quest 2, next to the USPs in the software, one notable compared to others is that it was a mobile and all-in-one device without the need of external motion capture sensors or cables.
 
-% Passive brain-computer interfaces and user experience (read paper on passive brain-computer interfaces)
-
-% Current state of EEG-based games and applications for the normal user (steady state invoked etc.) (talk with Michel and do own research)
-
-% personal thoughts: active and passive; make difference of wearable and passive
-
-% "sinnesorgan": motor stuff, visual, auditory, neurofeedback (learn how to control your thoughts, attention training for adhs e.g.) etc.
-
-% What it takes for a BCI to be mainstream-ready with IDUN as an example (talk with Simon and example of smart glasses)
-
-% Create a viz about the landscape that I talked about with Auri
+When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer
 
 \subsection{Cloud paradigm-shift}
 \label{chapter2-cloud-paradigm-shift}
+
+Lorem ipsum dolor sit amet.
 
 % Mention Neuropype
 
@@ -159,18 +151,18 @@ Another more important and specially technical aspect is the unobtrusiveness of 
 % What production-grade software separates from others
 % Use The Twelve Factors as a reference
 
-\subsection{Modern web APIs for BCI}
-\label{chapter2-modern-web-apis-for-bcis}
+% \subsection{Modern web APIs for BCI}
+% \label{chapter2-modern-web-apis-for-bcis}
 
 % Examples of BCI data going through web stacks, how to make it work (paper from Stegman)
 % Use this as well https://urish.medium.com/reactive-brain-waves-af07864bb7d4
 
-\subsection{3D applications in the browser}
-\label{chapter2-3d-applications-in-the-browser}
+% \subsection{3D applications in the browser}
+% \label{chapter2-3d-applications-in-the-browser}
 
 % Current state of 3D on the web (WebGPU, pixel streaming, declarative graphics components, WebAssembly (and Rust), etc.)
 
-\subsection{Web-based AR and VR}
+\section{Web-based AR and VR}
 \label{chapter2-web-based-ar-and-vr}
 
 % Current state of VR and AR applications (Meta Quest, Snapchat, ARKit, etc.)
