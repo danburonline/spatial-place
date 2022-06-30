@@ -16,5 +16,5 @@ Both the Guardian SDK and API are used in my project. Because the source code is
 
 ## Licenses
 
-- Demo Frontend (MIT): [LICENSE](/code/LICENSE)
+- Demo Application (MIT): [LICENSE](/code/LICENSE)
 - Bachelor Thesis (CC-BY-4.0): [LICENSE](/thesis/LICENSE)
