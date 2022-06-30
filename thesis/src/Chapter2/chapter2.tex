@@ -154,12 +154,17 @@ As stated in previous sections, most BCIs, such as the OpenBCI, are not intended
 
 \newpage
 
-Companies such as e.g. Neuralink\footnote{Neuralink website: https://neuralink.com} are presumably working on a general purpose, unobtrusive and production-ready software system which enables developers to build production apps and even platforms on top of it for a variety of use cases without being limited \citep{musk_integrated_2019}, in their case, since it is a bidirectional BCI, developers are also able to write data back to the brain. Since their aimed hardware is also as unobtrusive in the form factor (since it's implanted) they have a high potential to become one of the first mass-market ready BCIs if we ignore the fact that we need a surgery to get the device itself \citep{neuralink_approach_nodate} (and other considerations as a harder opt-out of the device compared to e.g. plugging out earphones).
+Companies such as e.g. Neuralink are presumably working on a general purpose, unobtrusive and production-ready software system which enables developers to build production apps and even platforms on top of it for a variety of use cases without being limited \citep{musk_integrated_2019}, in their case, since it is a bidirectional BCI, developers are also able to write data back to the brain. Since their aimed hardware is also as unobtrusive in the form factor (since it's implanted) they have a high potential to become one of the first mass-market ready BCIs if we ignore the fact that we need a surgery to get the device itself \citep{neuralink_approach_nodate} and other considerations as a harder opt-out of the device compared to e.g. plugging out earphones.
 
 \section{Neural/cloud interface definition}
 \label{chapter2-neural-cloud-interface-definition}
 
 This section discusses the definition, need and differentiation of a N/CI and the paradigm shifts associated with it when talking about BCI software.
+
+\subsection{BCI software on the cloud}
+\label{chapter2-bci-software-on-the-cloud}
+
+Having a look at \autoref{fig:nci-components} we can see that the three software layers of a BCI-component illustration as pictures on \autoref{fig:bci-components} are highlighted. This is due to the fact that these components are able to run on the cloud, i.e. on a cloud computing cluster.
 
 \begin{figure}[!ht]
   \centering
