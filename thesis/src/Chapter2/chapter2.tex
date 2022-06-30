@@ -134,11 +134,11 @@ Adding brain sensing sensors to a form factor e.g. in wearables that are establi
 
 Next to that comes the mobility. If a device might be unobtrusive in the form factor itself but needs cables to be connected to the computer, then the mass adoption usually seems harder. An example of this comes from another industry: VR. The most sold and mass-market VR headset to date is the Meta Quest 2, next to the USPs in the software, one notable compared to others is that it was a mobile and all-in-one device without the need of external motion capture sensors or cables.
 
-When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer with your Android mobile phone, you need to download the HP Printer app and a companion app which acts as a driver for the printer. Afterwards, you can start printing documents to the printer via Wifi. In this case, the user needs to understand some of the underlying technical architecture to make it work, rather than just selecting the printer and then print. Unobtrusive software is e.g. when you have a new computer mouse, you plug it in and it just works.
+When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer with your Android mobile phone, you need to download the HP Smart app and a companion app which acts as a driver for the printer to set it up and start using it. In this case, the user needs to understand some of the underlying technical architecture to make it work, rather than just selecting the printer and then print. Unobtrusive software is e.g. when you have a new computer mouse, you plug it in and it just works.
 
 Coming to BCI software unobtrusive software means that you can connect your hardware to your computer or smartphone and use it without any additional software, such as moving the cursor, or clicking on buttons. This is currently not possible with the current state of the art, but it is possible with some additional software. To give you an example of e.g. choosing an OpenBCI device, you need to open the GUI app, connect the hardware, start a recording session, output the stream as an lab streaming-layer (LSL), connect to that stream from e.g. Neuromore Studio, let the data run through a classification pipeline to then connect the outputs of Neuromore to a video game via a SDK inside the engine itself to then have controls for the video game. It should become pretty clear that this cannot be considered unobtrusive software.
 
-Of course there are examples of BCI software that is as unobtrusive as possible, such as e.g. the  app.
+There are of course examples of enclosed software as an executable and therefore rather unobtrusive, but the software is then from the device manufacturer or in close connection to the hardware and the brand behind the hardware itself or they're in the stage of a proof of concept rather than a production-grade application. Fully unobtrusive software would mean, that you buy e.g. a pair of new headphones and plug them into your computer and you get the benefit of neuroenhanced experiences, interfacing with your thoughts and measurement of brain data over all apps, the operating system etc.
 
 \subsection{Cloud paradigm-shift}
 \label{chapter2-cloud-paradigm-shift}
@@ -149,30 +149,8 @@ Lorem ipsum dolor sit amet.
 
 % Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
 
-\section{Web-first approach to software}
-\label{chapter2-web-first-approach-to-software}
-
-% What production-grade software separates from others
-% Use The Twelve Factors as a reference
-
-% \subsection{Modern web APIs for BCI}
-% \label{chapter2-modern-web-apis-for-bcis}
-
-% Examples of BCI data going through web stacks, how to make it work (paper from Stegman)
-% Use this as well https://urish.medium.com/reactive-brain-waves-af07864bb7d4
-
-% \subsection{3D applications in the browser}
-% \label{chapter2-3d-applications-in-the-browser}
-
-% Current state of 3D on the web (WebGPU, pixel streaming, declarative graphics components, WebAssembly (and Rust), etc.)
-
-\section{Web-based AR and VR}
-\label{chapter2-web-based-ar-and-vr}
-
-% Current state of VR and AR applications (Meta Quest, Snapchat, ARKit, etc.)
-
-\section{Neural/cloud interfacing definition}
-\label{chapter2-neural-cloud-interfacing-definition}
+\section{Neural/cloud interface definition}
+\label{chapter2-neural-cloud-interface-definition}
 
 \begin{figure}[ht]
   \centering
