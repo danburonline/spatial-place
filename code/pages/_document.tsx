@@ -4,7 +4,7 @@ class CustomDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <title>Demo Frontend</title>
+        <title>Demo Application</title>
         <Head />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta name="author" content="Daniel Burger" />

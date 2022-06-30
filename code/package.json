@@ -2,7 +2,7 @@
   "name": "demo-frontend",
   "version": "1.0.0",
   "private": true,
-  "description": "Demo frontend for the HEOG classifier",
+  "description": "Demo app for the HEOG classifier",
   "repository": {
     "type": "git",
     "url": "https://github.com/danburonline/spatial-place.git"
