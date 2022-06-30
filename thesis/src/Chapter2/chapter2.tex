@@ -1,7 +1,7 @@
 \chapter{Research Context}
 \graphicspath{{Chapter2/Figs/}{Chapter2/Figs/}}
 
-This chapter describes the research question's context and the current literature findings. The reader is educated on neuroscientific limitations, the state of current non-invasive and unidirectional BCIs, the paradigm shift in developing cloud-based and production-ready software and the implications of web-based approaches to BCIs and 3D applications for VR and AR that go hand in hand with BCI technologies.
+This chapter describes the research question's context and the current literature findings. The reader is educated on neuroscientific limitations, the state of current non-invasive and unidirectional BCIs, the paradigm shift in developing cloud-based and production-ready software and the implications of a N/CI for web applications that go hand in hand with BCI technologies.
 
 \section{Limitations of BCIs}
 \label{chapter2-limitations-of-bcis}
@@ -115,7 +115,7 @@ As shown on \autoref{fig:bci-components} there are two main components of a BCI:
 \subsection{Unobtrusive hardware and software}
 \label{chapter2-unobtrusive-hardware-and-software}
 
-Another essential aspect of BCI the unobtrusiveness of hardware and software. Unobtrusiveness in hardware means that it's either not visible at all because it's e.g. implanted sensors under the skull or because it is in a form factor that is socially established already, such as e.g. in a pair of glasses or earphones. On \autoref{fig:unobstrusive-hardware} you can see the prototype of the in-ear EEG hardware from IDUN Technologies that measures the brain activity of a person inside the ear canal. Next to it on \autoref{fig:obstrusive-hardware} is the Neurosity device that measures the brain activity on top of the head, which doesn't resemble a socially established form factor. What's described as socially established and accepted really depends on society and the context, because one could e.g. say that a Neurosity device under a hat is more accepted while talking to a friend compared to having a pair of earphones on you. Nonetheless, if e.g. in-ear EEG technology goes more into the direction of discreetness such as hearing aids then it is more unobtrusive and socially accepted.
+The unobtrusiveness of hardware and software is another aspect to consider when talking about BCIs. Unobtrusiveness in hardware means that it is either not visible at all, such as when sensors are implanted beneath the skull, or that it is in a form factor that is already socially accepted, such as glasses or headphones. The prototype of IDUN Technologies' hardware, which measures brain activity in the ear canal, is shown in  \autoref{fig:unobstrusive-hardware} that aims to resemble in-earbuds' form factor. \autoref{fig:obstrusive-hardware} shows the Neurosity device, which measures brain activity on the head and is not comparable to a socially established form factor. What is considered socially established and accepted truly depends on the society and context, as one could argue that wearing a Neurosity device under a hat while talking to a friend is more acceptable than wearing earphones. However, if, for example, in-ear EEG technology is becoming more discreet, such as hearing aids, it is more inconspicuous and socially acceptable.
 
 \begin{figure}[!htb]
   \minipage{0.49\textwidth}
@@ -130,27 +130,18 @@ Another essential aspect of BCI the unobtrusiveness of hardware and software. Un
   \endminipage\hfill
 \end{figure}
 
-Adding brain sensing sensors to a form factor e.g. in wearables that are established is a possibility for BCI hardware to go to the masses, but introducing a completely new wearable form factor like e.g. Neurosity tries to do, can be looked at very critical for mass adoption. One also has to consider the implications different form factors bring with them e.g. the ability to move the device and therefore creating motion artefacts in the signals or the location of the sensors based on the form factor. The ear canal is e.g. optimal for the hearing-related part of the brain but not so optimal for the visual cortex which is on the back on the head. But this is a topic that is not covered in this thesis.
+The implications of different form factors must also be considered, such as the possibility of moving the device and thus creating motion artefacts in the signals or the position of the sensors depending on the form factor. The ear canal, for example, is ideally closely located to the auditory cortex of the brain but not so much for the visual cortex, which is located at the back of the head. However, further hardware implications for BCIs are not a topic covered in this thesis.
 
-Next to that comes the mobility. If a device might be unobtrusive in the form factor itself but needs cables to be connected to the computer, then the mass adoption usually seems harder. An example of this comes from another industry: VR. The most sold and mass-market VR headset to date is the Meta Quest 2 \citep{richard_metas_2022}, next to the USPs in the software, one notable compared to others is that it was a mobile and all-in-one device without the need of external motion capture sensors or cables.
+It is perhaps not as simple to discuss the unobtrusiveness of software as it is with hardware. Unobtrusive software, as defined by the author, is the abstraction of the underlying software that executes the logic to make the desired thing work. As an example: To use an HP printer with your Android phone, you must first download the HP Smart app and a companion app that acts as a driver for the printer in order to get it set up and running. In this case, the user must understand some of the underlying technical architecture in order for it to work, rather than simply selecting the printer and printing. For example, unobtrusive software is when you get a new computer mouse that you simply plug in and it works. Unobtrusiveness usually correlates with usability, but it is not always the case as e.g. more advanced users wouldn't consider locked-in abstraction as more usable.
 
-When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer with your Android mobile phone, you need to download the HP Smart app and a companion app which acts as a driver for the printer to set it up and start using it. In this case, the user needs to understand some of the underlying technical architecture to make it work, rather than just selecting the printer and then print. Unobtrusive software is e.g. when you have a new computer mouse, you plug it in and it just works.
+Unobtrusive software in BCI refers to the ability to connect your hardware to your computer or smartphone and use it without the need for additional software such as drivers or command-line interface (CLI) software. As an example: To use an OpenBCI device, one needs to open the GUI app, connect the hardware, begin a recording session, output the stream as a Lab Streaming Layer (LSL), connect to that stream from e.g. Neuromore Studio, run the data through a classification pipeline, and then connect the output from Neuromore to a video game via an SDK within the engine itself to have controls for the video game. It should go without saying that this is not unobtrusive software.
 
-Coming to BCI software unobtrusive software means that you can connect your hardware to your computer or smartphone and use it without any additional software, such as moving the cursor, or clicking on buttons. This is currently not possible with the current state of the art, but it is possible with some additional software. To give you an example of e.g. choosing an OpenBCI device, you need to open the GUI app, connect the hardware, start a recording session, output the stream as an lab streaming-layer (LSL), connect to that stream from e.g. Neuromore Studio, let the data run through a classification pipeline to then connect the outputs of Neuromore to a video game via a SDK inside the engine itself to then have controls for the video game. It should become pretty clear that this cannot be considered unobtrusive software.
-
-There are of course examples of enclosed software as an executable and therefore rather unobtrusive, but the software is then from the device manufacturer or in close connection to the hardware and the brand behind the hardware itself or they're in the stage of a proof of concept rather than a production-grade application. Fully unobtrusive software would mean, that you buy e.g. a pair of new headphones and plug them into your computer and you get the benefit of neuroenhanced experiences, interfacing with your thoughts and measurement of brain data over all apps, the operating system etc.
-
-\subsection{Cloud paradigm-shift}
-\label{chapter2-cloud-paradigm-shift}
-
-Lorem ipsum dolor sit amet.
-
-% Mention Neuropype
-
-% Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
+There are examples of software that is included as an executable file and thus is rather unobtrusive, but the software is closely linked with the hardware and the brand behind the hardware, or it is in the proof of concept (PoC) stage rather than a production-ready application. Buying a new pair of headphones and plugging them into your computer to enjoy neuro-enhanced experiences that interact with your brain's outputs or measure brain data across all apps, the operating system, and so on would be an example of completely unobtrusive software. For that to happen, we would need to create a N/CI.
 
 \section{Neural/cloud interface definition}
 \label{chapter2-neural-cloud-interface-definition}
+
+% Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
 
 \begin{figure}[ht]
   \centering
@@ -175,4 +166,6 @@ Lorem ipsum dolor sit amet.
 \nomenclature[tdfnirs]{TD-fNIRS}{Time-domain functional near-infrared spectroscopy}
 \nomenclature[gui]{GUI}{Graphical user interface}
 \nomenclature[ssvep]{SSVEP}{Steady-state visual evoked potential}
+\nomenclature[cli]{CLI}{Command line interface}
+\nomenclature[poc]{PoC}{Proof of concept}
 \nomenclature[lsl]{LSL}{Lab streaming layer}
