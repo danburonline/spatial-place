@@ -57,7 +57,7 @@ This is both fascinating and a significant constraint for BCIs, because understa
 \section{BCI landscape}
 \label{chapter2-research-landscape}
 
-In this chapter we will discuss the current state of real-life and non-invasive BCIs, their applications and the distinctions that lie within their software offerings.
+In this section we will discuss the current state of real-life and non-invasive BCIs, their applications and the distinctions that lie within their software offerings.
 
 \subsection{Real-world BCI applications}
 \label{chapter2-real-world-bci-applications}
@@ -115,7 +115,7 @@ As shown on \autoref{fig:bci-components} there are two main components of a BCI:
 \subsection{Unobtrusive hardware and software}
 \label{chapter2-unobtrusive-hardware-and-software}
 
-The unobtrusiveness of hardware and software is another aspect to consider when talking about BCIs. Unobtrusiveness in hardware means that it is either not visible at all, such as when sensors are implanted beneath the skull, or that it is in a form factor that is already socially accepted, such as glasses or headphones. The prototype of IDUN Technologies' hardware, which measures brain activity in the ear canal, is shown in  \autoref{fig:unobstrusive-hardware} that aims to resemble in-earbuds' form factor. \autoref{fig:obstrusive-hardware} shows the Neurosity device, which measures brain activity on the head and is not comparable to a socially established form factor. What is considered socially established and accepted truly depends on the society and context, as one could argue that wearing a Neurosity device under a hat while talking to a friend is more acceptable than wearing earphones. However, if, for example, in-ear EEG technology is becoming more discreet, such as hearing aids, it is more inconspicuous and socially acceptable.
+The unobtrusiveness of hardware and software is another aspect to consider when talking about BCIs. Unobtrusiveness in hardware means that it is either not visible at all, such as when sensors are implanted beneath the skull, or that it is in a form factor that is already socially accepted, such as glasses or headphones\footnote{There are other things related to the overall user experience (UX) that are sometimes included in the notion of unobtrusiveness, such as comfort, reusability and convenience, where the author only implies the physical characteristics such as shape, size, etc.}. The prototype of IDUN Technologies' hardware, which measures brain activity in the ear canal, is shown in  \autoref{fig:unobstrusive-hardware} that aims to resemble in-earbuds. \autoref{fig:obstrusive-hardware} shows the Neurosity device, which measures brain activity on the head and is not comparable to a socially established form factor. What is considered socially established and accepted truly depends on the society and context, as one could argue that wearing a Neurosity device under a hat while talking to a friend is more acceptable than wearing in-earbuds. However, if, for example, in-ear EEG technology is becoming more discreet, such as hearing aids, it is more inconspicuous and socially acceptable.
 
 \begin{figure}[!htb]
   \minipage{0.49\textwidth}
@@ -130,20 +130,29 @@ The unobtrusiveness of hardware and software is another aspect to consider when 
   \endminipage\hfill
 \end{figure}
 
-The implications of different form factors must also be considered, such as the possibility of moving the device and thus creating motion artefacts in the signals or the position of the sensors depending on the form factor. The ear canal, for example, is ideally closely located to the auditory cortex of the brain but not so much for the visual cortex, which is located at the back of the head. However, further hardware implications for BCIs are not a topic covered in this thesis.
+The implications of different form factors must also be considered, such as the possibility of moving the device and thus creating motion artefacts in the signals or the position of the sensors. The ear canal, for example, is ideally closely located to the auditory cortex of the brain but not so much for the visual cortex, which is located at the back of the head. However, further hardware implications for BCIs are not a topic covered in this thesis.
 
-It is perhaps not as simple to discuss the unobtrusiveness of software as it is with hardware. Unobtrusive software, as defined by the author, is the abstraction of the underlying software that executes the logic to make the desired thing work. As an example: To use an HP printer with your Android phone, you must first download the HP Smart app and a companion app that acts as a driver for the printer in order to get it set up and running. In this case, the user must understand some of the underlying technical architecture in order for it to work, rather than simply selecting the printer and printing. For example, unobtrusive software is when you get a new computer mouse that you simply plug in and it works. Unobtrusiveness usually correlates with usability, but it is not always the case as e.g. more advanced users wouldn't consider locked-in abstraction as more usable.
+It is perhaps not as simple to discuss the unobtrusiveness of software as it is with hardware. Unobtrusive software, as defined by the author, is the abstraction of the underlying software that executes the logic to make the desired thing work. As an example: To use an HP printer with your Android phone, you must first download the HP Smart app and a companion app that acts as a driver for the printer in order to get it set up and running. In this case, the user must understand some of the underlying technical architecture in order for it to work, rather than simply selecting the printer and printing. For example, unobtrusive software is when you get a new computer mouse that you simply plug in and it works\footnote{Unobtrusiveness usually correlates with usability, but it is not always the case as e.g. more advanced users wouldn't consider locked-in abstraction as more usable, therefore the aspect of usability (as well as accessibility) always remains context-bound.}.
 
-Unobtrusive software in BCI refers to the ability to connect your hardware to your computer or smartphone and use it without the need for additional software such as drivers or command-line interface (CLI) software. As an example: To use an OpenBCI device, one needs to open the GUI app, connect the hardware, begin a recording session, output the stream as a Lab Streaming Layer (LSL), connect to that stream from e.g. Neuromore Studio, run the data through a classification pipeline, and then connect the output from Neuromore to a video game via an SDK within the engine itself to have controls for the video game. It should go without saying that this is not unobtrusive software.
+Unobtrusive software in BCI refers to the ability to connect your hardware to your computer or smartphone and use it without the need for additional software such as drivers or command-line interface (CLI) software. As an example: To use an OpenBCI device, one needs to open the GUI app, connect the hardware, begin a recording session, output the stream as e.g. a Lab Streaming Layer (LSL), connect to that stream from e.g. Neuromore Studio, run the data through a classification pipeline, and then connect the output from Neuromore to a video game via an SDK within the engine itself to have controls for the video game. It should go without saying that this is not unobtrusive software.
 
 There are examples of software that is included as an executable file and thus is rather unobtrusive, but the software is closely linked with the hardware and the brand behind the hardware, or it is in the proof of concept (PoC) stage rather than a production-ready application. Buying a new pair of headphones and plugging them into your computer to enjoy neuro-enhanced experiences that interact with your brain's outputs or measure brain data across all apps, the operating system, and so on would be an example of completely unobtrusive software. For that to happen, we would need to create a N/CI.
 
 \section{Neural/cloud interface definition}
 \label{chapter2-neural-cloud-interface-definition}
 
+This section discusses the definition, need and differentiation of a N/CI and the paradigm shifts associated with it when talking about BCI software.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{nci-components.png}
+  \caption{Highlight of the software components as shown on \autoref{fig:bci-components} of a BCI that are located on the cloud. The Application Logic layer can partially be part of the cloud, but doesn't need to be entirely part if it (own representation, 2022).}
+  \label{fig:nci-components}
+\end{figure}
+
 % Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{nci-definition.png}
   \caption{Visualisation of the three-dimensionality of the term neural/cloud interface (own representation, 2022).}
@@ -166,6 +175,7 @@ There are examples of software that is included as an executable file and thus i
 \nomenclature[tdfnirs]{TD-fNIRS}{Time-domain functional near-infrared spectroscopy}
 \nomenclature[gui]{GUI}{Graphical user interface}
 \nomenclature[ssvep]{SSVEP}{Steady-state visual evoked potential}
+\nomenclature[ux]{UX}{User experience}
 \nomenclature[cli]{CLI}{Command line interface}
 \nomenclature[poc]{PoC}{Proof of concept}
 \nomenclature[lsl]{LSL}{Lab streaming layer}
