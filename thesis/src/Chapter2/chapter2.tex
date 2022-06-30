@@ -134,7 +134,11 @@ Adding brain sensing sensors to a form factor e.g. in wearables that are establi
 
 Next to that comes the mobility. If a device might be unobtrusive in the form factor itself but needs cables to be connected to the computer, then the mass adoption usually seems harder. An example of this comes from another industry: VR. The most sold and mass-market VR headset to date is the Meta Quest 2, next to the USPs in the software, one notable compared to others is that it was a mobile and all-in-one device without the need of external motion capture sensors or cables.
 
-When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer
+When talking about the unobtrusiveness of software it might not be as straightforward as it is with hardware. What the author understands under unobtrusive software is the abstraction of underlying software that runs logic to make the desired thing work. As an example of obtrusive software: in order to use a HP printer with your Android mobile phone, you need to download the HP Printer app and a companion app which acts as a driver for the printer. Afterwards, you can start printing documents to the printer via Wifi. In this case, the user needs to understand some of the underlying technical architecture to make it work, rather than just selecting the printer and then print. Unobtrusive software is e.g. when you have a new computer mouse, you plug it in and it just works.
+
+Coming to BCI software unobtrusive software means that you can connect your hardware to your computer or smartphone and use it without any additional software, such as moving the cursor, or clicking on buttons. This is currently not possible with the current state of the art, but it is possible with some additional software. To give you an example of e.g. choosing an OpenBCI device, you need to open the GUI app, connect the hardware, start a recording session, output the stream as an lab streaming-layer (LSL), connect to that stream from e.g. Neuromore Studio, let the data run through a classification pipeline to then connect the outputs of Neuromore to a video game via a SDK inside the engine itself to then have controls for the video game. It should become pretty clear that this cannot be considered unobtrusive software.
+
+Of course there are examples of BCI software that is as unobtrusive as possible, such as e.g. the  app.
 
 \subsection{Cloud paradigm-shift}
 \label{chapter2-cloud-paradigm-shift}
@@ -193,3 +197,4 @@ Lorem ipsum dolor sit amet.
 \nomenclature[tdfnirs]{TD-fNIRS}{Time-domain functional near-infrared spectroscopy}
 \nomenclature[gui]{GUI}{Graphical user interface}
 \nomenclature[ssvep]{SSVEP}{Steady-state visual evoked potential}
+\nomenclature[lsl]{LSL}{Lab streaming layer}
