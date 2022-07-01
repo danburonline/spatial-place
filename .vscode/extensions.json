@@ -11,6 +11,10 @@
     "mrmlnc.vscode-scss",
     "bradlc.vscode-tailwindcss",
     "shardulm94.trailing-spaces",
-    "James-Yu.latex-workshop"
+    "James-Yu.latex-workshop",
+    "streetsidesoftware.code-spell-checker",
+    "EditorConfig.EditorConfig",
+    "hashicorp.terraform",
+    "Gruntfuggly.todo-tree"
   ]
 }
