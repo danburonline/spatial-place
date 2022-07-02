@@ -164,7 +164,7 @@ This section discusses the definition, need and differentiation of a N/CI and th
 \subsection{BCI software on the cloud}
 \label{chapter2-bci-software-on-the-cloud}
 
-Having a look at \autoref{fig:nci-components} we can see that the three software layers of a BCI-component illustration as pictures on \autoref{fig:bci-components} are highlighted. This is due to the fact that these components are able to run on the cloud, i.e. on a cloud computing cluster.
+Having a look at \autoref{fig:nci-components} we can see that the three software layers of a BCI-component illustration as pictures on \autoref{fig:bci-components} are highlighted. This is due to the fact that these components are able to run on the cloud, i.e. on a public cloud provider such as Amazon Web Services (AWS).
 
 \begin{figure}[!ht]
   \centering
@@ -173,7 +173,32 @@ Having a look at \autoref{fig:nci-components} we can see that the three software
   \label{fig:nci-components}
 \end{figure}
 
-Going to the cloud was a movement that the software industry started doing after the announcement of Amazon Web Services. To summarise it what a paradigm-shift the industry went through, or in some cases still is going through, is that software can run on dedicated servers while 
+Running software on the cloud means that developers or companies can access provisioned information technology (IT) infrastructure through the internet usually with a pay-as-you-go pricing model \citep{amazon_web_services_inc_what_nodate}. Development speed of software applications can drastically improve since software developers can only focus on software, rather than incorporating the hardware and network aspect of setting up their own server farms, therefore abstracting the hardware part away. What started out with simple computers that can be rented on a server such as it was with e.g. AWS Elastic Compute Cloud (EC2) \citep{barr_amazon_2006} ended up being a diverse offering from cloud providers offering various levels of abstracted offerings as shown on \autoref{tab:cloud-computing-types}.
+
+\begin{table}[!ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{ll}
+\rowcolor[HTML]{000000} 
+{\color[HTML]{FFFFFF} Type} &
+  {\color[HTML]{FFFFFF} Description} \\ \hline
+\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Infrastructure as\\ a Service (laaS)\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}IaaS gives access to data storage space, virtual or dedicated\\ computers, and network services. The greatest degree of\\ flexibility and administrative control over your IT resources\\ are provided by utilising IaaS.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Platform as a\\ Service (PaaS)\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}PaaS lets developers concentrate on developing and\\ managing their code rather than worrying about the\\ underlying infrastructure (often hardware and operating\\ systems). An example is Kubernetes.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Software as a\\ Service (SaaS)\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}SaaS provides a whole product that is run and controlled \\ by the service provider. The phrase SaaS often refers to\\ end-user apps (e.g. web-based email). Developers don't\\ have to be concerned about how the service is handled\\ or whether the underlying infrastructure is maintained.\end{tabular}} \\ \hline
+\end{tabular}%
+}
+\vspace{10pt}
+\caption{The three abstraction levels and types of cloud computing \citep{amazon_web_services_inc_what_nodate}.}
+\label{tab:cloud-computing-types}
+\end{table}
+\raggedbottom
+
+According to Milind Govekar, vice president of Gartner, which is an IT research and consultancy company, it is assumed that 85\% of organisations will embrace a cloud-first principle by 2025 and will not be able to fully execute on their digital strategies without the use of cloud-native architectures and technologies \citep{gartner_gartner_nodate}.
+
+There were many paradigm-shifts in terms of writing software for local software such as a Desktop executable such as Adobe Photoshop versus software which is cloud-native. Some aspects, which are relevant for the context of N/CIs are
 
 % Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
 
@@ -212,3 +237,6 @@ Going to the cloud was a movement that the software industry started doing after
 \nomenclature[poc]{PoC}{Proof of concept}
 \nomenclature[lsl]{LSL}{Lab streaming layer}
 \nomenclature[udp]{UDP}{User datagram protocol}
+\nomenclature[aws]{AWS}{Amazon Web Services}
+\nomenclature[ec2]{EC2}{Elastic Compute Cloud}
+\nomenclature[it]{IT}{Information technology}
