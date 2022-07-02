@@ -164,7 +164,7 @@ This section discusses the definition, need and differentiation of a N/CI and th
 \subsection{BCI software on the cloud}
 \label{chapter2-bci-software-on-the-cloud}
 
-Having a look at \autoref{fig:nci-components} we can see that the three software layers of a BCI-component illustration as pictures on \autoref{fig:bci-components} are highlighted. This is due to the fact that these components are able to run on the cloud, i.e. on a public cloud provider such as Amazon Web Services (AWS).
+Having a look at \autoref{fig:nci-components} we can see that the three software layers of a BCI-component illustration as pictured on \autoref{fig:bci-components} is highlighted. This is due to the fact that these components are able to run on the cloud, i.e. on a public cloud provider such as Amazon Web Services (AWS).
 
 \begin{figure}[!ht]
   \centering
@@ -196,16 +196,21 @@ Running software on the cloud means that developers or companies can access prov
 \end{table}
 \raggedbottom
 
-According to Milind Govekar, vice president of Gartner, which is an IT research and consultancy company, it is assumed that 85\% of organisations will embrace a cloud-first principle by 2025 and will not be able to fully execute on their digital strategies without the use of cloud-native architectures and technologies \citep{gartner_gartner_nodate}.
+The majority of businesses are anticipated to embrace a cloud-first strategy by 2025, according to Milind Govekar, vice president of IT research and consultancy company Gartner, and will not be able to fully implement their digital plans without the usage of cloud-native architectures and technologies \citep{gartner_gartner_nodate}. The impact and importance of cloud computing cannot be underestimated, and its success is also reflected in the annual spending on cloud computing resources, estimated at €474 billion in 2022 \citep{gartner_gartner_nodate}. Cloud computing is such an extensive and complex topic that it could easily fill entire books. In the following list, the author categorises three important points from a bird's eye view that certainly play an important role when it comes to BCI software: 1. Dedicated and deterministic environments, which explains that an environment of a software programme always stays the same independent of the end-users hardware, 2. elastic and high performance availability, which explains cloud computers that have a on-demand and adjustable high-performance and 3. provided services for speed, which explains the concept of pre-made and dedicated software written especially for the cloud and certain use cases.
 
-There were many paradigm-shifts in terms of writing software for local software such as a Desktop executable such as Adobe Photoshop versus software which is cloud-native. Some aspects, which are relevant for the context of N/CIs are
+\begin{itemize}
+  \item \textbf{Dedicated and deterministic environments:} Running code for BCIs on different end-user platforms, such as Windows or Android, can have drawbacks because each device has its own processor, graphics card, operating system version, drivers etc., which can make developing software that requires stable and good performance, such as a neural data processing pipelines, time-consuming and difficult to maintain, as developers must keep track of every factor of the end-user devices. This is fine for BCIs that are not intended for the general public, such as specially designed BCIs for people with, say, locked-in syndrome, but for the general public, a variety of different end-user devices come into play. When code is run on a dedicated machine, such as a cloud computer with clearly defined hardware and operating system specifications, it becomes less error-prone and more deterministic. The use of virtual machines (VMs) or containerization on end-user devices attempts to solve this problem, but has additional drawbacks that are beyond the scope of this thesis. Most notable is the draw-back of being bound of the end-users device performance which also varies from user to user.
+  \item \textbf{Elastic and high performance availability:} Because the cloud model usually runs as an as-needed model, the initial purchase cost of computer hardware is split and shared across usage. Developers have access to tremendous computing power that would not be easily afforded if purchased on its own. As a result, when developing a computationally intensive algorithm, developers can use high-performance central processing units (CPUs) and graphics processing units (GPUs) to complete tasks much faster than consumer hardware on end-user devices. Performance can also be increased as needed, for example, to handle heavier tasks that are not used as frequently, or to handle more requests when, for example, the demand on the software increases due to an increase in the number of users, which is a a process known as elasticity \citep{gartner_definition_nodate}. Furthermore, the cloud provides far more storage capacity than end-user devices. End-users would request more data as needed, which would then be downloaded to their device via the internet, rather than all of the data filling up their device's storage capacity.
+  
+  \item \textbf{Provided services for speed:} The vast majority of cloud providers are providing more specialised services as we move closer to PaaS. Provisioned database servers, for example, exist solely to serve as a database, so the underlying hardware is optimised for the database software running on it, such as e.g. PostgreSQL. There are hundreds of cloud computing services available, including 200 from AWS alone \citep{amazon_web_services_inc_what_nodate}, all of which address specific use cases. This is extremely useful when it comes to cloud-based BCI software. One example is the aspect of live streaming of brain data, which we will go over in greater detail in the thesis' implementation chapter. The services provided accelerate development by eliminating the need for teams to reinvent the wheel over and over again, and they also provide out-of-the scalability such as in the serverless model \citep{redhat_what_2022}.
+\end{itemize}
 
-% Challenges and requirements of going with a cloud, API and SDK (privacy, security, IP, performance, scaling etc.)
+An N/CI can use cloud computing by running certain software components of a BCI system in the cloud as e.g. shown on \autoref{fig:nci-components}. Multiple BCIs can communicate with each other or with other software or hardware over the internet, enabling remote HCI. \autoref{fig:nci-components} depicts how two or more BCIs can interface with one another using cloud software. The red arrows represent the typical BCI possibility of local HCI. The blue arrow depicts how the person on the left can execute business logic via the cloud over the internet, enabling digital and physical interactions with e.g. high performance. The green arrow depicts how the person on the right can communicate with their BCI via a N/CI with the person on the left even if they are not in the same geographical location.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{nci-overview.png}
-  \caption{A N/CI is the connection between multiple BCIs and their HCI (own representation, 2022).}
+  \caption{A N/CI is the connection between multiple BCIs (own representation, 2022).}
   \label{fig:nci-overview}
 \end{figure}
 
@@ -216,12 +221,14 @@ There were many paradigm-shifts in terms of writing software for local software 
   \label{fig:nci-definition}
 \end{figure}
 
+\subsection{Three-dimensionality of a N/CI}
+\label{chapter2-three-dimensionality-of-a-nci}
+
 % General definition of a N/CI
 % General challenges of a N/CI
 
 % Difference between existing software systems that come close to a N/CI
 % Opt-in is based on ourselves rather than an account
-% Unobtrusiveness of the software (SDK), down to the OS layer (give example of the printer scenario from Auriel)
 % Create another list with the challenges of a N/CI and use them for the solutions in the methodologies and implementation sections
 
 % Akademischer Hintergrund: Vorbilder, Referenzmaterial, Eingrenzung und vertiefte Begründung der Zielformulierung. Grundlagenforschung im Bereich vergleichbarer Medienprodukte. Kenntnis der fachspezifischen Theorien und Techniken. Hier muss umfassende Fach- und Handwerkskenntnis gezeigt werden. Es sollen möglichst viele Informationen verwendet werden, die helfen sollen Entscheidungen für die Erstellung des eigenen Medienprodukts zu treffen und Vorgehensweisen beim Entstehungsprozess des eigenen Medienprodukts zu begründen. Ebenso soll begründet werden, inwiefern die verwendeten Quellen für die Zielsetzung und deren Umsetzung geeignet sind.
@@ -240,3 +247,6 @@ There were many paradigm-shifts in terms of writing software for local software 
 \nomenclature[aws]{AWS}{Amazon Web Services}
 \nomenclature[ec2]{EC2}{Elastic Compute Cloud}
 \nomenclature[it]{IT}{Information technology}
+\nomenclature[vms]{VMs}{Virtual machines}
+\nomenclature[gpu]{GPU}{Graphics processing units}
+\nomenclature[cpu]{CPU}{Central processing units}
