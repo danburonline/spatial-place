@@ -238,32 +238,32 @@ The author introduces the concept of three-dimensionality for the definition of 
 % \usepackage[table,xcdraw]{xcolor}
 % If you use beamer only pass "xcolor=table" option, i.e. \documentclass[xcolor=table]{beamer}
 \begin{table}[!ht]
-\centering
-\resizebox{\textwidth}{!}{%
-\begin{tabular}{ll}
-\rowcolor[HTML]{000000} 
-{\color[HTML]{FFFFFF} Axis labelling} &
-  {\color[HTML]{FFFFFF} Description} \\ \hline
-\multicolumn{1}{|l|}{\textbf{Production}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}As previously stated, this is the range in which a software system is deemed ready for production.\\ Because the definition is vague, it is difficult to identify specific requirements that must be met for\\ a system to be considered production-ready. However, for a N/CI, this means running in a\\ production environment, e.g. in a cloud, on a real-world end-user server rather than, for example,\\ in a proof-of-concept environment such as in a lab.\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{Unobtrusive}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}As previously stated, an unobtrusive software system is one in which the end-user does not need\\ to understand the underlying architecture and requirements in order to use the software or even\\ know certain parts of the software system. In the reverse case, users need to install special\\ packages or download additional companion apps. to make a N/CI work on their computer\\ or smartphone is not the aim of the author's definition of a N/CI.\end{tabular}} \\ \hline
-\multicolumn{1}{|l|}{\textbf{General-purpose}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}A general-purpose software system is one that can be used for a variety of functions. As an\\ example, consider AWS. It is general-purpose, which means that developers can create\\ cloud software on AWS that can be either a financial application or a backend for a mobile\\ application; there are no specific use cases. This means that a N/CI, unlike the NextMind BCI\\ or the Muse headband, should provide general-purpose functionality rather than specific use\\ cases, i.e. it is not limited to a specific set of functions.\end{tabular}} \\ \hline
-\rowcolor[HTML]{EFEFEF} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}PoC} &
-  \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}A BCI software system that serves as a proof of concept cannot be considered N/CI because\\ it is not intended for production and thus all the effort required to create a production system,\\ such as quality assurance with unit or end-to-end testing, is unnecessary. A PoC system does\\ not usually run in a production environment, as the goal is, for example, to test a specific\\ functionality of a use case rather than to deliver the software to end-users.\end{tabular}} \\ \hline
-\rowcolor[HTML]{EFEFEF} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}Obtrusive} &
-  \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}An obtrusive BCI system, for example, may still be production-ready if it targets specific use cases\\ while remaining unobtrusive because neuroscientists or developers, for example, expect to have\\ access to the underlying software architecture or technical requirements and thus do not want to\\ abstract from it. If it is obtrusive software, such as OpenBCI, this usually means building the\\ production-ready part on top of it is necessary, which does not fit the author's proposed definition\\ of a N/CI.\end{tabular}} \\ \hline
-\rowcolor[HTML]{EFEFEF} 
-\multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}Specific} &
-  \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}If a BCI system is only used for one use case, such as Muse for sleep and meditation, companies\\ or developers who want to offer a different use case, such as a mind-controlled keyboard with a\\ P300 system will have to reverse engineer Muse's EEG output or use a different BCI hardware\\ that is less specific and closed, and then build their own production-ready and unobtrusive software\\ on top of it.\end{tabular}} \\ \hline
-\end{tabular}%
-}
-\vspace{10pt}
-\caption{Axis label descriptions of \autoref{fig:nci-definition}}
-\label{tab:nci-axis}
+  \centering
+  \resizebox{\textwidth}{!}{%
+    \begin{tabular}{ll}
+      \rowcolor[HTML]{000000}
+      {\color[HTML]{FFFFFF} Axis labelling}                   &
+      {\color[HTML]{FFFFFF} Description}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  \\ \hline
+      \multicolumn{1}{|l|}{\textbf{Production}}               &
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}As previously stated, this is the range in which a software system is deemed ready for production.\\ Because the definition is vague, it is difficult to identify specific requirements that must be met for\\ a system to be considered production-ready. However, for a N/CI, this means running in a\\ production environment, e.g. in a cloud, on a real-world end-user server rather than, for example,\\ in a proof-of-concept environment such as in a lab.\end{tabular}}                                                                                     \\ \hline
+      \multicolumn{1}{|l|}{\textbf{Unobtrusive}}              &
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}As previously stated, an unobtrusive software system is one in which the end-user does not need\\ to understand the underlying architecture and requirements in order to use the software or even\\ know certain parts of the software system. In the reverse case, users need to install special\\ packages or download additional companion apps. to make a N/CI work on their computer\\ or smartphone is not the aim of the author's definition of a N/CI.\end{tabular}}                                                                                         \\ \hline
+      \multicolumn{1}{|l|}{\textbf{General-purpose}}          &
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}A general-purpose software system is one that can be used for a variety of functions. As an\\ example, consider AWS. It is general-purpose, which means that developers can create\\ cloud software on AWS that can be either a financial application or a backend for a mobile\\ application; there are no specific use cases. This means that a N/CI, unlike the NextMind BCI\\ or the Muse headband, should provide general-purpose functionality rather than specific use\\ cases, i.e. it is not limited to a specific set of functions.\end{tabular}}          \\ \hline
+      \rowcolor[HTML]{EFEFEF}
+      \multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}PoC}       &
+      \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}A BCI software system that serves as a proof of concept cannot be considered N/CI because\\ it is not intended for production and thus all the effort required to create a production system,\\ such as quality assurance with unit or end-to-end testing, is unnecessary. A PoC system does\\ not usually run in a production environment, as the goal is, for example, to test a specific\\ functionality of a use case rather than to deliver the software to end-users.\end{tabular}}                                                    \\ \hline
+      \rowcolor[HTML]{EFEFEF}
+      \multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}Obtrusive} &
+      \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}An obtrusive BCI system, for example, may still be production-ready if it targets specific use cases\\ while remaining unobtrusive because neuroscientists or developers, for example, expect to have\\ access to the underlying software architecture or technical requirements and thus do not want to\\ abstract from it. If it is obtrusive software, such as OpenBCI, this usually means building the\\ production-ready part on top of it is necessary, which does not fit the author's proposed definition\\ of a N/CI.\end{tabular}} \\ \hline
+      \rowcolor[HTML]{EFEFEF}
+      \multicolumn{1}{|l|}{\cellcolor[HTML]{EFEFEF}Specific}  &
+      \multicolumn{1}{l|}{\cellcolor[HTML]{EFEFEF}\begin{tabular}[c]{@{}l@{}}If a BCI system is only used for one use case, such as Muse for sleep and meditation, companies\\ or developers who want to offer a different use case, such as a mind-controlled keyboard with a\\ P300 system will have to reverse engineer Muse's EEG output or use a different BCI hardware\\ that is less specific and closed, and then build their own production-ready and unobtrusive software\\ on top of it.\end{tabular}}                                                                                                         \\ \hline
+    \end{tabular}%
+  }
+  \vspace{10pt}
+  \caption{Axis label descriptions of \autoref{fig:nci-definition}}
+  \label{tab:nci-axis}
 \end{table}
 
 The assumption that the empirical development of a real N/CI preceded IDUN Technologies is why a N/CI must be located at the intersection of these three areas. The mission of IDUN Technologies is to create a mass-market BCI for everyone. They accomplish this by constructing EEG sensors in the form of in-ear headphones and measuring brain signals from the ear canal \citep{idun_technologies_guardian_nodate}. With an unobtrusive form factor like the one used by IDUN, a significant barrier to mass-market BCI has already been overcome. Furthermore, IDUN intends to provide a business-to-business (B2B) platform, allowing developers and scientists to create software based on IDUN's offering. As a result, IDUN is developing a universal brain programming interface (API) through which developers and scientists can access brain insights. Because IDUN includes this API in end-user applications, it must be production-ready. IDUN focuses on specific use cases at the start of product development, but this is not due to technical constraints but rather a business decision. The device should be generic rather than specific, allowing developers to build any neuro-enhanced application on top of the API.
