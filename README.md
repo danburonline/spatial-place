@@ -1,12 +1,12 @@
 # Spatial Place
 
-Spatial Place is the title of my bachelor thesis and practical project, in which I research the production-grade and deployable applicability of brain-computer interface technology on the cloud to extend human-computer interaction for web applications.
+Spatial Place is the project title of my bachelor thesis, in which I researched and explored the applicability of a novel software system for bringing brain-computer interface software to the cloud and web applications.
 
 ## Background
 
-My bachelor project was completed in collaboration with [IDUN Technologies](https://iduntechnologies.com) and their proprietary [DRYODE™ Guardian](https://iduntechnologies.com/guardian-dev-kit) product, an electroencephalography (EEG) sensor that resembles a standard in-ear headphone. Since the start of my undergraduate project, I've been working for IDUN as a cloud software engineer, revising the Guardian software products to make them more user-friendly, functional, and especially cloud-ready. IDUN aims to create a cloud platform with a scalable and robust architecture for deploying and managing EEG machine learning classifiers. This includes an SDK and API for interacting with the Guardian hardware.
+My bachelor project was completed in collaboration with [IDUN Technologies](https://iduntechnologies.com) and their proprietary [DRYODE™ Guardian](https://iduntechnologies.com/guardian-dev-kit) product, an electroencephalography (EEG) sensor that resembles a standard in-ear headphone. Since the start of my undergraduate project, I've been working for IDUN as a cloud software engineer, revising the Guardian software products to make them more user-friendly, functional, and especially cloud-ready. IDUN aims to create a cloud platform with a scalable and robust architecture for deploying and managing machine learning classifiers. This includes an SDK and API for interacting with the Guardian hardware.
 
-Both the Guardian SDK and API are used in my project. Because the source code is proprietary and hence subject to a copyrighted license, I cannot put it in a public repository. I can, however, share with you the source code for the demo application under the `/code` directory. As part of my project submission, I have included a copy of the SDK and API source code, including the demo application, so that the examiners may see the code and understand how the SDK and API work when evaluating my project.
+Both the Guardian SDK and API as well as proprietary feature extraction libraries were used in my project. Because the source code is proprietary and hence subject to a copyrighted license, I cannot put it in a public repository. I can, however, share with you the source code for a demo application under the `/code` directory. As part of my project submission, I have included a copy of the associated repositories of IDUN, including the demo application, so that the examiners may see the source code and understand how the neural/cloud interface works when evaluating my project.
 
 ## Other Artefacts
 
