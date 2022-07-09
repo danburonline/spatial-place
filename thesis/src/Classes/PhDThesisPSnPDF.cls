@@ -866,10 +866,6 @@ wish to left align your text}
 \makenomenclature
 \renewcommand{\nomgroup}[1]{%
 			\ifthenelse{\equal{#1}{Z}}{\item[\textbf{Acronyms / Abbreviations}]}{%
-				\ifthenelse{\equal{#1}{R}}{\item[\textbf{Superscripts}]}{%
-						\ifthenelse{\equal{#1}{X}}{\item[\textbf{Other Symbols}]}
-						{}
-					}% matches mathematical symbols > X
 					}% matches Superscripts         > R
 					}% matches Greek Symbols        > G
 
