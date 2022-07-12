@@ -1,21 +1,21 @@
 \chapter{Introduction}
 \graphicspath{{Chapter1/Figs/}{Chapter1/Figs/}}
 
-This chapter introduces the reader to this thesis's primary focus, key topics and their overall explanations. It also displays the research question, objectives, and aims of the thesis's primary content and structure.
+This chapter introduces the reader to this thesis's primary focus, key topics, and broad explanations. It also displays the research question, objectives, and aims of the thesis's primary content and structure.
 
 \section{Background}
 \label{chapter1-background}
 
-There has been a long-standing interest in developing neural interfaces, systems that sense and interact with the electrical activity from the nervous system. Successful research into the development of technologies that enable neural interfacing has been going on for decades, with the first experiments being conducted by Jacques J. Vidal in the late 1970s \citep{vidal_real-time_1977}. In particular, a related discipline focusing on the direct interaction between brains and computers via a brain-computer interface (BCI), has accumulated much momentum since the popularity of companies like Neuralink.
+There has been a long-standing interest in developing neural interfaces, systems that sense and interact with the nervous system's electrical activity. Successful research into the development of technologies that enable neural interfacing has been going on for decades, with the first experiments being conducted by Jacques J. Vidal in the late 1970s \citep{vidal_real-time_1977}. In particular, a related discipline focusing on the direct interaction between brains and computers via a brain-computer interface (BCI) has accumulated much momentum since the popularity of companies like Neuralink.
 
-One aspect of BCIs is the development of imaging technologies that enable the measurement of brain activity. A distinction is made between different methods of measuring of brain activity signals at different locations, such as invasive and non-invasive sensors. Whether it is an invasive sensor, such as in electrocorticography (ECoG), a method which uses electrodes placed on the surface of the brain, or a non-invasively placed sensor on the body, such as in electroencephalography (EEG), both methods measure the electrical field elicited by the firing of neuronal populations; however, with decreasing spatial precision, the farther the electrode is placed from the brain, the more tissues (e.g., bones) are between firing neurons and the measuring sensor.
+One aspect of BCIs is the development of imaging technologies that enable the measurement of brain activity. A distinction is made between different methods of measuring brain activity signals at different locations, such as invasive and non-invasive sensors. Whether it is an invasive sensor, such as in electrocorticography (ECoG), a method which uses electrodes placed on the surface of the brain, or a non-invasively placed sensor on the body, such as in electroencephalography (EEG), both methods measure the electrical field elicited by the firing of neuronal populations; however, with decreasing spatial precision, the farther the electrode is placed from the brain, the more tissues (e.g., bones) are between firing neurons and the measuring sensor.
 
-The other aspect is the development of software that aims at reading and interpreting data from e.g. hardware sensors. Both aspects present their own set of challenges and complexities. Nonetheless, complete and applicable BCIs work in practice and have been used for many years in patients with neurological disorders \citep{braingate_publications_nodate}. There are also consumer and non-clinical BCIs available, such as the OpenBCI and Neurosity products, which aim to normalise the use of EEG sensors by offering low-cost hardware and open-source software.
+The other aspect is the development of software that reads and interprets data from, e.g. hardware sensors. Both aspects present their own set of challenges and complexities. Nonetheless, complete and applicable BCIs work in practice and have been used for many years in patients with neurological disorders \citep{braingate_publications_nodate}. There are also consumer and non-clinical BCIs available, such as the OpenBCI and Neurosity products, which aim to normalise the use of EEG sensors by offering low-cost hardware and open-source software.
 
 \section{Relevance}
 \label{chapter1-relevance}
 
-The possibilities for directly connecting the human brain to the outside world via or with computers are seemingly endless, given the (purely physical) assertion that all of our feelings, memories, dreams, and thoughts are most likely the sum of electrical activities taking place in our brain. There are several use cases for utilising insights from our brain to interface with computers such as controlling prosthetic limbs for amputees as shown on \autoref{fig:prostetic-arms}, enabling communication for people with locked-in syndrome\footnote{Lock-in syndrome describes the paralysis of all voluntary muscles in its entirety, therefore making it impossible for people to communicate with the outside world.} \citep{chaudhary_spelling_2022}, or diagnosing neurological problems and improving the mental capacities of elderly patients \citep{belkacem_brain_2020} are promising examples, to name a few.
+The possibilities for directly connecting the human brain to the outside world via or with computers are seemingly endless, given the (purely physical) assertion that all of our feelings, memories, dreams, and thoughts are most likely the sum of electrical activities in our brain. There are several use cases for utilising insights from our brain to interface with computers, such as controlling prosthetic limbs for amputees as shown on \autoref{fig:prostetic-arms}, enabling communication for people with locked-in syndrome\footnote{Lock-in syndrome describes the paralysis of all voluntary muscles in its entirety, therefore making it impossible for people to communicate with the outside world.} \citep{chaudhary_spelling_2022}, or diagnosing neurological problems and improving the mental capacities of elderly patients \citep{belkacem_brain_2020} are promising examples, to name a few.
 
 \begin{figure}[ht]
   \centering
@@ -26,7 +26,7 @@ The possibilities for directly connecting the human brain to the outside world v
 
 It may appear evident that BCIs can significantly impact the field of therapeutics and accessibility for a small subset of the human population. However, one can envision not only alleviating deplorable living conditions but also improving the lives of healthy people through more natural or efficient ways of interacting with things or by directly altering human brains for certain benefits such as the possibility to enhance or delete bad memories \citep{spiers_enhance_2014} or record and guide dreams \citep{haar_horowitz_dormio_2020}.
 
-Many use-cases still seem a long way from being applicable today, yet many capable people, and even entire companies are developing BCI hardware and software aimed at the general population such as e.g. Neuralink \citep{urban_neuralink_2017}. The applicability of a BCI system to the mass-market will depend on several factors, of which the form factor and invasiveness of the hardware is likely to be an important aspect. Nevertheless, the totality of the ecosystem in which the software resides is a valuable aspect that should not be overlooked.
+Many use-cases still seem a long way from being applicable today, yet many capable people and even entire companies are developing BCI hardware and software aimed at the general population, such as, e.g. Neuralink \citep{urban_neuralink_2017}. The applicability of a BCI system to the mass market will depend on several factors, of which the form factor and invasiveness of the hardware are likely to be essential aspects. Nevertheless, the totality of the ecosystem in which the software resides is a valuable aspect that should not be overlooked.
 
 \section{Research question}
 \label{chapter1-research-question}
@@ -40,25 +40,25 @@ Whether it is a bidirectional and invasive BCI or a unidirectional and non-invas
   \label{fig:directional-system}
 \end{figure}
 
-Most current BCI software systems being developed, e.g. for a BCI implanted in a living patient, are typically deployed in a local environment, i.e. the software system and its components are located on a physically nearby computer. The author sees a need to move BCI software away from local environments and into the cloud in order to enable mass-market ready BCIs.
+Most current BCI software systems being developed, e.g. for a BCI implanted in a living patient, are typically deployed in a local environment, i.e. the software system and its components are located on a physically nearby computer. The author sees a need to move BCI software away from local environments and into the cloud in order to enable mass-market-ready BCIs.
 
-The research question of the present thesis is on determining what components such a cloud-based and mass-market-ready software system would require. The emphasis is on a holistic view of such a system, which means that the entire technology stack and context is taken into account in answering the research question.
+The research question of the present thesis is on determining what components such a cloud-based and mass-market-ready software system would require. The emphasis is on a holistic view of such a system, which means that the entire technology stack and context are taken into account in answering the research question.
 
 \section{Hypothesis}
 \label{chapter1-hypothesis}
 
-There is already promising research on implications of brain/cloud interfaces (B/CI) by \citeauthor{martins_human_2019} \citeyearpar{martins_human_2019} or by \citeauthor{angelica_cognitive_2021} \citeyearpar{angelica_cognitive_2021}, which analyse bringing hypothetical large-scale BCI software systems into the cloud. Nonetheless, their research is focusing on speculations based on hypothetical scenarios in the future, usually based on the premise of other developed technologies such as neural nanorobotics, vital advances in 5G, or the presence of supercomputers in the cloud, e.g. for the augmentation of the human brain, and are thus somewhat distant from today's pertinence. To distinguish the research presented in this thesis, the author coins the term neural/cloud interface (N/CI), which refers to a holistic software system that connects a neural interface device such as a BCI to the cloud and then to other neural interfaces, software systems, or physical devices.
+There is already promising research on implications of brain/cloud interfaces (B/CI) by \citeauthor{martins_human_2019} \citeyearpar{martins_human_2019} or by \citeauthor{angelica_cognitive_2021} \citeyearpar{angelica_cognitive_2021}, which analyse bringing hypothetical large-scale BCI software systems into the cloud. Nonetheless, their research focuses on speculations based on hypothetical scenarios in the future, usually based on the premise of other developed technologies such as neural nanorobotics, vital advances in 5G, or the presence of supercomputers in the cloud, e.g. for the augmentation of the human brain, and are thus somewhat distant from today's pertinence. To distinguish the research presented in this thesis, the author coins the term neural/cloud interface (N/CI), which refers to a holistic software system that connects a neural interface device such as a BCI to the cloud and then to other neural interfaces, software systems, or physical devices.
 
 The primary hypothesis is that a N/CI is feasible with contemporary software technologies, requiring only theoretical groundwork based on empirical software engineering. To shed more light on this, this thesis looks at the process and lessons learned from the author's perspective in developing a real-life N/CI in the industry.
 
 \section{Goal and objectives}
 \label{chapter1-goal-and-objectives}
 
-The overall goal of this thesis is to give the reader an overview of the definition of a N/CI, and the software components that make it up. In order to achieve the goal the author must achieve the following objectives:
+The overall goal of this thesis is to give the reader an overview of the definition of a N/CI and the software components that make it up. In order to achieve the goal, the author must achieve the following objectives:
 
 \begin{enumerate}
   \item Describe the motivation for this new and interdisciplinary field between BCI and cloud computing.
-  \item Establish a clear definition of an N/CI, its distinction and advantages compared to existing BCI software systems.
+  \item Establish a clear definition of a N/CI, its distinction and its advantages compared to existing BCI software systems.
   \item Identify and define the most relevant software components and aspects required to realise a N/CI.
 \end{enumerate}
 

@@ -31,7 +31,7 @@ The system itself was in a rather unstable state and had strange error sources t
   \item The network bridge was a Raspberry Pi running Python code which, after some analysis turned out to be the main source of most bugs. The question was raised if the network bridge was even needed, as IDUN either way would go into being a fully-mobile system rather than network bound and therefore aiming at being connected directly to a mobile phone or computer.
   \item The heartbeat functionality of the cloud was missing, which basically meant that the cloud did not know anything about the hardware devices, it just assumed that data would flow in as soon as the start command was sent to the device, therefore having a happy-path-only scenario. There were many happy path scenarios present.
    \item The infrastructure of the application was automatically provided by AWS Amplify and used AWS CloudFormation under the hood inside AWS CodePipeline which is AWS's own continuous integration service. The entirety of the software on the cloud was built via the AWS Console (the GUI of AWS) and therefore there was no current state in form of code to reflect the current infrastructure, ergo making reproducibility of the cloud impossible.
-   \item The streaming of the data happened through MQTT, a publish and subscribe-based protocol usually used for Internet of Things (IoT) devices such as sending periodically health checks. The intent of MQTT was not the real-time sending of EEG data, therefore the need was also there to reconsider this technological decision which was deeply rooted into another AWS service called IoT Core.
+   \item The streaming of the data happened through [IBM] MQ Telemetry Transport (MQTT), a publish and subscribe transport protocol usually used for IoT devices such as sending periodically telemetry data. The intent of MQTT was not the real-time sending of EEG data rather for minimal network bandwidth, therefore the need was also there to reconsider this technological decision which was deeply rooted into another AWS service called IoT Core.
    \item The end-user of the software product was also still uncertain, therefore making it even harder to define what the system should actually be able to achieve. IDUN needed to figure out if the software system is rather aimed at researchers, developers, end-users etc. The priorisation of the engineering roadmap was therefore uncertain.
    \item The web app was a thick client and did not consume one single API endpoint from the AWS backend. Thick client means that the web app did quite a lot of business logic, such as the filtering of the raw data for the near-realime visualisation which was another technological misdecision since the client-side JavaScript ecosystem is way far inferior compared to e.g. the Python ecosystem which could run on the backend.
    \item The web app was not connected to a single endpoint on the backend and consumed the MQTT stream and non-real-time aspects of the app (login, list recorded EEG data and so on) via different sources. E.g. the MQTT stream was directly subscribed from the device itself via AWS IoT Core and did not go through the GraphQL API from AWS Amplify, which made coupling the systems to a cohesive and robust API tedious.
@@ -45,6 +45,14 @@ The author was already working on his original Bachelor project, which focused o
 \label{chapter3-case-study}
 
 A possibility to conduct research in order to build a N/CI with the assumed requirements as defined with the three-dimensionality was to do a case study at the research and development (R\&D) team at IDUN Technologies.
+
+Why a case study?
+
+It is an uncommon or atypical instance.
+- The example offers fresh or unexpected perspectives on a situation.
+- The case presents a serious challenge to accepted beliefs.
+- The instance illustrates fresh methods for resolving a dilemma.
+- The case paves the way for further lines of inquiry in the future.
 
 % Forty-three patients of the psychiatric clinic with diagnosed major depression (12 male, Mage = 36.35, SDage = 7.92) participated in this study for monetary compensation (10 USD).
 
@@ -95,3 +103,4 @@ A possibility to conduct research in order to build a N/CI with the assumed requ
 \nomenclature[rd]{R\&D}{Research and development}
 \nomenclature[nip]{NIP}{Neuro-Intelligence Platform}
 \nomenclature[spa]{SPA}{Single-page application}
+\nomenclature[mqtt]{MQTT}{[IBM] MQ Telemetry Transport}
