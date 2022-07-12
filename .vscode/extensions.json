@@ -1,20 +1,14 @@
 {
   "recommendations": [
     "esbenp.prettier-vscode",
-    "steoates.autoimport",
     "aaron-bond.better-comments",
     "streetsidesoftware.code-spell-checker",
     "usernamehw.errorlens",
-    "heybourn.headwind",
     "fnando.linter",
-    "syler.sass-indented",
-    "mrmlnc.vscode-scss",
-    "bradlc.vscode-tailwindcss",
     "shardulm94.trailing-spaces",
     "James-Yu.latex-workshop",
     "streetsidesoftware.code-spell-checker",
     "EditorConfig.EditorConfig",
-    "hashicorp.terraform",
     "Gruntfuggly.todo-tree"
   ]
 }

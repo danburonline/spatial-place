@@ -6,20 +6,16 @@
     "Dreem",
     "electrocorticography",
     "Emotiv",
-    "Govekar",
     "hemodynamic",
     "HEOG",
     "invasively",
-    "Milind",
     "nanorobotics",
     "Neuromore",
     "Neurosity",
     "NIRS",
-    "Poimandres",
     "SSVEP",
     "Stegman",
-    "Ultracortex",
-    "WASD"
+    "Ultracortex"
   ],
   "scss.lint.unknownAtRules": "ignore"
 }
