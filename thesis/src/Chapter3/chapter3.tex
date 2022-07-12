@@ -34,7 +34,7 @@ The system itself was in a rather unstable state and had strange error sources t
    \item The streaming of the data happened through MQTT, a publish and subscribe-based protocol usually used for Internet of Things (IoT) devices such as sending periodically health checks. The intent of MQTT was not the real-time sending of EEG data, therefore the need was also there to reconsider this technological decision which was deeply rooted into another AWS service called IoT Core.
    \item The end-user of the software product was also still uncertain, therefore making it even harder to define what the system should actually be able to achieve. IDUN needed to figure out if the software system is rather aimed at researchers, developers, end-users etc. The priorisation of the engineering roadmap was therefore uncertain.
    \item The web app was a thick client and did not consume one single API endpoint from the AWS backend. Thick client means that the web app did quite a lot of business logic, such as the filtering of the raw data for the near-realime visualisation which was another technological misdecision since the client-side JavaScript ecosystem is way far inferior compared to e.g. the Python ecosystem which could run on the backend.
-   \item The web app was not connected to a single endpoint on the backend and consumed the MQTT stream and non-real-time aspects of the app (login, list recorded EEG data and so on) via different sources. E.g. the MQTT stream was directly subscribed from the device itself via AWS IoT Core and did not go through the GraphQL API from AWS Amplify, which made coupling the systems to a cohesive and robust API tedious. 
+   \item The web app was not connected to a single endpoint on the backend and consumed the MQTT stream and non-real-time aspects of the app (login, list recorded EEG data and so on) via different sources. E.g. the MQTT stream was directly subscribed from the device itself via AWS IoT Core and did not go through the GraphQL API from AWS Amplify, which made coupling the systems to a cohesive and robust API tedious.
 \end{enumerate}
 
 Due to growing problems with the existing software system and an ever-increasing technical debt as a result of the software not being test-driven or developed without code quality standards, resulting in bugs and quirks that are difficult to track down, the author proposed to halt the implementation of new functions and restructure the system from the ground up using a more software engineering oriented approach. The company's management approved the request in for such a redevelopment.
@@ -44,7 +44,7 @@ The author was already working on his original Bachelor project, which focused o
 \section{Case study}
 \label{chapter3-case-study}
 
-A possibility to conduct research in order to build a N/CI with the assumed requirements as defined with the three-dimensionality was to do a case study at the research and development (R\&D) team at IDUN Technologies. 
+A possibility to conduct research in order to build a N/CI with the assumed requirements as defined with the three-dimensionality was to do a case study at the research and development (R\&D) team at IDUN Technologies.
 
 % Forty-three patients of the psychiatric clinic with diagnosed major depression (12 male, Mage = 36.35, SDage = 7.92) participated in this study for monetary compensation (10 USD).
 
