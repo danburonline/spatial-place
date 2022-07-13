@@ -111,7 +111,7 @@ Another constraint is the deadline of the bachelor's thesis of the author, which
 \label{tab:project-stages}
 \end{table}
 
-Number 1.1 is crucial before starting anything else. Number 1.2 is always in progress. Numbers 2.1 to 3.2 take place simultaneously while number 4 is in progress. As soon as number 3.2 and 4. are completed, number 5. can be started.
+Number 1.1 is crucial before starting anything else. Number 1.2 is always in progress. Numbers 2.1 to 3.2 take place simultaneously while number 4 is ongoing\footnote{Number 4 refers to bootstrapping, which usually refers to the practice of setting up development environments that include e.g. initial Git repositories, folder structures and creating accounts on cloud providers.}. As soon as number 3.2 and 4 are completed, number 5 can be started.
 
 \subsection{Group discussions}
 \label{chapter3-group-discussions}
@@ -126,24 +126,18 @@ It is critical to consult experts after the external and internal validation and
 \section{Software and tools}
 \label{chapter3-software-and-tools}
 
-% non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
+There is a great amount of software and tools that can be used to construct a comprehensive software system such as IDUN's NIP. The author had some leeway in deciding which software and tools (i.e. libraries and frameworks) to use. Nonetheless, some software and tool limitations should be considered before beginning the implementation:
 
-% However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
+\begin{itemize}
+    \item IDUN has received a large amount of credits from Amazon for its AWS cloud, which should therefore be used in order not to create redundant costs when using another cloud provider.
+    \item The Python ecosystem has strong roots among engineers and researchers at IDUN, which should be taken into account. An example of this is Python's Jupyter Notebooks, which are a state-of-the-art and in-depth software tool used at IDUN and in the data science industry in general.
+    \item The author himself needs to be comfortable with the existing knowledge of software and tools for building the NIP, otherwise he would have to relearn everything before the actual implementation, which would make things even more difficult than they already are. The AWS Cloud, for example, would be one such case where the author initially had more knowledge and experience with the Google Cloud Platform, so the need to learn an entire cloud provider is in front of him.
+    \item Any new tool that is not open source and free to use should be carefully considered in terms of future maintainability, security and learning effort.
+    \item Wherever possible, redundancy in the workload should be avoided, as a venture capital funded startup like IDUN Technologies has a certain runway time that describes the company's remaining time before it runs out of money. Spending e.g. a sprint working on something that is then thrown away can be business-critical, so every software and tool decision is carefully weighed.
+\end{itemize}
 
 \section{Checkpoints for progress}
 \label{chapter3-checkpoints-for-progress}
-
-% - Distributed system, data warehouse and other constraints that came up during the research etc. + non-critical, no-real-time needed, system on a chip is coming and what will it bring for things, or going directly via the internet and not the device itself, why not making that decision
-% - Data warehouse difference between data lake
-% - feature store
-
-% - First, they were randomly assigned to treatment and placebo group
-% - Both groups: 60 minutes intervention
-% - Treatment group: first,… next,…
-% - Placebo group: first, …next,…
-% - Finally, they filled out the depression questionnaire
-% o Did you describe everything that is needed to replicate your research?
-% o Did you cite the sources of your methods or paradigms?
 
 \nomenclature[nip]{NIP}{Neuro-Intelligence Platform}
 \nomenclature[spa]{SPA}{Single-page application}
