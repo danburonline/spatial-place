@@ -62,12 +62,12 @@ It is essential to select an appropriate research method in order to develop a s
 \section{Procedure}
 \label{chapter3-procedure}
 
-This section describes the planned procedure for conducting a case study-based research methodology to develop the proposed software system at IDUN Technologies.
+This section describes the planned procedure for conducting a case study-based research methodology to develop the proposed NIP at IDUN Technologies.
 
 \subsection{Project stages}
 \label{chapter3-project-stages}
 
-The goal was to conduct empirical research and examine the use case from various perspectives. In addition, two other methodologies were used in the case study: 1. Expert interviews, which entails locating experts on topics such as cloud or BCI and asking them questions that will assist in answering the research question, and 2. group discussions, which aim at learning about people's attitudes and opinions.
+The goal was to conduct empirical research and examine the use case from various perspectives. In addition, two other methodologies were used in the case study: 1. Expert interviews, which entails locating experts on topics such as cloud or BCI and asking them questions that will assist in answering implementation questions, and 2. group discussions, which aim at learning about people's attitudes and opinions.
 
 \begin{figure}[!ht]
   \centering
@@ -76,7 +76,7 @@ The goal was to conduct empirical research and examine the use case from various
   \label{fig:idun-timeline}
 \end{figure}
 
-Before being able to define the project stages it essential to look at the timing of IDUN's roadmap as shown on \autoref{fig:idun-timeline}. There are three important pieces of information: The stage of which the technology resides in, the estimated user base size and the time frames of these stages want to be achieved. The author was working on the version starting to be released in 2023, ergo working on the software system aimed at the Guardian deployment phase. As the company is still in the stage of implementing the first neuromarkers into a real product and is focusing on four use cases due to the size of the company and the mass producibility of hardware and sensors, the sales team is targeting the sale of devices to about 100'000 people.
+Before being able to define the project stages it essential to look at the timing of IDUN's roadmap as shown on \autoref{fig:idun-timeline}. There are three important pieces of information: The stage of which the technology resides in, the estimated user base size and the time frames of these stages want to be achieved. The author was working towards a version starting to be released in 2023, ergo working on the NIP aimed at the Guardian deployment phase. As the company is still in the stage of implementing the first neuromarkers into a real product and is focusing on four use cases due to the size of the company and the mass producibility of hardware and sensors, the sales team is targeting the sale of devices to about 100'000 people.
 
 Another constraint is the deadline of the bachelor's thesis of the author, which is set on the 5th of August 2022. User size, company stages and the deadline for the thesis are important context information for defining the project stages for this use case. Following on \autoref{tab:project-stages} are the proposed project stages to execute the case study:
 
@@ -94,7 +94,7 @@ Another constraint is the deadline of the bachelor's thesis of the author, which
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.1 External user\\ interviews\end{tabular}}} &
   \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Defining users personas with IDUN's product manager, application engineer and sales team, finding\\ real people to represent these personas, preparing an external interview framework and questions,\\ gathering as many insights as possible.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.2 Creative workshop and\\ prototyping\end{tabular}}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the insights from the customer interviews, conduct a creative workshop with IDUN's product\\ manager and application engineer. The results are design artefacts such as wireframes, user flows,\\ interactive prototypes and architecture diagrams.\end{tabular}} \\ \hline
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the insights from the user interviews, conduct a creative workshop with IDUN's product\\ manager and application engineer. The results are design artefacts such as wireframes, user flows,\\ interactive prototypes and architecture diagrams.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}3.1 Internal group\\ discussions\end{tabular}}} &
   \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The design artefacts are used for an internal validation with the department heads. Several group\\ discussions are held with each department, ranging from materials science to business development.\\ Based on the group discussions, the artefacts are adapted and improved.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{3.2 Expert interviews}} &
@@ -133,18 +133,19 @@ Number 1.1 is crucial before starting anything else. Number 1.2 is always in pro
 \subsection{Group discussions}
 \label{chapter3-group-discussions}
 
+The author proposed that it is crucial to conduct user interviews with external people that do not have too much insider information of IDUN to not build a very technical product that only somebody with a lots of IDUN-specific knowledge can use. Based on these insights gathered from the user interviews it is the goal to create design artifacts in Figma for everything GUI-related and in Miro for everything architecture related for the NIP. These design artifacts are then crucial to communicate the creative design process based on the insights from the external user interviews to the internal people of IDUN. Ideas and insights should be presented and validated against the understanding and product perception of IDUN's people. Since building a full-stack neurotechnology product includes many disciplines ranging from physics up to machine learning it is crucial to have a collected and common understanding within the company of what the software-part of the NIP will look like.
+
 \subsection{Expert interviews}
 \label{chapter3-expert-interviews}
 
-\section{Outcomes}
-\label{chapter3-outcomes}
+After external and internal validation and a design process and a iteration of it due to the group discussions, it is important to consult experts. Based on previous experience from the author it is difficult to hire e.g. consultants early in the process without knowing that one wants to build since advisors e.g. from a consultancy company tended to push for commercially-driven ideas to generate revenue rather than thinking of the progress of the project. Experts will be selected based on experience from the author and experience from others from IDUN Technologies e.g. data scientists and neuroscientists.
+
+\section{Outcomes and reflection}
+\label{chapter3-outcomes-and-reflection}
 
 % non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
 
 % However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
-
-\section{Reflection}
-\label{chapter3-reflection}
 
 \section{Further development}
 \label{chapter3-further-development}
