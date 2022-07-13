@@ -19,7 +19,7 @@ In addition to raw data, the IDUN app provided transformed data, such as, e.g. f
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.75\linewidth]{idun-amplify.png}
+  \includegraphics[width=\linewidth]{idun-amplify.png}
   \caption{IDUN's software architecture at the end of 2021.}
   \label{fig:idun-amplify}
 \end{figure}
@@ -39,7 +39,7 @@ The system was in a relatively unstable state and had strange error sources that
 \item The state of the whole application was difficult to handle due to the decoupled logic from the streaming aspect and standard CRUD operations. Combined with the lack of a hardware heartbeat, it was very tedious to figure out what the user was doing and what was being sent. As an interim solution, AWS ElastiCache, a provisioned service for in-memory databases like Redis, was set up, but the state was traded in the web app and on ElastiCache at the same time. For example, if a user left the web app during a data stream, the stream was stopped, and the EEG data was sent to the void.
 \end{itemize}
 
-Due to growing problems with the existing software system and an ever-increasing technical debt as a result of the software not being test-driven or developed without code quality standards, resulting in bugs and quirks that are difficult to track down, the author proposed to halt the implementation of new features and restructure the system from the ground up using a more software engineering-oriented approach. The company's management approved the request for such redevelopment in early December of 2021. At the time the author was already working on his original Bachelor project, which focused on a mind-controlled multiplayer game, assuming that IDUN's software system would be stable by the time the Bachelor project began. The original bachelor project's focus was officially changed at the end of 2021 to create a thesis on this refactored software system.
+Due to growing problems with the existing software system and an ever-increasing technical debt as a result of the software not being test-driven or developed without code quality standards, resulting in bugs and quirks that are difficult to track down, the author proposed to halt the implementation of new features and restructure the system from the ground up using a more software engineering-oriented approach. The company's management approved the request for such risky redevelopment in early December of 2021. At the time the author was already working on his original Bachelor project, which focused on a mind-controlled multiplayer game, assuming that IDUN's software system would be stable by the time the Bachelor project began. The original bachelor project's focus was officially changed at the end of 2021 to create a thesis on this refactored software system.
 
 \section{Case study}
 \label{chapter3-case-study}
@@ -67,7 +67,12 @@ This section describes the planned procedure for conducting a case study-based r
 
 The goal was to conduct empirical research and examine the use case from various perspectives. In addition, two other methodologies were used in the case study research: 1. User research with experts, ergo expert interviews, which entails locating experts on topics such as EEG on the cloud or BCI software and asking them questions that will assist in answering the research question of this thesis and 2. internal company group discussions. A group discussion aims to learn about other people's attitudes and opinions. As a result, group discussions are ideal for investigating topics such as behaviourally usage concepts and product perception, which align well with IDUN's goals.
 
-% IDUN's timeline, show an image from the PP slide
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{idun-timeline.png}
+  \caption{IDUN's mission timeline including where the technology is headed and how large the user base will be \citep{idun_guardian_nodate}.}
+  \label{fig:idun-timeline}
+\end{figure}
 
 % Insert table
 
@@ -99,6 +104,8 @@ The goal was to conduct empirical research and examine the use case from various
 
 % non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
 
+% However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
+
 \section{Reflection}
 \label{chapter3-reflection}
 
@@ -106,6 +113,8 @@ The goal was to conduct empirical research and examine the use case from various
 \label{chapter3-further-development}
 
 % - Distributed system, data warehouse and other constraints that came up during the research etc. + non-critical, no-real-time needed, system on a chip is coming and what will it bring for things, or going directly via the internet and not the device itself, why not making that decision
+% - Data warehouse difference between data lake
+% - feature store
 
 % - First, they were randomly assigned to treatment and placebo group
 % - Both groups: 60 minutes intervention
@@ -115,7 +124,6 @@ The goal was to conduct empirical research and examine the use case from various
 % o Did you describe everything that is needed to replicate your research?
 % o Did you cite the sources of your methods or paradigms?
 
-\nomenclature[rd]{R\&D}{Research and development}
 \nomenclature[nip]{NIP}{Neuro-Intelligence Platform}
 \nomenclature[spa]{SPA}{Single-page application}
 \nomenclature[mqtt]{MQTT}{[IBM] MQ Telemetry Transport}
