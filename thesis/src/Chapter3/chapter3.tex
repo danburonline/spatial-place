@@ -57,7 +57,7 @@ As mentioned in previous chapters, IDUN manufactures an EEG sensor in the form o
 
 The mission is essentially that an unobtrusive BCI device, such as an in-ear headset, can be worn for the majority of the day while measuring neural data that is sent in real time to the cloud to process and classify actionable insights that other developers can use to build their interventions (e.g., apps, websites, and games) on top of it to promote mental health and well-being, as described by IDUN in its vision. Furthermore, the aspect of longitudinal data is important, implying that it could be advantageous to store neural data over a long period of time and run classifiers on it from time to time to better understand one's brain.
 
-It was critical to select an appropriate research method in order to develop a system that would fulfil the company's mission and vision. The author chose a case study because it is an effective method for dealing with unusual and atypical cases while also providing new and unexpected perspectives in certain situations developing something in a company in a real-life scenario.
+It is essential to select an appropriate research method in order to develop a system that would fulfil the company's mission and vision. The author chose a case study because it is an effective method for dealing with unusual and atypical cases while also providing new and unexpected perspectives in certain situations.
 
 \section{Procedure}
 \label{chapter3-procedure}
@@ -67,20 +67,51 @@ This section describes the planned procedure for conducting a case study-based r
 \subsection{Project stages}
 \label{chapter3-project-stages}
 
-The goal was to conduct empirical research and examine the use case from various perspectives. In addition, two other methodologies were used in the case study: 1. Expert interviews, which entails locating experts on topics such as EEG, cloud or BCI and asking them questions that will assist in answering the research question, and 2. group discussions, which aim to learn about other people's attitudes and opinions. As a result, group discussions are ideal for investigating topics such as behaviourally usage concepts and product perception.
-
-Before being able to define the project stages it essential to look at the timing of IDUN's plan to achieve their goals as shown on \autoref{fig:idun-timeline}. There are three important information: The stage of which the technology resides in, the estimated user base size and the time frames of these stages want to be achieved. The author was working on the version starting to be released in 2023, ergo working on the software system aimed at the Guardian deployment phase. As the company is still in the stage of implementing the first neuromarkers into a real product and is focusing on four use cases due to the size of the company and the mass producibility of hardware and sensors, the sales team is targeting the sale of devices to about 100000 people.
+The goal was to conduct empirical research and examine the use case from various perspectives. In addition, two other methodologies were used in the case study: 1. Expert interviews, which entails locating experts on topics such as cloud or BCI and asking them questions that will assist in answering the research question, and 2. group discussions, which aim at learning about people's attitudes and opinions.
 
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.9\linewidth]{idun-timeline.png}
+  \includegraphics[width=0.75\linewidth]{idun-timeline.png}
   \caption{IDUN's plan to achieve their goals \citep{idun_guardian_nodate}.}
   \label{fig:idun-timeline}
 \end{figure}
 
-Another constraint is the deadline of the bachelor's thesis of the author, which is the 5th of August 2022. User size, company stages and the deadline for the thesis are important context information for defining the project stages for this use case. Following on REF are the proposed project stages to execute the case study:
+Before being able to define the project stages it essential to look at the timing of IDUN's roadmap as shown on \autoref{fig:idun-timeline}. There are three important pieces of information: The stage of which the technology resides in, the estimated user base size and the time frames of these stages want to be achieved. The author was working on the version starting to be released in 2023, ergo working on the software system aimed at the Guardian deployment phase. As the company is still in the stage of implementing the first neuromarkers into a real product and is focusing on four use cases due to the size of the company and the mass producibility of hardware and sensors, the sales team is targeting the sale of devices to about 100'000 people.
 
-% Insert table
+Another constraint is the deadline of the bachelor's thesis of the author, which is set on the 5th of August 2022. User size, company stages and the deadline for the thesis are important context information for defining the project stages for this use case. Following on \autoref{tab:project-stages} are the proposed project stages to execute the case study:
+
+\begin{table}[!ht]
+\centering
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{
+>{\columncolor[HTML]{FFFFFF}}l l}
+\cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} Project stage} &
+  \cellcolor[HTML]{000000}{\color[HTML]{FFFFFF} Description} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}1.1 Define key technical\\ requirements and\\ constraints\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the internal hardware, the neuroscience and data science departments and the IDUN mission\\ and roadmap, the author needs to define the purely technical requirements and constraints. Some\\ constraints are e.g. hiring of advisors, time limits and risks due to investment rounds. Some purely\\ technical requirements come from e.g. the firmware team or the material scientists, such as maximum\\ latency or the data structure of the digitalised EEG.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}1.2 Extensive literature\\ research\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Already since the beginning of the original bachelor thesis, the author started to do literature research in\\ the field of BCI, which is very helpful for the new focus. Further literature review now includes books\\ on data intensive applications and cloud, articles and research papers.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.1 External user\\ interviews\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Defining users personas with IDUN's product manager, application engineer and sales team, finding\\ real people to represent these personas, preparing an external interview framework and questions,\\ gathering as many insights as possible.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.2 Creative workshop and\\ prototyping\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the insights from the customer interviews, conduct a creative workshop with IDUN's product\\ manager and application engineer. The results are design artefacts such as wireframes, user flows,\\ interactive prototypes and architecture diagrams.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}3.1 Internal group\\ discussions\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The design artefacts are used for an internal validation with the department heads. Several group\\ discussions are held with each department, ranging from materials science to business development.\\ Based on the group discussions, the artefacts are adapted and improved.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{3.2 Expert interviews}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Define experts in different areas of BCI, cloud and EEG, and neuroethics. Create a framework for\\ expert interviews and questions that are still unclear or open based on the design artefacts. Conduct\\ expert interviews and gather as many insights as possible to adapt and improve the design artefacts.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{4. Start bootstrapping}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}While the design process is still ongoing, you can already start implementing the most important\\ technical requirements, with anything that is a flexible bootstrapping of internal development\\ processes to ensure quality assurance, for example, not being tied to the other phases.\end{tabular}} \\ \hline
+\multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}5. Iterative and agile\\ implementation via\\ Scrum\end{tabular}}} &
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}IDUN works with Scrum, for this the author has introduced Scrum in the research and development\\ department. Scrum at IDUN has three-week sprints and there are ten sprints from January 2022 to the\\ end of July 2022 that can be used to go through the design process and implement the designs. In the\\ process, there are several iterative processes to validate and test the increments of the system based on\\ insights from the implementation, ongoing literature research, insights from other departments or the\\ design process that is still ongoing.\end{tabular}} \\ \hline
+\end{tabular}%
+}
+\vspace{10pt}
+\caption{Project stages to answer the research question of this thesis.}
+\vspace{-5pt}
+\label{tab:project-stages}
+\end{table}
+
+Number 1.1 is crucial before starting anything else. Number 1.2 is always in progress. Numbers 2.1 to 3.2 take place simultaneously while number 4 is in progress. As soon as number 3.2 and 4. are completed, number 5. can be started.
 
 % - Identify problems with current system
 % - Identify and reason about key technical requirements that go well with IDUN's mission and vision
