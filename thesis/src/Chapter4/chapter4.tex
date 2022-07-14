@@ -1,10 +1,29 @@
 \chapter{Implementation}
 \graphicspath{{Chapter4/Figs/}{Chapter4/Figs/}}
 
-This chapter goes into the implementation details of building the software-parts for the NIP of IDUN Technologies and the key events that occurred during the research and development such as the realisation of the novelty of a N/CI. Next to that we will also discuss other key aspects from building the system.
+This chapter goes into the implementation details of building the software-parts for the NIP of IDUN Technologies and the key events that occurred during the research and development such as the realisation of the novelty and need of a definition for a N/CI. Next to that the author also discusses other key aspects from building the system.
 
 \section{Timeline}
 \label{chapter4-timeline}
+
+This is the implementation timeline as it was at the time of writing the thesis.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{implementation-timeline.png}
+  \caption{Timeline of the last 6 months.}
+  \label{fig:implementation-timeline}
+\end{figure}
+
+Based on this we will go through each key event in a chronological manner, still starting with the most fundamental key events.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{implementation-timeline-key-events.png}
+  \caption{Key events on the previously showed timeline.}
+  \label{fig:implementation-timeline-key-events}
+\end{figure}
+
 % empirical software engineering done in the case study based on user-centred design process via user interviews or expert interviews and internal group discussions and ongoing literature research.
 % MENTION analysis paralysis
 
@@ -16,8 +35,8 @@ This chapter goes into the implementation details of building the software-parts
 \label{chapter4-user-interview-insights}
 % show image of mark and the author doing the user interview
 
-\subsection{Realisation for an N/CI}
-\label{chapter4-realisation-for-an-nci}
+\subsection{Invention of N/CI}
+\label{chapter4-invention-of-nci}
 % make the connection why the author talked about it in the beginning already
 
 \subsection{Python to WebAssembly}
@@ -26,6 +45,7 @@ This chapter goes into the implementation details of building the software-parts
 
 \subsection{Kubernetes and Fargate}
 \label{chapter4-kubernetes-and-aws-fargate}
+% quickly explain why microservices
 % mention workshop with nuvibit (expert interview)
 % mention centralised system rather than distributed
 
@@ -75,8 +95,8 @@ This chapter goes into the implementation details of building the software-parts
 \subsection{Graph database}
 \label{chapter4-graph-database}
 
-\subsection{Feature stores and MLOps}
-\label{chapter4-feature-stores-and-mlops}
+\subsection{Feature store and MLOps}
+\label{chapter4-feature-store-and-mlops}
 % explain MLOps and outlook with Kubeflow
 % mention data lakes and data warehouse
 % mention internal SDK for feature extraction and experiments
