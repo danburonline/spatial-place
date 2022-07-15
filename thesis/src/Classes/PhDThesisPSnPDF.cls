@@ -957,7 +957,7 @@ wish to left align your text}
 									% subtitle is not defined
 									}{
 									\\
-									\centering \Large {\@subtitle}
+									\centering \Large \textmd{{\@subtitle}}
 								} % subtitle is defined
 							\end{minipage}
 						\end{lrbox}

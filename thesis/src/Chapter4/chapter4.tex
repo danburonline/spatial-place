@@ -52,7 +52,7 @@ Several key events occurred during the implementation that shaped the future cou
 % empirical software engineering done in the case study based on a user-centred design process via user interviews, expert interviews, internal group discussions, and ongoing literature research.
 % MENTION analysis paralysis
 
-\section{Key events}
+\section{Key events while building a N/CI}
 \label{chapter4-key-events}
 
 This section goes over each key event as shown in \autoref{fig:implementation-timeline-key-events} and discusses why it happened and was critical to the project's success. The following outline of the key events is not chronologically described but instead starts with the most influential ones.
@@ -82,10 +82,12 @@ The questions were non-leading open-ended, with the main goal of allowing interv
   \item Researchers are very interested in the raw EEG data and the synchronisation possibilities with certain protocols such as LSL to combine, e.g. a heart rate sensor with the EEG collected from IDUN's hardware. The NIP software offering need to give enough freedom to combine the data without letting all other collected data flow into the NIP from IDUN. This basically means that the NIP should be able to collect, transform and, most importantly, label data in correlation with other data streams with a local option to satisfy researchers like Noel.
 \end{itemize}
 
-These findings were critical in determining that there must be sufficient freedom for raw data research without releasing raw data into mass market production environments in order to protect end-user privacy. As a result, an opt-in mechanism outside of third-party ecosystems is required. A library that can be implemented in end-user apps and connects directly to the hardware without the need to download a companion app from IDUN itself is also required. This library should allow researchers to access it locally and, e.g. use their preferred protocols to synchronise tags and labels with other data streams. Nonetheless, IDUN's NIP should once again provide some control over how much raw data can be collected and restrict access if, e.g. the proposed research project or experiment time frame is exceeded. Furthermore, additional NIP functions should be added to visualise easy-to-use demos for all personas, as well as a way to use and control the NIP without having to write code, but with enough flexibility and transparency that there is trust in the system and even advanced users can work with a visual tool instead of code.
+These insights were critical in determining that there must be sufficient freedom for raw data research without releasing raw data into mass market production environments in order to protect end-user privacy. As a result, an opt-in mechanism outside of third-party ecosystems is required. A library that can be implemented in end-user apps and connects directly to the hardware without the need to download a companion app from IDUN itself is also required. This library should allow researchers to access it locally and, e.g. use their preferred protocols to synchronise tags and labels with other data streams. Nonetheless, IDUN's NIP should once again provide some control over how much raw data can be collected and restrict access if, e.g. the proposed research project or experiment time frame is exceeded. Furthermore, additional NIP functions should be added to visualise easy-to-use demos for all personas, as well as a way to use and control the NIP without having to write code, but with enough flexibility and transparency that there is trust in the system and even advanced users can work with a visual tool instead of code.
 
 \subsection{Invention of N/CI}
 \label{chapter4-invention-of-nci}
+
+The insights from the user interviews coupled with the ongoing research about B/CI and remote BCI as mentioned in the introduction chapter were key to come up with the realisation of the novelty of this new interdisciplinary approach to build real-world and mass-market ready BCI system running on the cloud aimed at the general population.
 % make the connection why the author talked about it in the beginning already
 
 \subsection{Web-first approach}
@@ -124,7 +126,7 @@ These findings were critical in determining that there must be sufficient freedo
 % mention GitHub limitation of private PyPI and registry in general
 % mention again the no focus on GUI part from before
 
-\section{Key aspects}
+\section{Key aspects of a N/CI}
 \label{chapter4-key-aspects}
 
 \subsection{Stream-based events}
