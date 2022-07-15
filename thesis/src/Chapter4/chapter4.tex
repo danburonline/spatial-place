@@ -1,19 +1,19 @@
 \chapter{Implementation}
 \graphicspath{{Chapter4/Figs/}{Chapter4/Figs/}}
 
-This chapter goes into the implementation details of building the software-parts for the NIP of IDUN Technologies and the key events that occurred during the empirical software engineering process such as the realisation of the novelty and need of a definition for a N/CI. Next to that the author also discusses other key aspects from building the system.
+This chapter goes into the implementation details of building the software-parts for the NIP of IDUN and the key events that occurred during the empirical software engineering process such as the realisation of the novelty and need of a definition for a N/CI. Next to that the author also discusses other key aspects and learnings from building the system.
 
 \section{Timeline}
 \label{chapter4-timeline}
 
-Plans, such as the project stages presented in \autoref{chapter3-project-stages}, are a good guide for project implementation, but in the end, plans run in unexpected ways. As a result, when researching and implementing a non-trivial system such as a N/CI, it requires a high level of agility.
+Procedures, such as enlisted in the project stages presented in \autoref{chapter3-project-stages}, are a good guide for project implementation, but in the end, such plans run in unexpected ways. As a result, when researching and implementing a non-trivial system such as a N/CI, it requires a high level of agility.
 
 The effective timeline at the time of writing is shown in \autoref{fig:implementation-timeline}. It includes the previously mentioned project stages, but differently structured as initially described. \autoref{tab:special-project-stages} explains why some project stages were completed differently than initially planned.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{implementation-timeline.png}
-  \caption{Effective timeline of the last ten sprints at the time of writing, with project phases coloured white and specifically planned phases outlined in grey.}
+  \caption{Effective timeline of the last ten sprints with project stages in white and specifically planned stages outlined in grey.}
   \label{fig:implementation-timeline}
 \end{figure}
 
@@ -31,7 +31,7 @@ The effective timeline at the time of writing is shown in \autoref{fig:implement
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}[3] 4. Start\\ bootstrapping\end{tabular}}} &
   \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Since the creation of two different Python SDKs (as discussed later in the thesis), more\\ bootstrapping tasks were due at the very end of the given time frame, mostly including\\ the setup of a private PyPi installable Python package and SDK-specific quality\\ assurance pipelines and automations.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}[4] 5. Iterative and\\ agile implementation\end{tabular}}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Iterative and agile implementation began as soon as possible, without waiting for design\\ phases to be completed or using a waterfall process. Prior to gaining insights from the \\ design process, time was spent on everything else, such as evaluating technologies,\\ further bootstrapping, first example codebases, or maintaining the old codebase a bit.\end{tabular}} \\ \hline
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Iterative and agile implementation began as soon as needed, without waiting for the design\\ process to be completed (i.e. avoiding a waterfall process). Prior to gaining insights from the \\ design process, time was spent on everything else, such as evaluating technologies, further\\ bootstrapping, first example codebases, or maintaining the old codebase a bit.\end{tabular}} \\ \hline
 \end{tabular}%
 }
 \vspace{10pt}
