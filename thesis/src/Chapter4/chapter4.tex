@@ -160,11 +160,16 @@ WebSocket also integrates easily with the earlier technology decision for AWS Ki
 
 \subsection{IaC with Terraform}
 \label{chapter4-iac-with-terraform}
-% mention workshop with nuvibit (expert interview)
-% mention workshop with sascha from piavita
+
+As mentioned in the list of bugs and flaws in \autoref{chapter3-derivation-of-the-case-study}, AWS Amplify took over the handling of IaC via AWS CloudFormation. When creating the new version of the system without Amplify, the author was now free to choose which IaC technology to use. The author could have again used AWS CloudFormation, but without AWS Amplify, or he could have used the more modern AWS Cloud Development Kit (CDK), which provides specific syntax in specific languages for building IaC \citep{aws_aws_nodate}. However, there is a very well-known technology in the industry called Terraform, an open source and YAML-based tool from the company HashiCorp, which is similar to, e.g. AWS CloudFormation's JSON syntax in declaratively describing IT resources in the cloud, with the big difference that it is cloud agnostic, meaning that Terraform can be used to build and deploy IT resources not only on AWS, but on any cloud provider currently supported by HashiCorp \citep{hashicorp_browse_nodate}. Nevertheless, Terraform is currently still in beta, which is usually not a very good sign for productivity readiness, nonetheless Terraform is used in production by various large tech companies \citep{stackshare_why_nodate}. Again, Nuvibit's cloud experts were consulted to decide which IaC tool to use, as the author had no experience with, e.g. AWS' CDK or AWS CloudFormation. As a result of the expert interview with Nuvibit, it was clear that Terraform was the right way forward for IDUN, as future multi-cloud setups or other IT resources can also be handled via Terraform, e.g. Auth0 authentication tenant setups, GitHub organisation setups via IaC and more. In addition, the author already had experience with Terraform, which was another argument for using Terraform.
+
+The decision to use Terraform was also made quite early in the process and laid the foundation for every infrastructure built thereafter to be based on Terraform code. Tools like Infracost and tfsec were setup as part of the bootstrapping project stages in order to assure quality in form of linting over IaC code via tfsec in continuous integration and continuous delivery (CI/CD) pipelines or calculating price estimations based on IaC code as soon as writing it in the editor via the Infracost add-on.
 
 \subsection{Python SDK}
 \label{chapter4-python-sdk}
+
+The key event called Python software development kit (SDK) on \autoref{fig:implementation-timeline-key-events} happened quite late in the process but was one of a very necessary thing to happen. It describes the realisation of creating a public as well as a private 
+
 % mention internal discussions with Michel (group discussion)
 % mention GitHub limitation of private PyPI and registry in general
 % mention again the no focus on GUI part from before
@@ -206,3 +211,6 @@ WebSocket also integrates easily with the earlier technology decision for AWS Ki
 \nomenclature[eks]{EKS}{Elastic Kubernetes Service}
 \nomenclature[s3]{s3}{Simple Storage Service}
 \nomenclature[rest]{REST}{Representational state transfer}
+\nomenclature[cdk]{CDK}{Cloud Development Kit}
+\nomenclature[cicd]{CI/CD}{Continuous integration and continuous delivery}
+\nomenclature[sdk]{SDK}{Software development kit}
