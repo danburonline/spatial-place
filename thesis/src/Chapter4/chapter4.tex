@@ -87,9 +87,7 @@ These insights were critical in determining that there must be sufficient freedo
 \subsection{Invention of N/CI}
 \label{chapter4-invention-of-nci}
 
-The insights from the user interviews, combined with the ongoing research on B/CI and remote BCI mentioned in the introduction chapter, were key to realising the novelty of this new interdisciplinary approach to developing a real-world and mass-market BCI software system running in the cloud and targeting the general population via general applicability.
-
-In this thesis, the definition of three-dimensionality was already mentioned in the context chapter, but it is important to mention that the realisation that such a system is novel and has not yet been defined only emerged in the seventh sprint. The findings from the user interviews were primarily in the direction of the N/CI definition, while the literature review was primarily in the direction of distinguishing between existing research and definitions.
+The insights from the user interviews, combined with the ongoing research on B/CI and remote BCI mentioned in the introduction chapter, were key to realising the novelty of this new interdisciplinary approach to developing a real-world and mass-market BCI software system running in the cloud and targeting the general population via general applicability. In this thesis, the definition of three-dimensionality was already mentioned in the context chapter, but it is important to mention that the realisation that such a system is novel and has not yet been defined only emerged in the seventh sprint. The findings from the user interviews were primarily in the direction of the N/CI definition, while the literature review was primarily in the direction of distinguishing between existing research and definitions.
 
 Once a first draft of the definition was written down, the research and separation of work packages could be more easily tackled and explored due to a better understanding of what was new and unexplored. At the time of the end of the seventh sprint, the author's goal was to further develop and define the definition and motivation in the form of the last part of the context chapter of this thesis, which had to be introduced first before moving on to the methodology and implementation chapters, because without a broad understanding, the reasons for the motivation and the general definition would have been difficult to understand.
 
@@ -130,27 +128,26 @@ Another option would be to use Pyodide, the CPython interpreter ported to WebAss
 \subsection{Kubernetes and Fargate}
 \label{chapter4-kubernetes-and-aws-fargate}
 
-One of the first technical decisions made by the author of this thesis was which technology to use for creating backends for an n-body system like IDUN's NIP. The use of a microservice approach was already given by the fact that a polyglot backend was needed, such as Python for data-heavy tasks and TypeScript for real-time and API-specific tasks due to the maturity in the before mentioned examples of each language. If one decides to take a microservice approach, one can still debate whether to proceed with serverless functions instead of hosting container images. However, given the requirement to use AWS as mentioned in \autoref{chapter3-software-and-tools}, the only way to host serverless functions was to use AWS Lambda\footnote{There are probably other possibilities, but they are very technical challenges in themselves and are not suitable for a company like IDUN to focus exclusively on creating such a framework.}. AWS Lambda was already used in the previous PoC version of the software system at IDUN, and did not so well, as in cases where, e.g. batch processing of previously collected data would exceed the maximum computation time or CPU limit of AWS Lambda. This, coupled with the tedious aspect of handling dozens, if not hundreds, of serverless functions and managing the entire "cluster" of multiple functions and their versions and endpoints, based on the author's previous experience, led to the decision not to use Lambda for the most important and critical parts of the backend.
+One of the first technical decisions the author of this thesis made was which technology to use for creating backends for an n-tier\footnote{The term n-tier refers to an architecture design pattern where the logic of presentation, application processing, and data management are decoupled from each other, as in the case of e.g. multiple microservices.} system like IDUN's NIP. The use of a microservice approach was already given by the fact that a polyglot backend was needed, such as Python for data-heavy tasks and TypeScript for real-time and API-specific tasks due to the maturity in the previously mentioned examples of each language. If one decides to take a microservice approach, one can still debate whether to proceed with serverless functions instead of hosting container images. Given the requirement to use AWS mentioned in \autoref{chapter3-software-and-tools}, the only way to host serverless functions was to use AWS Lambda. AWS Lambda was already used in the previous PoC version of the software system at IDUN and did not work as well as in cases where, for example, batch processing of previously collected data would exceed the maximum computation time or CPU limit of AWS Lambda. This, coupled with the cumbersome aspect of handling dozens if not hundreds of serverless functions and managing the entire "cluster" of multiple functions and their versions and endpoints, led to the decision not to use Lambda for the most important and critical parts of the backend in the author's experience so far.
 
-Building microservices not with serverless functions on AWS have multiple solutions. 
-
-% mention workshop with nuvibit (expert interview)
-% mention conversation with Jules (expert interview)
-% mention centralised system rather than distributed
+Building microservices not with serverless functions on AWS has multiple solutions: the most prominent ones are utilising Kubernetes via AWS Elastic Kubernetes Service (EKS) or AWS Fargate, which is a serverless and easier-to-use version of Kubernetes \citep{aws_serverless_nodate}. The author consulted cloud experts in the very first sprints from the company Nuvibit to guide through the decision. The author himself is not experienced in Kubernetes and would need to learn a lot of things on the way to implement a Kubernetes cluster which was one of the items mentioned to possibly avoid mentioned in \autoref{chapter3-software-and-tools}. Nuvibit recommended going with AWS Fargate, since it is similar to Kubernetes but abstracts most things away in order to concentrate on adding business logic rather than handling overheads coming with introducing a Kubernetes cluster. Fargate is per-se also serverless, therefore making it cheaper for a product with hard-to-estimate usage such as IDUN's NIP in the beginning but still gives enough flexibility in terms of specifying the underlying hardware for computationally heavier tasks that e.g. would exceed AWS Lambda. As soon as IDUN goes more into the direction of utilising large-scale deep learning models that utilise specific GPU units, Fargate will come to its limits since specifying GPU tasks is not possible \citep{aws_aws_2019}. One way or another, this decision will have to be reconsidered in the future in order to avoid a long-term commitment to one provider such as AWS and to due to the increasing investments of Kubernetes from several cloud providers.
 
 \subsection{Kafka and Kinesis}
 \label{chapter4-kafka-aws-kinesis}
-% mention workshop with nuvibit (expert interview)
 
-\subsection{IaC with Terraform}
-\label{chapter4-iac-with-terraform}
-% mention workshop with nuvibit (expert interview)
-% mention workshop with sascha from piavita
+Another early technical decision that was made via the help of expert interviews was the decision of the streaming technology to use. There are, as with many things in software, hundreds if not even thousands of ways to solve a problem such as streaming text-based data such as the EEG data from IDUN's device through the internet to the cloud.
+
+% TODO show data structure of idun's eeg
 
 \subsection{MQTT and WebSocket}
 \label{chapter4-mqtt-and-websocket}
 % show image of andy on the whiteboard
 % talk about compression and data structure of the EEG data
+
+\subsection{IaC with Terraform}
+\label{chapter4-iac-with-terraform}
+% mention workshop with nuvibit (expert interview)
+% mention workshop with sascha from piavita
 
 \subsection{Python SDK}
 \label{chapter4-python-sdk}
@@ -181,9 +178,6 @@ Building microservices not with serverless functions on AWS have multiple soluti
 
 \subsection{Graph database}
 \label{chapter4-graph-database}
-
-\subsection{Feature store and MLOps}
-\label{chapter4-feature-store-and-mlops}
 % explain MLOps and outlook with Kubeflow
 % mention data lakes and data warehouse
 % mention internal SDK for feature extraction and experiments
@@ -193,3 +187,4 @@ Building microservices not with serverless functions on AWS have multiple soluti
     % However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
 
 \nomenclature[ble]{BLE}{Bluetooth Low Energy}
+\nomenclature[eks]{EKS}{Elastic Kubernetes Service}
