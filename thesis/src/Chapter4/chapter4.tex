@@ -135,12 +135,19 @@ Building microservices not with serverless functions on AWS has multiple solutio
 \subsection{Kafka and Kinesis}
 \label{chapter4-kafka-aws-kinesis}
 
-Another early technical decision that was made via the help of expert interviews was the decision of the streaming technology to use. There are, as with many things in software, hundreds if not even thousands of ways to solve a problem such as streaming text-based data such as the EEG data from IDUN's device through the internet to the cloud.
+Another early technical decision, made with the help of expert interviews, was which streaming technology to use. As with many things in software, there are hundreds, if not thousands, of ways to solve a problem such as streaming text-based data like the EEG data from IDUN's device over the internet to the cloud. Apache Kafka, originally developed by LinkedIn, is a very prominent technology for such a use case. It is battle-tested, used in production by large technology companies \citep{apache_apache_nodate} and well maintained by an active community \citep{noauthor_apache_2022}. However, similar to Kubernetes, it comes with a lot of overhead, and the author himself has no experience with Kafka, so again he would have to learn everything from scratch. Another option is to use AWS Kinesis, a service provided by AWS to process data streams over the cloud, like Kafka does, but without the overhead of managing the Kafka instances themselves. AWS Kinesis allows streams to be replayed, restored, sent to an AWS Fargate cluster for e.g. real-time processing of the data, or data to be stored securely in storage systems such as AWS Simple Storage Service (S3), as shown on \autoref{fig:aws-kinesis}. An important aspect is that the source of the data can also come from a WebSocket stream, which will be addressed in the next section. However, the decision for Kinesis was quite easy, as the reasoning was similar to that between Kubernetes and AWS Fargate. The decision was also supported by the experience and opinion of the cloud experts at Nuvibit.
 
-% TODO show data structure of idun's eeg
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{aws-kinesis.png}
+  \caption{Example use-case architecture of AWS Kinesis \citep{aws_amazon_nodate}.}
+  \label{fig:aws-kinesis}
+\end{figure}
 
 \subsection{MQTT and WebSocket}
 \label{chapter4-mqtt-and-websocket}
+
+% TODO show data structure of idun's eeg
 % show image of andy on the whiteboard
 % talk about compression and data structure of the EEG data
 
@@ -188,3 +195,4 @@ Another early technical decision that was made via the help of expert interviews
 
 \nomenclature[ble]{BLE}{Bluetooth Low Energy}
 \nomenclature[eks]{EKS}{Elastic Kubernetes Service}
+\nomenclature[s3]{s3}{Simple Storage Service}
