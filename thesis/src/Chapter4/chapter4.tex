@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \graphicspath{{Chapter4/Figs/}{Chapter4/Figs/}}
 
-This chapter goes into the implementation details of building the software parts for the NIP of IDUN and the key events that occurred during this empirical software engineering process, such as the realisation of the novelty and the need for a definition for a N/CI. Next to that, the author also discusses other key aspects and learnings from building the system.
+This chapter goes into the implementation details of building the software parts for the NIP of IDUN and discusses the key events that occurred during this empirical software engineering process, such as the realisation of the novelty and the need for a definition for a N/CI.
 
 \section{Timeline}
 \label{chapter4-timeline}
@@ -29,7 +29,7 @@ The effective timeline at the time of writing is shown in \autoref{fig:implement
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}[2] 4. Start\\ bootstrapping\end{tabular}}} &
   \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}This special stage describes the phase in which the author established more organisational\\ structures, such as a professional Scrum or GitHub setup. Furthermore, the time was used\\ to create a more professional AWS organisational setup with various organisational units,\\ as described in the AWS Best Practice Guide \citep{blackham_best_2020}.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}[3] 4. Start\\ bootstrapping\end{tabular}}} &
-  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Since the creation of two different Python SDKs (as discussed later in the thesis), more\\ bootstrapping tasks were due at the very end of the given time frame, mostly including\\ the setup of a private PyPi installable Python package and SDK-specific quality\\ assurance pipelines and automations.\end{tabular}} \\ \hline
+  \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Since the creation of two different Python SDKs (as discussed later in this chapter), more\\ bootstrapping tasks were due at the very end of the given time frame, mostly including\\ the setup of a private PyPi installable Python package and SDK-specific quality\\ assurance pipelines and automations.\end{tabular}} \\ \hline
 \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}[4] 5. Iterative and\\ agile implementation\end{tabular}}} &
   \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Iterative and agile implementation began as soon as needed, without waiting for the design\\ process to be completed (i.e. avoiding a waterfall process). Prior to gaining insights from the \\ design process, time was spent on everything else, such as evaluating technologies, further\\ bootstrapping, first example codebases, or maintaining the old codebase a bit.\end{tabular}} \\ \hline
 \end{tabular}%
@@ -103,7 +103,7 @@ Before Sprint 6, there were some ideas about future architecture roadmaps design
   \label{fig:architecture-roadmap}
 \end{figure}
 
-The initial architecture roadmap was part of the initial phase of the project to define the key technical requirements and constraints and to show how the NIP software stack would move from a high latency system to an extremely low latency system. More details on the latency aspects are discussed later in this chapter. Nonetheless, one aspect of this old architecture roadmap was that IDUN would continue to maintain and develop the physical hardware network bridge and eventually port it to end-user devices as a companion app. However, just before Sprint 6, the author stumbled upon the work of \citeauthor{flynn_brainsplay_nodate} of the BCI platform called Brains at Play and its use of Web Bluetooth, which is a new and experimental API for browsers that allows websites to connect directly to a Bluetooth Low Energy (BLE) device. The Brains at Play platform is a hardware-independent BCI software platform with similar goals to Neuromore Studio. The main difference is that they offer their app as a web app and therefore everything runs in the browser without the need to download additional software. The author contacted Garrett Flynn, one of the founding partners, and discussed the implications and findings from using Web Bluetooth for e.g. EEG data such as that from IDUN's sensor (later Garrett Flynn was also invited to the user interviews as one of the persona representatives for Evan). Garrett Flynn's findings were entirely positive and he strongly recommended working with the API as it makes deploying a BCI platform much easier than deploying applications for any operating system and especially any BLE interface. However, one of the main disadvantages of Web Bluetooth was browser compatibility, as shown in \autoref{fig:can-i-use}.
+The initial architecture roadmap was part of the initial phase of the project to define the key technical requirements and constraints and to show how the NIP software stack would move from a high latency system to an extremely low latency system. More details on the latency aspects are discussed later in this thesis. Nonetheless, one aspect of this old architecture roadmap was that IDUN would continue to maintain and develop the physical hardware network bridge and eventually port it to end-user devices as a companion app. However, just before Sprint 6, the author stumbled upon the work of \citeauthor{flynn_brainsplay_nodate} of the BCI platform called Brains at Play and its use of Web Bluetooth, which is a new and experimental API for browsers that allows websites to connect directly to a Bluetooth Low Energy (BLE) device. The Brains at Play platform is a hardware-independent BCI software platform with similar goals to Neuromore Studio. The main difference is that they offer their app as a web app and therefore everything runs in the browser without the need to download additional software. The author contacted Garrett Flynn, one of the founding partners, and discussed the implications and findings from using Web Bluetooth for e.g. EEG data such as that from IDUN's sensor (later Garrett Flynn was also invited to the user interviews as one of the persona representatives for Evan). Garrett Flynn's findings were entirely positive and he strongly recommended working with the API as it makes deploying a BCI platform much easier than deploying applications for any operating system and especially any BLE interface. However, one of the main disadvantages of Web Bluetooth was browser compatibility, as shown in \autoref{fig:can-i-use}.
 
 \begin{figure}[!ht]
   \centering
@@ -156,7 +156,7 @@ As previously stated, a decision had to be made regarding the technology to be u
   \label{fig:firmware-engineers}
 \end{figure}
 
-WebSocket also integrates easily with the earlier technology decision for AWS Kinesis, as Kinsesis can subscribe to an API gateway service from AWS that can be used to build Representational State Transfer (REST) APIs (more on this in \autoref{chapter5-main-results}). An internal group discussion with firmware engineers for IDUN's hardware was organised to validate this decision as shown on \autoref{fig:firmware-engineers}, as it was too BCI specific to ask e.g. Nuvibit's cloud engineers. The alignment with the firmware roadmap and its interface which would be necessarry for e.g. the BLE library that would consume it as mentioned in \autoref{chapter4-web-first-approach} was key to the success of building an example N/CI at IDUN.
+WebSocket also integrates easily with the earlier technology decision for AWS Kinesis, as Kinsesis can subscribe to an API gateway service from AWS that can be used to build Representational State Transfer (REST) APIs (more on this in \autoref{chapter5-example-architecture-of-a-nci}). An internal group discussion with firmware engineers for IDUN's hardware was organised to validate this decision as shown on \autoref{fig:firmware-engineers}, as it was too BCI specific to ask e.g. Nuvibit's cloud engineers. The alignment with the firmware roadmap and its interface which would be necessarry for e.g. the BLE library that would consume it as mentioned in \autoref{chapter4-web-first-approach} was key to the success of building an example N/CI at IDUN.
 
 \subsection{IaC with Terraform}
 \label{chapter4-iac-with-terraform}
@@ -168,44 +168,9 @@ The decision to use Terraform was also made quite early in the process and laid 
 \subsection{Python SDK}
 \label{chapter4-python-sdk}
 
-The key event called Python software development kit (SDK) on \autoref{fig:implementation-timeline-key-events} happened quite late in the process but was one of a very necessary thing to happen. It describes the realisation of creating a public as well as a private 
+The key event called Python Software Development Kit (SDK) on \autoref{fig:implementation-timeline-key-events} happened quite late in the process, but was one of the very necessary events. It describes the realisation of the creation of a public and a private Python library mainly for the Noel persona. The realisation followed internal group discussions with the neuroscience team at IDUN. Before these internal group discussions, the author assumed that a GUI application such as the console application of IDUN's NIP in combination with an API and a client-side library would suffice for applications created by e.g. Evans. But as mentioned in the last point of the user interviews listed in \autoref{chapter4-user-interview-insights}, there would need to be a way to control the EEG data collected by IDUN's device and synchronise it locally with other data sources, such as heart rate data, without having to send the data to the cloud\footnote{The reason for this is that one cannot synchronise data sufficiently over an internet network due to latency problems or time drifts.}. Noels would use a GUI application like the idea for the console application of IDUN's NIP, but they would nonetheless still like to have low-level control of the data, e.g. to include it in PsychoPy experiment scripts or to connect the data via an LSL stream e.g. to a reference EEG device to compare EEG signals (which is e.g. particularly important for IDUN's internal researchers). For this, they would need a library that allows them to connect to the device without an app, if possible only for research purposes. For this, after the internal group discussions with the neuroscience department, the author proposed to build an SDK that does exactly this.
 
-% mention internal discussions with Michel (group discussion)
-% mention GitHub limitation of private PyPI and registry in general
-% mention again the no focus on GUI part from before
-
-\section{Key aspects of a N/CI}
-\label{chapter4-key-aspects}
-
-\subsection{Stream-based events}
-\label{chapter4-stream-based-events}
-% explain event based architecture and the paradigm-shift in building stream based architectures
-% talk about concurrency
-
-\subsection{Critical and non-critical}
-\label{chapter4-critical-and-non-critical}
-% mention the concept from the book and batch processing
-
-\subsection{Hardware-accelerated encryption}
-\label{chapter4-hardware-accelerated-encryption}
-% mention server-side rendering for privacy
-% mention discussion with Andy
-% TODO show data structure of idun's eeg
-% talk about compression and data structure of the EEG data
-
-\subsection{Per-device auth and opt-in}
-\label{chapter4-user-side-opt-in}
-% show opt-in wireframes
-
-\subsection{Graph database}
-\label{chapter4-graph-database}
-% explain MLOps and outlook with Kubeflow
-% mention data lakes and data warehouse
-% mention internal SDK for feature extraction and experiments
-% what is feature extraction and the process
-% show image from Wadda
-
-    % However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
+Parts of this SDK can also be made public as part of the software offerings from IDUN such as connecting to a device for limited research purposes or to e.g. visualise plots specifically made for IDUN's EEG data as also mentioned as one of the user interview insights in \autoref{chapter4-user-interview-insights}. An internal SDK version of this can e.g. be used to e.g. include raw data pre-processing pipelines, feature extraction as a preparation for machine learning classifiers which are all part of IDUN's provided intellectual property and therefore should not be made public. Nonetheless, this internal SDK can be used in the neuroscience team but also in production in e.g. Python microservices that process data in real-time. The reason why one would want to have that is that if e.g. a data scientist creates a new script for processing EEG data that can be used to e.g. demos, used in research and even in production for an API endpoint that IDUN sells then they all would need to have the same source of the code. An internal PyPi Python package for the SDK is the solution to that. This realisation came pretty late and is as of writing still ongoing.
 
 \nomenclature[ble]{BLE}{Bluetooth Low Energy}
 \nomenclature[eks]{EKS}{Elastic Kubernetes Service}
