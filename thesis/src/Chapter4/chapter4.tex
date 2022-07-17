@@ -147,11 +147,16 @@ Another early technical decision, made with the help of expert interviews, was w
 \subsection{MQTT and WebSocket}
 \label{chapter4-mqtt-and-websocket}
 
-As mentioned in the previous section, there was some decision to be made about the technology to use to transport data from a physical device such as IDUN's EEG sensor hardware to the cloud via the internet. As mentioned earlier as well in the list of bugs and flaws in \autoref{chapter3-derivation-of-the-case-study}, previous engineers utilised MQTT to stream data from the hardware to the cloud. MQTT is well-suited for not sending high-frequency data such as EEG in real-time but rather to minimise network bandwidth for e.g. periodically sent telemetry data as described by the creators of MQTT themselves \citep{mqtt_use_nodate}.
+As previously stated, a decision had to be made regarding the technology to be used to transfer data from a physical device, such as IDUN's EEG sensor hardware, to the cloud. Previous engineers at IDUN used MQTT to stream data from the hardware directly to the web app, as mentioned in the list of bugs and flaws in \autoref{chapter3-derivation-of-the-case-study}. MQTT is not well suited to sending high-frequency data in real time, such as EEG, and it is geared toward lower-power IoT devices rather than, say, a computer or smartphone to which the IDUN device would be connected. As a result, the decision to use something else had to be considered. Another option is to use WebSocket, which is designed for high-frequency updates that can be updated in real time in both directions. The reason IDUN would want to use a high-frequency protocol is that e.g. HTTP can only handle about ten requests per second, whereas e.g. WebSocket can handle nearly 4000 requests in the same amount of time. The main reason for this significant difference is that e.g. the browser limits the number of concurrent HTTP connections, whereas a WebSocket connection has no limit on the number of messages it can send or receive \citep{luecke_http_2018}. Sending EEG data at a frequency rate of 250 samples per second from the IDUN hardware and receiving multiple classification responses from the cloud based on the chosen classification certainly necessitates more than ten requests per second.
 
-% TODO show data structure of idun's eeg
-% show image of andy on the whiteboard
-% talk about compression and data structure of the EEG data
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.75\linewidth]{firmware-engineers.jpeg}
+  \caption{Photo of an internal group discussion with the firmware engineers from IDUN.}
+  \label{fig:firmware-engineers}
+\end{figure}
+
+WebSocket also integrates easily with the earlier technology decision for AWS Kinesis, as Kinsesis can subscribe to an API gateway service from AWS that can be used to build Representational State Transfer (REST) APIs (more on this in \autoref{chapter5-main-results}). An internal group discussion with firmware engineers for IDUN's hardware was organised to validate this decision as shown on \autoref{fig:firmware-engineers}, as it was too BCI specific to ask e.g. Nuvibit's cloud engineers. The alignment with the firmware roadmap and its interface which would be necessarry for e.g. the BLE library that would consume it as mentioned in \autoref{chapter4-web-first-approach} was key to the success of building an example N/CI at IDUN.
 
 \subsection{IaC with Terraform}
 \label{chapter4-iac-with-terraform}
@@ -180,6 +185,8 @@ As mentioned in the previous section, there was some decision to be made about t
 \label{chapter4-hardware-accelerated-encryption}
 % mention server-side rendering for privacy
 % mention discussion with Andy
+% TODO show data structure of idun's eeg
+% talk about compression and data structure of the EEG data
 
 \subsection{Per-device auth and opt-in}
 \label{chapter4-user-side-opt-in}
@@ -198,3 +205,4 @@ As mentioned in the previous section, there was some decision to be made about t
 \nomenclature[ble]{BLE}{Bluetooth Low Energy}
 \nomenclature[eks]{EKS}{Elastic Kubernetes Service}
 \nomenclature[s3]{s3}{Simple Storage Service}
+\nomenclature[rest]{REST}{Representational state transfer}
