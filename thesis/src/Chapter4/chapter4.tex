@@ -147,6 +147,8 @@ Another early technical decision, made with the help of expert interviews, was w
 \subsection{MQTT and WebSocket}
 \label{chapter4-mqtt-and-websocket}
 
+As mentioned in the previous section, there was some decision to be made about the technology to use to transport data from a physical device such as IDUN's EEG sensor hardware to the cloud via the internet. As mentioned earlier as well in the list of bugs and flaws in \autoref{chapter3-derivation-of-the-case-study}, previous engineers utilised MQTT to stream data from the hardware to the cloud. MQTT is well-suited for not sending high-frequency data such as EEG in real-time but rather to minimise network bandwidth for e.g. periodically sent telemetry data as described by the creators of MQTT themselves \citep{mqtt_use_nodate}.
+
 % TODO show data structure of idun's eeg
 % show image of andy on the whiteboard
 % talk about compression and data structure of the EEG data
