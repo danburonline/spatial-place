@@ -1,7 +1,7 @@
 \chapter{Implementation}
 \graphicspath{{Chapter4/Figs/}{Chapter4/Figs/}}
 
-This chapter goes into the implementation details of building the software parts for the NIP of IDUN and the key events that occurred during the empirical software engineering process, such as the realisation of the novelty and the need for a definition for a N/CI. Next to that, the author also discusses other key aspects and learnings from building the system.
+This chapter goes into the implementation details of building the software parts for the NIP of IDUN and the key events that occurred during this empirical software engineering process, such as the realisation of the novelty and the need for a definition for a N/CI. Next to that, the author also discusses other key aspects and learnings from building the system.
 
 \section{Timeline}
 \label{chapter4-timeline}
@@ -40,7 +40,7 @@ The effective timeline at the time of writing is shown in \autoref{fig:implement
 \label{tab:special-project-stages}
 \end{table}
 
-Several key events occurred during the implementation that shaped the future course of the project and research. This was primarily due to early expert discussions or uncertainties in the requirements as the user-centred design process was still being prepared. These key events are overlaid with the effective project plan as shown in \autoref{fig:implementation-timeline-key-events}. These three green key events are the most influential key events.
+Several key events occurred during the implementation that shaped the future course of the project and research. This was primarily due to initially unplanned early expert discussions or uncertainties in the requirements as the user-centred design process was still being prepared. These key events are overlaid with the effective project plan as shown in \autoref{fig:implementation-timeline-key-events}. These three green key events are the most influential key events.
 
 \begin{figure}[!ht]
   \centering
@@ -89,22 +89,51 @@ These insights were critical in determining that there must be sufficient freedo
 
 The insights from the user interviews, combined with the ongoing research on B/CI and remote BCI mentioned in the introduction chapter, were key to realising the novelty of this new interdisciplinary approach to developing a real-world and mass-market BCI software system running in the cloud and targeting the general population via general applicability.
 
-In this thesis, the definition about three-dimensionality was already mentioned in the context chapter, but it is important to mention that the realisation that such a system is new and has not been defined before, only emerged in about the seventh sprint. The insights from the user interviews were primarily in the direction of the N/CI definition, while the literature research was primarily in the direction of its distinction between existing research and definitions.
+In this thesis, the definition of three-dimensionality was already mentioned in the context chapter, but it is important to mention that the realisation that such a system is novel and has not yet been defined only emerged in the seventh sprint. The findings from the user interviews were primarily in the direction of the N/CI definition, while the literature review was primarily in the direction of distinguishing between existing research and definitions.
 
-After a first draft of the definition was written down, the research and separation of the work packages could be addressed and investigated more easily due to a better understanding of what was novel and unexplored. At the time of the end of the seventh sprint, the author's goal was to further develop and define the definition and motivation in the form of the final part of the context chapter of this thesis, which needed to be introduced first before moving on to the methodology and implementation chapters without a broad understanding, reason behind its motivation and general definition would have been hard to comprehend before moving on to the implementation and results chapters.
+Once a first draft of the definition was written down, the research and separation of work packages could be more easily tackled and explored due to a better understanding of what was new and unexplored. At the time of the end of the seventh sprint, the author's goal was to further develop and define the definition and motivation in the form of the last part of the context chapter of this thesis, which had to be introduced first before moving on to the methodology and implementation chapters, because without a broad understanding, the reasons for the motivation and the general definition would have been difficult to understand.
 
-\subsection{Web-first approach}
+\subsection{Web-native approach}
 \label{chapter4-web-first-approach}
-% mention dog feeding and Vercel
+
+Before Sprint 6, there were some ideas about future architecture roadmaps designed by the author of this thesis, as shown on \autoref{fig:architecture-roadmap}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{architecture-roadmap.png}
+  \caption{Original architecture roadmap of IDUN's NIP.}
+  \label{fig:architecture-roadmap}
+\end{figure}
+
+The initial architecture roadmap was part of the initial phase of the project to define the key technical requirements and constraints and to show how the NIP software stack would move from a high latency system to an extremely low latency system. More details on the latency aspects are discussed later in this chapter. Nonetheless, one aspect of this old architecture roadmap was that IDUN would continue to maintain and develop the physical hardware network bridge and eventually port it to end-user devices as a companion app. However, just before Sprint 6, the author stumbled upon the work of \citeauthor{flynn_brainsplay_nodate} of the BCI platform called Brains at Play and its use of Web Bluetooth, which is a new and experimental API for browsers that allows websites to connect directly to a Bluetooth Low Energy (BLE) device. The Brains at Play platform is a hardware-independent BCI software platform with similar goals to Neuromore Studio. The main difference is that they offer their app as a web app and therefore everything runs in the browser without the need to download additional software. The author contacted Garrett Flynn, one of the founding partners, and discussed the implications and findings from using Web Bluetooth for e.g. EEG data such as that from IDUN's sensor (later Garrett Flynn was also invited to the user interviews as one of the persona representatives for Evan). Garrett Flynn's findings were entirely positive and he strongly recommended working with the API as it makes deploying a BCI platform much easier than deploying applications for any operating system and especially any BLE interface. However, one of the main disadvantages of Web Bluetooth was browser compatibility, as shown in \autoref{fig:can-i-use}.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{can-i-use.png}
+  \caption{Browser compatibility overview of Web Bluetooth \citep{caniuse_web_nodate}.}
+  \label{fig:can-i-use}
+\end{figure}
+
+Nevertheless, IDUN is building a product that aims for the big future in 2-3 years, as can be seen on their roadmap in \autoref{fig:idun-timeline}, which means that browser compatibility could come and ease-out over the coming years once browser manufacturers start implementing the API. One problem, however, is that the web Bluetooth API cannot be run in a service worker, making it impossible to run in the background when, e.g. the device has its screen locked or another app is currently opened on a smartphone \citep{webbluetoothcg_service_2018}, which is an intermediate problem, even for the upcoming smaller and specific user groups with the current personas. While researching Web Components, the author came across another technology: Capacitor, a JavaScript library that can compile and run web apps as native apps, with the ability to access native APIs \citep{ionic_capacitor_nodate}, such as the camera or, especially important for IDUN, the BLE API \citep{capacitor-community_capacitor-communitybluetooth-_2022}. Developers can use Capacitor to write BLE code with the same interface as Web Bluetooth, compile the code and run the applications on native devices with background functionality.
+
+After further research, as shown in \autoref{appendix4-screenshots}, almost the entire Sprint 6 was spent evaluating the possibility of using Web Bluetooth for IDUN's NIP. At the end of the sprint, a working PoC SPA was created with an iOS and Android build that fulfilled all needs in terms of developer experience, latency of the EEG signal from the device to a visualisation plot and power consumption of lower-end smartphones. Following this, the author proposed to change the original architecture roadmap as depicted on \autoref{fig:architecture-roadmap} and skip the first two steps and go directly to step 3 in order to accelerate the development pace and enable greater market maturity for IDUN's NIP as soon as end of 2022.
+
+The use of a web app, combined with the use of modern APIs and the compilation of the app for mobile applications when compatibility is not guaranteed is called a web-native approach \citep{ionic_web_nodate}. Besides the time saved by not having to develop platform-specific apps but using a single code base, this approach also has the advantage that a library that abstracts the logic of connecting a BLE device such as the IDUN device can already be created into a single installable unit, e.g. in the form of an NPM package. This library can be implemented in end-user apps and connects directly to the hardware without the need to download a companion app from IDUN itself, and is one of the solutions to the findings from the user interviews. The time saved with a web-native approach allowed IDNU to already focus on creating such a library and using it in their own web app, which would be the console or GUI as in the AWS example, allowing dogfooding for our own software offerings and eliminating preliminary issues before releasing the library to the public \citep{techopedia_what_2016}.
 
 \subsection{Python to WebAssembly}
 \label{chapter4-python-to-webassembly}
-% mention sprint that we committed to that one
-% sushi principle
+
+Another key event that happened during the ten sprints took place about two sprints before the evaluation of the web-native approach. The idea was that, as mentioned in \autoref{chapter3-software-and-tools}, when it comes to how important and necessary the Python ecosystem is for IDUN and external people as presented in the personas, it might be possible to create Python code for specific neural signal data processing, compile it to WebAssembly, a low-byte compilation target for high-level languages that run mainly in the browser, and then use it in web applications such as e.g. the GUI application of IDUN's NIP. Sprint 5 evaluated compiling Python into WebAssembly, which seemed promising at first, but then turned out to be too far away from today's possibilities. There is an interesting open source project called RustPython, which is an Python interpreter written in Rust that allows the interpreted code to be compiled in WebAssembly. However the maturity of the project is currently not suitable for production, as it is even mentioned by the maintainers themselves \citep{noauthor_rustpython_2022}.
+
+Another option would be to use Pyodide, the CPython interpreter ported to WebAssembly \citep{noauthor_pyodide_2022}. Apart from the fact that the creation of a web application would be drastically larger if a complete Python interpreter were sent to the browser, this interpreter also does currently not have the functionality to add additional Python packages apart from the standard library from e.g. PyPi, which makes it easy to build vanilla Python on top of WebAssembly codebases, but not with custom packages installed, such as machine learning packages needed for EEG classifiers. The only options left were to develop an own Python to WebAssembly compiler, contribute to the two open source projects, or give up the task of embedding Python code in a web application such as IDUN's GUI application to interact with NIP's API. The latter was chosen because it was still too early, immature and time-consuming, as the results of Sprint 5 showed.
 
 \subsection{Kubernetes and Fargate}
 \label{chapter4-kubernetes-and-aws-fargate}
-% quickly explain why microservices
+
+One of the first technical decisions made by the author of this thesis was which technology to use for creating backends for an n-body system like IDUN's NIP. The use of a microservice approach was already given by the fact that a polyglot backend was needed, such as Python for data-heavy tasks and TypeScript for real-time and API-specific tasks due to the maturity in the before mentioned examples of each language. If one decides to take a microservice approach, one can still debate whether to proceed with serverless functions instead of hosting container images. However, given the requirement to use AWS as mentioned in \autoref{chapter3-software-and-tools}, the only way to host serverless functions was to use AWS Lambda\footnote{There are probably other possibilities, but they are very technical challenges in themselves and are not suitable for a company like IDUN to focus exclusively on creating such a framework.}. AWS Lambda was already used in the previous PoC version of the software system at IDUN, and did not so well, as in cases where, e.g. batch processing of previously collected data would exceed the maximum computation time or CPU limit of AWS Lambda. This, coupled with the tedious aspect of handling dozens, if not hundreds, of serverless functions and managing the entire "cluster" of multiple functions and their versions and endpoints, based on the author's previous experience, led to the decision not to use Lambda for the most important and critical parts of the backend.
+
+Building microservices not with serverless functions on AWS have multiple solutions. 
+
 % mention workshop with nuvibit (expert interview)
 % mention conversation with Jules (expert interview)
 % mention centralised system rather than distributed
@@ -162,3 +191,5 @@ After a first draft of the definition was written down, the research and separat
 % show image from Wadda
 
     % However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
+
+\nomenclature[ble]{BLE}{Bluetooth Low Energy}
