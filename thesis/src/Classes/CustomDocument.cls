@@ -12,7 +12,7 @@
 \newif\ifPHD@times\PHD@timesfalse
 \DeclareOption{times}{
 	\ifsetFont
-	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
+	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
 		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
@@ -24,7 +24,7 @@
 \newif\ifPHD@fourier\PHD@fourierfalse
 \DeclareOption{fourier}{
 	\ifsetFont
-	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
+	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
 		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
@@ -36,7 +36,7 @@
 \newif\ifsetCustomFont\setCustomFontfalse
 \DeclareOption{customfont}{
 	\ifsetFont
-	\ClassWarning{PhDThesisPSnPDF}{Font selection conflict: A font package was
+	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
 		aleady specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
@@ -52,7 +52,7 @@
 \newif\ifPHD@biblatex\PHD@biblatexfalse
 \DeclareOption{biblatex}{
 	\ifsetBib
-	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+	\ClassWarning{CustomDocument}{Bibliography selection conflict: A
 		bibliography style aleady specified. Please check the document class
 	options in case you have defined two bibliography styles.}
 	\else
@@ -63,7 +63,7 @@
 \newif\ifPHD@authoryear\PHD@authoryearfalse
 \DeclareOption{authoryear}{
 	\ifsetBib
-	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+	\ClassWarning{CustomDocument}{Bibliography selection conflict: A
 		bibliography style aleady specified. Please check the document class
 	options in case you have defined two bibliography styles.}
 	\else
@@ -75,7 +75,7 @@
 \newif\ifPHD@numbered\PHD@numberedfalse
 \DeclareOption{numbered}{
 	\ifsetBib
-	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+	\ClassWarning{CustomDocument}{Bibliography selection conflict: A
 		bibliography style aleady specified. Please check the document class
 	options in case you have defined two bibliography styles.}
 	\else
@@ -87,12 +87,12 @@
 \newif\ifuseCustomBib\useCustomBibfalse
 \DeclareOption{custombib}{
 	\ifsetBib
-	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+	\ClassWarning{CustomDocument}{Bibliography selection conflict: A
 		bibliography style aleady specified. Please check the document class
 	options in case you have defined two bibliography styles.}
 	\else
 	\ifPHD@biblatex
-	\ClassWarning{PhDThesisPSnPDF}{Bibliography selection conflict: A
+	\ClassWarning{CustomDocument}{Bibliography selection conflict: A
 		bibliography style aleady specified. Please check the document class
 	options in case you have defined two bibliography styles.}
 	\else
@@ -117,7 +117,7 @@
 \newif\ifPHD@abstract\PHD@abstractfalse
 \DeclareOption{abstract}{
 	\PHD@abstracttrue
-	\ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only
+	\ClassWarning{CustomDocument}{You have chosen an option that generates only
 		the Title page and an abstract with PhD title and author name, if this was
 		intentional, ignore this warning. Congratulations on submitting your thesis!
 		If not, please remove the option `abstract' from the document class and
@@ -131,7 +131,7 @@
 \newif\ifPHD@chapter\PHD@chapterfalse
 \DeclareOption{chapter}{
 	\PHD@chaptertrue
-	\ClassWarning{PhDThesisPSnPDF}{You have chosen an option that generates only
+	\ClassWarning{CustomDocument}{You have chosen an option that generates only
 		selected chapters with references, if this was intentional, ignore this
 		warning. If not, please remove the option `chapter' from the document class
 	and recompile. Good luck with your writing!}
@@ -140,7 +140,7 @@
 % Pre-defined options
 % Font size
 \DeclareOption{10pt}{
-	\ClassWarning{PhDThesisPSnPDF}{The University of Cambridge PhD thesis guidelines
+	\ClassWarning{CustomDocument}{The University of Cambridge PhD thesis guidelines
 		recommend using a minimum font size of 11pt (12pt is preferred) and 10pt for
 	footnotes.}
 	\PassOptionsToClass{10pt}{book}%
@@ -154,7 +154,7 @@
 \DeclareOption{a4paper}{\renewcommand\PHD@papersize{a4paper}}
 \DeclareOption{a5paper}{\renewcommand\PHD@papersize{a5paper}}
 \DeclareOption{letterpaper}{
-	\ClassWarning{PhDThesisPSnPDF}{The University of Cambridge
+	\ClassWarning{CustomDocument}{The University of Cambridge
 	PhD thesis guidelines recommend using A4 or A5paper}
 	\renewcommand\PHD@papersize{letterpaper}
 }
@@ -171,14 +171,14 @@
 % Draft Mode
 \DeclareOption{draftclassic}{\PassOptionsToClass{draft}{book}
 	\setDraftClassictrue
-	\ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+	\ClassWarning{CustomDocument}{Draft is ON. Don't forget to turn it
 		off in your final version. This is the classic version of draft.
 		Use `draft' for enhanced mode, which adds watermark with timestamp,
 line numbering, and version number.}}%
 
 \DeclareOption{draft}{\PassOptionsToClass{\CurrentOption}{book}
 	\setDrafttrue
-	\ClassWarning{PhDThesisPSnPDF}{Draft is ON. Don't forget to turn it
+	\ClassWarning{CustomDocument}{Draft is ON. Don't forget to turn it
 		off in your final version. This enhanced `draft' mode adds watermark
 		with timestamp, line numbering, and version number. Use `draftclassic'
 		if you prefer the \cite{} lassic draft mode. To tweak options see
@@ -191,7 +191,7 @@ line numbering, and version number.}}%
 
 % Generates a warning for unknown options
 \DeclareOption*{
-	\ClassWarning{PhDThesisPSnPDF}{Unknown or non-standard option
+	\ClassWarning{CustomDocument}{Unknown or non-standard option
 		'\CurrentOption'. I'll see if I can load it from the book class. If you get a
 		warning unused global option(s): `\CurrentOption` then the option is not
 	supported!}
@@ -386,19 +386,19 @@ line numbering, and version number.}}%
 
 \else
 
-\renewcommand\SetDraftText[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftText[1]{\ClassWarning{CustomDocument}{Draft is
 	inactive, to use SetDraftText include `draft' in the document
 class options.}}
 % Draft Version
-\renewcommand\SetDraftVersion[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftVersion[1]{\ClassWarning{CustomDocument}{Draft is
 	inactive, to use SetDraftVersion include `draft' in the document
 class options.}}
 % Draft Content
-\renewcommand\SetDraftWMPosition[1]{\ClassWarning{PhDThesisPSnPDF}{Draft
+\renewcommand\SetDraftWMPosition[1]{\ClassWarning{CustomDocument}{Draft
 	is inactive, to use SetDraftWMPosition include `draft' in the document
 class options.}}
 
-\renewcommand\SetDraftGrayScale[1]{\ClassWarning{PhDThesisPSnPDF}{Draft is
+\renewcommand\SetDraftGrayScale[1]{\ClassWarning{CustomDocument}{Draft is
 	inactive, to use SetDraftWMPosition include `draft' in the document
 class options.}}
 \fi
@@ -428,7 +428,7 @@ citestyle=numeric, sorting=none, natbib=true]{biblatex}
 \AtBeginDocument{
 	\@ifpackageloaded{natbib}{}{
 		\@ifpackageloaded{biblatex}{}{
-			\ClassWarning{PhDThesisPSnPDF}{%
+			\ClassWarning{CustomDocument}{%
 				You chose custom bibliography, but no corresponding package
 				(biblatex/natbib) has been loaded. Please load the
 			appropriate bibliography package in the preamble.}
@@ -450,7 +450,7 @@ citestyle=numeric, sorting=none, natbib=true]{biblatex}
 
 \ifsetBib
 \else
-\ClassWarning{PhDThesisPSnPDF}{No bibliography style was specified.
+\ClassWarning{CustomDocument}{No bibliography style was specified.
 	Default numbered style is used. If you would like to use a
 	different style, use `authoryear' or `numbered' in the options in
 	documentclass or use `custombib` and define the natbib package or
@@ -466,19 +466,19 @@ biblatex package with required style in the Preamble.tex file}
 \RequirePackage{mathptmx}
 \fi
 \setFonttrue
-\message{PhDThesisPSnPDF: Using Times Roman font}
+\message{CustomDocument: Using Times Roman font}
 \else
 \ifPHD@fourier
 \RequirePackage{fourier}
 \setFonttrue
-\message{PhDThesisPSnPDF: Using Fourier font}
+\message{CustomDocument: Using Fourier font}
 \else
 \ifsetCustomFont
 \setFonttrue
-\message{PhDThesisPSnPDF: Using custom font}
+\message{CustomDocument: Using custom font}
 \else
 \setFontfalse
-\message{PhDThesisPSnPDF: No font is set}
+\message{CustomDocument: No font is set}
 \fi
 \fi
 \fi
@@ -486,7 +486,7 @@ biblatex package with required style in the Preamble.tex file}
 % If Font is not set throw a warning
 \ifsetFont
 \else
-\ClassWarning{PhDThesisPSnPDF}{Using default font Latin Modern. If you
+\ClassWarning{CustomDocument}{Using default font Latin Modern. If you
 	would like to use other pre-defined fonts use `times' (The Cambridge
 	University PhD thesis guidelines recommend using Times font)  or `fourier'
 	or load a custom font in the preamble.tex file by specifying `customfont'
@@ -636,7 +636,7 @@ vmarginratio=1:1,scale=0.75]{geometry}
 % Justification
 % Left aligned as per University identity guidelines
 \ifPHD@textJustify
-\message{PhDThesisPSnPDF: The University identity guidelines recommend using
+\message{CustomDocument: The University identity guidelines recommend using
 	left aligned text. Please use `flushleft' in the documentclass option, if you
 wish to left align your text}
 \else
@@ -659,7 +659,7 @@ wish to left align your text}
 % If Margin has been set (default margin print/online version)
 \ifsetCustomMargin
 \AtBeginDocument{
-	\@ifpackageloaded{geometry}{}{\ClassWarning{PhDThesisPSnPDF}{%
+	\@ifpackageloaded{geometry}{}{\ClassWarning{CustomDocument}{%
 		Custom margin is chosen, but geometry package is not loaded. Please load the
 `geometry' package in the preamble.}}}
 \fi
