@@ -6,7 +6,7 @@ This chapter describes the project-related academic methodologies in the given c
 \section{Derivation of the case study}
 \label{chapter3-derivation-of-the-case-study}
 
-In October 2021, the author began working as a cloud software engineer at IDUN Technologies, an ETH spin-off startup in Zürich, to further develop their existing software products. IDUN had already created a PoC software system that included a web-based single-page application (SPA) hosted on AWS Amplify, a backend-as-a-service product aiming to simplify the deployment of backends for mobile and web apps. IDUN's in-ear sensor sent EEG data to a physical network bridge via Bluetooth and then to the cloud via the internet. The raw EEG data\footnote{Raw EEG data refers to data measured by the in-ear sensor without any additional processing.} was saved and available for download in various file formats.
+In October 2021, the author began working as a cloud software engineer at IDUN Technologies, an ETH spin-off startup in Zürich, to further develop their existing software products. IDUN had already created a PoC software system that included a web-based single-page application (SPA) hosted on AWS Amplify, a backend-as-a-service product aiming to simplify the deployment of backends for mobile and web apps. IDUN's in-ear sensor sent EEG data to a physical network bridge via Bluetooth and then to the cloud via the internet. The raw EEG data\footnote{Raw EEG data refers to data measured by the in-ear sensor without any additional processing.} was saved and made available for download in various file formats.
 
 \begin{figure}[!ht]
   \centering
@@ -17,7 +17,7 @@ In October 2021, the author began working as a cloud software engineer at IDUN T
 
 In addition to raw data, the IDUN SPA provided processed data, such as, e.g. filtered data, which included low-pass and high-pass filtering of EEG data as shown on \autoref{fig:raw-filtered-eeg}. This processed EEG data was then saved alongside the raw version on the cloud.
 
-The EEG data could also be visualised in near-real-time on the SPA as a time-series x- and y-axis plot. Additionally, users could control the device by sending start and stop commands to the hardware components. The architecture is displayed on \autoref{fig:idun-amplify}.
+The EEG data could also be visualised in near-real-time on the SPA as a time-series x- and y-axis plot. Additionally, users could control the device by sending start and stop commands to the hardware components. The PoC system, whose architecture is shown on \autoref{fig:idun-amplify}, was in a relatively unstable state and had various error sources that made it impossible to reliably record EEG data for more than a few minutes, making the product unusable for existing customers or a mass-market launch. While working on the system, the author encountered various technological bugs and flaws as described in \autoref{appendix2-flaws-and-bugs-previous-system}.
 
 \begin{figure}[!ht]
   \centering
@@ -26,14 +26,12 @@ The EEG data could also be visualised in near-real-time on the SPA as a time-ser
   \label{fig:idun-amplify}
 \end{figure}
 
-The system was in a relatively unstable state and had various error sources that made it impossible to reliably record EEG data for more than a few minutes, making the product unusable for existing customers or a mass-market launch. While working on the system, the author encountered various technological bugs and flaws as described in \autoref{appendix2-flaws-and-bugs-previous-system}.
-
 Due to growing problems with the existing software system and an ever-increasing technical debt as a result of the software not being test-driven or developed without clean code quality standards, resulting in bugs and quirks that are difficult to track down, the author proposed to halt the implementation of new features and restructure the system from the ground up using a more software engineering-oriented approach. The company's management approved the request for this redevelopment in early December 2021. At the time, the author was already working on his original Bachelor project, which focused on a EEG-controlled multiplayer game, assuming that IDUN's software system would be stable by the time the Bachelor project began. The original Bachelor project's focus was officially changed at the end of 2021 to create a thesis on the redevelopment of IDUN's cloud software.
 
 \section{Case study}
 \label{chapter3-case-study}
 
-As mentioned in previous chapters, IDUN Technologies is a full-stack company which produces in-ear EEG sensors in the form of earphones. Their vision is to sell their hardware and license a software product coupled with the hardware called Neuro-Intelligence Platform (NIP), as shown on \autoref{fig:idun-nip}.
+As previously mentioned, IDUN Technologies is a full-stack company which produces in-ear EEG sensors in the form of earphones. Their vision is to sell their hardware and license a software product coupled with the hardware called Neuro-Intelligence Platform (NIP), as shown on \autoref{fig:idun-nip}.
 
 \begin{figure}[!ht]
   \centering
@@ -42,9 +40,9 @@ As mentioned in previous chapters, IDUN Technologies is a full-stack company whi
   \label{fig:idun-nip}
 \end{figure}
 
-The mission is essential that an unobtrusive BCI device, such as an in-ear headset, can be worn for the majority of the day while measuring neural data that is sent in real-time to the cloud to process and classify actionable insights that other developers can use to build their interventions (e.g., apps, websites, and games) on top of it to promote mental health and well-being. Furthermore, the aspect of longitudinal data is essential, implying that it could be advantageous to store neural data over a long period and run classifiers on it from time to time to understand one's brain better.
+The mission is essential that an unobtrusive BCI device, such as an in-ear headset, can be worn for the majority of the day while measuring neural data that is sent in real-time to the cloud to process and classify actionable insights that other developers can use to build their interventions (e.g., apps, websites, and games) on top of it to promote mental health and well-being. Furthermore, the aspect of longitudinal data is essential, implying that it could be advantageous to store neural data over a long period and run classifiers on it from time to time to understand one's brain better which is one of the possible solutions described for the lack of data challenge in \autoref{chapter2-lack-of-data}.
 
-It is essential to select an appropriate research method to develop a system that would fulfil the company's mission and vision. The author chose a case study because it is an effective method for dealing with unusual and atypical cases while providing new and unexpected perspectives in certain situations such as in a deep-tech startup like IDUN.
+Moreover, it is essential to select an appropriate research method to develop a system that would fulfil the company's mission and vision. The author chose a case study because it is an effective method for dealing with unusual and atypical cases while providing new and unexpected perspectives in certain situations such as in a deep-tech startup like IDUN.
 
 \section{Procedure}
 \label{chapter3-procedure}
@@ -63,9 +61,7 @@ The goal was to conduct qualitative research and examine the use case from vario
   \label{fig:idun-timeline}
 \end{figure}
 
-Before defining the project stages, it is essential to look at the timing of IDUN's roadmap as shown on \autoref{fig:idun-timeline}. There are three essential pieces of information: The stage in which the technology resides, the estimated user base size, and the time frames of these stages that want to be achieved. The author was working towards a version starting to be released in 2023, ergo working on the N/CI placed in the Guardian deployment phase. As the company is still implementing the first neuromarkers into the product and is focusing on two use cases, namely sleep and hearing health, due to the size of the team and the mass production of hardware and sensors, the sales team is targeting the sale of devices to about 100'000 people.
-
-Another constraint is the deadline of the bachelor's thesis of the author, which is set on the 5th of August 2022. User size, company stages and the deadline for the thesis are important context information for defining the project stages for this use case. Following on \autoref{tab:project-stages} are the proposed project stages to execute the case study:
+Before defining the project stages, it is essential to look at the timing of IDUN's roadmap as shown on \autoref{fig:idun-timeline}. There are three essential pieces of information: The stage in which the technology resides, the estimated user base size, and the time frames of these stages that want to be achieved. The author was working towards a version starting to be released in 2023, ergo working on the N/CI placed in the Guardian deployment phase. As the company is still implementing the first neuromarkers into the product and is focusing on two use cases, namely sleep and hearing health, due to the size of the team and the mass production of hardware and sensors, the sales team is targeting the sale of devices to about 100'000 people. Another constraint is the deadline of the bachelor's thesis of the author, which is set on the 5th of August 2022. User size, company stages and the deadline for the thesis are important context information for defining the project stages for this use case. Following on \autoref{tab:project-stages} are the proposed project stages to execute the case study:
 
 \begin{table}[!ht]
   \centering
