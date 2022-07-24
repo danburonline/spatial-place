@@ -53,11 +53,18 @@ The distinction between critical and non-critical streams can be made not only f
 
 \subsubsection{Encryption and opt-in}
 \label{chapter5-user-side-opt-in}
-% show opt-in wireframes
-% mention server-side rendering for privacy
-% mention discussion with Andy
-% TODO show data structure of idun's eeg
-% talk about compression and data structure of the EEG data
+
+Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users that they may not want. In the asynchronous encryption example, IDUN securely decrypts the data in its cloud using the private key.
+
+% TODO show figure of how encryption works with private keys etc.
+
+Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. Figure 3 depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
+
+% TODO show opt-in mechanism (say that the full version is in the appendix 123)
+
+The fact that unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, for example, the individual display images would have to be rendered on the server side and streamed to the client as video. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Envelope encryption, as shown in Figure 3, is a tried and true method for this \citep{google_cloud_envelope_nodate}.
+
+% Show figure of envelope encryption \citep{google_cloud_key_nodate}
 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
