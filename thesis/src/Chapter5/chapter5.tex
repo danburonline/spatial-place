@@ -64,20 +64,29 @@ Third-party developers can thus only access data that the user has authorised. T
 
 The fact that unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, for example, the individual display images would have to be rendered on the server side and streamed to the client as video. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Envelope encryption, as shown in Figure 3, is a tried and true method for this \citep{google_cloud_envelope_nodate}.
 
-% Show figure of envelope encryption \citep{google_cloud_key_nodate}
+% TODO Show figure of envelope encryption \citep{google_cloud_key_nodate}
 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
-% explain MLOps and outlook with Kubeflow
-% mention data lakes and data warehouse
-% mention internal SDK for feature extraction and experiments
-% what is feature extraction and the process
-% show image from Wadda
 
-% However, in practice, it appears that simply making data available quickly—even if it is in a quirky, difficult-to-use, raw format—is often more valuable than trying to decide on the ideal data model up front [54].
+Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became clear during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like CSV (comma-separated values) files seemed more appropriate, because not the bytes of an image are stored in the database, but the file path of the file.
+
+% TODO create data structure table
+
+In addition to storing the neural data in the data structure shown in Table 123, it is important to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic that is applied to raw neural data streams, the more metadata must be linked to the original files in a database as figure 123 shows.
+
+% TODO create figure with graph association
+
+A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. In addition to storing neural data with its massive amounts of relationship metadata, an API for accessing graph data, such as GraphQL, can be useful. Graphs are effective tools for representing a wide range of real-world events because they mimic our natural mental models and verbal descriptions of underlying processes. Using GraphQL's API technology, one can model the stored neural data and its metadata as a graph, with each node type and its relationship to each other defined. As a result, client applications using GraphQL technologies \citep{graphql_thinking_nodate} create types that refer to other types, for example.
+
+% TODO create example GraphQL schema that represents associated stored neural data
 
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
+
+Based on the key aspects of the N/CI for IDUN's NIP mentioned before the author presents as one of the main results the following cloud architecture.
+
+% non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
 
 % split by key components
 % show what i've drawn on the whiteboard at work for event-driven architecture
@@ -121,8 +130,6 @@ The fact that unencrypted raw data should never be accessible to third parties p
 % o Did you remind the reader of the value/implications of your research at the end?
 % o Did you include some pointers for future research? (optional)
 
-% non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
-
 \section{Summary}
 \label{chapter5-summary}
 
@@ -143,3 +150,5 @@ The fact that unencrypted raw data should never be accessible to third parties p
 % - More research needed, more treatments that follow this approach should be developed
 
 \nomenclature[fft]{fft}{Fast Fourier transform}
+\nomenclature[csv]{CSV}{Comma-separated values}
+\nomenclature[imu]{IMU}{Inertial measurement unit}
