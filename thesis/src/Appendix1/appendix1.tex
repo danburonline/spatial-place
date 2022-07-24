@@ -5,7 +5,7 @@
 This section discusses the definition, need and differentiation of a N/CI and the paradigm shifts associated with it when discussing BCI software.
 
 \section*{BCI software on the cloud}
-\label{chapter2-bci-software-on-the-cloud}
+\label{appendix1-bci-software-on-the-cloud}
 
 Looking at \autoref{fig:nci-components}, we can see that the three software layers of a BCI-component illustration, as pictured on \autoref{fig:bci-components} are highlighted. This is due to the fact that these components are not bound to a physical interface such as a cable or Bluetooth.
 
@@ -58,14 +58,14 @@ A N/CI utilises cloud computing by running certain software components of a BCI 
 \end{figure}
 
 \section*{Distinction between existing research}
-\label{chapter2-distinction-between-existing-research}
+\label{appendix1-distinction-between-existing-research}
 
 The concept of running BCI software components remotely and on the cloud is not novel, as research into the concept known as asynchronous BCI \citep{an_design_2016} or internet-based BCI \citep{lampe_brain-computer_2014} has been ongoing for some time. However, when we look at the more recent research from \citeauthor{zhang_internet_2018} on their cloud-based deep learning framework to enable, as they describe Human-Thing Cognitive Interactivity, we see a strong emphasis on algorithms and machine learning but less on aspects such as the cloud architecture and mass-market-readiness \citep{zhang_internet_2018}. They address the latency and the size of EEG samples sent in near-real-time to a server, as well as the corresponding calculation, but there are no more details in regards to the proposed and very simplified architecture chart's components or effective cloud architecture, all of which factor into the author's aim to develop a N/CI. Another related and even more recent paper by \citeauthor{ahamad_system_2022} looks at the system architecture of a BCI for the Internet of Things (IoT), but this time from the perspective of algorithms optimised for time series data such as EEG, but still with no mention of the effective cloud architecture of such a system \citep{ahamad_system_2022}.
 
 The author of this thesis introduces the concept of three-dimensionality for the definition of a N/CI based on the previously mentioned topics and research that touch on the issues of this thesis, which are essential to achieve general applicability for BCIs from the perspective of the software system for the actual implementation of such a system.
 
 \section*{Requirements of a N/CI}
-\label{chapter2-requirements-of-a-nci}
+\label{appendix1-requirements-of-a-nci}
 
 The term N/CI positions itself as a software system in the intersection that can undoubtedly be defined as production-grade rather than being in the PoC stage, unobtrusive implementation rather than obtrusive software and general-purpose applicability rather than being made just for a specific use case. \autoref{fig:nci-definition} illustrates the position of a N/CI within the mentioned properties. Subsequently, \autoref{tab:nci-axis} summarises the definitions as described in this thesis.
 
@@ -77,7 +77,6 @@ The term N/CI positions itself as a software system in the intersection that can
 \end{figure}
 
 
-\begin{landscape}
 \begin{table}[ht]
   \centering
   \resizebox{\textwidth}{!}{%
@@ -106,7 +105,6 @@ The term N/CI positions itself as a software system in the intersection that can
   \caption{Axes label descriptions of the three-dimensionality for the definition of a N/CI as shown on \autoref{fig:nci-definition}.}
   \label{tab:nci-axis}
 \end{table}
-\end{landscape}
 
 \newpage
 

@@ -111,10 +111,10 @@ Although this thesis focuses on consumer-oriented BCIs, the applications of vari
 
 Other considerations include whether the applications are rather steady-state evoked, such as based on a frequency of noise laid on top of virtual objects to detect which object the person is looking at (e.g. as NextMind is doing), or whether they track the totality of mental states without evoking neural signals with external stimuli, such as in tracking sleep or concentration levels, both of which arise primarily evoked from inside the brain. This distinction can be made as passive, active or reactive BCI, as \citeauthor{alimardani_passive_2020} coined in their work on passive BCIs \citep{alimardani_passive_2020}. However, the author does not want to include this dimension because it would introduce additional complexities related to the BCI software application layer.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{bci-components.png}
-  \caption{Architectural overview of BCI components including a bidirectionality due to neurofeedback in form of e.g. playing a sound in a certain frequency to evoke an auditory steady-state response.}
+  \caption{Architectural overview of BCI components.}
   \label{fig:bci-components}
 \end{figure}
 
@@ -159,10 +159,10 @@ There is no clear definition of what production-grade software is, but in most c
 
 As stated in previous sections, most BCIs, such as the OpenBCI, are usually not intended for production. They are intended for PoCs such as controlling objects in games or conducting research. End-to-end and full-stack BCIs for production are rare, as most are very specific and not intended for general applicability, such as the Muse headband, or the software aspect is intended for PoCs or research, such as with Emotiv. Pure software products, such as the one from Neuromore, lack the hardware component and miss e.g. an SDK that can be integrated into existing software for a variety of platforms. Neurosity aims to provide a universally usable and unobtrusive software stack that is even open-source. However, because the hardware is not unobtrusive enough, it does not qualify the author's definition as mass-market-ready and production-grade (apart from the fact that it is not known whether their software stack is aimed to be used in production \citep{neurosity_neurosity_2022} due to, e.g. third-party developers providing disclaimers of being a work in progress \citep{turney_notion_2022}). Companies such as Neuralink are presumably working on a general-purpose, unobtrusive and production-grade software system which enables developers to build production apps and even platforms on top of it for a variety of use cases without being limited \citep{musk_integrated_2019}. Since their aimed hardware is also as unobtrusive in its form factor (since it is implanted), they have a high potential to become one of the first general applicable and mass-market-ready BCIs if we ignore the fact that we need surgery to get the device itself \citep{neuralink_approach_nodate} and other considerations as a harder opt-out of the device compared to, e.g. plugging out earphones.
 
-\section{Neural/cloud interface definition}
-\label{chapter2-neural-cloud-interface-definition}
+\section{Definition of a N/CI}
+\label{chapter2-definition-of-a-nci}
 
-% TODO Describe and link to the appendix A.
+All the previously mentioned aspects feed into the definition and motivation of a N/CI, which the author has introduced as a new term. \autoref{appendix1-definition-and-motivation-of-a-nci} goes into more detail about the cloud paradigm shift, the motivation and clear definition of a N/CI and the aspects of cloud computing in combination with BCI software.
 
 \nomenclature[nlu]{NLU}{Natural language understanding}
 \nomenclature[ai]{AI}{Artificial intelligence}
