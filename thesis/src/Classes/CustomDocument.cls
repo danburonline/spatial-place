@@ -547,6 +547,7 @@ in the class options}
 % For Print version
 \hypersetup{
 	final=true,
+	pdfauthor={Daniel Burger}
 	plainpages=false,
 	pdfstartview=FitV,
 	pdftoolbar=true,
@@ -554,12 +555,14 @@ in the class options}
 	bookmarksopen=true,
 	bookmarksnumbered=true,
 	breaklinks=true,
-	linktocpage,
+	linktocpage=true,
 	colorlinks=true,
-	linkcolor=black,
-	urlcolor=black,
-	citecolor=black,
-	anchorcolor=black
+	linkcolor=blue,
+	urlcolor=blue,
+	citecolor=blue,
+	anchorcolor=blue,
+	pdfpagemode=FullScreen,
+	pdftitle={Enabling General Applicability for Brain-Computer Interface Software Through Cloud Computing}
 }
 \ifsetCustomMargin
 % Margin to be define in preamble using geometry package
@@ -572,19 +575,23 @@ vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
 % For PDF online version
 \hypersetup{
 	final=true,
+	pdfauthor={Daniel Burger}
 	plainpages=false,
 	pdfstartview=FitV,
 	pdftoolbar=true,
 	pdfmenubar=true,
+	linktocpage=true,
 	bookmarksopen=true,
 	bookmarksnumbered=true,
 	breaklinks=true,
-	linktocpage,
+	linktocpage=true,
 	colorlinks=true,
-	linkcolor=black,
+	linkcolor=blue,
 	urlcolor=blue,
-	citecolor=black,
-	anchorcolor=green
+	citecolor=blue,
+	anchorcolor=blue,
+	pdfpagemode=UseOutlines,
+	pdftitle={Enabling General Applicability for Brain-Computer Interface Software Through Cloud Computing}
 }
 
 \ifsetCustomMargin
