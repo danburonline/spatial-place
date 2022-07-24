@@ -17,23 +17,47 @@ The term N/CI is defined by the three-dimmensionality as described in \autoref{f
 
 \subsubsection{Stream-based events}
 \label{chapter5-stream-based-events}
-% explain event based architecture and the paradigm-shift in building stream based architectures
-% talk about concurrency
+
+One of the most important technical aspects of a N/CI is the stream-oriented and even-driven architecture. An event-driven architecture is common in modern applications built with microservices and uses events to trigger and communicate between decoupled services \citep{amazon_web_services_inc_event-driven_nodate}. The stream-oriented aspect describes the main events happening in such a system. Neural data recorded from IDUN's sensors is being streamed from the end-users' devices and processed on the cloud in order to transform and classify the raw data to generate applicable and intelligible output. There are two main differences between the stream types when building a N/CI:
+
+\begin{itemize}
+\item \textbf{Synchronous streams} for active and real-time BCI.
+\item \textbf{Asynchronous streams} for passive, reactive BCI.
+\end{itemize}
+
+Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection). Parallel processing of neural data streams is critical, and timestamp synchronisation between different transformed or classified output streams must be prioritised.
+
+The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into his sleep. When he awakens, the system must stop the stream, classify it, and display the stages of sleep, for example. These various aspects are significant because some classifications, such as band performance, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must transform it with a fast Fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific length of epoch. 
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{fft.png}
+  \caption[Illustration of how FFT works]{Illustration of how FFT works \citep{3blue1brown_but_2018}}
+  \label{fig:fft}
+\end{figure}
+
+The process of FFT is represented visually in \autoref{fig:fft} a given frequency in the time series is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have per-sample and epoch-based classification of neural data, which can be real-time, real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases.
+
+% TODO create figure for epoch vs per sample incl buffering
 
 \subsubsection{Critical and non-critical}
 \label{chapter5-critical-and-non-critical}
-% mention the concept from the book and batch processing
 
-\subsubsection{Hardware-accelerated encryption}
-\label{chapter5-hardware-accelerated-encryption}
+The topic of stream-based events brings up the issue of critical and non-critical use cases. A synchronous neural stream with low-latency classification of whether the driver is currently awake, asleep, or about to fall asleep is required in a critical use case such as microsleep detection while driving. In such cases, the classification must be as fast as possible, as in per-sample classification or epoch-based classification (most likely with buffer), so the connection speed between the measurement sensor and the classifier is more important. In extremely critical use cases, where a user's life may depend on it, the classification would need to be done without an active internet connection, so that the classification model runs on the hardware itself rather than in the cloud, in order to intervene within milliseconds (e.g., in the form of a loud sound to warn or wake up the driver), as a few moments can mean the difference between fatalities.
+
+Not-so-critical applications can fall back on non-offline modes and run classifiers over an active internet connection in the cloud. To reduce latency, edge cloud computing could be introduced, where business logic executed in the cloud is brought geographically closer to the end user via edge locations \citep{nomios_what_nodate}.
+
+The distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research like that represented by IDUN's Persona Noel does not necessitate synchronous streams or classifications, but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, for example, recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud.
+
+% TODO create figure for buffering on device and on phone when offline or out of range
+
+\subsubsection{Encryption and opt-in}
+\label{chapter5-user-side-opt-in}
+% show opt-in wireframes
 % mention server-side rendering for privacy
 % mention discussion with Andy
 % TODO show data structure of idun's eeg
 % talk about compression and data structure of the EEG data
-
-\subsubsection{Per-device auth and opt-in}
-\label{chapter5-user-side-opt-in}
-% show opt-in wireframes
 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
@@ -110,3 +134,5 @@ The term N/CI is defined by the three-dimmensionality as described in \autoref{f
 % - Our findings confirm this
 % - Novel perspective on depression
 % - More research needed, more treatments that follow this approach should be developed
+
+\nomenclature[fft]{fft}{Fast Fourier transform}
