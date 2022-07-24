@@ -1,6 +1,8 @@
 \chapter{Flaws and bugs previous system}
 \label{appendix2-flaws-and-bugs-previous-system}
 
+This section lists the flaws and bugs discovered during the author's work on the original IDUN Technologies software system.
+
 \begin{itemize}
   \item AWS Amplify is great for frontend developers who want to build simple backends with CRUD\footnote{CRUD is an acronym describing general operations of a backend system: Create, Read, Update and Delete.} operations, but it is not intended for anything custom-made, such as, e.g. the streaming-focused aspect of EEG data. Therefore, AWS Amplify must be abandoned as soon as possible, or the project will be built with the wrong tools and foundations.
   \item The network bridge was a Raspberry Pi 4 Model B running Python code, which after some analysis, turned out to be the primary source of most of the bugs due to limits in computational power and ARM-based CPU architecture.
