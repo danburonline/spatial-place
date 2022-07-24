@@ -13,7 +13,7 @@
 \DeclareOption{times}{
 	\ifsetFont
 	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you
+		already specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\PHD@timestrue
@@ -25,7 +25,7 @@
 \DeclareOption{fourier}{
 	\ifsetFont
 	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you
+		already specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\PHD@fouriertrue
@@ -37,7 +37,7 @@
 \DeclareOption{customfont}{
 	\ifsetFont
 	\ClassWarning{CustomDocument}{Font selection conflict: A font package was
-		aleady specified. Please check the document class options in case you
+		already specified. Please check the document class options in case you
 	have defined two fonts.}
 	\else
 	\setCustomFonttrue
