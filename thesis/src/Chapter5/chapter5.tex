@@ -3,8 +3,6 @@
 
 This chapter presents the concrete final results, a concise summary of the project in the form of key aspects of a N/CI and an example architecture, while taking into account the initial goals and objectives.
 
-% 5.1 Ergebnisse: Präsentation des konkreten Endergebnisses. Kompakte Zusammenfassung des Projekts unter Berücksichtigung der anfänglichen Zieldefinition. Wichtig ist dabei, dass man eine kritische Betrachtung der faktischen Resultate vornimmt (Evaluation). Hier ist ein Soll-Ist-Vergleich zur Zielsetzung aus Kapitel 1 mit kritischer Stellungnahme gewünscht. 5.2 Zusammenfassung: Es soll eine Zusammenfassung der Arbeit geschrieben werden und ein Fazit in Bezug auf das Projekt dessen Bedeutung (Relevanz und Nutzen) gezogen werden. Weiterhin soll eine Kritische Betrachtung der eigenen Vorgehensweise erfolgen. Abschließend soll ein Ausblick auf weitere Projektideen, die sich im Rahmen der Arbeit ergeben haben, gegeben werden (Folgeprojekte, Veröffentlichungen, Verwertung). Empfohlener Umfang: ca. 15-20%
-
 \section{Results}
 \label{chapter5-results}
 
@@ -13,7 +11,7 @@ This section discusses the final results of the implementation chapter. The auth
 \subsection{Key aspects of a N/CI}
 \label{chapter5-key-aspects}
 
-The term N/CI is defined by the three-dimmensionality as described in \autoref{fig:nci-definition-intro}. However, this description does not take into account key aspects, e.g. to achieve general applicability of the production-oriented implementation according to a holistic technological definition. The following subsections discuss some of the technical as well as ethical and privacy aspects of the exemplary built N/CI for IDUN Technologies.
+The term N/CI is defined by the three-dimensionality as described in \autoref{fig:nci-definition-intro}. However, this description does not take into account key aspects, e.g. to achieve general applicability of the production-oriented implementation according to a holistic technological definition. The following subsections discuss some of the technical as well as ethical and privacy aspects of the exemplary built N/CI for IDUN Technologies.
 
 \subsubsection{Stream-based events}
 \label{chapter5-stream-based-events}
@@ -21,13 +19,13 @@ The term N/CI is defined by the three-dimmensionality as described in \autoref{f
 One of the most important technical aspects of a N/CI is the stream-oriented and even-driven architecture. An event-driven architecture is common in modern applications built with microservices and uses events to trigger and communicate between decoupled services \citep{amazon_web_services_inc_event-driven_nodate}. The stream-oriented aspect describes the main events happening in such a system. Neural data recorded from IDUN's sensors is being streamed from the end-users' devices and processed on the cloud in order to transform and classify the raw data to generate applicable and intelligible output. There are two main differences between the stream types when building a N/CI:
 
 \begin{enumerate}
-\item \textbf{Synchronous streams} for active and real-time BCI.
-\item \textbf{Asynchronous streams} for passive, reactive BCI.
+  \item \textbf{Synchronous streams} for active and real-time BCI.
+  \item \textbf{Asynchronous streams} for passive, reactive BCI.
 \end{enumerate}
 
 Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection).
 
-The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When they wake up, the system must stop the stream, classify it, and display e.g. the sleep stages. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must decompose the raw EEG signal into frequency components via a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length as visualised in \autoref{fig:fft}. 
+The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When they wake up, the system must stop the stream, classify it, and display e.g. the sleep stages. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must decompose the raw EEG signal into frequency components via a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length as visualised in \autoref{fig:fft}.
 
 \begin{figure}[!ht]
   \centering
@@ -94,50 +92,50 @@ Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous su
 The architecture diagram contains some patterns that have specific reasons. The following list describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules).
 
 \begin{itemize}
-\item \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\linewidth]{cluster.png}
-  \caption{The Fargate cluster of the example architecture.}
-  \label{fig:cluster}
-\end{figure}
+  \item \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=\linewidth]{cluster.png}
+          \caption{The Fargate cluster of the example architecture.}
+          \label{fig:cluster}
+        \end{figure}
 
-This is a text for figure 123.
+        This is a text for figure 123.
 
-\item  \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\linewidth]{initial-dataflow.png}
-  \caption{The initial data flow.}
-  \label{fig:initial-flow}
-\end{figure}
+  \item  \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=\linewidth]{initial-dataflow.png}
+          \caption{The initial data flow.}
+          \label{fig:initial-flow}
+        \end{figure}
 
-This is some more info.
+        This is some more info.
 
-\item  \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\linewidth]{real-time-dataflow.png}
-  \caption{The real-time data flow.}
-  \label{fig:realtime-flow}
-\end{figure}
+  \item  \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=\linewidth]{real-time-dataflow.png}
+          \caption{The real-time data flow.}
+          \label{fig:realtime-flow}
+        \end{figure}
 
-Real-time data flow example etc.
+        Real-time data flow example etc.
 
-\item \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\linewidth]{cron-jobs.png}
-  \caption{CRON jobs.}
-  \label{fig:cron}
-\end{figure}
+  \item \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=\linewidth]{cron-jobs.png}
+          \caption{CRON jobs.}
+          \label{fig:cron}
+        \end{figure}
 
-Cron jobs etc.
+        Cron jobs etc.
 
-\item \begin{figure}[!ht]
-  \centering
-  \includegraphics[width=\linewidth]{api-access.png}
-  \caption{API access part of the architecture.}
-  \label{fig:api-access}
-\end{figure}
+  \item \begin{figure}[!ht]
+          \centering
+          \includegraphics[width=\linewidth]{api-access.png}
+          \caption{API access part of the architecture.}
+          \label{fig:api-access}
+        \end{figure}
 
-API access part of the architecture.
+        API access part of the architecture.
 
 \end{itemize}
 
