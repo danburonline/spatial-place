@@ -20,14 +20,14 @@ The term N/CI is defined by the three-dimmensionality as described in \autoref{f
 
 One of the most important technical aspects of a N/CI is the stream-oriented and even-driven architecture. An event-driven architecture is common in modern applications built with microservices and uses events to trigger and communicate between decoupled services \citep{amazon_web_services_inc_event-driven_nodate}. The stream-oriented aspect describes the main events happening in such a system. Neural data recorded from IDUN's sensors is being streamed from the end-users' devices and processed on the cloud in order to transform and classify the raw data to generate applicable and intelligible output. There are two main differences between the stream types when building a N/CI:
 
-\begin{itemize}
+\begin{enumerate}
 \item \textbf{Synchronous streams} for active and real-time BCI.
 \item \textbf{Asynchronous streams} for passive, reactive BCI.
-\end{itemize}
+\end{enumerate}
 
 Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection). Parallel processing of neural data streams is critical, and timestamp synchronisation between different transformed or classified output streams must be prioritised.
 
-The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into his sleep. When he awakens, the system must stop the stream, classify it, and display the stages of sleep, for example. These various aspects are significant because some classifications, such as band performance, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must transform it with a fast Fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific length of epoch. 
+The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When he awakens, the system must stop the stream, classify it, and display e.g. the stages of sleep. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must transform it with a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length of the timeseries. 
 
 \begin{figure}[!ht]
   \centering
@@ -36,25 +36,25 @@ The other component occurs when an asynchronous stream is used in place of a rea
   \label{fig:fft}
 \end{figure}
 
-The process of FFT is represented visually in \autoref{fig:fft} a given frequency in the time series is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have per-sample and epoch-based classification of neural data, which can be real-time, real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases.
+The process of FFT is represented visually in \autoref{fig:fft}. A given frequency in the timeseries is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have per-sample and epoch-based classification of neural data, which can be real-time, real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases. Figure 123 visualises the differences between these three stream types.
 
 % TODO create figure for epoch vs per sample incl buffering
 
 \subsubsection{Critical and non-critical}
 \label{chapter5-critical-and-non-critical}
 
-The topic of stream-based events brings up the issue of critical and non-critical use cases. A synchronous neural stream with low-latency classification of whether the driver is currently awake, asleep, or about to fall asleep is required in a critical use case such as microsleep detection while driving. In such cases, the classification must be as fast as possible, as in per-sample classification or epoch-based classification (most likely with buffer), so the connection speed between the measurement sensor and the classifier is more important. In extremely critical use cases, where a user's life may depend on it, the classification would need to be done without an active internet connection, so that the classification model runs on the hardware itself rather than in the cloud, in order to intervene within milliseconds (e.g., in the form of a loud sound to warn or wake up the driver), as a few moments can mean the difference between fatalities.
+The discussion of stream-based events leads us to the aspect of critical and non-critical use cases. In a critical use case such as microsleep detection while driving, we need a synchronous neural stream with low-latency classification of whether the driver is currently awake, asleep or about to fall asleep. In such use cases, the classification needs to be as fast as possible, such as in per-sample classification or epoch-based classification (most likely with buffer), so it is more about how fast the connection between the measurement sensor and the classifier is. In very critical use cases, where e.g. a user's life may depend on it, the classification would need to be done without an active internet connection, so that the classification model runs on the hardware itself and not in the cloud, in order to be able to intervene within milliseconds (e.g. in the form of a loud sound to warn or wake up the driver), as a few moments can make the difference between fatalities.
 
-Not-so-critical applications can fall back on non-offline modes and run classifiers over an active internet connection in the cloud. To reduce latency, edge cloud computing could be introduced, where business logic executed in the cloud is brought geographically closer to the end user via edge locations \citep{nomios_what_nodate}.
+Not-so-critical applications can fall back on non-offline modes and run classifiers over an active internet connection in the cloud. To reduce latency, edge cloud computing could be introduced, where business logic executed in the cloud is brought geographically closer to the end user via edge locations \citep{nomios_what_nodate}. The aspect of edge-computing is a topic that is not covered in the aspects of a N/CI in this thesis since it was not q requirement to build a critical system at IDUN.
 
-The distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research like that represented by IDUN's Persona Noel does not necessitate synchronous streams or classifications, but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, for example, recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud.
+However, the distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research represented by e.g. IDUN's Persona Noel does not necessitate synchronous streams or real-time classifications, but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, e.g. recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud. Figure 123 illustrates the buffering mechanism.
 
 % TODO create figure for buffering on device and on phone when offline or out of range
 
 \subsubsection{Encryption and opt-in}
 \label{chapter5-user-side-opt-in}
 
-Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users that they may not want. In the asynchronous encryption example, IDUN securely decrypts the data in its cloud using the private key.
+Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users that they may not want. In the asynchronous encryption example, IDUN securely decrypts the data in its cloud using the private key. Figure 123 illustrates how the encryption mechanism.
 
 % TODO show figure of how encryption works with private keys etc.
 
@@ -62,24 +62,22 @@ Third-party developers can thus only access data that the user has authorised. T
 
 % TODO show opt-in mechanism (say that the full version is in the appendix 123)
 
-The fact that unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, for example, the individual display images would have to be rendered on the server side and streamed to the client as video. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Envelope encryption, as shown in Figure 3, is a tried and true method for this \citep{google_cloud_envelope_nodate}.
+The fact that unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Envelope encryption, as shown in Figure 123, is a tried and true method for this \citep{google_cloud_envelope_nodate}.
 
 % TODO Show figure of envelope encryption \citep{google_cloud_key_nodate}
 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
 
-Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became clear during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like CSV (comma-separated values) files seemed more appropriate, because not the bytes of an image are stored in the database, but the file path of the file.
+Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became clear during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV files seemed more appropriate and scalable. Table 123 shows the data structure of the file that is being stored as a CSV.
 
 % TODO create data structure table
 
-In addition to storing the neural data in the data structure shown in Table 123, it is important to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic that is applied to raw neural data streams, the more metadata must be linked to the original files in a database as figure 123 shows.
+In addition to storing the neural data in the given data structure, it is important to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic that is applied to raw neural data streams, the more metadata must be linked to the original files in a database as figure 123 shows.
 
 % TODO create figure with graph association
 
-A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. In addition to storing neural data with its massive amounts of relationship metadata, an API for accessing graph data, such as GraphQL, can be useful. Graphs are effective tools for representing a wide range of real-world events because they mimic our natural mental models and verbal descriptions of underlying processes. Using GraphQL's API technology, one can model the stored neural data and its metadata as a graph, with each node type and its relationship to each other defined. As a result, client applications using GraphQL technologies \citep{graphql_thinking_nodate} create types that refer to other types, for example.
-
-% TODO create example GraphQL schema that represents associated stored neural data
+A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations the author did not implement a real graph data base but rather has chosen a relation database such as AWS Aurora since the current amount of data relationships is still manageable.
 
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
@@ -89,7 +87,7 @@ Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous su
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{example-architecture.png}
-  \caption{Implementation architecture for IDUN Technologies' N/CI}
+  \caption{Implementation architecture for IDUN Technologies' N/CI.}
   \label{fig:example-architecture}
 \end{figure}
 
@@ -116,6 +114,8 @@ This section summarises the thesis' outputs and success criteria, as well as a c
 
 \subsection{Reflection}
 \label{chapter5-reflection}
+
+
 
 \subsection{Outlook}
 \label{chapter5-outlook}
