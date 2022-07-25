@@ -13,7 +13,7 @@ This section discusses the final results of the implementation chapter. The auth
 \subsection{Key aspects of a N/CI}
 \label{chapter5-key-aspects}
 
-The term N/CI is defined by the three-dimmensionality as described in \autoref{fig:nci-definition-intro}. However, this description does not take into account key aspects, e.g. to achieve general applicability of the production-oriented implementation according to the technological definition. The following subsections discuss some of the technical as well as ethical and privacy aspects of the exemplary built N/CI for IDUN Technologies.
+The term N/CI is defined by the three-dimmensionality as described in \autoref{fig:nci-definition-intro}. However, this description does not take into account key aspects, e.g. to achieve general applicability of the production-oriented implementation according to a holistic technological definition. The following subsections discuss some of the technical as well as ethical and privacy aspects of the exemplary built N/CI for IDUN Technologies.
 
 \subsubsection{Stream-based events}
 \label{chapter5-stream-based-events}
@@ -27,7 +27,7 @@ One of the most important technical aspects of a N/CI is the stream-oriented and
 
 Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection).
 
-The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When they wake up, the system must stop the stream, classify it, and display e.g. the sleep stages. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must decompose the raw EEG signal into frequency components via a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length. 
+The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When they wake up, the system must stop the stream, classify it, and display e.g. the sleep stages. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must decompose the raw EEG signal into frequency components via a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length as visualised in \autoref{fig:fft}. 
 
 \begin{figure}[!ht]
   \centering
@@ -36,7 +36,7 @@ The other component occurs when an asynchronous stream is used in place of a rea
   \label{fig:fft}
 \end{figure}
 
-The process of FFT is represented visually in \autoref{fig:fft}. A given frequency in the timeseries is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have per-sample and epoch-based classification of neural data, which can be real-time, real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases. Figure 123 visualises the differences between these three stream types.
+A given frequency in the timeseries is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have per-sample and epoch-based classification of neural data, which can be real-time, real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases. Figure 123 visualises the differences between these three stream types.
 
 % TODO create figure for epoch vs per sample incl buffering
 
@@ -47,7 +47,7 @@ The discussion of stream-based events leads us to the aspect of critical and non
 
 Not-so-critical applications can fall back on non-offline modes and run classifiers over an active internet connection in the cloud. To reduce latency, edge cloud computing could be introduced, where business logic executed in the cloud is brought geographically closer to the end user via edge locations \citep{nomios_what_nodate}. The aspect of edge-computing is a topic that is not covered in the aspects of a N/CI in this thesis since it was not q requirement to build a critical system at IDUN.
 
-However, the distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research represented by e.g. IDUN's Persona Noel does not necessitate synchronous streams or real-time classifications, but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, e.g. recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud. Figure 123 illustrates the buffering mechanism.
+However, the distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research represented by e.g. IDUN's persona Noel does not necessitate synchronous streams or real-time classifications, but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, e.g. recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud. Figure 123 illustrates the buffering mechanism.
 
 % TODO create figure for buffering on device and on phone when offline or out of range
 
@@ -69,7 +69,7 @@ The fact that unencrypted raw data should never be accessible to third parties p
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
 
-Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became clear during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV files seemed more appropriate and scalable. Table 123 shows the data structure of the file that is being stored as a CSV.
+Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became clear during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV) files seemed more appropriate and scalable. Table 123 shows the data structure and data model of the file that is being stored as a CSV.
 
 % TODO create data structure table
 
@@ -77,12 +77,12 @@ In addition to storing the neural data in the given data structure, it is import
 
 % TODO create figure with graph association
 
-A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations the author did not implement a real graph data base but rather has chosen a relation database such as AWS Aurora since the current amount of data relationships is still manageable. To still easily swap the underlying database technology without rewriting a bit portion of the business logic, the author intends to use a object–relational mapping (ORM) tool such as Prisma to treat relational data models as a graph-like schemas \citep{prisma_data_nodate}.
+A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations the author did not implement a graph data base but rather has chosen a relation database such as AWS Aurora since the current amount of data relationships is still manageable. To still easily swap the underlying database technology without rewriting a big portion of the business logic, the author intends to use a object–relational mapping (ORM) tool such as Prisma to treat relational data models via a graph-like schemas \citep{prisma_data_nodate}.
 
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
 
-Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}.
+Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}. The example architecture does not go into detail of the SDK and demo parts as described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is to go more into the cloud aspects of a N/CI and its core architectural components.
 
 \begin{figure}[!ht]
   \centering
@@ -141,22 +141,21 @@ API access part of the architecture.
 
 \end{itemize}
 
-
-% TODO insert list
-
 % non-trivial, n-tier system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
 
 \section{Summary}
 \label{chapter5-summary}
 
-This section summarises the thesis' outputs and success criteria, as well as a conclusion about the project and its importance. A critical examination and reflection of the author's approach will also be conducted.
+The project to implement a N/CI in the industry as part of IDUN's NIP was a success. The author learned many things ranging from basic theoretical neuroscience up to cloud computing. The given context of the work in a fast paced startup such as IDUN Technologies made the work on the project as well as the written part not very easy. Nonetheless, the author is satisfied with the output as described in this thesis.
 
-% TODO write more
+We first introduced the topics and some of the important terms and their backgrounds in the introduction chapter in \autoref{chapter1-background} and derived from the opportunity from the current state of research to the goals and objectives for this work.
+
+The supposition that a N/CI is possible with contemporary technologies has been shown, but still has much potential to define what exactly it means to have successfully proven it to work in practise. Nonetheless, as a goal it was to give the reader an overview and context of the newly introduced term of a N/CI and the learnings made during the implementation in practise at IDUN. The context and motivation of creating a N/CI, as described as the first item in the list of objectives, has been derived in Chapter 2 and in more detail in \autoref{appendix1-definition-and-motivation-of-a-nci}. The clear definition, distinction and advantages of a N/CI in comparison with existing systems and research was as well described in more detail in \autoref{appendix1-definition-and-motivation-of-a-nci}. Identifying and defining the most relevant aspects to realise a N/CI to demonstrate general applicability for BCI software has been shown via the key events in \autoref{chapter4-timeline} and in \autoref{chapter5-key-aspects}. The actual implementation details of an example architecture of a N/CI, which was the fourth and last objective to achieve this thesis' goals, were shown in \autoref{chapter5-example-architecture-of-a-nci}. Therefore, the author summarises that all goals and objectives were achieved in this project.
 
 \subsection{Reflection}
 \label{chapter5-reflection}
 
-The creation of an example N/CI in the industry as part of IDUN Technologies' NIP was a non-trivial and complex endeavour. There were many moving parts and a lot of uncertainties. Since there is also no other person publicly building a N/CI, or something that would fall into the category of a N/CI, the author could not fall back on experienced engineers who built such as system for a mass-market BCI. The biggest problem as part of this work was the sheer scope of the project as it can be reflected by the length of the thesis. Now in retrospect, it might have been better to set a more clear focus on what the effective deliverable might be, rather than having four objectives and main goals as mentioned in the earlier subsection. The author should also have defined more clear criteria of what the work packages should have been and what would define them as finished, such as in the DoD practise in Scrum.
+The creation of an example N/CI in the industry as part of IDUN Technologies' NIP was a non-trivial and complex endeavour. There were many moving parts and a lot of uncertainties. Since there is also no other person publicly building a N/CI, or something that would fall into the category of a N/CI, the author could not fall back on experienced engineers who built such as system for a mass-market BCI. The biggest problem as part of this work was the sheer scope of the project as it can be reflected by the length of the thesis. Now in retrospect, it might have been better to set a more clear focus on what the effective deliverable might be, rather than having four objectives and main goals as mentioned in the earlier subsection. The author should also have defined more clear criteria of what the work packages should have been and what would define them as finished, such as in the DoD practise in Scrum. The work tended to be more theoretical in the end, focusing more on the definition and key aspects of a N/CI, which was in the end just a by-product of the actual work. This separation could have been made more clear as well.
 
 \subsection{Outlook}
 \label{chapter5-outlook}
@@ -168,10 +167,7 @@ One big aspect and shift that will arise as soon as IDUN would sell their device
 \subsection{Conclusion}
 \label{chapter5-conclusion}
 
-% - We investigated whether depression can be treated by training a positive focus
-% - Our findings confirm this
-% - Novel perspective on depression
-% - More research needed, more treatments that follow this approach should be developed
+A N/CI is an important and new definition of a discipline that is between cloud computing and BCI software. This new discipline introduces many new challenges such as the production-readiness of a neural interface software system that by itself introduces layers such as privacy and general ethical concerns which could fill entire books on their own. Building a N/CI as by the definition explored by the author was an interesting and extremely challenging endeavour, but which resulted into many valuable insights and learnings that hopefully were useful for the reader. More research is definitely needed in the aspects of performance and latency aspects as well as the entirety of e.g. deep learning models running in production which were not mentioned and not a focus of this work. Nonetheless, many learnings from user insights, group discussions, expert interviews were presented and visualised together with the important example architecture that can be used to further develop better and more robust architectures through empirical engineering. After the publication of a shorter and more scientific-backed version of this thesis as mentioned in \autoref{chapter5-outlook} the author hopes to promote and establish the term and discipline of N/CI and the future that beholds it in the aspect of interfacing directly with the brains and understanding better what makes us us – our brains – for the benefit of humanity.
 
 \nomenclature[fft]{FFT}{Fast Fourier transform}
 \nomenclature[csv]{CSV}{Comma-separated values}
