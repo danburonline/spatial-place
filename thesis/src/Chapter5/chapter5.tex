@@ -54,7 +54,7 @@ The distinction between critical and non-critical streams can be made not only f
 \subsubsection{Encryption and opt-in}
 \label{chapter5-user-side-opt-in}
 
-Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users that they may not want. In the asynchronous encryption example, IDUN securely decrypts the data in its cloud using the private key.
+Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users that they may not want. In the asynchronous encryption example, IDUN securely decrypts the data in its cloud using the private key.
 
 % TODO show figure of how encryption works with private keys etc.
 
@@ -84,11 +84,16 @@ A graph database is the most natural way to store this large number of relations
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
 
-Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection the author presents as one of the main results the following cloud architecture in Fig 123.
+Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}.
 
-% TODO show entire architecture chart and split into sections and go through them
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{example-architecture.png}
+  \caption{Implementation architecture for IDUN Technologies' N/CI}
+  \label{fig:example-architecture}
+\end{figure}
 
-Table 123 goes into the different sections of the illustrated architecture and describes the parts and technological descriptions behind them.
+The architecture diagram contains some patterns that have specific reasons. Table 123 describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules) as well as the stream time synchronisation part, which is inside the SDK, and some of the Lambda functions.
 
 % TODO insert table
 
@@ -126,6 +131,8 @@ This section summarises the thesis' outputs and success criteria, as well as a c
 % - Novel perspective on depression
 % - More research needed, more treatments that follow this approach should be developed
 
-\nomenclature[fft]{fft}{Fast Fourier transform}
+\nomenclature[fft]{FFT}{Fast Fourier transform}
 \nomenclature[csv]{CSV}{Comma-separated values}
 \nomenclature[imu]{IMU}{Inertial measurement unit}
+\nomenclature[vpc]{VPC}{Virtual private cloud}
+\nomenclature[nat]{NAT}{Network address translation}
