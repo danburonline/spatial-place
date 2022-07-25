@@ -25,9 +25,9 @@ One of the most important technical aspects of a N/CI is the stream-oriented and
 \item \textbf{Asynchronous streams} for passive, reactive BCI.
 \end{enumerate}
 
-Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection). Parallel processing of neural data streams is critical, and timestamp synchronisation between different transformed or classified output streams must be prioritised.
+Either a user streams neural data from the device to obtain real-time output, such as controlling an object in a game, or to improve audio amplification based on where the user is looking. Such use cases necessitate real-time classification within an acceptable latency (more on latency in the next subsection).
 
-The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When he awakens, the system must stop the stream, classify it, and display e.g. the stages of sleep. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must transform it with a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length of the timeseries. 
+The other component occurs when an asynchronous stream is used in place of a real-time stream. For example, while sleeping, the user does not require real-time insights into their sleep. When they wake up, the system must stop the stream, classify it, and display e.g. the sleep stages. These various aspects are significant because some classifications, such as band power, require a specific time window (epoch) to calculate an understandable output. To determine the proportion of, say, alpha waves (which typically have frequencies between 8 and 13 Hz) in a user's neural data, we must decompose the raw EEG signal into frequency components via a fast fourier transform (FFT), which requires a specific portion of the neural data's time range, i.e. a specific epoch length. 
 
 \begin{figure}[!ht]
   \centering
@@ -77,7 +77,7 @@ In addition to storing the neural data in the given data structure, it is import
 
 % TODO create figure with graph association
 
-A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations the author did not implement a real graph data base but rather has chosen a relation database such as AWS Aurora since the current amount of data relationships is still manageable.
+A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and the majority of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations the author did not implement a real graph data base but rather has chosen a relation database such as AWS Aurora since the current amount of data relationships is still manageable. To still easily swap the underlying database technology without rewriting a bit portion of the business logic, the author intends to use a object–relational mapping (ORM) tool such as Prisma to treat relational data models as a graph-like schemas \citep{prisma_data_nodate}.
 
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
@@ -91,37 +91,30 @@ Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous su
   \label{fig:example-architecture}
 \end{figure}
 
-The architecture diagram contains some patterns that have specific reasons. Table 123 describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules) as well as the stream time synchronisation part, which is inside the SDK, and some of the Lambda functions.
+The architecture diagram contains some patterns that have specific reasons. The following list describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules).
 
-% TODO insert table
+% TODO insert list
 
-% Always show measure of success per each part of the architecture (say that going into detail of performance indicators and security is not part of this thesis)
-% talk about achieved goals
-
-% non-trivial, n-body system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
-
-% Performance
-% Scalability
-% Reliability
-% Security
-% Deployment
-% Technology Stack
+% non-trivial, n-tier system, Services, batch processing and near real time streaming, shared nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
 
 \section{Summary}
 \label{chapter5-summary}
 
 This section summarises the thesis' outputs and success criteria, as well as a conclusion about the project and its importance. A critical examination and reflection of the author's approach will also be conducted.
 
+% TODO write more
+
 \subsection{Reflection}
 \label{chapter5-reflection}
 
-
+The creation of an example N/CI in the industry as part of IDUN Technologies' NIP was a non-trivial and complex endeavour. There were many moving parts and a lot of uncertainties. Since there is also no other person publicly building a N/CI, or something that would fall into the category of a N/CI, the author could not fall back on experienced engineers who built such as system for a mass-market BCI. The biggest problem as part of this work was the sheer scope of the project as it can be reflected by the length of the thesis. Now in retrospect, it might have been better to set a more clear focus on what the effective deliverable might be, rather than having four objectives and main goals as mentioned in the earlier subsection. The author should also have defined more clear criteria of what the work packages should have been and what would define them as finished, such as in the DoD practise in Scrum.
 
 \subsection{Outlook}
 \label{chapter5-outlook}
-% mention to publish the thesis somewhere if possible with the help of IDUN
-% further development into deep learning models and more detailed description of a N/CI on the cloud rather then "just" introducing and displaying the most important aspects and components => could be done in a master's
-% discuss the next step as for a distributed n-tier system
+
+The author aims to publish certain parts of this thesis in form of a scientific paper. Most interestingly is the part about the definition and motivation behind creating the new discipline in which neural/cloud interfacing resides in. Next to that the author will continue to work at IDUN Technologies to further develop their N/CI and document the upcoming technological challenges.
+
+One big aspect and shift that will arise as soon as IDUN would sell their device to the general public is that the currently proposed architect as e.g. shown in \autoref{chapter5-example-architecture-of-a-nci} is for a localised system, i.e. the cloud data centre is located at one geographical location. As an outlook it might be noteworthy to have a look at a distributed cloud system since scaling around the population around the globe would dictate to create a distributed system to reduce latency and fault tolerance. This aspect could e.g. be done as a master thesis for the author's upcoming career plans.
 
 \subsection{Conclusion}
 \label{chapter5-conclusion}
@@ -136,3 +129,4 @@ This section summarises the thesis' outputs and success criteria, as well as a c
 \nomenclature[imu]{IMU}{Inertial measurement unit}
 \nomenclature[vpc]{VPC}{Virtual private cloud}
 \nomenclature[nat]{NAT}{Network address translation}
+\nomenclature[orm]{ORM}{Object–relational mapping}
