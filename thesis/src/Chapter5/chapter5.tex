@@ -61,9 +61,14 @@ Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed
 
 % TODO show figure of how encryption works with private keys etc.
 
-Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. Figure 3 depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
+Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. \autoref{fig:auth-flow} depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
 
-% TODO show the opt-in mechanism (say that the full version is in appendix 123)
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{auth-flow.png}
+  \caption{Wireframes for the opt-in mechanism. Starting with the device connection via BLE, then the device registration (or login) and then opt-in for app-specific options.}
+  \label{fig:auth-flow}
+\end{figure}
 
 Unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. As shown in Figure 123, Envelope encryption is a tried and true method for this \citep{google_cloud_envelope_nodate}.
 
