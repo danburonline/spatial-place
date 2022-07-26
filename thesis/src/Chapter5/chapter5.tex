@@ -98,12 +98,12 @@ The architecture diagram contains some patterns that have specific reasons. The 
           \caption{The Fargate cluster of the example architecture for IDUN's N/CI.}
           \label{fig:cluster}
         \end{figure}
-        
-         \autoref{fig:cluster} shows the Fargate cluster of the IDUN cloud setup. There are two main services: one for business logic applied to synchronous streams and one for asynchronous streams. The distinction can usually be described as the left service being a system of record and the right service being a derived data system \citep{kleppmann_designing_2017}. This separation describes that the system of record processes the raw data directly and in this case in a real-time stream, whereas the derived data system generates other data from the raw data without a real-time aspect. There is a certain redundancy, as can be seen for example with the HEOG\footnote{HEOG in this context is an acronym for horizontal electrooculogram, which describes the electrical signal recorded to detect the horizontal eye movement.} container (a classifier that recognises in which direction a user is looking). This is due to the aspect of critical and non-critical mentioned earlier. The HEOG container, for example, for synchronous tasks runs on a more powerful machine than, for example, the asynchronous container, so their hardware task descriptions differ in terms of available computing power, as the asynchronous neural data processing is not as critical in terms of latency as the synchronous containers.
-         
-         Another aspect is that the asynchronous service also contains batch processing containers, e.g. for sleep or general quality classifiers that do not need a stream-based aspect at all. These classifiers would run on demand or as batch processing events to produce other transformed data that is not represented as a time series, such as neural data or the other stream-based classifiers. For more information on the decision to use a Fargate cluster, see \autoref{appendix4-further-implementation-key-events}.
-        
-         Another important aspect is the decrypted container, which uses the private keys of the key pair to encrypt the data on the hardware and then decrypt it within the services to process and handle the actual and encrypted raw data. When the data is stored in S3 buckets, it is encrypted both in flight and at rest.
+
+        \autoref{fig:cluster} shows the Fargate cluster of the IDUN cloud setup. There are two main services: one for business logic applied to synchronous streams and one for asynchronous streams. The distinction can usually be described as the left service being a system of record and the right service being a derived data system \citep{kleppmann_designing_2017}. This separation describes that the system of record processes the raw data directly and in this case in a real-time stream, whereas the derived data system generates other data from the raw data without a real-time aspect. There is a certain redundancy, as can be seen for example with the HEOG\footnote{HEOG in this context is an acronym for horizontal electrooculogram, which describes the electrical signal recorded to detect the horizontal eye movement.} container (a classifier that recognises in which direction a user is looking). This is due to the aspect of critical and non-critical mentioned earlier. The HEOG container, for example, for synchronous tasks runs on a more powerful machine than, for example, the asynchronous container, so their hardware task descriptions differ in terms of available computing power, as the asynchronous neural data processing is not as critical in terms of latency as the synchronous containers.
+
+        Another aspect is that the asynchronous service also contains batch processing containers, e.g. for sleep or general quality classifiers that do not need a stream-based aspect at all. These classifiers would run on demand or as batch processing events to produce other transformed data that is not represented as a time series, such as neural data or the other stream-based classifiers. For more information on the decision to use a Fargate cluster, see \autoref{appendix4-further-implementation-key-events}.
+
+        Another important aspect is the decrypted container, which uses the private keys of the key pair to encrypt the data on the hardware and then decrypt it within the services to process and handle the actual and encrypted raw data. When the data is stored in S3 buckets, it is encrypted both in flight and at rest.
 
   \item  \begin{figure}[!ht]
           \centering
@@ -134,7 +134,7 @@ The architecture diagram contains some patterns that have specific reasons. The 
         \end{figure}
 
         \autoref{fig:cron} describes the CRON\footnote{CRON comes from the command line utility that is a job scheduler on Unix-like operating systems to execute tasks repeatedly without human intervention.}. Job processes to process and dictate specific opt-ins from users regarding long-term data storage. Example: If the user has said that IDUN should not store sleep data in the cloud for longer than 4 weeks, for example, a business logic must check which files are older than 4 weeks and then delete them. This task of repeatedly checking opt-ins stored in a DynamoDB database can also be handled by a Lambda. DynamoDB is a NoSQL database that is perfect for data whose schema is difficult to track due to the complexity of opt-in variations. This business logic can happen 4 times a day, for example, and has no real-time impact on end users, so this is a good use case for using business logic that can be cold.
-        
+
         Another aspect is that the CRON Job Lambda also defines old files, for example, and places them in cold storage on S3 Glacier. You can transfer old and infrequently used data from warm to cold storage in seconds, while the data remains discoverable and searchable \citep{sayed_introducing_2021}. Basically, this is a process of removing less frequently used or requested data from the N/CI's computational space, mainly saving cloud costs.
 
   \item \begin{figure}[!ht]
@@ -180,5 +180,5 @@ A N/CI is an essential and new definition of a discipline between cloud computin
 \nomenclature[imu]{IMU}{Inertial measurement unit}
 \nomenclature[vpc]{VPC}{Virtual private cloud}
 \nomenclature[nat]{NAT}{Network address translation}
-\nomenclature[orm]{ORM}{Object–relational mapping}
+\nomenclature[orm]{ORM}{Object-relational mapping}
 \nomenclature[http]{HTTP}{Hypertext transfer protocol}
