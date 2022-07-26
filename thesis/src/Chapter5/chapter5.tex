@@ -80,7 +80,7 @@ A graph database is the most natural way to store this large number of relations
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
 
-Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection, the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}. The example architecture does not detail the SDK and demo parts described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is to explore the cloud aspects of a N/CI and its core architectural components.
+Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection, the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}. The example architecture does not detail the SDK and demo parts described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is only to explore the cloud aspects of a N/CI and its core architectural components.
 
 \begin{figure}[!ht]
   \centering
@@ -95,48 +95,57 @@ The architecture diagram contains some patterns that have specific reasons. The 
   \item \begin{figure}[!ht]
           \centering
           \includegraphics[width=\linewidth]{cluster.png}
-          \caption{The Fargate cluster of the example architecture.}
+          \caption{The Fargate cluster of the example architecture for IDUN's N/CI.}
           \label{fig:cluster}
         \end{figure}
-
-        This is a text for figure 123.
-        % non-trivial, n-tier system, Services, batch processing and near real-time streaming, shared-nothing, encrypted, total order broadcast etc. => all insights that were gained for the N/CI and the task to define a N/CI on its own as well + Systems of record and derived data system (p 602 to cite) ==> add some parts to the implementation chapter
+        
+         \autoref{fig:cluster} shows the Fargate cluster of the IDUN cloud setup. There are two main services: one for business logic applied to synchronous streams and one for asynchronous streams. The distinction can usually be described as the left service being a system of record and the right service being a derived data system \citep{kleppmann_designing_2017}. This separation describes that the system of record processes the raw data directly and in this case in a real-time stream, whereas the derived data system generates other data from the raw data without a real-time aspect. There is a certain redundancy, as can be seen for example with the HEOG\footnote{HEOG in this context is an acronym for horizontal electrooculogram, which describes the electrical signal recorded to detect the horizontal eye movement.} container (a classifier that recognises in which direction a user is looking). This is due to the aspect of critical and non-critical mentioned earlier. The HEOG container, for example, for synchronous tasks runs on a more powerful machine than, for example, the asynchronous container, so their hardware task descriptions differ in terms of available computing power, as the asynchronous neural data processing is not as critical in terms of latency as the synchronous containers.
+         
+         Another aspect is that the asynchronous service also contains batch processing containers, e.g. for sleep or general quality classifiers that do not need a stream-based aspect at all. These classifiers would run on demand or as batch processing events to produce other transformed data that is not represented as a time series, such as neural data or the other stream-based classifiers. For more information on the decision to use a Fargate cluster, see \autoref{appendix4-further-implementation-key-events}.
+        
+         Another important aspect is the decrypted container, which uses the private keys of the key pair to encrypt the data on the hardware and then decrypt it within the services to process and handle the actual and encrypted raw data. When the data is stored in S3 buckets, it is encrypted both in flight and at rest.
 
   \item  \begin{figure}[!ht]
           \centering
-          \includegraphics[width=\linewidth]{initial-dataflow.png}
-          \caption{The initial data flow.}
+          \hspace*{0.4in}
+          \includegraphics[width=0.9\linewidth]{initial-dataflow.png}
+          \caption{The initial data flow in IDUN's N/CI.}
           \label{fig:initial-flow}
         \end{figure}
 
-        This is some more info.
+        \autoref{fig:initial-flow} describes the initial data flow of streamed neural data. The data is sent via the WebSocket protocol to Kinesis , which is a data ingestion system for data streams. A complementary service for Kinesis, called Kinesis Firehose, is then used to aggregate the data and store the streamed data as a CSV in an object store, in this case S3. As more data is streamed through Kinesis, Firehose appends the newly captured data to the CSV file already created on S3. Once the stream is stopped, the CSV file on S3 is marked as complete, which triggers an event in the EventBridge service, which then triggers a Lambda function to add the newly captured file and its meta-information (such as size and identifier) to the data graph database, in this case the Aurora database service. This event-driven aspect allows the Fargate cluster not to be disturbed and the focus to be on the streaming aspect, with the creation of the data graph being event-driven. In contrast to creating another service in the Fargate cluster, a serverless function in Lambda is used to not always run this business logic because they are event-driven and per-request and thus can be cold rather than hot functions\footnote{Hot and cold functions describes the underlying state of the infrastructure on which business logic is executed on. In the serverless aspect of cloud computing functions, such as in Lambda, can be "turned off" as soon as the business logic is not needed at the moment, therefore being described as cold.}, which e.g. classification logic on the Fargate cluster should always be because people can stream EEG data continuously for hours.
 
   \item  \begin{figure}[!ht]
           \centering
-          \includegraphics[width=\linewidth]{real-time-dataflow.png}
-          \caption{The real-time data flow.}
+          \hspace*{0.4in}
+          \includegraphics[width=0.8\linewidth]{real-time-dataflow.png}
+          \caption{The real-time data flow in IDUN's N/CI.}
           \label{fig:realtime-flow}
         \end{figure}
 
-        Real-time data flow example etc.
+        \autoref{fig:realtime-flow}, compared to the previous bullet point, shows the real-time data flow. It describes that neural data is sent via the WebSocket protocol and then ends up in the ingestion service of Kinesis. Kinesis stores the data stream and the new incoming data stateful in itself and leaves it to the Fargate cluster to copy and transform the data according to the desired classification such as HEOG or FFT. Once the Fargate cluster returns the processed or transformed data, it is sent to another Kinesis stream, which then returns the data via the same WebSocket API gateway. As a client, you would only subscribe to one API WebSocket API endpoint in this architecture, although the streams are processed separately with two ingestion services (the Kinesis instances Raw Streams and Proc. Streams), abstracting this logic.
 
   \item \begin{figure}[!ht]
           \centering
-          \includegraphics[width=\linewidth]{cron-jobs.png}
-          \caption{CRON jobs.}
+          \hspace*{0.4in}
+          \includegraphics[width=0.8\linewidth]{cron-jobs.png}
+          \caption{CRON jobs example architecture in IDUN's N/CI.}
           \label{fig:cron}
         \end{figure}
 
-        Cron jobs etc.
+        \autoref{fig:cron} describes the CRON\footnote{CRON comes from the command line utility that is a job scheduler on Unix-like operating systems to execute tasks repeatedly without human intervention.}. Job processes to process and dictate specific opt-ins from users regarding long-term data storage. Example: If the user has said that IDUN should not store sleep data in the cloud for longer than 4 weeks, for example, a business logic must check which files are older than 4 weeks and then delete them. This task of repeatedly checking opt-ins stored in a DynamoDB database can also be handled by a Lambda. DynamoDB is a NoSQL database that is perfect for data whose schema is difficult to track due to the complexity of opt-in variations. This business logic can happen 4 times a day, for example, and has no real-time impact on end users, so this is a good use case for using business logic that can be cold.
+        
+        Another aspect is that the CRON Job Lambda also defines old files, for example, and places them in cold storage on S3 Glacier. You can transfer old and infrequently used data from warm to cold storage in seconds, while the data remains discoverable and searchable \citep{sayed_introducing_2021}. Basically, this is a process of removing less frequently used or requested data from the N/CI's computational space, mainly saving cloud costs.
 
   \item \begin{figure}[!ht]
           \centering
-          \includegraphics[width=\linewidth]{api-access.png}
-          \caption{API access part of the architecture.}
+          \hspace*{0.4in}
+          \includegraphics[width=0.8\linewidth]{api-access.png}
+          \caption{API access part of the architecture of IDUN's N/CI.}
           \label{fig:api-access}
         \end{figure}
 
-        API access is part of the architecture.
+        \autoref{fig:api-access} shows the API access part of the example architecture for IDUN's N/CI. Here the author uses the API gateway service, but not the WebSocket version, but the standard Hypertext Transfer Protocol (HTTP) version, as there is no real-time and stream-based aspect to this API. Based on the opt-in of the users, which is accessible via the API for e.g. third party developers, a Lambda accesses the Aurora database, which contains the references to all data stored in S3 buckets within the cloud. For example, if certain data is not available (e.g. if the device is only streaming raw data for e.g. sleep classification, but the developers want to get the FFT version of the file), then the data API lambda sends a request to the Fargate cluster to process the data via a batch processing service, as shown in \autoref{fig:cluster}. The updated data is then stored again in an S3 bucket directly by Fargate, which then triggers another event in EventBridge, as shown in \autoref{fig:initial-flow}, which then updates the data graph. Once the data graph of the specific transformed version of the file has changed, it can be returned as an HTTP response via the API Gateway service.
 
 \end{itemize}
 
@@ -172,3 +181,4 @@ A N/CI is an essential and new definition of a discipline between cloud computin
 \nomenclature[vpc]{VPC}{Virtual private cloud}
 \nomenclature[nat]{NAT}{Network address translation}
 \nomenclature[orm]{ORM}{Object–relational mapping}
+\nomenclature[http]{HTTP}{Hypertext transfer protocol}
