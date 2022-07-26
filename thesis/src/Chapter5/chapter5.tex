@@ -50,18 +50,28 @@ The discussion of stream-based events leads us to the aspect of critical and non
 
 Not-so-critical applications can fall back on non-offline modes and run classifiers over an active internet connection in the cloud. To reduce latency, edge cloud computing could be introduced, where business logic executed in the cloud is brought geographically closer to the end user via edge locations \citep{nomios_what_nodate}. The aspect of edge-computing is a topic that is not covered in the aspects of a N/CI in this thesis since it was not q requirement to build a critical system at IDUN.
 
-However, the distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research represented by, e.g. IDUN's persona Noel does not necessitate synchronous streams or real-time classifications but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, e.g. recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, for example, if neural data becomes corrupted or misordered due to timestamp mismatches in the cloud. Figure 123 illustrates the buffering mechanism.
+However, the distinction between critical and non-critical streams can be made not only for synchronous streams, as described in the preceding examples, but also for asynchronous streams, particularly in the context of research. In general, research represented by, e.g. IDUN's persona Noel does not necessitate synchronous streams or real-time classifications but rather the most reliable possible acquisition of neural data from test subjects. The critical aspect in such a use case can also be much higher than, e.g. recording neural data during sleep in consumer-oriented applications. For example, if the device goes offline or the Bluetooth connection is lost, the device must cache the data locally and be able to restore and send it once the device is back in range or a sufficiently stable internet connection is restored. The author recommends having a fallback system in the form of buffering for each data stream, e.g. if neural data becomes corrupted or misordered due to timestamp mismatches in sending the data over the internet. This could mean that a certain EEG sample could arrive earlier than another sample which would have been earlier in the time series, therefore some sorting algorithm would need to run over the arriving samples as shown on \autoref{fig:sorting}. Luckily, Kinesis solves already comes built-in with this guaranteed order mechanism via sequence numbers \citep{amazon_web_services_inc_amazon_nodate}.
 
-% TODO create a figure for buffering on the device and phone when offline or out of range
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{sorting.png}
+  \caption{Mechanism of sorting samples as they might arrive in the wrong order on the cloud via the internet.}
+  \label{fig:sorting}
+\end{figure}
 
-\subsubsection{Encryption and opt-in}
-\label{chapter5-user-side-opt-in}
+The other aspect is the buffering of the data when the device is offline. It periodically sends a health check request to the cloud via WebSocket in a given interval and buffers all data on the interval. If no promise returns after a certain threshold, the device (or SDK on the end-user device) starts to buffer as shown on \autoref{fig:buffering}.
 
-Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users they may not want. IDUN securely decrypts the data in its cloud using the private key in the asynchronous encryption example. Figure 123 illustrates how the encryption mechanism.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{buffering.png}
+  \caption{Buffering mechanism on the device (i.e. end-user device such as smartphone) when there's no internet connection.}
+  \label{fig:buffering}
+\end{figure}
 
-% TODO show figure of how encryption works with private keys etc.
+\subsubsection{Opt-in and encryption}
+\label{chapter5-opt-in-and-encryption}
 
-Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. \autoref{fig:auth-flow} depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
+Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. 
 
 \begin{figure}[!ht]
   \centering
@@ -70,34 +80,37 @@ Third-party developers can thus only access data that the user has authorised. T
   \label{fig:auth-flow}
 \end{figure}
 
-Unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. As shown in Figure 123, Envelope encryption is a tried and true method for this \citep{google_cloud_envelope_nodate}.
+This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users they may not want. IDUN securely decrypts the data in its cloud using the private key in the asynchronous encryption example. Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. \autoref{fig:auth-flow} depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
 
-% TODO Show figure of envelope encryption \citep{google_cloud_key_nodate}
+Unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Asynchronous encryption together with envelope encryption is production-ready and battle-tested method to solve this issue. In envelope encryption the data key (public key) is itself also encrypted with another key \citep{google_cloud_envelope_nodate}. 
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{encryption-model.png}
+  \caption[Hybrid encryption model to encrypt and therefore protect the raw EEG data]{Hybrid encryption model to encrypt and therefore protect the raw EEG data \citep{idun_guardian_nodate}.}
+  \label{fig:encryption-model}
+\end{figure}
 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
 
-Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became apparent during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV) files seemed more appropriate and scalable. Table 123 shows the file's data structure and model stored as a CSV.
-
-% TODO create data structure table
+Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became apparent during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV) files seemed more appropriate and scalable since it's too much data for a database purpose. Similar to how other static data such as images get stored on object storage as well and only the URL to the object is stored in a database rather than storing the entirity of the bytes from the image inside the database \citep{datanamic_store_nodate}.
 
 In addition to storing the neural data in the given data structure, it is essential to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic applied to raw neural data streams, the more metadata, and associations must be linked to the original file in a database, as \autoref{fig:graph-database} shows.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{graph-database.png}
-  \caption{Example of the data model in form of a graph with the current setup and scope of IDUN's classifier and transformations.}
+  \caption{Data model in form of a graph with the current setup and scope.}
   \label{fig:graph-database}
 \end{figure}
-
-\newpage
 
 A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and most of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations, the author did not implement a graph database but chose a relational database such as AWS Aurora since the current amount of data relationships is still manageable. To quickly swap the underlying database technology without rewriting a significant portion of the business logic, the author intends to use an object-relational mapping (ORM) tool such as Prisma to treat relational data models via a graph-like schema \citep{prisma_data_nodate}.
 
 \subsection{Example architecture of a N/CI}
 \label{chapter5-example-architecture-of-a-nci}
 
-Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection, the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}. The example architecture does not detail the SDK and demo parts described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is only to explore the cloud aspects of a N/CI and its core architectural components.
+Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous subsection, the author presents as one of the main results the following cloud architecture in \autoref{fig:example-architecture}.
 
 \begin{figure}[!ht]
   \centering
@@ -106,9 +119,12 @@ Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous su
   \label{fig:example-architecture}
 \end{figure}
 
-The architecture diagram contains some patterns that have specific reasons. The following list describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules).
+\newpage
+
+The example architecture does not detail the SDK and demo parts described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is only to explore the cloud aspects of a N/CI and its core architectural components. The diagram contains some patterns that have specific reasons. The following list describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules).
 
 \begin{itemize}
+
   \item \begin{figure}[!ht]
           \centering
           \includegraphics[width=\linewidth]{cluster.png}
@@ -178,19 +194,19 @@ The assumption that N/CI is possible with today's technologies has been proven b
 \subsection{Reflection}
 \label{chapter5-reflection}
 
-Creating an exemplary N/CI in the industry as part of IDUN Technologies' NIP was a non-trivial and complex undertaking. There were many moving parts and many imponderables. Also, since no other person is publicly building a N/CI or anything that would fall into the category of a N/CI, the author could not call on experienced engineers who have built such a system for a mass market BCI. The biggest problem in the context of this work was the sheer scale of the project, as reflected in the length of the paper. In hindsight, it might have been better to focus more precisely on the deliverable rather than having four goals and main objectives as mentioned in the previous subsection. The author should also have defined more straightforward criteria for what the work packages should have been and what defines them as finished, as in the DoD practice in Scrum. The work was more theoretical and focused more on the definition and key aspects of a N/CI, which was ultimately just a by-product of the actual work. This separation could also have been made more apparent.
+Creating an exemplary N/CI in the industry as part of IDUN Technologies' NIP was a non-trivial and complex undertaking. There were many moving parts and many imponderables. Also, since no other person is publicly building a N/CI or anything that would fall into the definition of a N/CI, the author could not count on experienced engineers who have built such a system for a mass market BCI before. The biggest problem in the context of this work was the sheer scale of the project, as reflected in the length of the paper. In hindsight, it might have been better to focus more precisely on one deliverable rather than having four objectives and main goals. The author should also have defined more straightforward criteria for what the work packages should have been and what defines them as finished. The work was more theoretical and initially  focused on the definition and key aspects of a N/CI, which was ultimately just a by-product of the actual work.
 
 \subsection{Outlook}
 \label{chapter5-outlook}
 
-The author intends to publish certain parts of this work in the form of a scientific paper. Most interesting is the part about the definition and motivation behind creating the new discipline in which Neural/Cloud Interfacing resides. In addition, the author will continue to work at IDUN Technologies to develop their N/CI further and document the upcoming technological challenges.
+The author intends to publish certain parts of this work in the form of a research paper. Definitely an exciting part is the definition and motivation behind creating the new discipline in which Neural/Cloud Interfacing resides. In addition, the author will continue to work at IDUN Technologies to develop their N/CI further and document the upcoming technological challenges in the form of e.g. blog posts.
 
-An important aspect and a change that will occur once IDUN sells its device to the general public is that the currently proposed architecture, as shown in Chapter 5 - Example Architecture of an AI, is for a localised system, i.e. the cloud data centre is in one geographical location. As an outlook, a look at a distributed cloud system could be fascinating, as scaling around the world population would require a distributed system to reduce latency and fault tolerance. For example, this aspect could be worked on as part of a Master's thesis for the author's upcoming career plans.
+An important aspect and a change that will occur once IDUN sells its device to the general public is that the currently proposed architecture, as shown in \autoref{chapter5-example-architecture-of-a-nci} is for a localised system, i.e. the cloud data centre is in one geographical location (in IDUN's example EU-Central-1 in Frankfurt). As an outlook, a look at a distributed cloud system could be fascinating, as scaling around the world population would require a distributed system to reduce latency and fault tolerance. For example, this aspect could be worked on as part of a possible Master's thesis.
 
 \subsection{Conclusion}
 \label{chapter5-conclusion}
 
-A N/CI is an essential and new definition of a discipline between cloud computing and BCI software. This new discipline brings many new challenges, such as making a neural interface software system ready for production, which brings layers such as privacy and general ethical concerns that could fill entire books in themselves. Building a N/CI along the lines of the definition explored by the author was an exciting and highly challenging endeavour, but one that led to many valuable insights and findings that will hopefully be useful to the reader. There is a need for further research into performance and latency aspects, as well as the totality of, e.g. deep learning models running in production, which was not mentioned and was not the focus of this paper. Nevertheless, many findings from user experiences, group discussions and expert interviews were presented and visualised together with the holistic example architecture, which can be used further to develop better and more robust architectures through empirical engineering. Following the publication of a shorter and more scientifically sound version of this thesis, as mentioned in Chapter 5 - Outlook, the author hopes to promote and establish the term and discipline of N/CI and the future behind it from the perspective of interacting directly with brains and better understanding what makes us tick - our brains - for the benefit of humanity.
+A N/CI is an essential and new definition of a discipline between cloud computing and BCI software. This new discipline brings many new challenges, such as making a neural interface software system ready for production, which brings layers such as privacy and general ethical concerns that could fill entire books in themselves. Building a N/CI along the lines of the definition explored by the author was an exciting and highly challenging endeavour, but one that led to many valuable insights and findings that will hopefully be useful to the reader. There is a need for further research into performance and latency aspects, as well as the totality of, e.g. deep learning models running in production, which was not mentioned and was not the focus of this paper. Nevertheless, many findings from user interviews, group discussions and expert interviews were presented and visualised together with the holistic example architecture, which can be used further to develop better and more robust N/CI architectures through other case studies. Following the publication of a shorter and more scientifically sound version of this thesis, as mentioned in \autoref{chapter5-outlook}, the author hopes to promote and establish the term and discipline of N/CI and the future behind it from the perspective of interacting directly with brains and better understanding what makes us tick — our brains — for the benefit of humanity.
 
 \nomenclature[fft]{FFT}{Fast fourier transform}
 \nomenclature[csv]{CSV}{Comma-separated values}
