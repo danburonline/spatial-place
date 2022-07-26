@@ -71,7 +71,7 @@ The other aspect is the buffering of the data when the device is offline. It per
 \subsubsection{Opt-in and encryption}
 \label{chapter5-opt-in-and-encryption}
 
-Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data. 
+Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed in \autoref{appendix4-further-implementation-key-events}) that can be easily implemented in existing software such as web apps or mobile apps, the developers of these apps have actual access to the hardware and initiate the Bluetooth connection between the sensor and the end-user device. IDUN must encrypt the recorded data on the hardware before it reaches the third-party app to protect user privacy and the security of end-user neural data.
 
 \begin{figure}[!ht]
   \centering
@@ -82,7 +82,7 @@ Because IDUN develops an unobtrusive library (in the form of an SDK, as detailed
 
 This is a critical step in preventing third-party providers from collecting extensive data and classifying insights from users they may not want. IDUN securely decrypts the data in its cloud using the private key in the asynchronous encryption example. Third-party developers can thus only access data that the user has authorised. The duration of data storage, the type and level of detail of certain classifications of their neural data, and sharing and usage analysis are all opt-in options. \autoref{fig:auth-flow} depicts how such an opt-in mechanism might appear as a GUI in a third-party mobile app.
 
-Unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Asynchronous encryption together with envelope encryption is production-ready and battle-tested method to solve this issue. In envelope encryption the data key (public key) is itself also encrypted with another key \citep{google_cloud_envelope_nodate}. 
+Unencrypted raw data should never be accessible to third parties poses some technical challenges. To visualise and display the raw time series of IDUN's EEG sensors, e.g. the individual display images would have to be rendered on the server side and streamed to the client as a video stream. Another difficulty is synchronising and organising the rotation of public and private keys, which must be done without interference from third parties. Asynchronous encryption together with envelope encryption is production-ready and battle-tested method to solve this issue. In envelope encryption the data key (public key) is itself also encrypted with another key \citep{google_cloud_envelope_nodate}.
 
 \begin{figure}[!ht]
   \centering
