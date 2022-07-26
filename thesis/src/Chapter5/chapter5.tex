@@ -34,9 +34,14 @@ The other component occurs when an asynchronous stream is used in place of a rea
   \label{fig:fft}
 \end{figure}
 
-A given frequency in the time series is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have a per-sample and epoch-based classification of neural data, which can be real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases. Figure 123 visualises the differences between these three stream types.
+A given frequency in the time series is used to calculate the cycles to extract the originally occurring frequency signal based on the epoch length. As a result, we have a per-sample and epoch-based classification of neural data, which can be real-time with an initial delay to buffer a given epoch (as with FFT), or asynchronous and not real-time, as with sleep phases. \autoref{fig:per-sample} visualises the differences between these three stream classification types.
 
-% TODO create figure for epoch vs per sample incl buffering
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{per-sample.png}
+  \caption{Illustration of the three types of streams: classification per sample, per epoch or per sample with surrounding buffer. Green samples are used for classification, red are not used, orange are used but only via buffering.}
+  \label{fig:per-sample}
+\end{figure}
 
 \subsubsection{Critical and non-critical}
 \label{chapter5-critical-and-non-critical}
