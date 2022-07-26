@@ -81,9 +81,16 @@ Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of dat
 
 % TODO create data structure table
 
-In addition to storing the neural data in the given data structure, it is essential to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic applied to raw neural data streams, the more metadata must be linked to the original files in a database, as figure 123 shows.
+In addition to storing the neural data in the given data structure, it is essential to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic applied to raw neural data streams, the more metadata, and associations must be linked to the original file in a database, as \autoref{fig:graph-database} shows.
 
-% TODO create a figure with graph association
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=\linewidth]{graph-database.png}
+  \caption{Example of the data model in form of a graph with the current setup and scope of IDUN's classifier and transformations.}
+  \label{fig:graph-database}
+\end{figure}
+
+\newpage
 
 A graph database is the most natural way to store this large number of relationships between various stored files (entities). Relationships are treated as first-class citizens in graph databases, and most of their value is derived from these relationships. In graph databases, nodes are used to store data entities, while edges are used to store relationships between entities \citep{amazon_web_services_inc_what_nodate}. Due to time limitations, the author did not implement a graph database but chose a relational database such as AWS Aurora since the current amount of data relationships is still manageable. To quickly swap the underlying database technology without rewriting a significant portion of the business logic, the author intends to use an object-relational mapping (ORM) tool such as Prisma to treat relational data models via a graph-like schema \citep{prisma_data_nodate}.
 
