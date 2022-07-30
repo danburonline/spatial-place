@@ -94,7 +94,7 @@ Unencrypted raw data should never be accessible to third parties and poses some 
 \subsubsection{Graph data access}
 \label{chapter5-graph-data-access}
 
-Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that, due to the high frequency of the EEG data, it became apparent during the implementation phase that storing the neural data in a database is not an efficient method. Storing it as a static file on an object storage system like AWS S3 in a text-based file format like comma-separated values (CSV) files seemed more appropriate and scalable since it is too much data for a database. Similar to how other static data such as images get stored on object storage as well, and only the URL to the object is stored in a database rather than storing the entirety of the bytes from the image inside the database \citep{datanamic_store_nodate}.
+Aside from the stream-oriented, event-driven nature of a N/CI, the aspect of data storage is critical. It is important to note that during the implementation phase, it became clear that storing the neural data in a database is not an efficient method due to the interchangeability of comma separated files, for example (CSV). IDUN either exchanges the file internally between services (i.e. classifiers) or allows users to download specific versions of the file as a whole. Querying the EEG data itself is usually not the case for IDUN's data scientists; instead, they query the metadata in a database and download the EEG data as a whole via CSV files. In the cloud world, this is comparable to storing static data such as images in an object store (e.g. S3), where only the URL of the object is stored in a database and not the entire bytes of the image. \citep{datanamic_store_nodate}.
 
 In addition to storing the neural data in the given data structure, it is essential to note that other sensor data, such as inertial measurement unit (IMU) data, which is also collected by the IDUN hardware to track the subject's three-dimensional location, rotation, and movement, is also stored alongside and synchronised with the neural data. In addition to the two time-series-based data, EEG and IMU, IDUN collects meta-information such as classified versions of the data, such as eye movement data, which must also be synchronised with the raw data streams. The more classification and post-processing logic applied to raw data streams, the more metadata and relationships must be linked to the original file, as \autoref{fig:graph-database} shows.
 
@@ -118,8 +118,6 @@ Based on the key aspects of the N/CI for IDUN's NIP mentioned in the previous su
   \caption{Implementation architecture for IDUN Technologies' N/CI.}
   \label{fig:example-architecture}
 \end{figure}
-
-\newpage
 
 The example architecture does not detail the SDK and demo parts described in the user interview insights in \autoref{chapter4-user-interview-insights}. The goal is only to explore the cloud aspects of a N/CI and its core architectural components. The diagram contains some patterns that have specific reasons. The following list describes the different patterns and sections of the mapped architecture and the associated technical descriptions. It is important to note that some parts are not discussed as they are not part of this work, such as the networking aspect of the cloud setup (e.g. virtual private clouds (VPCs), network address translation services (NATs) and security groups and their traffic rules).
 
@@ -181,8 +179,6 @@ The example architecture does not detail the SDK and demo parts described in the
         \autoref{fig:api-access} shows the API access part of the example architecture for IDUN's N/CI. Here the author uses the API Gateway service, not the WebSocket version, but the standard Hypertext Transfer Protocol (HTTP) version, as there is no real-time and stream-based aspect to this API. Based on the opt-in of the users, which is accessible via the API for, e.g. third-party developers, a Lambda accesses the Aurora database, which contains the references to all data stored in S3 buckets within the cloud. For example, if certain data is not available (e.g. if the device is only streaming raw data for, e.g. sleep classification, but the developers want to get the FFT version of the file), then the data API Lambda sends a request to the Fargate cluster to process the data via a batch processing service, as shown in \autoref{fig:cluster}. The updated data is then stored in an S3 bucket directly by Fargate, which triggers another event in EventBridge, as shown in \autoref{fig:initial-flow}, which then updates the data graph. Once the data graph of the specific transformed version of the file has changed, it can be returned as an HTTP response via the API Gateway service.
 
 \end{itemize}
-
-\newpage
 
 \section{Summary}
 \label{chapter5-summary}
