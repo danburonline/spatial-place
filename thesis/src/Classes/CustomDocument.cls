@@ -562,8 +562,9 @@ in the class options}
 	citecolor=blue,
 	anchorcolor=blue,
 	pdfpagemode=FullScreen,
-	pdftitle={Enabling General Applicability for Brain-Computer Interface Software Through Cloud Computing}
+	pdftitle={Enabling General Applicability for Brain–Computer Interface Software Through Cloud Computing}
 }
+
 \ifsetCustomMargin
 % Margin to be define in preamble using geometry package
 \else
