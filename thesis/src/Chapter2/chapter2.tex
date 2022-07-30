@@ -1,7 +1,7 @@
 \chapter{Project Context}
 \graphicspath{{Chapter2/Figs/}{Chapter2/Figs/}}
 
-This chapter describes the project's context and the current literature findings. The reader is educated on neuroscientific limitations, the state of current non-invasive and sensor-based BCIs, the motivation for developing cloud-based BCI software for the general population and the broad definition of a N/CI.
+This chapter describes the project’s context and the current literature findings. The limitations of neuroscience are discussed as well as the state of current non-invasive and sensor-based BCIs, the motivation for developing cloud-based BCI software for the general population, and the broad definition of an N/CI.
 
 \section{Limitations of BCIs}
 \label{chapter2-limitations-of-bcis}
@@ -11,14 +11,14 @@ The possibilities of BCIs are not without limitations. In addition to hardware l
 \subsection{Decoding neural data}
 \label{chapter2-decoding-neural-data}
 
-It is important to emphasise that the task of decoding neural data is different from decoding thoughts, which is a critical factor for BCI software to enable the control and interaction via thoughts. Moreover, decoding neural data and extracting the thoughts behind it so that the software can understand them are disciplines on their own. This is similar in machine learning use cases: e.g. getting computers to recognise letters written on a photograph is a very different problem from reading the written words in the sentences (i.e. computer vision and natural language processing). Another part is understanding the sentences and their meaning, as in natural language understanding (NLU).
+It is important to emphasise that the task of decoding neural data is different from decoding thoughts, which is a critical factor for BCI software to enable the control and interaction via thoughts. Moreover, decoding neural data and extracting the thoughts behind it so that the software can understand them are disciplines in their own right. This is similar in machine learning use cases: for example, getting computers to recognise letters written on a photograph is a very different problem from reading the written words in sentences (i.e. computer vision and natural language processing). Another part is understanding the sentences and their meaning, as in natural language understanding (NLU).
 
-NLU is considered an artificial intelligence (AI) hard problem, which means that the difficulty of these computational problems is assumed to be equivalent to solving the central problem of artificial general intelligence\footnote{Based on the assumption that general human-level intelligence could be computable.} \citep{demasi_theoretical_2010}. Understanding less structured data, such as neural data, is more complex than understanding structured and human-invented syntax such as written language because it contains more hidden features and semantics than a paragraph of text. As a result, the author assumes that completely understanding neural data can also be considered an AI-hard problem. This constraint illustrates very well how far current research is from being able to interpret a person's thoughts based on measured neural data.
+NLU is considered an artificial intelligence (AI) hard problem, which means that the difficulty of these computational problems is assumed to be equivalent to solving the central problem of artificial general intelligence\footnote{Based on the assumption that general human-level intelligence could be computable.} \citep{demasi_theoretical_2010}. Understanding less structured data, such as neural data, is more complex than understanding structured and human-invented syntax such as written language because it contains more hidden features and semantics than a paragraph of text. As a result, the author assumes that completely understanding neural data can also be considered an AI-hard problem. This constraint illustrates well how far current research is from being able to interpret a person's thoughts based on measured neural data.
 
 \subsection{Abstract thoughts}
 \label{chapter2-abstract-thoughts}
 
-To further emphasise the complexity of interpreting neural data, a practical example will be presented: Imagine a red house in the middle of a forest. Depending on the individual thought process, one might imagine the house with temporary visual imagery in mind, as in visual thinking, or one might imagine it more verbally, such as conceptually comprehending each word sequentially of what a red house is and that it is located in a forest \citep{amit_asymmetrical_2017} as shown on \autoref{fig:visual-thinking}.
+To further emphasise the complexity of interpreting neural data, a practical example will be presented: \textit{Imagine a red house in the middle of a forest.} Depending on the individual thought process, one might imagine the house with temporary visual imagery in mind, as in visual thinking, or one might imagine it more verbally, such as conceptually comprehending each word sequentially of what a red house is and that it is located in a forest \citep{amit_asymmetrical_2017}. \autoref{fig:visual-thinking} illustrates the range of options.
 
 \begin{figure}[ht]
   \centering
@@ -27,7 +27,7 @@ To further emphasise the complexity of interpreting neural data, a practical exa
   \label{fig:visual-thinking}
 \end{figure}
 
-Additionally, it should also be addressed that different types of thoughts exist at different levels of abstraction and complexity. One can assume that the visual image of a red house in the forest is more abstract and far-fetched than, say, the movement of one's own thumbs, which has a clear physical counterpart. It gets even more complicated when one imagines abstract concepts that are inconceivable to visualise, such as the idea of a company. A company is an abstract, collectively agreed upon concept without a clear physical counterpart\footnote{Some people might think of a company building when imaging a company, others might imagine their website, their logo or physical products.} and is, therefore, even less straightforward and more complex to decode the meaning of measured brain activity than the other mentioned example of the red house.
+Additionally, it should be considered that different types of thoughts exist at different levels of abstraction and complexity. One can assume that the visual image of a red house in the forest is more abstract and far-fetched than, say, the movement of one's own thumbs, which has a clear physical counterpart. It becomes even more complicated when one imagines abstract concepts that cannot be visualised, such as the idea of a company. A company is an abstract, collectively agreed-upon concept that lacks a clear physical counterpart\footnote{Some people might think of a company building when imagining a company, others might imagine their website, their logo, or physical products.}; it is, therefore, even more complex to decode the meaning of measured brain activity in this case than with the red house.
 
 \subsection{Technological limitations}
 \label{chapter2-technological-limitations}
