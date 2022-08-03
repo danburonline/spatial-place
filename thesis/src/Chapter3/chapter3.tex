@@ -6,12 +6,12 @@ This chapter describes the project-related academic methodologies that fall with
 \section{Derivation of the case study}
 \label{chapter3-derivation-of-the-case-study}
 
-In October 2021, the author began working as a cloud software engineer at IDUN Technologies, an ETH spin-off startup in Zürich, to further develop their existing software products. IDUN had already created a PoC software system that included a web-based single-page application (SPA) hosted on AWS Amplify, a backend-as-a-service product aiming to simplify the deployment of backends for mobile and web apps. IDUN's in-ear sensor sent EEG data to a physical network bridge via Bluetooth and then to the cloud via the internet. The raw EEG data\footnote{Raw EEG data refers to data measured by the in-ear sensor without any additional processing.} was saved and made available for download in various file formats.
+In October 2021, the author began working as a cloud software engineer at IDUN Technologies, an ETH spin-off startup in Zürich, to further develop their existing software products. IDUN had already created a PoC software system that included a web-based single-page application (SPA) hosted on AWS Amplify, a backend-as-a-service product aiming to simplify the deployment of backends for mobile and web apps. IDUN’s in-ear sensor sent EEG data to a physical network bridge via Bluetooth and then to the cloud via the internet. The raw EEG data\footnote{Raw EEG data refers to data measured by the in-ear sensor without any additional processing.} was saved and made available for download in various file formats.
 
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{raw-filtered-data.png}
-  \caption{Difference between raw and filtered data from IDUN's product.}
+  \caption{Difference between raw and filtered data from IDUN’s product.}
   \label{fig:raw-filtered-eeg}
 \end{figure}
 
@@ -22,7 +22,7 @@ The EEG data could also be visualised in near-real-time on the SPA as a time-ser
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{idun-amplify.png}
-  \caption{IDUN's software architecture at the end of 2021.}
+  \caption{IDUN’s software architecture at the end of 2021.}
   \label{fig:idun-amplify}
 \end{figure}
 
@@ -36,7 +36,7 @@ As previously mentioned, IDUN Technologies is a full-stack company that produces
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{idun-nip.png}
-  \caption[IDUN's vision of a closed neurofeedback loop ]{IDUN's vision of a closed neurofeedback loop \citep{idun_guardian_nodate}.}
+  \caption[IDUN’s vision of a closed neurofeedback loop ]{IDUN’s vision of a closed neurofeedback loop \citep{idun_guardian_nodate}.}
   \label{fig:idun-nip}
 \end{figure}
 
@@ -57,7 +57,7 @@ The goal was to conduct qualitative research and examine the use case from vario
 \begin{figure}[!ht]
   \centering
   \includegraphics[width=\linewidth]{idun-timeline.png}
-  \caption[IDUN's plan to achieve their goals]{IDUN's plan to achieve their goals \citep{idun_guardian_nodate}.}
+  \caption[IDUN’s plan to achieve their goals]{IDUN’s plan to achieve their goals \citep{idun_guardian_nodate}.}
   \label{fig:idun-timeline}
 \end{figure}
 
@@ -73,17 +73,17 @@ Before defining the project stages, it is essential to look at the timing of IDU
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}1.1 Define key technical\\ requirements and\\ constraints\end{tabular}}} &
       \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the internal hardware, the neuroscience and data science departments and the IDUN mission\\ and roadmap, the author needs to define the purely technical requirements and constraints. Some\\ constraints are e.g. hiring of advisors, time limits and risks due to investment rounds. Some purely\\ technical requirements come from e.g. the firmware team or the material scientists, such as maximum\\ latency or the data structure of the digitalised and amplified EEG.\end{tabular}}                                                                                                         \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}1.2 Extensive literature\\ research\end{tabular}}}                       &
-      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Already since the beginning of the original bachelor thesis, the author started to do literature research in\\ the field of BCI, which is very helpful for the new focus. Further literature review now includes\\ books on data intensive applications and cloud, articles and research papers.\end{tabular}}                                                                                                                                                                                                                                                                                                \\ \hline
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Already since the beginning of the original bachelor thesis, the author started to do literature research in\\ the field of BCI, which is very helpful for the new focus. Further literature review now includes\\ books on data-intensive applications and cloud, articles and research papers.\end{tabular}}                                                                                                                                                                                                                                                                                                \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.1 External user\\ interviews\end{tabular}}}                            &
-      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Defining users personas with IDUN's product manager, application engineer and sales team, finding\\ real people to represent these personas, preparing an external interview framework and questions,\\ gathering as many insights as possible.\end{tabular}}                                                                                                                                                                                                                                                                                                                                                 \\ \hline
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Defining user personas with IDUN’s product manager, application engineer and sales team, finding\\ real people to represent these personas, preparing an external interview framework and questions,\\ gathering as many insights as possible.\end{tabular}}                                                                                                                                                                                                                                                                                                                                                  \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}2.2 Creative workshop and\\ prototyping\end{tabular}}}                   &
-      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the insights from the user interviews, conduct a creative workshop with IDUN's product\\ manager and application engineer. The results are design artefacts such as wireframes, user flows,\\ interactive prototypes and architecture diagrams which are essential for internal group discussions.\end{tabular}}                                                                                                                                                                                                                                                                                     \\ \hline
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Based on the insights from the user interviews, conduct a creative workshop with IDUN’s product\\ manager and application engineer. The results are design artefacts such as wireframes, user flows,\\ interactive prototypes and architecture diagrams which are essential for internal group discussions.\end{tabular}}                                                                                                                                                                                                                                                                                     \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}3.1 Internal group\\ discussions\end{tabular}}}                          &
       \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}The design artefacts are used for an internal validation with the department heads. Several group\\ discussions are held with each department, ranging from materials science to business development.\\ Based on the group discussions, the artefacts are adapted and improved.\end{tabular}}                                                                                                                                                                                                                                                                                                                \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{3.2 Expert interviews}}                                                                             &
       \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}Define experts in different areas of BCI, cloud and EEG, and neuroethics. Create a framework for\\ expert interviews and questions that are still unclear or open based on the design artefacts. Conduct\\ expert interviews and gather as many insights as possible to adapt and improve the design artefacts.\end{tabular}}                                                                                                                                                                                                                                                                                 \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{4. Start bootstrapping}}                                                                            &
-      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}While the design process is still ongoing, you can already start implementing the most important\\ technical requirements, with anything that is a flexible bootstrapping of internal development\\ processes to ensure quality assurance, for example, not being tied to the other phases.\end{tabular}}                                                                                                                                                                                                                                                                                                     \\ \hline
+      \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}While the design process is still ongoing, you can already start implementing the most important\\ technical requirements with anything that is a flexible bootstrapping of internal development\\ processes to ensure quality assurance, for example, not being tied to the other phases.\end{tabular}}                                                                                                                                                                                                                                                                                                      \\ \hline
       \multicolumn{1}{|l|}{\cellcolor[HTML]{FFFFFF}\textbf{\begin{tabular}[c]{@{}l@{}}5. Iterative and agile\\ implementation via\\ Scrum\end{tabular}}}       &
       \multicolumn{1}{l|}{\begin{tabular}[c]{@{}l@{}}IDUN works with Scrum, for this the author has introduced Scrum in the research and development\\ department. Scrum at IDUN has three-week sprints and there are ten sprints from January 2022 to the\\ end of July 2022 that can be used to go through the design process and implement the designs. In the\\ process, there are several iterative processes to validate and test the increments of the system based on\\ insights from the implementation, ongoing literature research, insights from other departments or the\\ design process (i.e. user interviews) that is still ongoing.\end{tabular}} \\ \hline
     \end{tabular}%

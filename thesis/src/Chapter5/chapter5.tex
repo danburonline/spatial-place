@@ -126,11 +126,11 @@ The architecture does not detail the SDK and demo parts described in the user in
   \item \begin{figure}[!ht]
           \centering
           \includegraphics[width=\linewidth]{cluster.png}
-          \caption{The Fargate cluster of the example architecture for IDUN's N/CI.}
+          \caption{The Fargate cluster of the example architecture for IDUN’s N/CI.}
           \label{fig:cluster}
         \end{figure}
 
-        \autoref{fig:cluster} shows the Fargate cluster of the IDUN cloud setup. There are two primary services: one for business logic applied to synchronous streams and one for asynchronous streams. The distinction can usually be described as the left service being a system of record and the right service being a derived data system \citep{kleppmann_designing_2017}. This separation describes that the system of record processes the raw data directly and, in this case, in a real-time stream, whereas the derived data system generates other data from the raw data without a real-time aspect. There is a certain redundancy, as can be seen, for example, with the HEOG\footnote{HEOG in this context, which is an acronym for horizontal electrooculogram, and describes the electrical signal recorded to detect the horizontal eye movement.} ccontainer (a classifier that recognises the direction a user is looking). This is due to the aspect of critical and non-critical mentioned earlier. The HEOG container for synchronous tasks runs on a more powerful machine than, for example, the asynchronous container; consequently, their hardware task descriptions differ in available computing power, as the asynchronous neural data processing is not as critical in terms of latency as the synchronous containers.
+        \autoref{fig:cluster} shows the Fargate cluster of the IDUN cloud setup. There are two primary services: one for business logic applied to synchronous streams and one for asynchronous streams. The distinction can usually be described as the left service being a system of record and the right service being a derived data system \citep{kleppmann_designing_2017}. This separation describes that the system of record processes the raw data directly and, in this case, in a real-time stream, whereas the derived data system generates other data from the raw data without a real-time aspect. There is a certain redundancy, as can be seen, for example, with the HEOG\footnote{HEOG in this context, which is an acronym for horizontal electrooculogram, and describes the electrical signal recorded to detect the horizontal eye movement.} container (a classifier that recognises the direction a user is looking). This is due to the aspect of critical and non-critical mentioned earlier. The HEOG container for synchronous tasks runs on a more powerful machine than, for example, the asynchronous container; consequently, their hardware task descriptions differ in available computing power, as the asynchronous neural data processing is not as critical in terms of latency as the synchronous containers.
 
         Another aspect is that the asynchronous service also contains batch processing containers for sleep or general quality classifiers that do not need a stream-based aspect. These classifiers would run on demand or as batch processing events to produce other transformed data not represented as a time series, such as neural data or the other stream-based classifiers. For more information on the decision to use a Fargate cluster, see \autoref{appendix4-further-implementation-key-events}.
 
@@ -140,17 +140,17 @@ The architecture does not detail the SDK and demo parts described in the user in
           \centering
           \hspace*{0.4in}
           \includegraphics[width=0.9\linewidth]{initial-dataflow.png}
-          \caption{The initial data flow in IDUN's N/CI.}
+          \caption{The initial data flow in IDUN’s N/CI.}
           \label{fig:initial-flow}
         \end{figure}
 
-        \autoref{fig:initial-flow} describes the initial data flow of streamed neural data. The data is sent via the WebSocket protocol to Kinesis, a data ingestion system for data streams. A complimentary service for Kinesis, called Kinesis Firehose, is then used to aggregate the data and store the streamed data as a CSV in an object store—in this case, S3. As more data is streamed through Kinesis, Firehose appends the newly captured data to the CSV file already created on S3. Once the stream is stopped, the CSV file on S3 is marked as complete, which triggers an event in the EventBridge service, which then triggers a Lambda function to add the newly captured file and its meta- information (such as size and identifier) to the data graph database—in this case, the Aurora database service. This event-driven aspect allows the Fargate cluster not to be disturbed and the focus to remain on the streaming aspect with the creation of the data graph being event-driven. In contrast to creating another service in the Fargate cluster, a serverless function in Lambda is not always used to run this business logic because they are event-driven and per-request; thus, they can be cold rather than hot functions\footnote{Hot and cold functions describe the underlying state of the infrastructure on which business logic is executed. The serverless aspect of cloud computing functions, such as Lambda, can be ‘turned off’ as soon as the business logic is not needed at the moment and is therefore described as cold.}, which is what classification logic on the Fargate cluster should always be as people can stream EEG data continuously for hours.
+        \autoref{fig:initial-flow} describes the initial data flow of streamed neural data. The data is sent via the WebSocket protocol to Kinesis, a data ingestion system for data streams. A complimentary service for Kinesis, called Kinesis Firehose, is then used to aggregate the data and store the streamed data as a CSV in an object store—in this case, S3. As more data is streamed through Kinesis, Firehose appends the newly captured data to the CSV file already created on S3. Once the stream is stopped, the CSV file on S3 is marked as complete, which triggers an event in the EventBridge service, which then triggers a Lambda function to add the newly captured file and its meta-information (such as size and identifier) to the data graph database—in this case, the Aurora database service. This event-driven aspect allows the Fargate cluster not to be disturbed and the focus to remain on the streaming aspect with the creation of the data graph being event-driven. In contrast to creating another service in the Fargate cluster, a serverless function in Lambda is not always used to run this business logic because they are event-driven and per-request; thus, they can be cold rather than hot functions\footnote{Hot and cold functions describe the underlying state of the infrastructure on which business logic is executed. The serverless aspect of cloud computing functions, such as Lambda, can be ‘turned off’ as soon as the business logic is not needed at the moment and is therefore described as cold.}, which is what classification logic on the Fargate cluster should always be as people can stream EEG data continuously for hours.
 
   \item  \begin{figure}[!ht]
           \centering
           \hspace*{0.4in}
           \includegraphics[width=0.8\linewidth]{real-time-dataflow.png}
-          \caption{The real-time data flow in IDUN's N/CI.}
+          \caption{The real-time data flow in IDUN’s N/CI.}
           \label{fig:realtime-flow}
         \end{figure}
 
@@ -160,7 +160,7 @@ The architecture does not detail the SDK and demo parts described in the user in
           \centering
           \hspace*{0.4in}
           \includegraphics[width=0.8\linewidth]{cron-jobs.png}
-          \caption{CRON jobs example architecture in IDUN's N/CI.}
+          \caption{CRON jobs example architecture in IDUN’s N/CI.}
           \label{fig:cron}
         \end{figure}
 
@@ -172,7 +172,7 @@ The architecture does not detail the SDK and demo parts described in the user in
           \centering
           \hspace*{0.4in}
           \includegraphics[width=0.8\linewidth]{api-access.png}
-          \caption{API access part of the architecture of IDUN's N/CI.}
+          \caption{API access part of the architecture of IDUN’s N/CI.}
           \label{fig:api-access}
         \end{figure}
 
@@ -185,9 +185,9 @@ The architecture does not detail the SDK and demo parts described in the user in
 
 Within this thesis, the author has provided the foundational work on the development and definition of an N/CI. In addition, the author has addressed the challenges and the limitations surrounding the implementation of a model N/CI at IDUN. Working in a fast-moving startup such as IDUN made it challenging to work on the project and write the report; nevertheless, the author is satisfied with the result as described in this thesis. The author learned many things, ranging from fundamental theoretical neuroscience to cloud computing.
 
-This thesis first introduced the topics and some of the essential terms and their back- grounds in \autoref{chapter1-background}, drawing conclusions from the current state of research that have framed the aims and objectives of this thesis.
+This thesis first introduced the topics and some of the essential terms and their backgrounds in \autoref{chapter1-background}, drawing conclusions from the current state of research that have framed the aims and objectives of this thesis.
 
-The assumption that the implementation of an N/CI is feasible with contemporary tech- nologies has been demonstrated, but there are still unknown shortcomings that need to be identified. Nevertheless, the aim was to provide the reader with an overview and context for the newly introduced definition of N/CI and the lessons learned during its practical implementation at IDUN. The context and motivation for creating an N/CI, as described as the first item in the list of objectives, were derived in Chapter 2 and explained in more detail in \autoref{appendix1-definition-and-motivation-of-an-nci}. Compared to existing systems and research, the clear definition, distinction, and advantages of an N/CI were also described in more detail in \autoref{appendix1-definition-and-motivation-of-an-nci}. The identification and definition of key aspects to realise an N/CI to demonstrate general applicability for BCI software were shown using key events in \autoref{chapter4-timeline} and \autoref{chapter5-key-aspects}. The implementation details of an example architecture of an N/CI, which was the fourth and final objective of this thesis, were presented in \autoref{chapter5-example-architecture-of-an-nci}, leading to a summary of all the goals and objectives achieved in this project.
+The assumption that the implementation of an N/CI is feasible with contemporary technologies has been demonstrated, but there are still unknown shortcomings that need to be identified. Nevertheless, the aim was to provide the reader with an overview and context for the newly introduced definition of N/CI and the lessons learned during its practical implementation at IDUN. The context and motivation for creating an N/CI, as described as the first item in the list of objectives, were derived in Chapter 2 and explained in more detail in \autoref{appendix1-definition-and-motivation-of-an-nci}. Compared to existing systems and research, the clear definition, distinction, and advantages of an N/CI were also described in more detail in \autoref{appendix1-definition-and-motivation-of-an-nci}. The identification and definition of key aspects to realise an N/CI to demonstrate general applicability for BCI software were shown using key events in \autoref{chapter4-timeline} and \autoref{chapter5-key-aspects}. The implementation details of an example architecture of an N/CI, which was the fourth and final objective of this thesis, were presented in \autoref{chapter5-example-architecture-of-an-nci}, leading to a summary of all the goals and objectives achieved in this project.
 
 \subsection{Reflection}
 \label{chapter5-reflection}
