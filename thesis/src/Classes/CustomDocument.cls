@@ -592,7 +592,7 @@ vmarginratio=1:1,scale=0.75,bindingoffset=5mm]{geometry}
 	citecolor=blue,
 	anchorcolor=blue,
 	pdfpagemode=UseOutlines,
-	pdftitle={Enabling General Applicability for Brain-Computer Interface Software Through Cloud Computing}
+	pdftitle={Enabling General Applicability for Brain–Computer Interface Software Through Cloud Computing}
 }
 
 \ifsetCustomMargin
