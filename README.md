@@ -1,6 +1,6 @@
 # Spatial Place
 
-![Neural/cloud interface](./thesis/src/Chapter2/Figs/nci-definition.png)
+![Neural/cloud interface](./thesis/src/Appendix1/Figs/nci-definition.png)
 
 Spatial Place is the project title of my bachelor thesis, in which I researched and explored the mass-market applicability of a novel software system for bringing brain–computer interface software to the cloud. I called the product of this new interdisciplinary field between brain–computer interface software and cloud computing a **neural/cloud interface**.
 
