@@ -59,7 +59,7 @@ However, the distinction between critical and non-critical streams can be made n
   \label{fig:sorting}
 \end{figure}
 
-Fortunately, AWS Kinesis, a streaming service used for IDUN's NIP (more information in \autoref{appendix4-further-implementation-key-events}), already comes built-in with a guaranteed order mechanism via sequence numbers to solve this problem \citep{amazon_web_services_inc_amazon_nodate}. The aspect of locally caching is also important when the device is offline. The software periodically sends a health check request to the cloud via WebSocket in a given interval and buffers all data on the interval. If no promise returns after a certain threshold, the device (or SDK on the end-user device) starts to buffer, as shown in \autoref{fig:buffering}.
+Fortunately, AWS Kinesis, a streaming service used for IDUN's cloud (more information in \autoref{appendix4-further-implementation-key-events}), already comes built-in with a guaranteed order mechanism via sequence numbers to solve this problem \citep{amazon_web_services_inc_amazon_nodate}. The aspect of locally caching is also important when the device is offline. The software periodically sends a health check request to the cloud via WebSocket in a given interval and buffers all data on the interval. If no promise returns after a certain threshold, the device (or SDK on the end-user device) starts to buffer, as shown in \autoref{fig:buffering}.
 
 \begin{figure}[!ht]
   \centering
