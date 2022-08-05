@@ -160,8 +160,8 @@ The architecture does not detail the SDK and demo parts described in the user in
         \autoref{fig:cron} describes the CRON\footnote{CRON comes from the command line utility that is a job scheduler on Unix-like operating systems to execute tasks repeatedly without human intervention.} job processes to process and dictate specific opt-ins from users regarding long-term data storage. For example, if the user has declared that IDUN should not store sleep data in the cloud for longer than four weeks, business logic must check which files are older than four weeks and then delete them. This task of repeatedly checking opt-ins stored in a DynamoDB database can also be handled by a Lambda. DynamoDB is a NoSQL database perfect for data whose schema is challenging to track due to the complexity of opt-in variations. This business logic can happen four times a day, for example, and has no real-time impact on end users, so this is a good use case for using business logic that can be cold.
 
         Another aspect is that the CRON job Lambda defines old files, for example, and places them in cold storage on S3 Glacier. One can transfer old and infrequently used data from warm to cold storage in seconds while the data remains discoverable and searchable \citep{sayed_introducing_2021}. This is a process of removing less frequently used or requested data from the N/CI’s computational space, which primarily saves cloud costs.
-        
-\newpage
+
+        \newpage
 
   \item \begin{figure}[!ht]
           \centering
@@ -185,7 +185,7 @@ This thesis first introduced the topics and some of the essential terms and thei
 \subsection{Reflection}
 \label{chapter5-reflection}
 
-Creating an example N/CI in the industry as part of IDUN Technologies’ NIP was a complex undertaking with many moving parts and imponderables. Moreover, since no other person is publicly building an N/CI or anything that would fall under the definition of an N/CI, the author could not count on experienced engineers who have built such a system for a mass market BCI before. The most significant problem in the context of this work was the sheer scale of the project, as reflected in the length of the thesis. In hindsight, it might have been better to focus more precisely on one deliverable rather than having four objectives and primary goals. The author should also have defined more clear criteria for what the work packages should have been and what defines them as ‘finished’. The work was more theoretical than initially anticipated and focused on the definition and key aspects of an N/CI, ultimately a byproduct of the original work.
+Creating an example N/CI in the industry as part of IDUN Technologies’ NIP was a complex undertaking with many moving parts and imponderables. Moreover, since no other person is publicly building an N/CI or anything that would fall under the definition of an N/CI, the author could not count on experienced engineers who have built such a system for a mass-market BCI before. The most significant problem in the context of this work was the sheer scale of the project, as reflected in the length of the thesis. In hindsight, it might have been better to focus more precisely on one deliverable rather than having four objectives and primary goals. The author should also have defined more clear criteria for what the work packages should have been and what defines them as ‘finished’. The work was more theoretical than initially anticipated and focused on the definition and key aspects of an N/CI, ultimately a byproduct of the original work.
 
 \subsection{Outlook}
 \label{chapter5-outlook}
