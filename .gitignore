@@ -13,6 +13,9 @@
 *.cb2
 .*.lb
 
+# Ignore IDUN's codebases
+repositories/
+
 ## Intermediate documents:
 *.dvi
 *.xdv
@@ -33,17 +36,11 @@
 *-blx.bib
 *.run.xml
 
-## Build tool auxiliary files:
-*.fdb_latexmk
-*.synctex
-*.synctex(busy)
-*.synctex.gz
-*.synctex.gz(busy)
-*.pdfsync
-
 ## Build tool directories for auxiliary files
 # latexrun
 latex.out/
+*.fdb_latexmk
+*.synctex.gz
 
 ## Auxiliary and intermediate files from other packages:
 # algorithms
@@ -303,7 +300,6 @@ TSWLatexianTemp*
 
 # Icon must end with two \r
 Icon
-
 
 # Thumbnails
 ._*
