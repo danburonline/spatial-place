@@ -10,7 +10,12 @@ My bachelor thesis was completed in collaboration with [IDUN Technologies](https
 
 Because the source code of the mentioned software components is proprietary and hence subject to a copyrighted license, I cannot put it in a public repository. I have included a copy of the associated repositories, so that the examiners may see the source code and understand how the neural/cloud interface works in implementation when evaluating my project.
 
-## Other Artefacts
+## Deliverables
+
+- [Thesis PDF export](./thesis/src/thesis.pdf)
+- [Presentation as HTML slides](./presentation/index.html)
+
+## Other
 
 - All figures that I created on my own can be found under this [URL](https://www.figma.com/file/lSKhgYwDk9KIQbGooflm4X/figures?node-id=0%3A1).
 - You can find the whiteboard in Figma via this [URL](https://www.figma.com/file/bYgmQkS6tlizeVgHK3YWT1/whiteboard?node-id=0%3A1). It includes ideas, old drafts, and notes from the project.
